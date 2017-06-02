@@ -31,6 +31,14 @@ public abstract class Personaje { //Interfaz?
 		return velocidad;
 	}
 	
+	public int getKi(){
+		return ki;
+	}
+	
+	public int getVida(){
+		return vida;
+	}
+	
 	public void modificarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
 		 * PRE: Cantidad es un numero entero.
@@ -70,4 +78,6 @@ public abstract class Personaje { //Interfaz?
 		 */
 		this.nombre = nombre;
 	}
+	
+	public abstract boolean transformacionDisponible();
 }
