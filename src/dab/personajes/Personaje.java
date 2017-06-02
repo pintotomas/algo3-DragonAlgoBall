@@ -8,15 +8,17 @@ public abstract class Personaje { //Interfaz?
 	private int alcance;
 	private int velocidad;
 	private int ki;
+	private int cantidadParaTransformar;
 	//Agregar un atributo modo?
 	
-	public Personaje (String nombre, int hp, int pp, int alcance, int vel, int ki){
+	public Personaje (String nombre, int hp, int pp, int alcance, int vel, int ki, int cantidadParaTransformar){
 		this.nombre = nombre;
 		vida = hp;
 		poder = pp;
 		this.alcance = alcance;
 		velocidad = vel;
 		this.ki = ki;
+		this.cantidadParaTransformar = cantidadParaTransformar;
 	}
 	
 	public String getNombre(){ //Necesario para mostrar en el talbero
@@ -79,5 +81,8 @@ public abstract class Personaje { //Interfaz?
 		this.nombre = nombre;
 	}
 	
-	public abstract boolean transformacionDisponible();
+	public boolean transformacionDisponible(){
+	//verifica que el ki sea el nescesario para transformar
+		return ki >= CantidadParaTransformar;
+	}
 }
