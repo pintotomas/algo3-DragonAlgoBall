@@ -1,23 +1,20 @@
 package dab.personajes.goku;
 
-public class GokuSuperSayajin extends KaioKen{
-
+public class GokuSuperSayajin extends GokuKaioKen{
+	/*Representa a la segunda transformacion de Goku*/
 	
-	static int vida = 500;
-	static int poder = 60;
-	static int alcance = 4;
-	static int kiInicial = 0;
-	static int velocidad = 5;
-	static String nombre = "Goku Super Sayajin";
 	
-	public GokuSuperSayajin() {
-		super();
+	public GokuSuperSayajin(){
+		vida = 500;
+		poder = 60;
+		alcance = 4;
+		ki = 0;
+		velocidad = 5;
+		nombre = "Goku Super Sayajin";
 	}
-	
 	@Override
-	public boolean transformacionDisponible() {
+	public boolean transformarDisponible() {
 		return false;
-	}	
-	
+	}
 
 }
