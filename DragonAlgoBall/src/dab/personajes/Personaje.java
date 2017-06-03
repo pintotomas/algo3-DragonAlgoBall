@@ -54,5 +54,11 @@ public abstract class Personaje {
 	public abstract boolean transformarDisponible();
 	public abstract boolean ataqueEspecialDisponible();	
 	public abstract void ataqueEspecial(Personaje enemigo);
+
+	public void convertirEnChocolate(){
+		/*faltaria implementar para la especial de boo. 
+		* teniendo en cuenta que deven pasar 3 turnos.	
+		*/
+	}
 	
 }
