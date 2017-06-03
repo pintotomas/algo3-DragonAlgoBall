@@ -3,16 +3,16 @@ import dab.personajes.Personaje;
 
 public class Goku extends Personaje{
 	
-	static int vidaGoku = 500;
-	static int poderGoku = 20;
-	static int alcanceGoku = 2;
-	static int kiInicialGoku = 0;
-	static int velocidadGoku = 2;
-	static String nombreGoku = "Goku";
-	int kiNecesarioSpecGoku = 20;
+	private static int vida = 500;
+	private static int poder = 20;
+	private static int alcance = 2;
+	private static int kiInicial = 0;
+	private static int velocidad = 2;
+	private static String nombre = "Goku";
+	protected int kiNecesarioSpec = 20;
 	
 	public Goku() {
-		super(vidaGoku, poderGoku, alcanceGoku, kiInicialGoku, velocidadGoku, nombreGoku);
+		super(vida, poder, alcance, kiInicial, velocidad, nombre);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,7 +33,7 @@ public class Goku extends Personaje{
 	@Override
 	public boolean ataqueEspecialDisponible() {
 		// TODO Auto-generated method stub
-		return (this.getKi() >= kiNecesarioSpecGoku);
+		return (this.getKi() >= kiNecesarioSpec);
 	}
 
 }
