@@ -11,12 +11,12 @@ public class Freezer extends Personaje{
 	protected int kiParaTransformar;
 	
 	public Freezer(){
-		vida = 500;
+		vida = 400;
 		poder = 20;
 		alcance = 2;
 		ki = 0;
-		velocidad = 2;
-		nombre = "Goku";
+		velocidad = 4;
+		nombre = "Freezer";
 		kiParaEspecial = 20;
 		kiParaTransformar = 20;
 	}
