@@ -13,12 +13,12 @@ public class Gohan extends Personaje {
 		
 		public Gohan(){
 			vida = 300;
-			poder = 20;
+			poder = 15;
 			alcance = 2;
 			ki = 0;
-			velocidad = 4;
+			velocidad = 2;
 			nombre = "Gohan";
-			kiParaEspecial = 20;
+			kiParaEspecial = 10;
 			kiParaTransformar = 10;
 		}
 		

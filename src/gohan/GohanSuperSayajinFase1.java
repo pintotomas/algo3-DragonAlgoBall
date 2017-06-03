@@ -11,7 +11,8 @@ public class GohanSuperSayajinFase1 extends Gohan{
 		alcance = 2;
 		ki = 0;
 		velocidad = 2;
-		nombre = "Goku Kaio-Ken";
+		nombre = "gohan super sayajin fase 2";
+		kiParaTransformar = 30;
 	}
 	
 	
