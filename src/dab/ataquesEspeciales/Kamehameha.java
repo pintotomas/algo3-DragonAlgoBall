@@ -5,16 +5,15 @@ public class Kamehameha extends AtaqueEspecial {
 	
 	/*Representa un Kamehameha*/
 	
-	private int multiplicador = 2; //Si un pj lanza un kamehameha, daña x2
+	private double multiplicador = 1.5; //Si un pj lanza un kamehameha, daña x1.5
 	private int kiNecesario = 20;
 	
 	@Override
 	public void lanzar(int poderPelea, Personaje enemigo){
-		enemigo.agregarHp(-multiplicador*poderPelea);
+		enemigo.agregarHp((int)(-multiplicador*poderPelea));
 	}
 	@Override
 	public boolean disponible(int ki) {
-		// TODO Auto-generated method stub
 		return ki >= kiNecesario;
 	}
 	
