@@ -8,14 +8,14 @@ public class Piccolo extends Personaje {
 	/*Representa al personaje Piccolo*/
 		
 		protected Makankosappo spec = new Makankosappo ();
-		private int kiParaTransformar; //La condicion para transformar a Piccolo Fortalecido es distinta
+		protected int kiParaTransformar;
 		
 		public Piccolo(){
 			vida = 500;
-			poder = 40;
-			alcance = 4;
+			poder = 20;
+			alcance = 2;
 			ki = 0;
-			velocidad = 3;
+			velocidad = 2;
 			nombre = "Piccolo";
 			kiParaEspecial = 10;
 			kiParaTransformar = 20;
