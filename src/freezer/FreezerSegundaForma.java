@@ -1,9 +1,9 @@
-package Freezer;
+package freezer;
 
 import dab.personajes.Personaje;
 
 public class FreezerSegundaForma extends Freezer{
-	
+	//segunda transformacion de freezer
 	
 	
 	public FreezerSegundaForma(){

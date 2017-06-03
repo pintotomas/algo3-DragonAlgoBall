@@ -1,11 +1,11 @@
-package Freezer;
+package freezer;
 
 import dab.ataquesEspeciales.RayoMortal;
 import dab.personajes.Personaje;
 
 public class Freezer extends Personaje{
 	
-/*Representa al personaje Goku*/
+/*Representa al personaje Freezer*/
 	
 	protected RayoMortal spec = new RayoMortal();
 	protected int kiParaTransformar;

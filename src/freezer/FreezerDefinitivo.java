@@ -1,7 +1,7 @@
-package Freezer;
+package freezer;
 
 public class FreezerDefinitivo extends Freezer {
-	
+	//ultima transformacion de freezer
 	
 	public FreezerDefinitivo(){
 		vida = 400;
