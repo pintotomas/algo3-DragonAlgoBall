@@ -1,16 +1,23 @@
 package dab.personajes.goku;
-import dab.personajes.Personaje;
 
-public class GokuSuperSayajin extends Personaje{
+public class GokuSuperSayajin extends KaioKen{
 
-	public GokuSuperSayajin(int kiAnterior, int vida) {
-		super("Goku Super Sayajin", vida, 60, 4, 5, kiAnterior);
-		
+	
+	static int vida = 500;
+	static int poder = 60;
+	static int alcance = 4;
+	static int kiInicial = 0;
+	static int velocidad = 5;
+	static String nombre = "Goku Super Sayajin";
+	
+	public GokuSuperSayajin() {
+		super();
 	}
-
+	
 	@Override
 	public boolean transformacionDisponible() {
 		return false;
-	}
+	}	
+	
 
 }

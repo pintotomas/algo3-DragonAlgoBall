@@ -1,20 +1,27 @@
 package dab.personajes.goku;
+
 import dab.personajes.Personaje;
 
-public class KaioKen extends Personaje {
+public class KaioKen extends Goku{
 
-	public KaioKen(int ki, int vida) {
-		/*KiAnterior guarda el ki restante luego de la transformacion*/
-		super("Goku kaio-ken", vida, 40, 4, 3, ki);
-	}
-
-	@Override
-	public boolean transformacionDisponible() {
-		return (this.getKi() >= 50);		
+	//No estoy seguro de si esto reemplaza las especificaciones de Goku
+	static int vida = 500;
+	static int poder = 40;
+	static int alcance = 4;
+	static int kiInicial = 0;
+	static int velocidad = 3;
+	static String nombre = "Goku Kaio-Ken";
+	
+	public KaioKen(){
+		
+		//para que al transformar guarda la vida y el ki anterior
+		super();
+		
 	}
 	
-	public GokuSuperSayajin transformar(){
-		GokuSuperSayajin ssj = new GokuSuperSayajin(this.getKi() - 40, this.getVida());	
-		return ssj;
-	}
+	public Personaje transformar() {
+		GokuSuperSayajin gokuSSJ = new GokuSuperSayajin();
+		return gokuSSJ;
+	}	
+	
 }

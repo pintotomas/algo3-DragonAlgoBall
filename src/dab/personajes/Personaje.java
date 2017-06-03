@@ -1,43 +1,48 @@
 package dab.personajes;
 
-public abstract class Personaje { //Interfaz?
+public abstract class Personaje {
+
+	int vida;
+	int poder;
+	int alcance;
+	int ki;
+	int velocidad;
+	String nombre;
 	
-	private String nombre;
-	private int vida;
-	private int poder;
-	private int alcance;
-	private int velocidad;
-	private int ki;
-	//Agregar un atributo modo?
-	
-	public Personaje (String nombre, int hp, int pp, int alcance, int vel, int ki){
-		this.nombre = nombre;
+	public Personaje(int hp,int pp,int alcance,int ki,int vel,String nombre){
 		vida = hp;
-		poder = pp;
+		pp = poder;
 		this.alcance = alcance;
-		velocidad = vel;
 		this.ki = ki;
+		velocidad = vel;
+		this.nombre = nombre;
 	}
 	
-	public String getNombre(){ //Necesario para mostrar en el talbero
+
+	public int getVida() {
+		return vida;
+	}
+
+	public int getPp() {
+		return poder;
+	}
+
+	public int getAlcance() {
+		return alcance;
+	}
+
+	public int getKi() {
+		return ki;
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public String nombre() {
 		return nombre;
 	}
 	
-	public int getAlcance(){ //Necesario para mostrar en la interfaz a cuanto puede atacar
-		return alcance;
-	}
-	
-	public int getVelocidad(){ //Necesario p/saber cuantos casilleros podra desplazarse c/personaje
-		return velocidad;
-	}
-	
-	public int getKi(){
-		return ki;
-	}
-	
-	public int getVida(){
-		return vida;
-	}
 	
 	public void modificarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
@@ -80,4 +85,7 @@ public abstract class Personaje { //Interfaz?
 	}
 	
 	public abstract boolean transformacionDisponible();
+	public abstract Personaje transformar();
+	public abstract boolean ataqueEspecialDisponible();
+	public abstract void ataqueEspecial(Personaje enemigo);
 }
