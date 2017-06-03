@@ -7,7 +7,7 @@ public class Piccolo extends Personaje {
 		
 	/*Representa al personaje Piccolo*/
 		
-		protected Masenko spec = new Makankosappo ();
+		protected Makankosappo spec = new Makankosappo ();
 		private int kiParaTransformar; //La condicion para transformar a Piccolo Fortalecido es distinta
 		
 		public Piccolo(){
