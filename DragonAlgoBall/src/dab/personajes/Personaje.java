@@ -28,7 +28,7 @@ public abstract class Personaje {
 		return vida;
 	}
 
-	public int getPp() {
+	public int getPoder() {
 		if(esferaDelDragon)
 			return (int)(poder * 1.25);
 		return poder;
@@ -59,6 +59,18 @@ public abstract class Personaje {
 	public void setPosicion(Celda celda){
 		posicion = celda;
 	}
+	
+	public Equipo getEquipo(){
+		return equipo;
+	}
+	
+	public void setEquipo(Equipo equipo_) {
+		equipo = equipo_;		
+	}
+	
+	
+	
+	
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
@@ -71,6 +83,11 @@ public abstract class Personaje {
 			return false;
 		}
 		return true;	
+	}
+	
+	public void mover(Celda celda) {
+		celda.colocarPersonaje(this);
+		posicion = celda;
 	}
 	
 	
@@ -88,6 +105,8 @@ public abstract class Personaje {
 		 * POST: La vida es modificada
 		 */
 		vida = vida + cantidad;
+		//faltaria agregar que pasa si se muere.
+	
 	}
 	
 	public void agarroSemillaDelHermitanio(){
@@ -97,7 +116,32 @@ public abstract class Personaje {
 	}
 	
 	
+	public boolean puedeAtacar(Celda celda) {
+		int maxFila = posicion.getFila() + this.getAlcance();
+		int maxColumna = posicion.getColumna() + this.getAlcance();
+		//verifica que el movimiento se pueda hacer.
+		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
+			return false;
+		}
+		if(celda.darOcupante().getEquipo() == this.getEquipo()){
+			return false;			
+		}
+		return true;
+	}
 	
+	public void atacarA(Personaje personaje){
+		personaje.recibirAtaque(this.getPoder());
+	}
+	
+	
+	
+	private void recibirAtaque(int pp) {
+		if(pp < this.getPoder()){
+			pp = (int)(pp * 0.8);		
+		}
+		this.agregarHp(pp);	
+	}
+
 	public abstract Personaje transformar();
 	public abstract boolean transformarDisponible();
 	public abstract boolean ataqueEspecialDisponible();	
@@ -109,5 +153,10 @@ public abstract class Personaje {
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
 	}
+
+	
+
+
+	
 	
 }

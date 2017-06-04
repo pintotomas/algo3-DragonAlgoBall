@@ -40,7 +40,7 @@ public class MajinBoo extends Personaje{
 
 	@Override
 	public void ataqueEspecial(Personaje enemigo) {
-		spec.lanzar(this.getPp(), enemigo);
+		spec.lanzar(this.getPoder(), enemigo);
 		
 	}
 
