@@ -22,18 +22,17 @@ public class Tablero {
 	}
 	
 	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
-		
-		tablero[fila][columna].colocarPersonaje(aPersonaje);
-		aPersonaje.setPosicion(tablero[fila][columna]);
-		
+		Celda celda = tablero[fila][columna];
+		celda.colocarPersonaje(aPersonaje);
+		aPersonaje.setPosicion(celda);
 	}
 	
 	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
-		if (aPersonaje.movimientoPosible(tablero[fila][columna])){
-			aPersonaje.getPosicion().quitarPersonaje();
-			this.colocarPersonaje(fila, columna, aPersonaje);
-		}
-		else throw new MovimientoInvalido();
+		Celda celda = tablero[fila][columna];
+		if (celda.estaOcupada() || !aPersonaje.movimientoPosible(celda))
+			throw new MovimientoInvalido();
+		aPersonaje.getPosicion().quitarPersonaje();
+		this.colocarPersonaje(fila, columna, aPersonaje);
 	}
 	
 	public int filaPersonaje(Personaje aPersonaje){
