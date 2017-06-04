@@ -1,11 +1,12 @@
 package dab.personajes;
 
+import dab.equipos.Equipo;
 import dab.juego.Celda;
 
 public abstract class Personaje {
 	
 	
-	
+	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected int vidaMaxima;
 	protected int vida;
 	protected int poder;
@@ -68,8 +69,8 @@ public abstract class Personaje {
 		//verifica que la celda destino este libre
 		if(celda.estaOcupada()) return false; 
 		
-		int maxFila = posicion.getFila() + this.getAlcance();
-		int maxColumna = posicion.getColumna() + this.getAlcance();
+		int maxFila = posicion.getFila() + this.getVelocidad();
+		int maxColumna = posicion.getColumna() + this.getVelocidad();
 		//verifica que el movimiento se pueda hacer.
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
