@@ -62,6 +62,22 @@ public abstract class Personaje {
 	
 	
 	
+	
+	public boolean movimientoPosible(Celda celda){
+		//verifica que el movimiento se pueda hacer.
+		//verifica que la celda destino este libre
+		if(celda.estaOcupada()) return false; 
+		
+		int maxFila = posicion.getFila() + this.getAlcance();
+		int maxColumna = posicion.getColumna() + this.getAlcance();
+		//verifica que el movimiento se pueda hacer.
+		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
+			return false;
+		}
+		return true;	
+	}
+	
+	
 	public void agregarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
 		 * PRE: Cantidad es un numero entero.
