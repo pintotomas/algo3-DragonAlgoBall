@@ -64,6 +64,10 @@ public abstract class Personaje {
 		return equipo;
 	}
 	
+	public void setEquipo(Equipo equipo_) {
+		equipo = equipo_;		
+	}
+	
 	
 	
 	
@@ -144,6 +148,7 @@ public abstract class Personaje {
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
 	}
+
 
 	
 	

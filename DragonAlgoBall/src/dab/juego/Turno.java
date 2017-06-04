@@ -23,7 +23,10 @@ public class Turno {
 	
 	public void seleccionarCelda(Celda celda){
 		celdaSeleccionada = celda;
+		//checkear que el personaje que esta en la celda sea del equipo. 
 	}
+	
+	
 	
 	
 	public void Mover(Celda celda){

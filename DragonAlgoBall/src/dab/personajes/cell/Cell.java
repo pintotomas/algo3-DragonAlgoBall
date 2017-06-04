@@ -13,7 +13,7 @@ public class Cell extends Personaje{
 	
 	
 	
-	public Cell(){
+	public Cell(){ 
 		vidaMaxima = 500;
 		vida = vidaMaxima;
 		poder = 20;

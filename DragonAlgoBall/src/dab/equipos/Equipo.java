@@ -3,6 +3,7 @@ import dab.personajes.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
 public abstract class Equipo {
 	/*contiene a los personajes, y a su vez,  podria ser que los personajes contengan al equipo.
 	 * asi por ejemplo para la habilidad de picollo y gohan podemos acceder a los personajes del equipo de
@@ -24,8 +25,5 @@ public abstract class Equipo {
 			return true;
 		return false;
 	}
-	
-	
-	
 	
 }
