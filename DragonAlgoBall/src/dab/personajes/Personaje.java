@@ -10,17 +10,27 @@ public abstract class Personaje {
 	protected int velocidad;
 	protected String nombre;
 	protected int kiParaEspecial;
+	protected boolean semillaDelHermitano, nubeVoladora, esferaDelDragon;
 	
+	
+	
+	public int getVidaMaxima(){
+		return vidaMaxima;
+	}
 	
 	public int getVida() {
 		return vida;
 	}
 
 	public int getPp() {
+		if(esferaDelDragon)
+			return (int)(poder * 1.25);
 		return poder;
 	}
 
 	public int getAlcance() {
+		if(nubeVoladora)
+			return alcance * 2;
 		return alcance;
 	}
 
@@ -41,7 +51,7 @@ public abstract class Personaje {
 		 * PRE: Cantidad es un numero entero.
 		 * POST: El ki es modificado
 		 */
-		this.ki = ki + cantidad;	
+		this.ki = ki + cantidad;
 	}
 	
 	public void agregarHp(int cantidad){
@@ -64,6 +74,7 @@ public abstract class Personaje {
 	public abstract void ataqueEspecial(Personaje enemigo);
 
 	public void convertirEnChocolate(){
+		
 		/*faltaria implementar para la especial de boo. 
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/

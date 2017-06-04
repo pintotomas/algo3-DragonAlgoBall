@@ -22,5 +22,9 @@ public abstract class Equipo {
 		if(personajesVivos == 0)
 			return true;
 		return false;	
-	}		
+	}
+	
+	
+	
+	
 }

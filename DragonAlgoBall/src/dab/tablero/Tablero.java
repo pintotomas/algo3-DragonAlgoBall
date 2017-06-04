@@ -13,8 +13,14 @@ public class Tablero {
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
 				tablero[fila][columna] = new Celda();
-			}		
+			}
 		}
+		/*poner coleccionables?
+		 */
+		
+		
+	
+	
 	}
 	
 	
