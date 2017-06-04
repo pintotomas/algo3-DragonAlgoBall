@@ -10,6 +10,17 @@ public class Tablero {
 	Celda[][] tablero = new Celda[altoDeTablero][anchoDeTablero];
 	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
+	
+	public Tablero(){
+		for(int fila = 0; fila < altoDeTablero; fila++){
+			for(int columna = 0; columna < anchoDeTablero; columna++){
+				tablero[fila][columna] = new Celda(fila, columna);
+			}
+		}
+		}
+		
+	
+	
 	public Tablero(Equipo equipo1, Equipo equipo2){
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
@@ -19,6 +30,9 @@ public class Tablero {
 		}
 		ubicarPersonajes(equipo1, equipo2);		
 	}
+	
+	
+	
 	
 	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
 		
