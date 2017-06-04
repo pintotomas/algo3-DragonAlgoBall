@@ -59,11 +59,6 @@ public abstract class Personaje {
 	public void setPosicion(Celda celda){
 		posicion = celda;
 	}
-	
-	
-	
-	
-	
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
