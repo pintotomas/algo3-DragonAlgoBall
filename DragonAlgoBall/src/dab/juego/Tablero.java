@@ -9,7 +9,7 @@ public class Tablero {
 	Celda[][] tablero = new Celda[altoDeTablero][anchoDeTablero];
 	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
-	public Tablero(int cantidadPersonajes){
+	public Tablero(){
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
@@ -39,6 +39,10 @@ public class Tablero {
 	
 	public int columnaPersonaje(Personaje aPersonaje){
 		return aPersonaje.getPosicion().getColumna();
+	}
+	
+	public boolean celdaOcupada(int fila, int columna){
+		return tablero[fila][columna].estaOcupada();
 	}
 	
 }
