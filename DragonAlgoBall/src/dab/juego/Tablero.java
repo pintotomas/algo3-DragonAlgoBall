@@ -15,22 +15,8 @@ public class Tablero {
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
 				tablero[fila][columna] = new Celda(fila, columna);
-			}d
+			}
 		}
-<<<<<<< Updated upstream
-		/*poner coleccionables?
-		 */			
-		
-=======
-		/*poner consumibles y jugadores?
-		 */
-	}
-	
-	
-	public Celda getCelda(int fila, int columna){
-		if()
-	
->>>>>>> Stashed changes
 	}
 	
 	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
