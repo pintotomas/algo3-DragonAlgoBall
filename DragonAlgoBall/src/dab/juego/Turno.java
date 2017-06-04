@@ -16,17 +16,14 @@ public class Turno {
 		movio = false;
 		ataco = false;
 		cedioTurno = false;
-		celdaSeleccionada = null;
 		personajeSeleccionado = null;
 	}
 	
 	
-	public void seleccionarCelda(Celda celda){
-		celdaSeleccionada = celda;
-		//checkear que el personaje que esta en la celda sea del equipo. 
+	public void seleccionarPersonaje(Personaje aPersonaje){
+		// verificar que personaje sea de equipo o poner como precondicion
+		personajeSeleccionado = aPersonaje;
 	}
-	
-	
 	
 	
 	public void Mover(Celda celda){
@@ -35,7 +32,7 @@ public class Turno {
 		if(personajeSeleccionado.movimientoPosible(celda)){
 			 personajeSeleccionado.mover(celda);
 		}
-		
+		movio = true;
 	}
 	
 	
@@ -45,8 +42,7 @@ public class Turno {
 		if(personajeSeleccionado.puedeAtacar(celda)){			
 			personajeSeleccionado.atacarA(celda.ocupante);
 		}
-		
-		
+		ataco = true;
 	}
 	
 }
