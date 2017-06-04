@@ -44,7 +44,7 @@ public class Cell extends Personaje{
 
 	@Override
 	public void ataqueEspecial(Personaje enemigo) {
-		spec.lanzar(this.getPp(), enemigo);
+		spec.lanzar(this.getPoder(), enemigo);
 		this.absorbidos += 1;     //si el ataque funciona absorbio a uno. puede fallar si lanzar puede tirar error.
 		
 	}
