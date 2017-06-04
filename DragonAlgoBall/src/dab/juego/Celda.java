@@ -3,7 +3,7 @@ import dab.dragonBallExceptions.*;
 import dab.personajes.Personaje;
 
 public class Celda {
-	static int fila, columna;
+	int fila, columna;
 	boolean ocupada;
 	Personaje ocupante;
 	boolean esferaDelDragon, semillaDelHermitanio, nubeVoladora;
@@ -32,12 +32,10 @@ public class Celda {
 		ocupada = true;
 	}
 	
-	
 	public void quitarPersonaje(){
 		ocupante = null;
 		ocupada = false;
 	}
-	
 	
 	public void setesferaDelDragon(boolean estado){
 		esferaDelDragon = estado;
@@ -50,7 +48,6 @@ public class Celda {
 	public void setSemilla(boolean estado){
 		semillaDelHermitanio = estado;
 	}
-	
 	
 	public int getFila(){
 		return fila;		

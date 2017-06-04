@@ -1,19 +1,15 @@
 package dab.juego;
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
 
+import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.personajes.Personaje;
 
 public class Tablero {
 	int altoDeTablero = 20;
 	int anchoDeTablero = 20;
 	Celda[][] tablero = new Celda[altoDeTablero][anchoDeTablero];
-	Personaje[] personajesEnJuego; //Guardo los pjs para aumentar ki cuando pasen los turnos, y podria servir para mas
+	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
 	public Tablero(int cantidadPersonajes){
-
-		personajesEnJuego = new Personaje[cantidadPersonajes];
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
@@ -30,9 +26,19 @@ public class Tablero {
 	}
 	
 	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
-		aPersonaje.movimientoPosible(tablero[fila][columna]);
-		aPersonaje.getPosicion().quitarPersonaje();
-		this.colocarPersonaje(fila, columna, aPersonaje);
+		if (aPersonaje.movimientoPosible(tablero[fila][columna])){
+			aPersonaje.getPosicion().quitarPersonaje();
+			this.colocarPersonaje(fila, columna, aPersonaje);
+		}
+		else throw new MovimientoInvalido();
+	}
+	
+	public int filaPersonaje(Personaje aPersonaje){
+		return aPersonaje.getPosicion().getFila();
+	}
+	
+	public int columnaPersonaje(Personaje aPersonaje){
+		return aPersonaje.getPosicion().getColumna();
 	}
 	
 }
