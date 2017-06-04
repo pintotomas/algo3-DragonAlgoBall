@@ -33,8 +33,6 @@ public class Tablero {
 	}
 	
 	
-	
-	
 	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
 		Celda celda = tablero[fila][columna];
 		celda.colocarPersonaje(aPersonaje);
@@ -54,15 +52,18 @@ public class Tablero {
 			i += 1;
 		}
 		
-		
 	}
-	
+	/*
 	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
 		Celda celda = tablero[fila][columna];
 		if (celda.estaOcupada() || !aPersonaje.movimientoPosible(celda))
 			throw new MovimientoInvalido();
 		aPersonaje.getPosicion().quitarPersonaje();
 		this.colocarPersonaje(fila, columna, aPersonaje);
+	}
+	*/
+	public Celda obtenerCelda(int fila, int columna) {
+		return tablero[fila][columna];		
 	}
 	
 	public int filaPersonaje(Personaje aPersonaje){
