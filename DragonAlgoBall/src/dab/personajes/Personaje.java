@@ -54,9 +54,8 @@ public abstract class Personaje {
 	
 	public void agarroSemillaDelHermitanio(){
 		this.agregarHp(100);
-		if(vida > vidaMaxima){
-			
-		}
+		if(vida > vidaMaxima)
+			vida = vidaMaxima;	
 	}
 	
 	public abstract Personaje transformar();
