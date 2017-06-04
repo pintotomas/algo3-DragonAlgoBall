@@ -30,7 +30,6 @@ public class Celda {
 		if(ocupada) throw new CeldaOcupada();
 		ocupante = personaje;
 		ocupada = true;
-		personaje.setPosicion(this);
 	}
 	
 	

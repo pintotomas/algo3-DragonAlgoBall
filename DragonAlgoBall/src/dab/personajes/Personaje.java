@@ -85,6 +85,11 @@ public abstract class Personaje {
 		return true;	
 	}
 	
+	public void mover(Celda celda) {
+		celda.colocarPersonaje(this);
+		posicion = celda;
+	}
+	
 	
 	public void agregarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
@@ -148,6 +153,8 @@ public abstract class Personaje {
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
 	}
+
+	
 
 
 	
