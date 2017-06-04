@@ -1,6 +1,7 @@
 package dab.juego;
 
 import dab.dragonBallExceptions.MovimientoInvalido;
+import dab.equipos.Equipo;
 import dab.personajes.Personaje;
 
 public class Tablero {
@@ -9,19 +10,36 @@ public class Tablero {
 	Celda[][] tablero = new Celda[altoDeTablero][anchoDeTablero];
 	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
-	public Tablero(){
+	public Tablero(Equipo equipo1, Equipo equipo2){
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
 				tablero[fila][columna] = new Celda(fila, columna);
 			}
 		}
+		ubicarPersonajes(equipo1, equipo2);		
 	}
 	
 	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
 		
 		tablero[fila][columna].colocarPersonaje(aPersonaje);
 		aPersonaje.setPosicion(tablero[fila][columna]);
+		
+	}
+	
+	private void ubicarPersonajes(Equipo equipo1, Equipo equipo2){
+		int i = 0;
+		int primeraPosicion = anchoDeTablero/2;
+		for(Personaje personaje : equipo1.obtenerPersonajes()){
+			this.colocarPersonaje(0,primeraPosicion + i , personaje);
+			i += 1;
+		}
+		i = 0;
+		for(Personaje personaje : equipo2.obtenerPersonajes()){
+			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
+			i += 1;
+		}
+		
 		
 	}
 	

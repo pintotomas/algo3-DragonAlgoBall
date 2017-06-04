@@ -1,8 +1,9 @@
 package dab.equipos;
-import dab.personajes.*;
-
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import dab.personajes.Personaje;
 
 public abstract class Equipo {
 	/*contiene a los personajes, y a su vez,  podria ser que los personajes contengan al equipo.
@@ -24,6 +25,11 @@ public abstract class Equipo {
 		if(personajesVivos == 0)
 			return true;
 		return false;
+	}
+	
+	public Collection<Personaje> obtenerPersonajes(){
+		return personajes.values();
+		
 	}
 	
 }
