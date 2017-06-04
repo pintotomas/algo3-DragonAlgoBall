@@ -1,6 +1,10 @@
 package dab.personajes;
 
+import dab.juego.Celda;
+
 public abstract class Personaje {
+	
+	
 	
 	protected int vidaMaxima;
 	protected int vida;
@@ -11,6 +15,7 @@ public abstract class Personaje {
 	protected String nombre;
 	protected int kiParaEspecial;
 	protected boolean semillaDelHermitano, nubeVoladora, esferaDelDragon;
+	protected Celda posicion;
 	
 	
 	
@@ -46,6 +51,17 @@ public abstract class Personaje {
 		return nombre;
 	}
 
+	public Celda getPosicion(){
+		return posicion;
+	}
+	
+	public void setPosicion(Celda celda){
+		posicion = celda;
+	}
+	
+	
+	
+	
 	public void agregarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
 		 * PRE: Cantidad es un numero entero.
@@ -67,6 +83,8 @@ public abstract class Personaje {
 		if(vida > vidaMaxima)
 			vida = vidaMaxima;	
 	}
+	
+	
 	
 	public abstract Personaje transformar();
 	public abstract boolean transformarDisponible();

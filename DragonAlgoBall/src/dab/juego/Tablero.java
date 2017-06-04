@@ -1,4 +1,4 @@
-package dab.tablero;
+package dab.juego;
 
 
 
@@ -12,16 +12,14 @@ public class Tablero {
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
-				tablero[fila][columna] = new Celda();
+				tablero[fila][columna] = new Celda(fila, columna);
 			}
 		}
 		/*poner coleccionables?
-		 */
-		
-		
-	
-	
+		 */	
 	}
+	
+	
 	
 	
 	

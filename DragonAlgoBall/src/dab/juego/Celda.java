@@ -1,13 +1,17 @@
-package dab.tablero;
+package dab.juego;
 import dab.dragonBallExceptions.*;
 import dab.personajes.Personaje;
 
 public class Celda {
+	int fila, columna;
 	boolean ocupada;
 	Personaje ocupante;
 	boolean esferaDelDragon, semillaDelHermitanio, nubeVoladora;
+	
 
-	public Celda(){
+	public Celda(int fila_, int columna_){
+		fila = fila_;
+		columna = columna_;
 		ocupada = false;
 		esferaDelDragon = false;
 		semillaDelHermitanio = false;
@@ -48,6 +52,34 @@ public class Celda {
 	public void setSemilla(boolean estado){
 		semillaDelHermitanio = estado;
 	}
+	
+	
+	public boolean puedeMoverse(Celda destino){
+		if(!ocupada) throw new CeldaVacia();
+		if(destino.estaOcupada()) return false;
+		
+		
+		return false;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

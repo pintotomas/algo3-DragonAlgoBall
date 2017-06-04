@@ -9,19 +9,20 @@ public abstract class Equipo {
 	 * forma rapida
 	 */
 	
+	
 	Map<String, Personaje> personajes = new HashMap<String, Personaje>();
 	int esferasDelDragon, personajesVivos;
 	
 	public boolean esGanador(){
 		if (esferasDelDragon >= 7)
 			return true;
-		return false;	
+		return false;
 	}
 	
 	public boolean esPerdedor(){
 		if(personajesVivos == 0)
 			return true;
-		return false;	
+		return false;
 	}
 	
 	
