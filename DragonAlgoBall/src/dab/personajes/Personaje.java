@@ -86,7 +86,8 @@ public abstract class Personaje {
 	}
 	
 	public void mover(Celda celda) {
-		celda.colocarPersonaje(this);
+		celda.colocarPersonaje(this); //si tira error que lo mande para arriba.
+		posicion.quitarPersonaje();
 		posicion = celda;
 	}
 	
@@ -124,7 +125,7 @@ public abstract class Personaje {
 			return false;
 		}
 		if(celda.darOcupante().getEquipo() == this.getEquipo()){
-			return false;			
+			return false;
 		}
 		return true;
 	}

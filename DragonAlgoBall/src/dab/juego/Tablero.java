@@ -18,7 +18,7 @@ public class Tablero {
 				tablero[fila][columna] = new Celda(fila, columna);
 			}
 		}
-		}
+	}
 		
 	
 	
@@ -53,9 +53,9 @@ public class Tablero {
 			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
 			i += 1;
 		}
-		
-		
 	}
+	
+	
 	
 	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
 		Celda celda = tablero[fila][columna];
