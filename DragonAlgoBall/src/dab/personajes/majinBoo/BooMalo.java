@@ -5,7 +5,8 @@ import dab.personajes.Personaje;
 public class BooMalo extends MajinBoo {
 
 	public BooMalo(){
-		vida = 300;
+		vidaMaxima = 300;
+		vida = vidaMaxima;
 		poder = 50;
 		alcance = 2;
 		ki = 0;

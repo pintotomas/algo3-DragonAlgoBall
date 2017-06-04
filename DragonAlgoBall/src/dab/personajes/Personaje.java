@@ -2,6 +2,7 @@ package dab.personajes;
 
 public abstract class Personaje {
 	
+	protected int vidaMaxima;
 	protected int vida;
 	protected int poder;
 	protected int alcance;
@@ -9,6 +10,7 @@ public abstract class Personaje {
 	protected int velocidad;
 	protected String nombre;
 	protected int kiParaEspecial;
+	
 	
 	public int getVida() {
 		return vida;
@@ -48,6 +50,13 @@ public abstract class Personaje {
 		 * POST: La vida es modificada
 		 */
 		vida = vida + cantidad;
+	}
+	
+	public void agarroSemillaDelHermitanio(){
+		this.agregarHp(100);
+		if(vida > vidaMaxima){
+			
+		}
 	}
 	
 	public abstract Personaje transformar();

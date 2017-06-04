@@ -12,7 +12,8 @@ public class Gohan extends Personaje {
 		protected int kiParaTransformar;
 		
 		public Gohan(){
-			vida = 300;
+			vidaMaxima = 300;
+			vida = vidaMaxima;
 			poder = 15;
 			alcance = 2;
 			ki = 0;

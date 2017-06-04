@@ -11,7 +11,8 @@ public class Piccolo extends Personaje {
 		protected int kiParaTransformar;
 		
 		public Piccolo(){
-			vida = 500;
+			vidaMaxima = 500;
+			vida = vidaMaxima;
 			poder = 20;
 			alcance = 2;
 			ki = 0;

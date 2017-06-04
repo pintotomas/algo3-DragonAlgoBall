@@ -14,7 +14,8 @@ public class Cell extends Personaje{
 	
 	
 	public Cell(){
-		vida = 500;
+		vidaMaxima = 500;
+		vida = vidaMaxima;
 		poder = 20;
 		alcance = 3;
 		ki = 0;

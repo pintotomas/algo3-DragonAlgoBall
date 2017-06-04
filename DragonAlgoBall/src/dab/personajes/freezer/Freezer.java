@@ -11,7 +11,8 @@ public class Freezer extends Personaje{
 	protected int kiParaTransformar;
 	
 	public Freezer(){
-		vida = 400;
+		vidaMaxima = 400;
+		vida = vidaMaxima;
 		poder = 20;
 		alcance = 2;
 		ki = 0;
