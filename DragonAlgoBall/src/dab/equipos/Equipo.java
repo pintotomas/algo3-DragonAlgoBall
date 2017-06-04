@@ -28,8 +28,8 @@ public abstract class Equipo {
 	}
 	
 	public Collection<Personaje> obtenerPersonajes(){
-		return personajes.values();
-		
+		return personajes.values();		
 	}
+	
 	
 }
