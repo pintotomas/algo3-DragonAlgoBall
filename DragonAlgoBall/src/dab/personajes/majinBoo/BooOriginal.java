@@ -1,7 +1,5 @@
 package dab.personajes.majinBoo;
 
-import dab.personajes.Personaje;
-
 public class BooOriginal extends BooMalo {
 	public BooOriginal(){
 		vida = 300;

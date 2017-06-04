@@ -1,7 +1,5 @@
 package dab.personajes.cell;
 
-import dab.personajes.Personaje;
-
 public class CellPerfecto extends CellSemiPerfecto {
 	public CellPerfecto(){
 		vida = 500;

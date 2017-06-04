@@ -8,7 +8,6 @@ public class Celda {
 	Personaje ocupante;
 	boolean esferaDelDragon, semillaDelHermitanio, nubeVoladora;
 	
-
 	public Celda(int fila_, int columna_){
 		fila = fila_;
 		columna = columna_;
@@ -17,9 +16,6 @@ public class Celda {
 		semillaDelHermitanio = false;
 		nubeVoladora = false;
 	}
-	
-	
-	
 	
 	public boolean estaOcupada(){
 		return ocupada;
@@ -68,8 +64,6 @@ public class Celda {
 	public boolean puedeMoverse(Celda destino){
 		if(!ocupada) throw new CeldaVacia();
 		if(destino.estaOcupada()) return false;
-		
-		
 		return false;
 		
 	}

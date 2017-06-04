@@ -1,7 +1,5 @@
 package dab.personajes.piccolo;
 
-import dab.personajes.Personaje;
-
 public class PiccoloProtector extends PiccoloFortalecido {
 	
 	public PiccoloProtector(){
