@@ -9,7 +9,7 @@ public class EnemigosDeLaTierra extends Equipo {
 		
 		public EnemigosDeLaTierra(){
 			personajes.put("Cell", new Personaje(new Cell()));
-			personajes.put("Majinboo", new Personaje(new MajinBoo()));
+			personajes.put("MajinBoo", new Personaje(new MajinBoo()));
 			personajes.put("Freezer", new Personaje(new Freezer())); 
 			for(Personaje personaje : personajes.values())
 				personaje.setEquipo(this);

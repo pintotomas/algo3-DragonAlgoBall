@@ -7,7 +7,6 @@ import dab.equipos.Equipo;
 import dab.equipos.GuerrerosZ;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
-import junit.framework.TestCase;
 
 public class pruebaAtacar{
 		
@@ -46,9 +45,10 @@ public class pruebaAtacar{
 	public void atacarADistancia(){
 		Equipo equipo1 = new GuerrerosZ();
 		Equipo equipo2 = new EnemigosDeLaTierra();
+		@SuppressWarnings("unused")
 		Tablero tablero = new Tablero(equipo1, equipo2);
 		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
-		Personaje majinboo = equipo2.obtenerPersonaje("Majinboo");
+		Personaje majinboo = equipo2.obtenerPersonaje("MajinBoo");
 		
 		assert(!piccolo.puedeAtacar(majinboo));
 		

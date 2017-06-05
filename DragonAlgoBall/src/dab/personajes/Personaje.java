@@ -97,7 +97,7 @@ public class Personaje {
 		 * PRE: Cantidad es un numero entero.
 		 * POST: La vida es modificada
 		 */
-		estado.agregarVida(this.getVida() + cantidad);
+		estado.agregarVida(cantidad);
 		//faltaria agregar que pasa si se muere.
 	
 	}
@@ -137,7 +137,7 @@ public class Personaje {
 	}
 	
 	public void transformar(){
-		estado.transformar();
+		estado = estado.transformar();
 	}
 	
 	public void convertirEnChocolate(){

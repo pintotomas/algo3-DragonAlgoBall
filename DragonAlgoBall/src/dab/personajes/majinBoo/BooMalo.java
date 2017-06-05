@@ -1,7 +1,5 @@
 package dab.personajes.majinBoo;
 
-import dab.personajes.Personaje;
-
 public class BooMalo extends MajinBoo {
 
 	public BooMalo(){
@@ -18,8 +16,8 @@ public class BooMalo extends MajinBoo {
 	
 	
 	@Override
-	public Personaje transformar() {
-		Personaje booOriginal = new BooOriginal();
+	public BooOriginal transformar() {
+		BooOriginal booOriginal = new BooOriginal();
 		return booOriginal;
 	}
 

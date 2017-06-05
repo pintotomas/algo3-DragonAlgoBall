@@ -1,6 +1,5 @@
 package dab.personajes.freezer;
 
-import dab.personajes.Personaje;
 
 public class FreezerSegundaForma extends Freezer{
 	//segunda transformacion de freezer
@@ -12,15 +11,15 @@ public class FreezerSegundaForma extends Freezer{
 		alcance = 3;
 		ki = 0;
 		velocidad = 4;
-		nombre = "Freezer segunda forma";
+		nombre = "Freezer Segunda Forma";
 		kiParaTransformar = 50;
 	}
 	
 	
 	@Override
-	public Personaje transformar() {
+	public FreezerDefinitivo transformar() {
 		this.agregarKi(-kiParaTransformar);
-		Personaje definitivo = new FreezerDefinitivo();
+		FreezerDefinitivo definitivo = new FreezerDefinitivo();
 		return definitivo;
 	}
 

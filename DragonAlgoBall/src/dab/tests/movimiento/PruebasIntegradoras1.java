@@ -11,7 +11,6 @@ import dab.juego.Tablero;
 import dab.personajes.Personaje;
 import dab.personajes.cell.Cell;
 import dab.personajes.goku.Goku;
-import dab.personajes.majinBoo.MajinBoo;
 
 public class PruebasIntegradoras1 {
 	
@@ -69,8 +68,9 @@ public class PruebasIntegradoras1 {
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
+		Assert.assertEquals(400, freezer.getVida());
 		if (goku.puedeAtacar(freezer))
-			goku.atacarA(freezer);
+			goku.atacarA(freezer);	
 		Assert.assertEquals(380, freezer.getVida());
 	}
 	
