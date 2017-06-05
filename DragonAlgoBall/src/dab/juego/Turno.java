@@ -1,5 +1,6 @@
 package dab.juego;
 
+import dab.dragonBallExceptions.AtaqueNoValido;
 import dab.dragonBallExceptions.CeldaVacia;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.dragonBallExceptions.NadaSeleccionado;
@@ -53,10 +54,10 @@ public class Turno {
 	public void atacar(Celda celda){
 		// el atacar es similar al mover. 
 		if(!celda.estaOcupada()) throw new CeldaVacia();
-		if(personajeSeleccionado.puedeAtacar(celda)){
+		if(personajeSeleccionado.puedeAtacar(celda.darOcupante())){
 			personajeSeleccionado.atacarA(celda.ocupante);
-		}
-		ataco = true;
+			ataco = true;
+		}else throw new AtaqueNoValido();
 	}
 	
 	

@@ -31,5 +31,10 @@ public abstract class Equipo {
 		return personajes.values();
 	}
 	
+	public Personaje obtenerPersonaje(String nombre){ //metodo para pruebas mas que nada
+		return personajes.get(nombre);
+		
+	}
+	
 	
 }
