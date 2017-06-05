@@ -48,7 +48,7 @@ public class Tablero {
 			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
 			i += 1;
 		}
-
+	}
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}
