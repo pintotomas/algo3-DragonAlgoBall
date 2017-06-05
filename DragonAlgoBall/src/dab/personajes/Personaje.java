@@ -154,9 +154,9 @@ public abstract class Personaje {
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
 	}
-
 	
-
+	
+	
 
 	
 	

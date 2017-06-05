@@ -49,4 +49,6 @@ public class Turno {
 		ataco = true;
 	}
 	
+	
+	
 }

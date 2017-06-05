@@ -75,10 +75,7 @@ public class Tablero {
 			i += 1;
 		}
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 5bd23331d02809d9743046349b721d2cdae90ca6
+	
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}
