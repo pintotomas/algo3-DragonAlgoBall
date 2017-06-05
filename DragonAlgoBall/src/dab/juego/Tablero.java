@@ -48,24 +48,7 @@ public class Tablero {
 			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
 			i += 1;
 		}
-<<<<<<< HEAD
 
-		
-	}
-	
-	
-=======
-	}
-	/*
-	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
-		Celda celda = tablero[fila][columna];
-		if (celda.estaOcupada() || !aPersonaje.movimientoPosible(celda))
-			throw new MovimientoInvalido();
-		aPersonaje.getPosicion().quitarPersonaje();
-		this.colocarPersonaje(fila, columna, aPersonaje);
-	}
-	*/
->>>>>>> 84ccf6ab0fc99b56dd0df008a6c41708b66a1080
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}
