@@ -16,8 +16,8 @@ public class pruebaAtacar{
 		Equipo equipo1 = new GuerrerosZ();
 		Equipo equipo2 = new EnemigosDeLaTierra();
 		Tablero tablero = new Tablero();
-		Personaje piccolo = equipo1.obtenerPersonaje("piccolo");
-		Personaje cell = equipo2.obtenerPersonaje("cell");
+		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
+		Personaje cell = equipo2.obtenerPersonaje("Cell");
 		tablero.colocarPersonaje(5, 6, piccolo);
 		tablero.colocarPersonaje(5, 7,cell);
 		
@@ -31,8 +31,8 @@ public class pruebaAtacar{
 		Equipo equipo1 = new GuerrerosZ();
 		Equipo equipo2 = new EnemigosDeLaTierra();
 		Tablero tablero = new Tablero();
-		Personaje piccolo = equipo1.obtenerPersonaje("piccolo");
-		Personaje majinboo = equipo2.obtenerPersonaje("majinboo");
+		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
+		Personaje majinboo = equipo2.obtenerPersonaje("MajinBoo");
 		
 		tablero.colocarPersonaje(5, 6, piccolo);
 		tablero.colocarPersonaje(5, 7,majinboo);
@@ -47,8 +47,8 @@ public class pruebaAtacar{
 		Equipo equipo1 = new GuerrerosZ();
 		Equipo equipo2 = new EnemigosDeLaTierra();
 		Tablero tablero = new Tablero(equipo1, equipo2);
-		Personaje piccolo = equipo1.obtenerPersonaje("piccolo");
-		Personaje majinboo = equipo2.obtenerPersonaje("majinboo");
+		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
+		Personaje majinboo = equipo2.obtenerPersonaje("Majinboo");
 		
 		assert(!piccolo.puedeAtacar(majinboo));
 		

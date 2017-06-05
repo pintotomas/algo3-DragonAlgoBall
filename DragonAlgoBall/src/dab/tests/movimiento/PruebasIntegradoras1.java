@@ -51,9 +51,9 @@ public class PruebasIntegradoras1 {
 		Equipo equipo1 = new EnemigosDeLaTierra();
 		Equipo equipo2 = new GuerrerosZ();
 		Tablero tablero = new Tablero(equipo1,equipo2);
-		Personaje goku = equipo2.obtenerPersonaje("goku");
+		Personaje goku = equipo2.obtenerPersonaje("Goku");
 		Assert.assertEquals(19, goku.getPosicion().getFila());
-		Personaje freezer = equipo1.obtenerPersonaje("freezer");
+		Personaje freezer = equipo1.obtenerPersonaje("Freezer");
 		Assert.assertEquals(0, freezer.getPosicion().getFila());
 	}
 	@Test
@@ -61,11 +61,11 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		Equipo equipo1 = new EnemigosDeLaTierra();
 		Equipo equipo2 = new GuerrerosZ();
-		Personaje goku = equipo2.obtenerPersonaje("goku");
+		Personaje goku = equipo2.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje freezer = equipo1.obtenerPersonaje("freezer");
+		Personaje freezer = equipo1.obtenerPersonaje("Freezer");
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
@@ -79,11 +79,11 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		Equipo equipo1 = new EnemigosDeLaTierra();
 		Equipo equipo2 = new GuerrerosZ();
-		Personaje goku = equipo2.obtenerPersonaje("goku");
+		Personaje goku = equipo2.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje freezer = equipo1.obtenerPersonaje("freezer");
+		Personaje freezer = equipo1.obtenerPersonaje("Freezer");
 		int filaFreezer = 9;
 		int columnaFreezer = 1;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);

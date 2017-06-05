@@ -8,9 +8,9 @@ import dab.personajes.majinBoo.MajinBoo;
 public class EnemigosDeLaTierra extends Equipo {
 		
 		public EnemigosDeLaTierra(){
-			personajes.put("cell", new Cell());
-			personajes.put("majinboo", new MajinBoo());
-			personajes.put("freezer", new Freezer()); 
+			personajes.put("Cell", new Cell());
+			personajes.put("Majinboo", new MajinBoo());
+			personajes.put("Freezer", new Freezer()); 
 			for(Personaje personaje : personajes.values())
 				personaje.setEquipo(this);
 		}
