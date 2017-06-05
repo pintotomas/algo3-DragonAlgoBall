@@ -1,17 +1,15 @@
 package dab.personajes.cell;
 import dab.ataquesEspeciales.Absorber;
+import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class Cell extends Personaje{
+public class Cell extends Estado{
 	
 	/*Representa al personaje Cell*/
 	
-	protected Absorber spec = new Absorber();
 	protected int absorbidosParaTransformar;
 	protected int absorbidos;
-	
-	
-	
+	protected Absorber spec = new Absorber();
 	
 	public Cell(){ 
 		vidaMaxima = 500;
@@ -32,8 +30,8 @@ public class Cell extends Personaje{
 	}
 	
 	@Override
-	public Personaje transformar() {
-		Personaje cellSemiPerfecto = new CellSemiPerfecto();
+	public Estado transformar() {
+		CellSemiPerfecto cellSemiPerfecto = new CellSemiPerfecto();
 		return cellSemiPerfecto;
 	}
 

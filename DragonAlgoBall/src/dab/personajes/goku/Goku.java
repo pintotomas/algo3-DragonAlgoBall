@@ -1,8 +1,9 @@
 package dab.personajes.goku;
 import dab.ataquesEspeciales.Kamehameha;
+import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class Goku extends Personaje{
+public class Goku extends Estado{
 	
 	/*Representa al personaje Goku*/
 	
@@ -27,9 +28,9 @@ public class Goku extends Personaje{
 	}
 	
 	@Override
-	public Personaje transformar() {
+	public Estado transformar() {
 		this.agregarKi(-kiParaTransformar); //esto creo que se podria separar en dos metodos
-		Personaje gokuKaio = new GokuKaioKen();
+		GokuKaioKen gokuKaio = new GokuKaioKen();
 		return gokuKaio;
 	}
 

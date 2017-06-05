@@ -12,10 +12,10 @@ public class moverACeldaOcupadaPorUnPersonaje {
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero();
-		Personaje goku = new Goku();
+		Personaje goku = new Personaje(new Goku());
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		Personaje cell = new Cell();
+		Personaje cell = new Personaje(new Cell());
 		int filaCell = 2;
 		int columnaCell = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);

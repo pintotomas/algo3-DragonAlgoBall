@@ -3,57 +3,52 @@ package dab.personajes;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
 
-public abstract class Personaje {
+public class Personaje {
 	
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
-	protected int vidaMaxima;
-	protected int vida;
-	protected int poder;
-	protected int alcance;
-	protected int ki;
-	protected int velocidad;
-	protected String nombre;
-	protected int kiParaEspecial;
+	private Estado estado;
 	protected boolean semillaDelHermitano, nubeVoladora, esferaDelDragon;
 	protected Celda posicion;
 	
-	
+	public Personaje(Estado estado){
+		this.estado = estado;
+	}
 	
 	public int getVidaMaxima(){
-		return vidaMaxima;
+		return estado.getVidaMaxima();
 	}
 	
 	public int getVida() {
-		return vida;
+		return estado.getVida();
 	}
 
 	public int getPoder() {
 		if(esferaDelDragon)
-			return (int)(poder * 1.25);
-		return poder;
+			return (int)(estado.getPoder() * 1.25);
+		return estado.getPoder();
 	}
 
 	public int getAlcance() {
 		if(nubeVoladora)
-			return alcance * 2;
-		return alcance;
+			return estado.getAlcance() * 2;
+		return estado.getAlcance();
 	}
 
 	public int getKi() {
-		return ki;
+		return estado.getKi();
 	}
 
 	public int getVelocidad() {
-		return velocidad;
+		return estado.getVelocidad();
 	}
 
 	public String getNombre() {
-		return nombre;
+		return estado.getNombre();
 	}
 
 	public Celda getPosicion(){
-		return posicion;
+		return estado.getPosicion();
 	}
 	
 	public void setPosicion(Celda celda){
@@ -67,9 +62,6 @@ public abstract class Personaje {
 	public void setEquipo(Equipo equipo_) {
 		equipo = equipo_;
 	}
-	
-	
-	
 	
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
@@ -97,7 +89,7 @@ public abstract class Personaje {
 		 * PRE: Cantidad es un numero entero.
 		 * POST: El ki es modificado
 		 */
-		this.ki = ki + cantidad;
+		estado.agregarKi(this.getKi() + cantidad);
 	}
 	
 	public void agregarHp(int cantidad){
@@ -105,17 +97,16 @@ public abstract class Personaje {
 		 * PRE: Cantidad es un numero entero.
 		 * POST: La vida es modificada
 		 */
-		vida = vida + cantidad;
+		estado.agregarVida(this.getVida() + cantidad);
 		//faltaria agregar que pasa si se muere.
 	
 	}
 	
 	public void agarroSemillaDelHermitanio(){
 		this.agregarHp(100);
-		if(vida > vidaMaxima)
-			vida = vidaMaxima;	
+		if(this.getVida() > this.getVidaMaxima())
+			this.agregarHp(this.getVidaMaxima());	
 	}
-	
 	
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
@@ -134,30 +125,25 @@ public abstract class Personaje {
 		personaje.recibirAtaque(this.getPoder());
 	}
 	
-	
-	
 	private void recibirAtaque(int pp) {
 		if(pp < this.getPoder()){
 			pp = (int)(pp * 0.8);		
 		}
 		this.agregarHp(-pp);	
 	}
-
-	public abstract Personaje transformar();
-	public abstract boolean transformarDisponible();
-	public abstract boolean ataqueEspecialDisponible();	
-	public abstract void ataqueEspecial(Personaje enemigo);
-
+	
+	public boolean transformarDisponible(){
+		return estado.transformarDisponible();
+	}
+	
+	public void transformar(){
+		estado.transformar();
+	}
+	
 	public void convertirEnChocolate(){
 		
 		/*faltaria implementar para la especial de boo. 
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
-	}
-	
-	
-	
-
-	
-	
+	}	
 }

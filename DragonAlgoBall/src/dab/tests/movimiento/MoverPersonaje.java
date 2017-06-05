@@ -12,7 +12,7 @@ public class MoverPersonaje {
 	@Test 
 	public void moverPersonaje() {
 		Tablero tablero = new Tablero();
-		Personaje piccolo = new Piccolo();
+		Personaje piccolo = new Personaje(new Piccolo());
 		tablero.colocarPersonaje(1, 1, piccolo);
 		Celda destino = tablero.obtenerCelda(1, 2);
 		assert(piccolo.movimientoPosible(destino));

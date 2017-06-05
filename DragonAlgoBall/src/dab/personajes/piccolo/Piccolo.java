@@ -1,8 +1,9 @@
 package dab.personajes.piccolo;
 import dab.ataquesEspeciales.Makankosappo ;
+import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class Piccolo extends Personaje {
+public class Piccolo extends Estado {
 
 		
 	/*Representa al personaje Piccolo*/
@@ -28,9 +29,9 @@ public class Piccolo extends Personaje {
 		}
 		
 		@Override
-		public Personaje transformar() {
+		public Estado transformar() {
 			this.agregarKi(-kiParaTransformar);
-			Personaje fortalecido = new PiccoloFortalecido();
+			PiccoloFortalecido fortalecido = new PiccoloFortalecido();
 			return fortalecido;
 		}
 			@Override
