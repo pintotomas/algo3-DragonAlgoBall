@@ -1,6 +1,4 @@
 package dab.juego;
-
-import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipos.Equipo;
 import dab.personajes.Personaje;
 
@@ -51,24 +49,11 @@ public class Tablero {
 			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
 			i += 1;
 		}
-<<<<<<< HEAD
-	}
-	
-	
-	
-=======
+
 		
 	}
-	/*
->>>>>>> afed7a884b6cdf93d42f46aef18d25af270ba791
-	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
-		Celda celda = tablero[fila][columna];
-		if (celda.estaOcupada() || !aPersonaje.movimientoPosible(celda))
-			throw new MovimientoInvalido();
-		aPersonaje.getPosicion().quitarPersonaje();
-		this.colocarPersonaje(fila, columna, aPersonaje);
-	}
-	*/
+	
+	
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}

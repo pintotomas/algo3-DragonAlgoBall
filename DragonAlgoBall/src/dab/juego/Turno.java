@@ -31,6 +31,7 @@ public class Turno {
 		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
 		if(personajeSeleccionado == null) throw new NadaSeleccionado();
 		if(personajeSeleccionado.movimientoPosible(celda)){
+			//if tablero.caminoDisponible   falta agregar esto.
 			 personajeSeleccionado.mover(celda);
 			 movio = true;
 		}
