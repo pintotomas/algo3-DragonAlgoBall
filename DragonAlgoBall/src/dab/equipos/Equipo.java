@@ -32,8 +32,9 @@ public abstract class Equipo {
 	}
 	
 	public Personaje obtenerPersonaje(String nombre){ //metodo para pruebas mas que nada
-		return personajes.get(nombre);
-		
+		Personaje personaje = personajes.get(nombre);
+		if(personaje == null) throw new RuntimeException("nombre incorrecto en obtener personaje" + nombre);
+		return personaje;
 	}
 	
 	
