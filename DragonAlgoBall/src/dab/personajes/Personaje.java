@@ -65,7 +65,7 @@ public abstract class Personaje {
 	}
 	
 	public void setEquipo(Equipo equipo_) {
-		equipo = equipo_;		
+		equipo = equipo_;
 	}
 	
 	
@@ -117,10 +117,10 @@ public abstract class Personaje {
 	}
 	
 	
-	public boolean puedeAtacar(Celda celda) {
+	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
 		int maxColumna = posicion.getColumna() + this.getAlcance();
-		//verifica que el movimiento se pueda hacer.
+		Celda celda = personaje.getPosicion();
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
 		}
@@ -140,7 +140,7 @@ public abstract class Personaje {
 		if(pp < this.getPoder()){
 			pp = (int)(pp * 0.8);		
 		}
-		this.agregarHp(pp);	
+		this.agregarHp(-pp);	
 	}
 
 	public abstract Personaje transformar();
@@ -154,9 +154,9 @@ public abstract class Personaje {
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
 	}
-
 	
-
+	
+	
 
 	
 	

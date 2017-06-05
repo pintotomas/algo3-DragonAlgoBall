@@ -1,6 +1,4 @@
 package dab.juego;
-
-import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipos.Equipo;
 import dab.personajes.Personaje;
 
@@ -38,6 +36,32 @@ public class Tablero {
 		aPersonaje.setPosicion(celda);
 	}
 	
+	public boolean trayectoriaValida(Celda origen, Celda destino){
+		int filaO, filaD, columnaO, columnaD,x,y;
+		filaO = origen.getFila();
+		filaD = destino.getFila();
+		columnaO = origen.getColumna();
+		columnaD = destino.getColumna();
+		
+		if(filaO > filaD) x = -1;
+		else if (filaD > filaO) x = 1;
+		else x = 0;
+		
+		if(columnaO > filaD) y = -1;
+		else if (columnaD > columnaO) y = 1;
+		else y = 0;
+		
+		
+		while(filaO != filaD || columnaO != columnaD){
+			if(this.obtenerCelda(filaO, columnaO).estaOcupada()) return false;
+			filaO += x;
+			columnaO += y;	
+		}
+		return true;
+		
+	}
+	
+	
 	private void ubicarPersonajes(Equipo equipo1, Equipo equipo2){
 		int i = 0;
 		int primeraPosicion = anchoDeTablero/2;
@@ -51,15 +75,7 @@ public class Tablero {
 			i += 1;
 		}
 	}
-	/*
-	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
-		Celda celda = tablero[fila][columna];
-		if (celda.estaOcupada() || !aPersonaje.movimientoPosible(celda))
-			throw new MovimientoInvalido();
-		aPersonaje.getPosicion().quitarPersonaje();
-		this.colocarPersonaje(fila, columna, aPersonaje);
-	}
-	*/
+	
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}

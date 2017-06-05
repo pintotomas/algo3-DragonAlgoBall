@@ -1,6 +1,6 @@
 package dab.personajes.freezer;
 
-public class FreezerDefinitivo extends Freezer {
+public class FreezerDefinitivo extends FreezerSegundaForma {
 	//ultima transformacion de freezer
 	
 	public FreezerDefinitivo(){
