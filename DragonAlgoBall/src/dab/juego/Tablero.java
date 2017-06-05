@@ -21,7 +21,6 @@ public class Tablero {
 	}
 		
 	
-	
 	public Tablero(Equipo equipo1, Equipo equipo2){
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
@@ -51,16 +50,8 @@ public class Tablero {
 			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
 			i += 1;
 		}
-<<<<<<< HEAD
-	}
-	
-	
-	
-=======
-		
 	}
 	/*
->>>>>>> afed7a884b6cdf93d42f46aef18d25af270ba791
 	public void moverPersonaje(int fila, int columna, Personaje aPersonaje){
 		Celda celda = tablero[fila][columna];
 		if (celda.estaOcupada() || !aPersonaje.movimientoPosible(celda))
