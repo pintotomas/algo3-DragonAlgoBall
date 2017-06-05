@@ -18,7 +18,6 @@ public class Tablero {
 		}
 	}
 		
-	
 	public Tablero(Equipo equipo1, Equipo equipo2){
 		//inicio las celdas del tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
@@ -28,7 +27,6 @@ public class Tablero {
 		}
 		ubicarPersonajes(equipo1, equipo2);		
 	}
-	
 	
 	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
 		Celda celda = tablero[fila][columna];

@@ -48,7 +48,7 @@ public class Personaje {
 	}
 
 	public Celda getPosicion(){
-		return estado.getPosicion();
+		return posicion;
 	}
 	
 	public void setPosicion(Celda celda){

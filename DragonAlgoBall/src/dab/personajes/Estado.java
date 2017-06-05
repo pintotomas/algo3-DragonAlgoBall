@@ -1,5 +1,4 @@
 package dab.personajes;
-import dab.juego.Celda;
 
 public abstract class Estado {
 	protected int vidaMaxima;
@@ -13,54 +12,47 @@ public abstract class Estado {
 	
 	public int getVidaMaxima() {
 		// TODO Auto-generated method stub
-		return 0;
+		return vidaMaxima;
 	}
 
 	public int getVida() {
 		// TODO Auto-generated method stub
-		return 0;
+		return vida;
 	}
 
 	public int getPoder() {
 		// TODO Auto-generated method stub
-		return 0;
+		return poder;
 	}
-
-
 
 	public int getAlcance() {
 		// TODO Auto-generated method stub
-		return 0;
+		return alcance;
 	}
 
 	public int getKi() {
 		// TODO Auto-generated method stub
-		return 0;
+		return ki;
 	}
 
 	public int getVelocidad() {
 		// TODO Auto-generated method stub
-		return 0;
+		return velocidad;
 	}
 
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
-	public Celda getPosicion() {
+	public void agregarKi(int aumento) {
 		// TODO Auto-generated method stub
-		return null;
+		ki = ki + aumento;
 	}
 
-	public void agregarKi(int i) {
+	public void agregarVida(int aumento) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	public void agregarVida(int i) {
-		// TODO Auto-generated method stub
-		
+		vida = vida + aumento;
 	}
 	
 	public abstract Estado transformar();
