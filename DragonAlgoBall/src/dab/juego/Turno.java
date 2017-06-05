@@ -10,9 +10,10 @@ public class Turno {
 	Equipo equipo;
 	Personaje personajeSeleccionado;
 	Celda celdaSeleccionada;
+	Tablero tablero;
 	boolean movio, ataco, cedioTurno;
 	
-	public Turno(Equipo equipo_){
+	public Turno(Equipo equipo_,Tablero tablero){
 		equipo = equipo_;
 		movio = false;
 		ataco = false;
@@ -30,8 +31,7 @@ public class Turno {
 	public void Mover(Celda celda){
 		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
 		if(personajeSeleccionado == null) throw new NadaSeleccionado();
-		if(personajeSeleccionado.movimientoPosible(celda)){
-			//if tablero.caminoDisponible   falta agregar esto.
+		if(personajeSeleccionado.movimientoPosible(celda) && tablero.trayectoriaValida(celdaSeleccionada, celda)){
 			 personajeSeleccionado.mover(celda);
 			 movio = true;
 		}

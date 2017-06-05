@@ -65,7 +65,7 @@ public abstract class Personaje {
 	}
 	
 	public void setEquipo(Equipo equipo_) {
-		equipo = equipo_;		
+		equipo = equipo_;
 	}
 	
 	

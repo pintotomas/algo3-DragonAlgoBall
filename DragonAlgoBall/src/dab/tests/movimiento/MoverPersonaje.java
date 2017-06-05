@@ -18,8 +18,5 @@ public class MoverPersonaje {
 		assert(piccolo.movimientoPosible(destino));
 		piccolo.mover(destino);
 		assert(destino.darOcupante() == piccolo);
-	}
-	
-		
-		
+	}	
 }
