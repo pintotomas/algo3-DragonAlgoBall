@@ -13,14 +13,24 @@ public class Turno {
 	Tablero tablero;
 	boolean movio, ataco, cedioTurno;
 	
-	public Turno(Equipo equipo_,Tablero tablero){
+	public Turno(Equipo equipo_,Tablero tablero_){
 		equipo = equipo_;
+		tablero = tablero_;
+		otorgarKi();
 		movio = false;
 		ataco = false;
-		cedioTurno = false;
 		personajeSeleccionado = null;
 	}
 	
+	private void otorgarKi(){
+		/*Collection<Personaje> miembros = equipo.obtenerPersonajes();
+		miembros.forEach(personaje -> personaje.agregarKi(5));*/
+	}
+	public void terminar(){
+		/*Collection<Personaje> miembros = equipo.obtenerPersonajes();
+		miembros.forEach(personaje -> personaje.pasarTurno());
+		*/
+	}
 	
 	public void seleccionarPersonaje(Personaje aPersonaje){
 		// verificar que personaje sea de equipo o poner como precondicion
