@@ -1,6 +1,5 @@
 package dab.personajes.cell;
 
-import dab.personajes.Personaje;
 
 public class CellSemiPerfecto extends Cell {
 
@@ -19,8 +18,8 @@ public class CellSemiPerfecto extends Cell {
 
 
 	@Override
-	public Personaje transformar() {
-		Personaje cellPerfecto = new CellPerfecto();
+	public CellPerfecto transformar() {
+		CellPerfecto cellPerfecto = new CellPerfecto();
 		return cellPerfecto;
 	}
 

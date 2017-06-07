@@ -11,20 +11,19 @@ import dab.juego.Tablero;
 import dab.personajes.Personaje;
 import dab.personajes.cell.Cell;
 import dab.personajes.goku.Goku;
-import dab.personajes.majinBoo.MajinBoo;
 
 public class PruebasIntegradoras1 {
 	
 	@Test 
 	public void testTransformarPersonaje() {
 		Tablero tablero = new Tablero();
-		Personaje goku = new Goku();
+		Personaje goku = new Personaje(new Goku());
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
 		goku.agregarKi(20);
 		Assert.assertTrue(goku.transformarDisponible());
-		goku = goku.transformar();
+		goku.transformar();
 		Assert.assertEquals(goku.getNombre(), "Goku Kaio-Ken");
 		Assert.assertEquals(goku.getPosicion().getFila(), filaGoku);
 		Assert.assertEquals(goku.getPosicion().getColumna(), columnaGoku);
@@ -35,12 +34,12 @@ public class PruebasIntegradoras1 {
 	@Test 
 	public void testTransformarYMover(){
 		Tablero tablero = new Tablero();
-		Personaje goku = new Goku();
+		Personaje goku = new Personaje(new Goku());
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
 		goku.agregarKi(20);
-		goku = goku.transformar();
+		goku.transformar();
 		goku.mover(tablero.obtenerCelda(1, 2));
 		Assert.assertEquals(goku.getPoder(), 40);
 		Assert.assertEquals(goku.getPosicion().getFila(), 1);
@@ -69,8 +68,9 @@ public class PruebasIntegradoras1 {
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
+		Assert.assertEquals(400, freezer.getVida());
 		if (goku.puedeAtacar(freezer))
-			goku.atacarA(freezer);
+			goku.atacarA(freezer);	
 		Assert.assertEquals(380, freezer.getVida());
 	}
 	
@@ -94,11 +94,11 @@ public class PruebasIntegradoras1 {
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero();
-		Personaje goku = new Goku();
+		Personaje goku = new Personaje(new Goku());
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje cell = new Cell();
+		Personaje cell = new Personaje(new Cell());
 		int filaCell = 2;
 		int columnaCell = 1;
 		tablero.colocarPersonaje(filaCell, columnaCell, cell);	

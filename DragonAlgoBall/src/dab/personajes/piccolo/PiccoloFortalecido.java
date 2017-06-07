@@ -1,6 +1,5 @@
 package dab.personajes.piccolo;
 
-import dab.personajes.Personaje;
 
 public class PiccoloFortalecido extends Piccolo {
 	public PiccoloFortalecido(){
@@ -14,9 +13,9 @@ public class PiccoloFortalecido extends Piccolo {
 		kiParaTransformar = 0;
 	}
 	@Override
-	public Personaje transformar() {
+	public PiccoloProtector transformar() {
 		this.agregarKi(-kiParaTransformar);
-		Personaje protector = new PiccoloProtector();
+		PiccoloProtector protector = new PiccoloProtector();
 		return protector;
 		}
 

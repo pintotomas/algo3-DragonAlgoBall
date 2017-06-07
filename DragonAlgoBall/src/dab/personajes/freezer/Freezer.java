@@ -1,9 +1,10 @@
 package dab.personajes.freezer;
 
 import dab.ataquesEspeciales.RayoMortal;
+import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class Freezer extends Personaje{
+public class Freezer extends Estado{
 	
 /*Representa al personaje Freezer*/
 	
@@ -28,9 +29,9 @@ public class Freezer extends Personaje{
 	}
 	
 	@Override
-	public Personaje transformar() {
+	public Estado transformar() {
 		this.agregarKi(-kiParaTransformar);
-		Personaje freezerSegunda = new FreezerSegundaForma();
+		FreezerSegundaForma freezerSegunda = new FreezerSegundaForma();
 		return freezerSegunda;
 	}
 

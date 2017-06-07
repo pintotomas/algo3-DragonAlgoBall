@@ -1,15 +1,14 @@
 package dab.personajes.majinBoo;
 import dab.ataquesEspeciales.ConvierteteEnChocolate;
+import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class MajinBoo extends Personaje{
+public class MajinBoo extends Estado{
 	
 	/*Representa al personaje MajinBoo*/
 	
 	protected ConvierteteEnChocolate spec = new ConvierteteEnChocolate();
 	protected int kiParaTransformar;
-	
-	
 	
 	public MajinBoo(){
 		vida = 300;
@@ -28,8 +27,8 @@ public class MajinBoo extends Personaje{
 	}
 	
 	@Override
-	public Personaje transformar() {
-		Personaje booMalo = new BooMalo();
+	public Estado transformar() {
+		BooMalo booMalo = new BooMalo();
 		return booMalo;
 	}
 

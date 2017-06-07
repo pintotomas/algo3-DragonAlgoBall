@@ -1,8 +1,5 @@
 package dab.personajes.gohan;
 
-import dab.personajes.Personaje;
-
-
 public class GohanSuperSayajinFase1 extends Gohan{
 	/*segunda transformacion de gohan*/
 		public GohanSuperSayajinFase1(){
@@ -11,7 +8,7 @@ public class GohanSuperSayajinFase1 extends Gohan{
 		alcance = 2;
 		ki = 0;
 		velocidad = 2;
-		nombre = "gohan super sayajin fase 2";
+		nombre = "Gohan Super Sayajin Fase 2";
 		kiParaTransformar = 30;
 	}
 	
@@ -26,9 +23,9 @@ public class GohanSuperSayajinFase1 extends Gohan{
 	
 	
 	@Override
-	public Personaje transformar() {
+	public GohanSuperSayajinFase2 transformar() {
 		this.agregarKi(-kiParaTransformar);
-		Personaje gohanSuperSai2 = new GohanSuperSayajinFase2();
+		GohanSuperSayajinFase2 gohanSuperSai2 = new GohanSuperSayajinFase2();
 		return gohanSuperSai2;
 	}
 }
