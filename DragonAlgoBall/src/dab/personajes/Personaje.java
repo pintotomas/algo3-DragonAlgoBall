@@ -95,12 +95,6 @@ public class Personaje{
 	
 	}
 	
-	public void agarroSemillaDelHermitanio(){
-		this.agregarHp(100);
-		if(this.getVida() > this.getVidaMaxima())
-			this.agregarHp(this.getVidaMaxima());	
-	}
-	
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
 		int maxColumna = posicion.getColumna() + this.getAlcance();

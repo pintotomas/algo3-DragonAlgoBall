@@ -42,7 +42,7 @@ public class Celda {
 		personaje_ocupante = personaje;
 		ocupa_personaje = true;
 		if(ocupa_consumible){
-			consumible_ocupante aplicarConsumible(personaje);
+			consumible_ocupante.aplicarConsumible(personaje);
 			ocupa_consumible = false;
 		}
 	}
