@@ -28,10 +28,10 @@ public class Tablero {
 		ubicarPersonajes(equipo1, equipo2);		
 	}
 	
-	public void colocarPersonaje(int fila, int columna, Personaje aPersonaje){
+	public void colocarPersonaje(int fila, int columna, Personaje personaje){
 		Celda celda = tablero[fila][columna];
-		celda.colocarPersonaje(aPersonaje);
-		aPersonaje.setPosicion(celda);
+		celda.colocarPersonaje(personaje);
+		personaje.setPosicion(celda);
 	}
 	
 	public boolean trayectoriaValida(Celda origen, Celda destino){
@@ -51,7 +51,7 @@ public class Tablero {
 		
 		
 		while(filaO != filaD || columnaO != columnaD){
-			if(this.obtenerCelda(filaO, columnaO).estaOcupada()) return false;
+			if(this.obtenerCelda(filaO, columnaO).estaOcupadaPorPersonaje()) return false;
 			filaO += x;
 			columnaO += y;	
 		}
@@ -87,7 +87,7 @@ public class Tablero {
 	}
 	
 	public boolean celdaOcupada(int fila, int columna){
-		return tablero[fila][columna].estaOcupada();
+		return tablero[fila][columna].estaOcupadaPorPersonaje();
 	}
 	
 }

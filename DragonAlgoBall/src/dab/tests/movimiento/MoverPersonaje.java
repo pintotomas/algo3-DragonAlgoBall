@@ -17,6 +17,6 @@ public class MoverPersonaje {
 		Celda destino = tablero.obtenerCelda(1, 2);
 		assert(piccolo.movimientoPosible(destino));
 		piccolo.mover(destino);
-		assert(destino.darOcupante() == piccolo);
+		assert(destino.darPersonajeOcupante() == piccolo);
 	}	
 }

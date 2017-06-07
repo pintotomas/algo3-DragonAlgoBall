@@ -66,7 +66,7 @@ public class Personaje {
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
-		if(celda.estaOcupada()) return false; 
+		if(celda.estaOcupadaPorPersonaje()) return false; 
 		
 		int maxFila = posicion.getFila() + this.getVelocidad();
 		int maxColumna = posicion.getColumna() + this.getVelocidad();
@@ -82,7 +82,6 @@ public class Personaje {
 		posicion.quitarPersonaje();
 		posicion = celda;
 	}
-	
 	
 	public void agregarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
@@ -115,7 +114,7 @@ public class Personaje {
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
 		}
-		if(celda.darOcupante().getEquipo() == this.getEquipo()){
+		if(celda.darPersonajeOcupante().getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;

@@ -30,7 +30,7 @@ public abstract class Equipo {
 	public Collection<Personaje> obtenerPersonajes(){
 		return personajes.values();
 	}
-	
+
 	public Personaje obtenerPersonaje(String nombre){ //metodo para pruebas mas que nada
 		Personaje personaje = personajes.get(nombre);
 		if(personaje == null) throw new RuntimeException("nombre incorrecto en obtener personaje" + nombre);

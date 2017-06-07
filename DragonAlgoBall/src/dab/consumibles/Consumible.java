@@ -1,8 +1,11 @@
 package dab.consumibles;
 
-import dab.personajes.Estado;
+import dab.juego.Celda;
+import dab.personajes.Personaje;
 
 public abstract class Consumible{
 	protected String nombre;
-	protected Celdad posicion;
+	protected Celda posicion;
+
+	public abstract boolean aplicarConsumible(Personaje personaje);
 }
