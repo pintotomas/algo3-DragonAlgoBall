@@ -1,4 +1,6 @@
-package dab.personajes;
+package dab.estados;
+
+import dab.personaje.Personaje;
 
 public abstract class Estado {
 	protected int vidaMaxima;

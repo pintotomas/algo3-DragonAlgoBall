@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import dab.juego.Tablero;
-import dab.personajes.gohan.Gohan;
-import dab.personajes.goku.Goku;
 import dab.dragonBallExceptions.MovimientoInvalido;
+import dab.estados.gohan.Gohan;
+import dab.estados.goku.Goku;
 public class PruebasTablero{
 
 	@Test

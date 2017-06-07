@@ -1,6 +1,6 @@
 package dab.juego;
 import dab.dragonBallExceptions.*;
-import dab.personajes.Personaje;
+import dab.personaje.Personaje;
 
 public class Celda {
 	int fila, columna;

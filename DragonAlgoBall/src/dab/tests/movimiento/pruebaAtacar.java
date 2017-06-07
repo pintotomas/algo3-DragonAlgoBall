@@ -6,7 +6,7 @@ import dab.equipos.EnemigosDeLaTierra;
 import dab.equipos.Equipo;
 import dab.equipos.GuerrerosZ;
 import dab.juego.Tablero;
-import dab.personajes.Personaje;
+import dab.personaje.Personaje;
 
 public class pruebaAtacar{
 		

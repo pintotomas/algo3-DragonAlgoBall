@@ -1,4 +1,4 @@
-package dab.personajes.freezer;
+package dab.estados.freezer;
 
 public class FreezerDefinitivo extends FreezerSegundaForma {
 	//ultima transformacion de freezer

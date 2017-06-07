@@ -1,4 +1,4 @@
-package dab.personajes.freezer;
+package dab.estados.freezer;
 
 
 public class FreezerSegundaForma extends Freezer{

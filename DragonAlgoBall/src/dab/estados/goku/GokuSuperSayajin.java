@@ -1,4 +1,4 @@
-package dab.personajes.goku;
+package dab.estados.goku;
 
 public class GokuSuperSayajin extends GokuKaioKen{
 	/*Representa a la segunda transformacion de Goku*/

@@ -3,10 +3,10 @@ package dab.tests.movimiento;
 import org.junit.Test;
 
 import dab.juego.Tablero;
-import dab.personajes.Personaje;
-import dab.personajes.cell.Cell;
-import dab.personajes.goku.Goku;
+import dab.personaje.Personaje;
 import dab.dragonBallExceptions.CeldaOcupada;
+import dab.estados.cell.Cell;
+import dab.estados.goku.Goku;
 public class moverACeldaOcupadaPorUnPersonaje {
 
 	@Test(expected=CeldaOcupada.class)

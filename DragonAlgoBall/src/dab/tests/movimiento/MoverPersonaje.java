@@ -2,10 +2,10 @@ package dab.tests.movimiento;
 
 import org.junit.Test;
 
+import dab.estados.piccolo.Piccolo;
 import dab.juego.Celda;
 import dab.juego.Tablero;
-import dab.personajes.Personaje;
-import dab.personajes.piccolo.Piccolo;
+import dab.personaje.Personaje;
 
 public class MoverPersonaje {
 

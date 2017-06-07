@@ -1,8 +1,8 @@
-package dab.personajes.freezer;
+package dab.estados.freezer;
 
 import dab.ataquesEspeciales.RayoMortal;
-import dab.personajes.Estado;
-import dab.personajes.Personaje;
+import dab.estados.Estado;
+import dab.personaje.Personaje;
 
 public class Freezer extends Estado{
 	

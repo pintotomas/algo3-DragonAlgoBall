@@ -1,6 +1,6 @@
 package dab.juego;
 import dab.equipos.Equipo;
-import dab.personajes.Personaje;
+import dab.personaje.Personaje;
 
 public class Tablero {
 	int altoDeTablero = 20;

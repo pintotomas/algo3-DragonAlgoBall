@@ -1,6 +1,7 @@
-package dab.personajes;
+package dab.personaje;
 
 import dab.equipos.Equipo;
+import dab.estados.Estado;
 import dab.juego.Celda;
 
 public class Personaje {

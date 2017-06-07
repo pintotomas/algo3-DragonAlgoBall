@@ -1,6 +1,6 @@
 package dab.ataquesEspeciales;
 
-import dab.personajes.Personaje;
+import dab.personaje.Personaje;
 
 public class ConvierteteEnChocolate extends AtaqueEspecial {
 

@@ -1,7 +1,7 @@
-package dab.personajes.cell;
+package dab.estados.cell;
 import dab.ataquesEspeciales.Absorber;
-import dab.personajes.Estado;
-import dab.personajes.Personaje;
+import dab.estados.Estado;
+import dab.personaje.Personaje;
 
 public class Cell extends Estado{
 	
