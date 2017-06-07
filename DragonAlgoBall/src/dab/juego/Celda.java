@@ -1,6 +1,8 @@
 package dab.juego;
 import dab.consumibles.Consumible;
-import dab.dragonBallExceptions.*;
+import dab.dragonBallExceptions.CeldaNoContieneConsumible;
+import dab.dragonBallExceptions.CeldaNoContienePersonaje;
+import dab.dragonBallExceptions.CeldaOcupada;
 import dab.personajes.Personaje;
 
 public class Celda {
@@ -21,39 +23,34 @@ public class Celda {
 		return ocupa_personaje;
 	}
 	
+	public boolean estaOcupadaPorConsumible(){
+		return ocupa_personaje;
+	}
+	
 	public Personaje darPersonajeOcupante(){
-		if(!ocupa_personaje) throw new CeldaVacia();
+		if(!ocupa_personaje) throw new CeldaNoContienePersonaje();
 		return personaje_ocupante;
 	}
 	
 	public Consumible darConsumibleOcupante(){
-		if(!ocupa_consumible) throw new CeldaVacia();
+		if(!ocupa_consumible) throw new CeldaNoContieneConsumible();
 		return consumible_ocupante;
 	}
 	
-	public void colocarConsumible(Consumible consumible){
+	public void colocarPersonaje(Personaje personaje){
 		if(ocupa_personaje) throw new CeldaOcupada();
-		consumible_ocupante = consumible;
-		ocupa_consumible = true;
-	}
-	
-	public void colocarPersonaje(Personaje personaje_nuevo){
-		if(ocupa_personaje) throw new CeldaOcupada();
-		personaje_ocupante = personaje_nuevo;
+		personaje_ocupante = personaje;
 		ocupa_personaje = true;
-		if(ocupa_consumible) {
-			this.quitarConsumible();
+		if(ocupa_consumible){
+			consumible_ocupante aplicarConsumible(personaje);
+			ocupa_consumible = false;
 		}
 	}
-	
+
 	public void quitarPersonaje(){
+		if(!ocupa_personaje) throw new CeldaNoContienePersonaje();
 		personaje_ocupante = null;
 		ocupa_personaje = false;
-	}
-	
-	public void quitarConsumible(){
-		consumible_ocupante = null;
-		ocupa_consumible = false;
 	}
 	
 	public int getFila(){
@@ -63,10 +60,5 @@ public class Celda {
 	public int getColumna(){
 		return columna;
 	}
-	
-	public boolean puedeMoverse(Celda destino){
-		if(!ocupa_personaje) throw new CeldaVacia();
-		if(destino.estaOcupadaPorPersonaje()) return false;
-		return false;
-	}	
+
 }

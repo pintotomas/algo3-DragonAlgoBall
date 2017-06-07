@@ -3,13 +3,11 @@ package dab.personajes;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
 
-public class Personaje {
-	
+public class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
-	private Estado estado;
-	protected boolean semillaDelHermitano, nubeVoladora, esferaDelDragon;
 	protected Celda posicion;
+	private Estado estado;
 	
 	public Personaje(Estado estado){
 		this.estado = estado;
@@ -24,14 +22,10 @@ public class Personaje {
 	}
 
 	public int getPoder() {
-		if(esferaDelDragon)
-			return (int)(estado.getPoder() * 1.25);
 		return estado.getPoder();
 	}
 
 	public int getAlcance() {
-		if(nubeVoladora)
-			return estado.getAlcance() * 2;
 		return estado.getAlcance();
 	}
 

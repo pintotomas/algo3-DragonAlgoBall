@@ -11,12 +11,13 @@ public abstract class Equipo {
 	 * forma rapida
 	 */
 	
-	
 	Map<String, Personaje> personajes = new HashMap<String, Personaje>();
-	int esferasDelDragon, personajesVivos;
+	int personajesVivos;
+
+	private int cantidadEsferasDelDragon;
 	
 	public boolean esGanador(){
-		if (esferasDelDragon >= 7)
+		if (this.cantidadEsferasDelDragon >= 7)
 			return true;
 		return false;
 	}
@@ -25,6 +26,10 @@ public abstract class Equipo {
 		if(personajesVivos == 0)
 			return true;
 		return false;
+	}
+	
+	public void agregarEsferaDelDragon(){
+		cantidadEsferasDelDragon += 1;
 	}
 	
 	public Collection<Personaje> obtenerPersonajes(){

@@ -1,14 +1,19 @@
 package dab.juego;
 
+import dab.equipos.EnemigosDeLaTierra;
 import dab.equipos.Equipo;
 import dab.equipos.GuerrerosZ;
 
 public class Juego {
-	Equipo guerrerosz, enemigosDeLaTierra;
+	Equipo guerrerosZ, enemigosDeLaTierra;
 	
 	public Juego(){
-		guerrerosz = new GuerrerosZ();
-		
+		guerrerosZ = new GuerrerosZ();
+		enemigosDeLaTierra = new EnemigosDeLaTierra();
+		while(true){
+			// hago solo la parte de consumibles
+			
+		}
 		
 	}
 	
