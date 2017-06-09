@@ -1,4 +1,4 @@
-package dab.personajes.cell;
+package dab.estados.cell;
 
 
 public class CellSemiPerfecto extends Cell {

@@ -1,4 +1,4 @@
-package dab.personajes.piccolo;
+package dab.estados.piccolo;
 
 public class PiccoloProtector extends PiccoloFortalecido {
 	

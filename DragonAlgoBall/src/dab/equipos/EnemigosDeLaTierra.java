@@ -1,9 +1,9 @@
 package dab.equipos;
 
-import dab.personajes.Personaje;
-import dab.personajes.cell.Cell;
-import dab.personajes.freezer.Freezer;
-import dab.personajes.majinBoo.MajinBoo;
+import dab.estados.cell.Cell;
+import dab.estados.freezer.Freezer;
+import dab.estados.majinBoo.MajinBoo;
+import dab.personaje.Personaje;
 
 public class EnemigosDeLaTierra extends Equipo {
 		

@@ -1,4 +1,4 @@
-package dab.personajes.majinBoo;
+package dab.estados.majinBoo;
 
 public class BooMalo extends MajinBoo {
 

@@ -1,4 +1,4 @@
-package dab.personajes.gohan;
+package dab.estados.gohan;
 
 public class GohanSuperSayajinFase2 extends GohanSuperSayajinFase1 {
 	/*tercera transformacion de gohan*/

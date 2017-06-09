@@ -1,9 +1,9 @@
 package dab.equipos;
 
-import dab.personajes.Personaje;
-import dab.personajes.gohan.Gohan;
-import dab.personajes.goku.Goku;
-import dab.personajes.piccolo.Piccolo;
+import dab.estados.gohan.Gohan;
+import dab.estados.goku.Goku;
+import dab.estados.piccolo.Piccolo;
+import dab.personaje.Personaje;
 
 public class GuerrerosZ extends Equipo{
 	

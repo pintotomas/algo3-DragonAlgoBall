@@ -7,10 +7,10 @@ import dab.dragonBallExceptions.CeldaOcupada;
 import dab.equipos.EnemigosDeLaTierra;
 import dab.equipos.Equipo;
 import dab.equipos.GuerrerosZ;
+import dab.estados.cell.Cell;
+import dab.estados.goku.Goku;
 import dab.juego.Tablero;
-import dab.personajes.Personaje;
-import dab.personajes.cell.Cell;
-import dab.personajes.goku.Goku;
+import dab.personaje.Personaje;
 
 public class PruebasIntegradoras1 {
 	

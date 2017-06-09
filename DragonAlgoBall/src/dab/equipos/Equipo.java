@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import dab.personajes.Personaje;
+import dab.personaje.Personaje;
 
 public abstract class Equipo {
 	/*contiene a los personajes, y a su vez,  podria ser que los personajes contengan al equipo.
