@@ -1,5 +1,8 @@
 package dab.personajes;
 
+import java.util.List;
+
+import dab.consumibles.Consumible;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
 
@@ -10,6 +13,7 @@ public class Personaje {
 	private Estado estado;
 	protected boolean semillaDelHermitano, nubeVoladora, esferaDelDragon;
 	protected Celda posicion;
+	List <Consumible> efectos; 
 	
 	public Personaje(Estado estado){
 		this.estado = estado;
@@ -30,17 +34,25 @@ public class Personaje {
 	}
 
 	public int getAlcance() {
-		if(nubeVoladora)
-			return estado.getAlcance() * 2;
-		return estado.getAlcance();
+		double multiplicador = 1;
+		for (Consumible efecto: efectos){
+			multiplicador *= efecto.getMultiplicadorAlcance();
+		}
+		int alcanceActual = estado.getAlcance();
+		return alcanceActual *= multiplicador;
 	}
 
 	public int getKi() {
 		return estado.getKi();
 	}
 
-	public int getVelocidad() {
-		return estado.getVelocidad();
+	public double getVelocidad() {
+		double multiplicador = 1;
+		for (Consumible efecto: efectos){
+			multiplicador *= efecto.getMultiplicadorVelocidad();
+		}
+		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
+		return velocidadActual *= multiplicador; // *=;
 	}
 
 	public String getNombre() {
@@ -145,5 +157,11 @@ public class Personaje {
 		/*faltaria implementar para la especial de boo. 
 		* teniendo en cuenta que deven pasar 3 turnos.	
 		*/
+	}
+
+	public void nuevoTurno() {
+		// TODO Auto-generated method stub
+		//aca hacer l
+		
 	}	
 }

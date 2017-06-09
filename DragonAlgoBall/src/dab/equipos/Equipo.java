@@ -28,13 +28,20 @@ public abstract class Equipo {
 	
 	public void nuevoTurno(){
 		otorgarKiATodos(kiPorCadaNuevoTurno);
-		
+		notificarNuevoTurnoAPersonajes();
 	}
 
 	private void otorgarKiATodos(int cantidad){
 		Collection<Personaje> personajesEquipo = personajes.values();
 		for (Personaje p: personajesEquipo){
 			p.agregarKi(cantidad);
+		}
+	}
+	
+	private void notificarNuevoTurnoAPersonajes(){
+		Collection<Personaje> personajesEquipo = personajes.values();
+		for (Personaje p: personajesEquipo){
+			p.nuevoTurno();
 		}
 	}
 	
