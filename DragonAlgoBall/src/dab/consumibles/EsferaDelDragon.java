@@ -1,6 +1,6 @@
 package dab.consumibles;
 
-import dab.equipos.Equipo;
+import dab.equipo.Equipo;
 import dab.personajes.Personaje;
 
 public class EsferaDelDragon extends Consumible {

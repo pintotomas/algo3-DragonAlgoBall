@@ -2,9 +2,9 @@ package dab.tests.movimiento;
 
 import org.junit.Test;
 
-import dab.equipos.EnemigosDeLaTierra;
-import dab.equipos.Equipo;
-import dab.equipos.GuerrerosZ;
+import dab.equipo.EnemigosDeLaTierra;
+import dab.equipo.Equipo;
+import dab.equipo.GuerrerosZ;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
 

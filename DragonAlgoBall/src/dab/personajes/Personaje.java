@@ -1,7 +1,7 @@
 package dab.personajes;
 
 import dab.consumibles.Consumible;
-import dab.equipos.Equipo;
+import dab.equipo.Equipo;
 import dab.juego.Celda;
 
 public class Personaje{

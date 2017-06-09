@@ -1,5 +1,5 @@
 package dab.juego;
-import dab.equipos.Equipo;
+import dab.equipo.Equipo;
 import dab.personajes.Personaje;
 
 public class Tablero {
