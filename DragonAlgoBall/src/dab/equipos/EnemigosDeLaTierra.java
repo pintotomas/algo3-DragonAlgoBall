@@ -3,7 +3,7 @@ package dab.equipos;
 import dab.estados.cell.Cell;
 import dab.estados.freezer.Freezer;
 import dab.estados.majinBoo.MajinBoo;
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class EnemigosDeLaTierra extends Equipo {
 		

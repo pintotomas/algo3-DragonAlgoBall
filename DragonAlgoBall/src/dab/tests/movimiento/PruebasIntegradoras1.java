@@ -10,7 +10,7 @@ import dab.equipos.GuerrerosZ;
 import dab.estados.cell.Cell;
 import dab.estados.goku.Goku;
 import dab.juego.Tablero;
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class PruebasIntegradoras1 {
 	

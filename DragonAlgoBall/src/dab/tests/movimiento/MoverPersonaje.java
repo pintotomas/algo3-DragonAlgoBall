@@ -5,7 +5,7 @@ import org.junit.Test;
 import dab.estados.piccolo.Piccolo;
 import dab.juego.Celda;
 import dab.juego.Tablero;
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class MoverPersonaje {
 

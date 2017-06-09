@@ -1,7 +1,7 @@
 package dab.estados.majinBoo;
 import dab.ataquesEspeciales.ConvierteteEnChocolate;
-import dab.estados.Estado;
-import dab.personaje.Personaje;
+import dab.personajes.Estado;
+import dab.personajes.Personaje;
 
 public class MajinBoo extends Estado{
 	

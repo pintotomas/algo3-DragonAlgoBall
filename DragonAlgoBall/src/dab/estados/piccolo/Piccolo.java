@@ -1,7 +1,7 @@
 package dab.estados.piccolo;
 import dab.ataquesEspeciales.Makankosappo ;
-import dab.estados.Estado;
-import dab.personaje.Personaje;
+import dab.personajes.Estado;
+import dab.personajes.Personaje;
 
 public class Piccolo extends Estado {
 

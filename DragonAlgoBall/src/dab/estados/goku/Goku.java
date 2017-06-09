@@ -1,7 +1,7 @@
 package dab.estados.goku;
 import dab.ataquesEspeciales.Kamehameha;
-import dab.estados.Estado;
-import dab.personaje.Personaje;
+import dab.personajes.Estado;
+import dab.personajes.Personaje;
 
 public class Goku extends Estado{
 	

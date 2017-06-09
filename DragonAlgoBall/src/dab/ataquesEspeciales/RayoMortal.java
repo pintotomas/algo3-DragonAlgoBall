@@ -1,6 +1,6 @@
 package dab.ataquesEspeciales;
 
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class RayoMortal extends AtaqueEspecial{
 /*Representa un rayo mortal*/

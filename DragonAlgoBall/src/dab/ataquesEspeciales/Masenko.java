@@ -1,5 +1,5 @@
 package dab.ataquesEspeciales;
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class Masenko extends AtaqueEspecial {
 	

@@ -5,7 +5,7 @@ import dab.dragonBallExceptions.CeldaNoContienePersonaje;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.dragonBallExceptions.NadaSeleccionado;
 import dab.equipos.Equipo;
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class Turno {
 	Equipo equipo;

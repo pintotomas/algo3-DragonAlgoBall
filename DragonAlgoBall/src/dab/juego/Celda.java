@@ -1,14 +1,11 @@
 package dab.juego;
-<<<<<<< HEAD
 import dab.consumibles.Consumible;
+
 import dab.dragonBallExceptions.CeldaNoContieneConsumible;
 import dab.dragonBallExceptions.CeldaNoContienePersonaje;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.personajes.Personaje;
-=======
-import dab.dragonBallExceptions.*;
-import dab.personaje.Personaje;
->>>>>>> branch 'master' of https://github.com/pintotomas/algo3
+
 
 public class Celda {
 	int fila, columna;

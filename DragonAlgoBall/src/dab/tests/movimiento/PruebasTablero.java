@@ -1,13 +1,14 @@
 package dab.tests.movimiento;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import dab.juego.Tablero;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.estados.gohan.Gohan;
 import dab.estados.goku.Goku;
+import dab.juego.Tablero;
 public class PruebasTablero{
 
 	@Test

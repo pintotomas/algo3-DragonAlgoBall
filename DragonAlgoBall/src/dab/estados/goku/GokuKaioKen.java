@@ -1,5 +1,5 @@
 package dab.estados.goku;
-import dab.estados.Estado;
+import dab.personajes.Estado;
 
 public class GokuKaioKen extends Goku{
 	/*Representa a la primer transformacion de Goku*/

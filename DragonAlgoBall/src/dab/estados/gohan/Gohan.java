@@ -1,8 +1,8 @@
 package dab.estados.gohan;
 
 import dab.ataquesEspeciales.Masenko;
-import dab.estados.Estado;
-import dab.personaje.Personaje;
+import dab.personajes.Estado;
+import dab.personajes.Personaje;
 
 public class Gohan extends Estado {
 	

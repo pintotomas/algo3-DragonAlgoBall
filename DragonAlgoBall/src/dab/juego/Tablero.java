@@ -1,6 +1,6 @@
 package dab.juego;
 import dab.equipos.Equipo;
-import dab.personaje.Personaje;
+import dab.personajes.Personaje;
 
 public class Tablero {
 	int altoDeTablero = 20;
@@ -28,7 +28,7 @@ public class Tablero {
 		ubicarPersonajes(equipo1, equipo2);		
 	}
 	
-	public void colocarPersonaje(int fila, int columna, Personaje personaje){
+	public void colocarPersonaje(int fila, int columna,Personaje personaje){
 		Celda celda = tablero[fila][columna];
 		celda.colocarPersonaje(personaje);
 		personaje.setPosicion(celda);
