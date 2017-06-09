@@ -160,6 +160,12 @@ public class Personaje {
 	}
 
 	public void nuevoTurno() {
+		for (Consumible efecto: efectos){
+			efecto.pasoUnTurno();
+			if (!efecto.estaActivo()){
+				efectos.remove(efectos);
+			}
+		}
 		// TODO Auto-generated method stub
 		//aca hacer l
 		
