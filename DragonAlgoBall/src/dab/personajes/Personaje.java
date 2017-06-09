@@ -1,5 +1,6 @@
 package dab.personajes;
 
+import dab.consumibles.Consumible;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
 
@@ -7,6 +8,8 @@ public class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
+	protected Consumible consumibleActivo;// tiene que ser una lista.
+	private int cantidadAtaques = 0;
 	private Estado estado;
 	
 	public Personaje(Estado estado){
@@ -110,8 +113,19 @@ public class Personaje{
 	
 	public void atacarA(Personaje personaje){
 		personaje.recibirAtaque(this.getPoder());
+		cantidadAtaques += 1;
+		if(consumibleActivo != null){
+			
+		}
 	}
 	
+	public void setConsumibleActivo(Consumible consumible){
+		consumibleActivo = consumible;
+	}
+	
+	public int getNumeroAtaque(){
+		return cantidadAtaques;
+	}
 	private void recibirAtaque(int pp) {
 		if(pp < this.getPoder()){
 			pp = (int)(pp * 0.8);		
