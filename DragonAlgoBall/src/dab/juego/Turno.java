@@ -14,9 +14,9 @@ public class Turno {
 	Tablero tablero;
 	boolean movio, ataco, cedioTurno;
 	
-	public Turno(Equipo equipo_,Tablero tablero_){
-		equipo = equipo_;
-		tablero = tablero_;
+	public Turno(Equipo equipo,Tablero tablero){
+		this.equipo = equipo;
+		this.tablero = tablero;
 		otorgarKi();
 		movio = false;
 		ataco = false;

@@ -11,10 +11,9 @@ public abstract class Equipo {
 	 * forma rapida
 	 */
 	
-	
 	Map<String, Personaje> personajes = new HashMap<String, Personaje>();
 	int esferasDelDragon, personajesVivos;
-	
+	int kiPorCadaNuevoTurno = 5;
 	public boolean esGanador(){
 		if (esferasDelDragon >= 7)
 			return true;
@@ -25,6 +24,18 @@ public abstract class Equipo {
 		if(personajesVivos == 0)
 			return true;
 		return false;
+	}
+	
+	public void nuevoTurno(){
+		otorgarKiATodos(kiPorCadaNuevoTurno);
+		
+	}
+
+	private void otorgarKiATodos(int cantidad){
+		Collection<Personaje> personajesEquipo = personajes.values();
+		for (Personaje p: personajesEquipo){
+			p.agregarKi(cantidad);
+		}
 	}
 	
 	public Collection<Personaje> obtenerPersonajes(){
