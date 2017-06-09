@@ -163,7 +163,7 @@ public class Personaje {
 		for (Consumible efecto: efectos){
 			efecto.pasoUnTurno();
 			if (!efecto.estaActivo()){
-				efectos.remove(efectos);
+				efectos.remove(efecto);
 			}
 		}
 		// TODO Auto-generated method stub
