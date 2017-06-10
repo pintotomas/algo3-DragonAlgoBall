@@ -9,7 +9,7 @@ public class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
-	List <Consumible> efectos; 
+	List <Consumible> consumibles; 
 	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
 	private Estado estado;
 
@@ -25,18 +25,19 @@ public class Personaje{
 		return estado.getVida();
 	}
 
-	public int getPoder() {
-		return estado.getPoder();
+	public double getPoder() {
+		
+		double multiplicador = 1;
+		for (Consumible c: consumibles){
+			multiplicador *= c.getMultiplicadorPoderDePelea();
+		}
+		double poderActual = estado.getPoder(); 
+		return poderActual *= multiplicador;
 	}
 
 	public int getAlcance() {
 
-		double multiplicador = 1;
-		for (Consumible efecto: efectos){
-			multiplicador *= efecto.getMultiplicadorAlcance();
-		}
-		int alcanceActual = estado.getAlcance();
-		return alcanceActual *= multiplicador;
+		return estado.getAlcance();
 
 	}
 
@@ -44,10 +45,10 @@ public class Personaje{
 		return estado.getKi();
 	}
 
-	public double getVelocidad() {
-		double multiplicador = 1;
-		for (Consumible efecto: efectos){
-			multiplicador *= efecto.getMultiplicadorVelocidad();
+	public int getVelocidad() {
+		int multiplicador = 1;
+		for (Consumible c: consumibles){
+			multiplicador *= c.getMultiplicadorVelocidad();
 		}
 		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
 		return velocidadActual *= multiplicador; // *=;
@@ -101,7 +102,7 @@ public class Personaje{
 		estado.agregarKi(this.getKi() + cantidad);
 	}
 	
-	public void agregarHp(int cantidad){
+	public void agregarHp(double cantidad){
 		/* Modifica la vida agregando 'cantidad'. 
 		 * PRE: Cantidad es un numero entero.
 		 * POST: La vida es modificada
@@ -127,23 +128,17 @@ public class Personaje{
 	public void atacarA(Personaje personaje){
 		personaje.recibirAtaque(this.getPoder());
 		cantidadAtaques += 1;
-		if(consumibleActivo != null){
-			
-		}
 	}
-	
-	public void setConsumibleActivo(Consumible consumible){
-		consumibleActivo = consumible;
-	}
-	
-	public int getNumeroAtaque(){
+
+	public int getNumeroAtaque(){ //para que se necesita?
 		return cantidadAtaques;
 	}
-	private void recibirAtaque(int pp) {
-		if(pp < this.getPoder()){
-			pp = (int)(pp * 0.8);		
+	
+	private void recibirAtaque(double dano) { 
+		if(dano < this.getPoder()){
+			dano = dano * 0.8;		
 		}
-		this.agregarHp(-pp);	
+		this.agregarHp(-dano);	
 	}
 	
 	public boolean transformarDisponible(){
@@ -162,14 +157,19 @@ public class Personaje{
 	}
 
 	public void nuevoTurno() {
-		for (Consumible efecto: efectos){
-			efecto.pasoUnTurno();
-			if (!efecto.estaActivo()){
-				efectos.remove(efecto);
+		for (Consumible c: consumibles){
+			c.pasoUnTurno();
+			if (!c.estaActivo()){
+				consumibles.remove(c);
 			}
 		}
 		// TODO Auto-generated method stub
 		//aca hacer l
 		
 	}	
+	
+	public void agregarConsumible(Consumible c){
+		consumibles.add(c);
+		this.agregarHp(c.getVidaExtra());
+	}
 }

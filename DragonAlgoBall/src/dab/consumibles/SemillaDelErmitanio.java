@@ -1,17 +1,31 @@
 package dab.consumibles;
 
-import dab.personajes.Personaje;
-
 public class SemillaDelErmitanio extends Consumible {
 	protected int vida_recuperada;
 	public SemillaDelErmitanio(){
 		nombre = "Semilla del Ermitanio";
-		vida_recuperada = 100;
+		vidaExtra = 100;
+		multiplicadorVelocidad = 1;
+		multiplicadorPoderDePelea = 1;
+		duracion = 1;
 	}
 
 	@Override
-	public boolean aplicarConsumible(Personaje personaje) {
-		personaje.agregarHp(vida_recuperada);
-		return false;
+	public double getMultiplicadorVelocidad() {
+		// TODO Auto-generated method stub
+		return multiplicadorVelocidad;
 	}
+
+	@Override
+	public double getMultiplicadorPoderDePelea() {
+		// TODO Auto-generated method stub
+		return multiplicadorPoderDePelea;
+	}
+
+	@Override
+	public double getVidaExtra() {
+		// TODO Auto-generated method stub
+		return vidaExtra;
+	}
+
 }

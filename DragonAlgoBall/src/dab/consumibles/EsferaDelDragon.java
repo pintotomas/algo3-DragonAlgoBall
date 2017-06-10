@@ -1,31 +1,31 @@
 package dab.consumibles;
 
-import dab.equipo.Equipo;
-import dab.personajes.Personaje;
-
 public class EsferaDelDragon extends Consumible {
-	private int numeroDeAtaqueInicial;
-	private int numeroDeAtaqueFinal;
-	private int duracionConsumible = 2;
-	
+
 	public EsferaDelDragon(){
+		
 		nombre = "Esfera del Dragon";
+		multiplicadorPoderDePelea = 1.25;
+		multiplicadorVelocidad = 1;
+		vidaExtra = 0;
+		duracion = 3; //1 mas para que pueda usarlo 2 turnos
+	}
+	
+	@Override
+	public double getMultiplicadorVelocidad() {
+		// TODO Auto-generated method stub
+		return multiplicadorVelocidad;
 	}
 
 	@Override
-	public boolean aplicarConsumible(Personaje personaje) {
-		personaje.setConsumibleActivo(this);
-		Equipo equipo_personaje = personaje.getEquipo();
-		equipo_personaje.agregarEsferaDelDragon();
-		numeroDeAtaqueInicial = personaje.getNumeroAtaque();
-		numeroDeAtaqueFinal = numeroDeAtaqueInicial + duracionConsumible;
-		return false;
+	public double getMultiplicadorPoderDePelea() {
+		// TODO Auto-generated method stub
+		return multiplicadorPoderDePelea;
 	}
-	
-	public boolean estaActivo(Personaje personaje){
-		if(numeroDeAtaqueFinal < personaje.getNumeroAtaque()){
-			return false;
-		}
-		return true;
+
+	@Override
+	public double getVidaExtra() {
+		// TODO Auto-generated method stub
+		return vidaExtra;
 	}
 }
