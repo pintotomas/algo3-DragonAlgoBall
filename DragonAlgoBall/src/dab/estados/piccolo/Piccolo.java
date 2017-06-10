@@ -23,17 +23,7 @@ public class Piccolo extends Estado {
 			kiParaTransformar = 20;
 		}
 		
-		@Override
-		public boolean transformarDisponible() {
-			return this.getKi() >= kiParaTransformar;
-		}
 		
-		@Override
-		public Estado transformar() {
-			this.agregarKi(-kiParaTransformar);
-			PiccoloFortalecido fortalecido = new PiccoloFortalecido();
-			return fortalecido;
-		}
 			@Override
 		public boolean ataqueEspecialDisponible() {
 			return this.getKi() >= kiParaEspecial;

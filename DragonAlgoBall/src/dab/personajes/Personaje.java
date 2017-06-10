@@ -5,7 +5,7 @@ import dab.consumibles.Consumible;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
 
-public class Personaje{
+public abstract class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
@@ -146,9 +146,6 @@ public class Personaje{
 		this.agregarHp(-pp);	
 	}
 	
-	public boolean transformarDisponible(){
-		return estado.transformarDisponible();
-	}
 	
 	public void transformar(){
 		estado = estado.transformar();
@@ -172,4 +169,6 @@ public class Personaje{
 		//aca hacer l
 		
 	}	
+	
+	public abstract boolean transformarDisponible();
 }

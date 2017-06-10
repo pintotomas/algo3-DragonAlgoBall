@@ -50,8 +50,7 @@ public abstract class Estado {
 		}
 	}
 	
-	public abstract Estado transformar();
-	public abstract boolean transformarDisponible();
+
 	public abstract boolean ataqueEspecialDisponible();	
 	public abstract void ataqueEspecial(Personaje enemigo);
 
