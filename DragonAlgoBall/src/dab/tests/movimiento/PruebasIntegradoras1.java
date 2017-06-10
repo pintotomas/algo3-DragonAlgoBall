@@ -4,13 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import dab.dragonBallExceptions.CeldaOcupada;
-import dab.equipos.EnemigosDeLaTierra;
-import dab.equipos.Equipo;
-import dab.equipos.GuerrerosZ;
+import dab.equipo.EnemigosDeLaTierra;
+import dab.equipo.Equipo;
+import dab.equipo.GuerrerosZ;
+import dab.estados.cell.Cell;
+import dab.estados.goku.Goku;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
-import dab.personajes.cell.Cell;
-import dab.personajes.goku.Goku;
 
 public class PruebasIntegradoras1 {
 	

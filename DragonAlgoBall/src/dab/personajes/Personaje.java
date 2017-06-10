@@ -1,20 +1,18 @@
 package dab.personajes;
 
 import java.util.List;
-
 import dab.consumibles.Consumible;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
 
-public class Personaje {
-	
+public class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
-	private Estado estado;
-	protected boolean semillaDelHermitano, nubeVoladora, esferaDelDragon;
 	protected Celda posicion;
 	List <Consumible> efectos; 
-	
+	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
+	private Estado estado;
+
 	public Personaje(Estado estado){
 		this.estado = estado;
 	}
@@ -28,18 +26,18 @@ public class Personaje {
 	}
 
 	public int getPoder() {
-		if(esferaDelDragon)
-			return (int)(estado.getPoder() * 1.25);
 		return estado.getPoder();
 	}
 
 	public int getAlcance() {
+
 		double multiplicador = 1;
 		for (Consumible efecto: efectos){
 			multiplicador *= efecto.getMultiplicadorAlcance();
 		}
 		int alcanceActual = estado.getAlcance();
 		return alcanceActual *= multiplicador;
+
 	}
 
 	public int getKi() {
@@ -78,7 +76,7 @@ public class Personaje {
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
-		if(celda.estaOcupada()) return false; 
+		if(celda.estaOcupadaPorPersonaje()) return false; 
 		
 		int maxFila = posicion.getFila() + this.getVelocidad();
 		int maxColumna = posicion.getColumna() + this.getVelocidad();
@@ -94,7 +92,6 @@ public class Personaje {
 		posicion.quitarPersonaje();
 		posicion = celda;
 	}
-	
 	
 	public void agregarKi(int cantidad){
 		/* Modifica el ki agregando 'cantidad'. 
@@ -114,12 +111,6 @@ public class Personaje {
 	
 	}
 	
-	public void agarroSemillaDelHermitanio(){
-		this.agregarHp(100);
-		if(this.getVida() > this.getVidaMaxima())
-			this.agregarHp(this.getVidaMaxima());	
-	}
-	
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
 		int maxColumna = posicion.getColumna() + this.getAlcance();
@@ -127,7 +118,7 @@ public class Personaje {
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
 		}
-		if(celda.darOcupante().getEquipo() == this.getEquipo()){
+		if(celda.darPersonajeOcupante().getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;
@@ -135,8 +126,19 @@ public class Personaje {
 	
 	public void atacarA(Personaje personaje){
 		personaje.recibirAtaque(this.getPoder());
+		cantidadAtaques += 1;
+		if(consumibleActivo != null){
+			
+		}
 	}
 	
+	public void setConsumibleActivo(Consumible consumible){
+		consumibleActivo = consumible;
+	}
+	
+	public int getNumeroAtaque(){
+		return cantidadAtaques;
+	}
 	private void recibirAtaque(int pp) {
 		if(pp < this.getPoder()){
 			pp = (int)(pp * 0.8);		

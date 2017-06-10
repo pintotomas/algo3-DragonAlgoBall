@@ -2,10 +2,10 @@ package dab.tests.movimiento;
 
 import org.junit.Test;
 
+import dab.estados.piccolo.Piccolo;
 import dab.juego.Celda;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
-import dab.personajes.piccolo.Piccolo;
 
 public class MoverPersonaje {
 
@@ -17,6 +17,6 @@ public class MoverPersonaje {
 		Celda destino = tablero.obtenerCelda(1, 2);
 		assert(piccolo.movimientoPosible(destino));
 		piccolo.mover(destino);
-		assert(destino.darOcupante() == piccolo);
+		assert(destino.darPersonajeOcupante() == piccolo);
 	}	
 }
