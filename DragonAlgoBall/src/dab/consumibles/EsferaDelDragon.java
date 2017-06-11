@@ -9,6 +9,9 @@ public class EsferaDelDragon extends Consumible {
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
 		duracion = 3; //1 mas para que pueda usarlo 2 turnos
+		multiplicadorAlcance = 1;
+		multiplicadorDistanciaAtaque = 1;
+		kiExtra = 0;
 	}
 	
 	@Override
@@ -27,5 +30,23 @@ public class EsferaDelDragon extends Consumible {
 	public double getVidaExtra() {
 		// TODO Auto-generated method stub
 		return vidaExtra;
+	}
+
+	@Override
+	public int getMultiplicadorAlcance() {
+		// TODO Auto-generated method stub
+		return multiplicadorAlcance;
+	}
+
+	@Override
+	public int getMultiplicadorDistanciaAtaque() {
+		// TODO Auto-generated method stub
+		return multiplicadorDistanciaAtaque;
+	}
+
+	@Override
+	public int getKiExtra() {
+		// TODO Auto-generated method stub
+		return kiExtra;
 	}
 }

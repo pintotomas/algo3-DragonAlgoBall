@@ -8,6 +8,9 @@ public class NubeVoladora extends Consumible {
 		multiplicadorVelocidad = 2;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
+		multiplicadorDistanciaAtaque = 1;
+		multiplicadorAlcance = 1;
+		kiExtra = 0;
 	}
 
 	@Override
@@ -26,6 +29,24 @@ public class NubeVoladora extends Consumible {
 	public double getVidaExtra() {
 		// TODO Auto-generated method stub
 		return vidaExtra;
+	}
+
+	@Override
+	public int getMultiplicadorAlcance() {
+		// TODO Auto-generated method stub
+		return multiplicadorAlcance;
+	}
+
+	@Override
+	public int getMultiplicadorDistanciaAtaque() {
+		// TODO Auto-generated method stub
+		return multiplicadorDistanciaAtaque;
+	}
+
+	@Override
+	public int getKiExtra() {
+		// TODO Auto-generated method stub
+		return kiExtra;
 	}
 
 }
