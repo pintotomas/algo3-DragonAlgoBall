@@ -9,13 +9,6 @@ public class PiccoloProtector extends PiccoloFortalecido {
 		ki = 0;
 		velocidad = 4;
 		nombre = "Piccolo Protector";
-		kiParaEspecial = 10;
-		kiParaTransformar = 0;
-	}
-	
-	@Override
-	public boolean transformarDisponible() {
-		return false;
 	}
 
 }

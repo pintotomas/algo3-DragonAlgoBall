@@ -13,8 +13,4 @@ public class FreezerDefinitivo extends FreezerSegundaForma {
 		kiParaTransformar = 50;
 	}
 		
-	@Override
-	public boolean transformarDisponible(){
-		return false;
-	}
 }

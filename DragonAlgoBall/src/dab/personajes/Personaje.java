@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.consumibles.Consumible;
 import dab.equipos.Equipo;
 import dab.juego.Celda;
@@ -14,13 +15,13 @@ public abstract class Personaje{
 	protected Celda posicion;
 	List <Consumible> efectos; 
 	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
+	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
+	protected AtaqueEspecial spec;
 	protected Estado estado;
 	protected List<Class<? extends Estado>> estados = new ArrayList<Class<? extends Estado>>();
 	Iterator<Class<? extends Estado>> iter;
 	
-	public Personaje(Iterator<Class<? extends Estado>> iter_){
-		iter = iter_;		
-	}
+	
 
 	
 	
@@ -54,6 +55,17 @@ public abstract class Personaje{
 			
 		}
 	}
+	
+	public boolean ataqueEspecialDisponible() {
+		return estado.getKi() >= kiParaEspecial;
+	}
+
+	
+	public void ataqueEspecial(Personaje enemigo) {
+		spec.lanzar(this.getPoder(), enemigo);
+		this.agregarKi(-1*(kiParaEspecial));
+	}
+	
 	
 	
 	
@@ -132,8 +144,7 @@ public abstract class Personaje{
 	/*****************
 	 * 
 	 * TRANSFORMAR Y TURNO
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
+	 * 
 	 * 
 	 * 
 	 ***************/
@@ -160,7 +171,7 @@ public abstract class Personaje{
 	}	
 	
 	public boolean transformarDisponible() {
-		return (estado.getKi() >= estado.kiParaTransformar() && iter.hasNext());
+		return (iter.hasNext() && estado.getKi() >= estado.kiParaTransformar());
 	}
 	
 	public void transformar(){
@@ -184,6 +195,10 @@ public abstract class Personaje{
 	 * 
 	 *****************/
 	
+	
+	public void setIter(Iterator<Class<? extends Estado>> iter_){
+		iter = iter_;		
+	}
 	
 	public void setEstado(Estado estado_){
 		estado = estado_;

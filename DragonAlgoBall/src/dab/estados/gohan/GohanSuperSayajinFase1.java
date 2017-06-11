@@ -11,21 +11,4 @@ public class GohanSuperSayajinFase1 extends Gohan{
 		nombre = "Gohan Super Sayajin Fase 2";
 		kiParaTransformar = 30;
 	}
-	
-	
-	@Override
-	public boolean transformarDisponible(){
-		boolean kiSuficiente,vidaDeLosAmigos = false;  //falta funcion para checkear la vida de los amigos
-		kiSuficiente = ki >= kiParaTransformar;
-		return kiSuficiente && vidaDeLosAmigos;			
-	}
-	
-	
-	
-	@Override
-	public GohanSuperSayajinFase2 transformar() {
-		this.agregarKi(-kiParaTransformar);
-		GohanSuperSayajinFase2 gohanSuperSai2 = new GohanSuperSayajinFase2();
-		return gohanSuperSai2;
-	}
 }

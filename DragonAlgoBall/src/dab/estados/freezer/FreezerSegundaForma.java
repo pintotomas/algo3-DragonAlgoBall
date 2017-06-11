@@ -12,21 +12,6 @@ public class FreezerSegundaForma extends Freezer{
 		ki = 0;
 		velocidad = 4;
 		nombre = "Freezer Segunda Forma";
-		kiParaTransformar = 50;
-	}
-	
-	
-	@Override
-	public FreezerDefinitivo transformar() {
-		this.agregarKi(-kiParaTransformar);
-		FreezerDefinitivo definitivo = new FreezerDefinitivo();
-		return definitivo;
-	}
-
-
-	
-	@Override
-	public boolean transformarDisponible(){
-		return (this.getKi() >= 50);
+		kiParaTransformar = 0;
 	}
 }

@@ -8,9 +8,6 @@ public class CellPerfecto extends CellSemiPerfecto {
 		ki = 0;
 		velocidad = 4;
 		nombre = "Cell Perfecto";
-		kiParaEspecial = 5;
-		absorbidosParaTransformar = 0;
-		absorbidos = 0;
 	}
 }
 

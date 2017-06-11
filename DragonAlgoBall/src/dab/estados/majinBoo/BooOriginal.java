@@ -9,14 +9,10 @@ public class BooOriginal extends BooMalo {
 		velocidad = 4;
 		nombre = "Boo Original";
 		kiParaEspecial = 30;
-		kiParaTransformar = 0;
 	}
 
 
-	@Override
-	public boolean transformarDisponible() {
-		return false;
-	}
+
 
 
 }

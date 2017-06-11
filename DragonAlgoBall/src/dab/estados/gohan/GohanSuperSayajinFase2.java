@@ -9,13 +9,5 @@ public class GohanSuperSayajinFase2 extends GohanSuperSayajinFase1 {
 	ki = 0;
 	velocidad = 3;
 	nombre = "Gohan super sayajin fase 2";
-}
-
-	
-	@Override
-	public boolean transformarDisponible(){
-		return false;
 	}
-
-
 }

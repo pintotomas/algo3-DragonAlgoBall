@@ -1,5 +1,4 @@
 package dab.estados.goku;
-import dab.personajes.Estado;
 
 public class GokuKaioKen extends Goku{
 	/*Representa a la primer transformacion de Goku*/
@@ -12,13 +11,5 @@ public class GokuKaioKen extends Goku{
 		velocidad = 3;
 		nombre = "Goku Kaio-Ken";
 		kiParaTransformar = 50;
-	}
-	
-	@Override
-	public Estado transformar() {
-		// TODO Auto-generated method stub
-		this.agregarKi(-kiParaTransformar);
-		Estado gokuSsj = new GokuSuperSayajin();
-		return gokuSsj;
 	}
 }

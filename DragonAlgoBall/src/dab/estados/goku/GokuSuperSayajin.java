@@ -11,10 +11,7 @@ public class GokuSuperSayajin extends GokuKaioKen{
 		ki = 0;
 		velocidad = 5;
 		nombre = "Goku Super Sayajin";
-	}
-	@Override
-	public boolean transformarDisponible() {
-		return false;
+		kiParaTransformar = 0;
 	}
 
 }

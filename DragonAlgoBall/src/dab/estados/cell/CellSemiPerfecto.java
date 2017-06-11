@@ -9,10 +9,7 @@ public class CellSemiPerfecto extends Cell {
 		alcance = 4;
 		ki = 0;
 		velocidad = 3;
-		nombre = "Cell semi perfecto";
-		kiParaEspecial = 5;
-		absorbidosParaTransformar = 8;
-		absorbidos = 0;
+		nombre = "Cell semi perfecto";;
 		
 	}
 

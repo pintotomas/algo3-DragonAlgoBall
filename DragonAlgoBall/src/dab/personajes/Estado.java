@@ -49,10 +49,7 @@ public abstract class Estado {
 			vida += aumento;
 		}
 	}
-	
 
-	public abstract boolean ataqueEspecialDisponible();	
-	public abstract void ataqueEspecial(Personaje enemigo);
 
 	public int kiParaTransformar() {
 		return kiParaTransformar;

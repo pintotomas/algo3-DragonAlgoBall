@@ -10,15 +10,9 @@ public class BooMalo extends MajinBoo {
 		ki = 0;
 		velocidad = 3;
 		nombre = "Boo Malo";
-		kiParaEspecial = 30;
 		kiParaTransformar = 50;
 	}
 	
-	
-	@Override
-	public BooOriginal transformar() {
-		BooOriginal booOriginal = new BooOriginal();
-		return booOriginal;
-	}
+
 
 }
