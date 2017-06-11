@@ -8,10 +8,10 @@ import dab.estados.goku.GokuSuperSayajin;
 import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class PersonajeGouku extends Personaje{
+public class PersonajeGoku extends Personaje{
 	
 
-	public PersonajeGouku(){ 
+	public PersonajeGoku(){ 
 		spec = new Kamehameha(this);
 		kiParaEspecial = 20;
 		estados.add(Goku.class);
