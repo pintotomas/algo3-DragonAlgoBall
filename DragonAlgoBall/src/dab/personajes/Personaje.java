@@ -59,7 +59,7 @@ public abstract class Personaje{
 
 	
 	public void ataqueEspecial(Personaje enemigo) {
-		spec.lanzar(this.getPoder(), enemigo);
+		spec.lanzar(enemigo);
 		this.agregarKi(-1*(kiParaEspecial));
 	}
 	

@@ -11,7 +11,7 @@ import dab.personajes.Personaje;
 public class PersonajeFreezer extends Personaje{
 	
 	public PersonajeFreezer(){
-		spec = new RayoMortal();
+		spec = new RayoMortal(this);
 		kiParaEspecial = 20;
 		estados.add(Freezer.class);
 		estados.add(FreezerSegundaForma.class);

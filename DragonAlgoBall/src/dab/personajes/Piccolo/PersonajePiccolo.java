@@ -11,7 +11,7 @@ import dab.personajes.Personaje;
 public class PersonajePiccolo extends Personaje{
 	
 	public PersonajePiccolo(){ 
-		spec = new Makankosappo ();
+		spec = new Makankosappo (this);
 		kiParaEspecial = 10;
 		estados.add(Piccolo.class);
 		estados.add(PiccoloFortalecido.class);

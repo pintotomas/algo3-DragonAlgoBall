@@ -11,7 +11,7 @@ import dab.personajes.Personaje;
 public class PersonajeGohan extends Personaje{
 	
 	public PersonajeGohan(){ 
-		spec = new Masenko();
+		spec = new Masenko(this);
 		kiParaEspecial = 10;
 		estados.add(Gohan.class);
 		estados.add(GohanSuperSayajinFase1.class);

@@ -12,7 +12,7 @@ public class PersonajeGouku extends Personaje{
 	
 
 	public PersonajeGouku(){ 
-		spec = new Kamehameha();
+		spec = new Kamehameha(this);
 		kiParaEspecial = 20;
 		estados.add(Goku.class);
 		estados.add(GokuKaioKen.class);

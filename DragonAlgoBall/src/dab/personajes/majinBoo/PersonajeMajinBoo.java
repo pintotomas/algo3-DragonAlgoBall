@@ -11,7 +11,7 @@ import dab.personajes.Personaje;
 public class PersonajeMajinBoo extends Personaje{
 	
 	public PersonajeMajinBoo(){ 
-		spec = new ConvierteteEnChocolate();
+		spec = new ConvierteteEnChocolate(this);
 		kiParaEspecial = 30;
 		estados.add(MajinBoo.class);
 		estados.add(BooMalo.class);
