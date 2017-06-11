@@ -13,10 +13,9 @@ public class PersonajeCell extends Personaje{
 	protected int absorbidosParaTransformarCellSemiPerfecto;
 	protected int absorbidosParaTransformarCellPerfecto;
 	protected int absorbidos;
-	protected Absorber spec = new Absorber();
-	
+
 	public PersonajeCell(){
-		spec = new Absorber();
+		spec = new Absorber(this);
 		kiParaEspecial = 5;
 		kiParaEspecial = 20;
 		estados.add(Cell.class);
