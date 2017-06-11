@@ -25,22 +25,27 @@ public class PersonajeGohan extends Personaje{
 	public boolean transformarDisponible() {
 		if(super.transformarDisponible()){
 			if(estado.getClass() == GohanSuperSayajinFase1.class){
-				for(Personaje amigo : this.getEquipo().obtenerPersonajes()){
-					if(amigo != this){
-						if((amigo.getVida() / amigo.getVidaMaxima()) > 0.25){		
-							//si alguno no esta bajo de vida
-							return false;						
-						}
-					}	
-				}
+				return this.segundaTransformacionDisponible();
 			}
-			//si todos estan bajos de vida, o no era nescesario para transormarse.
 			return true;
 		}
 		//si no se cumple los requisitos generales para transformar.
 		return false;
 	}
 
+	private boolean segundaTransformacionDisponible(){
+		for(Personaje amigo : this.getEquipo().obtenerPersonajes()){
+			if(amigo != this){
+				if((amigo.getVida() / amigo.getVidaMaxima()) > 0.25){		
+					//si alguno no esta bajo de vida
+					return false;						
+				}
+			}	
+		}
+		//si todos estan bajos de vida
+		return true;
+
+	}
 
 
 
