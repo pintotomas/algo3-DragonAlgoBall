@@ -9,7 +9,7 @@ public abstract class Estado {
 	protected int velocidad;
 	protected String nombre;
 	protected int kiParaEspecial;
-	
+	protected int kiParaTransformar;
 	public int getVidaMaxima() {
 		return vidaMaxima;
 	}
@@ -53,5 +53,9 @@ public abstract class Estado {
 
 	public abstract boolean ataqueEspecialDisponible();	
 	public abstract void ataqueEspecial(Personaje enemigo);
+
+	public int kiParaTransformar() {
+		return kiParaTransformar;
+	}
 
 }

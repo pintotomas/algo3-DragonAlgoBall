@@ -12,9 +12,5 @@ public class CellPerfecto extends CellSemiPerfecto {
 		absorbidosParaTransformar = 0;
 		absorbidos = 0;
 	}
-	@Override
-	public boolean transformarDisponible() {
-		return false;
-	}
 }
 

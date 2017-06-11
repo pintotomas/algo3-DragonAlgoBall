@@ -7,10 +7,6 @@ public class Cell extends Estado{
 	
 	/*Representa al personaje Cell*/
 	
-	protected int absorbidosParaTransformar;
-	protected int absorbidos;
-	protected Absorber spec = new Absorber();
-	
 	public Cell(){ 
 		vidaMaxima = 500;
 		vida = vidaMaxima;
@@ -20,19 +16,6 @@ public class Cell extends Estado{
 		velocidad = 2;
 		nombre = "Cell";
 		kiParaEspecial = 5;
-		absorbidosParaTransformar = 4;
-		absorbidos = 0;
-	}
-	
-	@Override
-	public boolean transformarDisponible() {
-		return absorbidos >= absorbidosParaTransformar;
-	}
-	
-	@Override
-	public Estado transformar() {
-		CellSemiPerfecto cellSemiPerfecto = new CellSemiPerfecto();
-		return cellSemiPerfecto;
 	}
 
 	@Override
@@ -44,7 +27,6 @@ public class Cell extends Estado{
 	public void ataqueEspecial(Personaje enemigo) {
 		spec.lanzar(this.getPoder(), enemigo);
 		this.absorbidos += 1;     //si el ataque funciona absorbio a uno. puede fallar si lanzar puede tirar error.
-		
 	}
 
 

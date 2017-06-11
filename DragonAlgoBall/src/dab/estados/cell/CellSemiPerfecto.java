@@ -17,10 +17,4 @@ public class CellSemiPerfecto extends Cell {
 	}
 
 
-	@Override
-	public CellPerfecto transformar() {
-		CellPerfecto cellPerfecto = new CellPerfecto();
-		return cellPerfecto;
-	}
-
 }
