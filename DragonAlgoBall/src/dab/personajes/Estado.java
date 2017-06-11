@@ -42,11 +42,11 @@ public abstract class Estado {
 		ki = ki + aumento;
 	}
 
-	public void agregarVida(int aumento) {
-		if(vida + aumento > this.getVidaMaxima()){
+	public void agregarVida(double cantidad) {
+		if(vida + cantidad > this.getVidaMaxima()){
 			vida = this.getVidaMaxima();
 		}else{
-			vida += aumento;
+			vida += cantidad;
 		}
 	}
 

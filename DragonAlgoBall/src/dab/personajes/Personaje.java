@@ -13,7 +13,7 @@ public abstract class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
-	List <Consumible> efectos; 
+	List <Consumible> consumibles; 
 	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
@@ -23,9 +23,8 @@ public abstract class Personaje{
 	
 	
 
-	
-	
-	
+
+
 	/***************
 	 * 
 	 *  ATAQUE
@@ -35,6 +34,8 @@ public abstract class Personaje{
 	
 	
 	
+	
+
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
 		int maxColumna = posicion.getColumna() + this.getAlcance();
@@ -51,11 +52,7 @@ public abstract class Personaje{
 	public void atacarA(Personaje personaje){
 		personaje.recibirAtaque(this.getPoder());
 		cantidadAtaques += 1;
-		if(consumibleActivo != null){
-			
-		}
 	}
-	
 	public boolean ataqueEspecialDisponible() {
 		return estado.getKi() >= kiParaEspecial;
 	}
@@ -93,8 +90,9 @@ public abstract class Personaje{
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
 		}
-		return true;	
+		return true;
 	}
+	
 	
 	public void mover(Celda celda) {
 		celda.colocarPersonaje(this); //si tira error que lo mande para arriba.
@@ -127,7 +125,8 @@ public abstract class Personaje{
 		estado.agregarKi(this.getKi() + cantidad);
 	}
 	
-	public void agregarHp(int cantidad){
+	
+	public void agregarHp(double cantidad){
 		/* Modifica la vida agregando 'cantidad'. 
 		 * PRE: Cantidad es un numero entero.
 		 * POST: La vida es modificada
@@ -136,7 +135,6 @@ public abstract class Personaje{
 		//faltaria agregar que pasa si se muere.
 	
 	}
-	
 	
 	
 	
@@ -159,10 +157,10 @@ public abstract class Personaje{
 	}
 
 	public void nuevoTurno() {
-		for (Consumible efecto: efectos){
-			efecto.pasoUnTurno();
-			if (!efecto.estaActivo()){
-				efectos.remove(efecto);
+		for (Consumible c: consumibles){
+			c.pasoUnTurno();
+			if (!c.estaActivo()){
+				consumibles.remove(c);
 			}
 		}
 		// TODO Auto-generated method stub
@@ -170,6 +168,7 @@ public abstract class Personaje{
 		
 	}	
 	
+
 	public boolean transformarDisponible() {
 		return (iter.hasNext() && estado.getKi() >= estado.kiParaTransformar());
 	}
@@ -213,19 +212,20 @@ public abstract class Personaje{
 		return estado.getVida();
 	}
 
-	public int getPoder() {
-		return estado.getPoder();
+	public double getPoder() {
+		
+		double multiplicador = 1;
+		for (Consumible c: consumibles){
+			multiplicador *= c.getMultiplicadorPoderDePelea();
+		}
+		double poderActual = estado.getPoder(); 
+		return poderActual *= multiplicador;
 	}
 
 	public int getAlcance() {
-
-		double multiplicador = 1;
-		for (Consumible efecto: efectos){
-			multiplicador *= efecto.getMultiplicadorAlcance();
-		}
-		int alcanceActual = estado.getAlcance();
-		return alcanceActual *= multiplicador;
-
+		
+		return estado.getAlcance();
+		
 	}
 
 	public int getKi() {
@@ -233,12 +233,12 @@ public abstract class Personaje{
 	}
 
 	public int getVelocidad() {
-		double multiplicador = 1;
-		for (Consumible efecto: efectos){
-			multiplicador *= efecto.getMultiplicadorVelocidad();
+		int multiplicador = 1;
+		for (Consumible c: consumibles){
+			multiplicador *= c.getMultiplicadorVelocidad();
 		}
-		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?  no porque no tenemos fracciones de celda para mover. 
-		return (int)(velocidadActual *= multiplicador); // *=;
+		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
+		return velocidadActual *= multiplicador; // *=;
 	}
 
 	public String getNombre() {
@@ -261,30 +261,18 @@ public abstract class Personaje{
 		equipo = equipo_;
 	}
 	
-	public void setConsumibleActivo(Consumible consumible){
-		consumibleActivo = consumible;
-	}
-	
 	public int getNumeroAtaque(){
 		return cantidadAtaques;
 	}
-	private void recibirAtaque(int pp) {
-		if(pp < this.getPoder()){
-			pp = (int)(pp * 0.8);		
+	private void recibirAtaque(double poderEnemigo) {
+		if(poderEnemigo < this.getPoder()){
+			poderEnemigo = (int)(poderEnemigo * 0.8);		
 		}
-		this.agregarHp(-pp);	
+		this.agregarHp(-poderEnemigo);	
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void agregarConsumible(Consumible c){
+		consumibles.add(c);
+		this.agregarHp(c.getVidaExtra());
+	}
 }
