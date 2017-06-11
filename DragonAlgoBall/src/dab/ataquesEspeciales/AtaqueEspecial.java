@@ -1,7 +1,15 @@
 package dab.ataquesEspeciales;
 import dab.personajes.Personaje;
 
-public abstract class AtaqueEspecial {
+public class AtaqueEspecial {
 	
-	public abstract void lanzar(double poder, Personaje enemigo);
+	protected double multiplicador = 1; 
+	protected Personaje lanzador; //crear una interfaz que solo me permita acceder a .getPoder() del personaje?
+	
+	public AtaqueEspecial(Personaje lanzador){
+		this.lanzador = lanzador;
+	}
+	public  void lanzar(Personaje enemigo){ //interfaz atacable
+		enemigo.agregarHp(-multiplicador*lanzador.getPoder());
+	}
 }
