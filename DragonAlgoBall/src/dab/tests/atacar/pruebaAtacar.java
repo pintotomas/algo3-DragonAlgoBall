@@ -41,7 +41,7 @@ public class pruebaAtacar{
 		cell = new Cell();
 		boo = new MajinBoo();
 		freezer = new Freezer();
-		
+		enemigosDeLaTierra = new Equipo("Enemigos de la Tierra");
 		enemigosDeLaTierra.agregarPersonaje(cell);
 		enemigosDeLaTierra.agregarPersonaje(boo);
 		enemigosDeLaTierra.agregarPersonaje(freezer);
@@ -75,11 +75,11 @@ public class pruebaAtacar{
 	
 	@Test
 	public void atacarADistancia(){
-		@SuppressWarnings("unused")
 		Tablero tablero = new Tablero();
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
-		
+		tablero.colocarPersonaje(5, 6, piccolo);
+		tablero.colocarPersonaje(10, 8, majinboo);
 		assert(!piccolo.puedeAtacar(majinboo));
 		
 		
