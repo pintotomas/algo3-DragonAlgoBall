@@ -208,7 +208,12 @@ public abstract class Personaje{
 
 	public int getAlcance() {
 		
-		return estado.getAlcance();
+		double multiplicador = 1;
+		for (Potenciador c: consumibles){
+			multiplicador *= c.getMultiplicadorAlcance();
+		}
+		int alcanceActual = estado.getAlcance();
+		return (int) (alcanceActual*multiplicador);
 		
 	}
 
