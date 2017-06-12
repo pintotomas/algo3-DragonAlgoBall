@@ -11,7 +11,7 @@ public class Furia extends Potenciador {
 	public Furia(Personaje portador){
 		
 		nombre = "Furia";
-		multiplicadorPoderDePelea = 1.3;
+		multiplicadorPoderDePelea = 1.2;
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
 		duracion = Double.POSITIVE_INFINITY;
@@ -22,7 +22,7 @@ public class Furia extends Potenciador {
 	}
 
 	private boolean vidaSuficienteParaAplicarEfectos(){
-		return ((portador.getVida() / portador.getVidaMaxima()) == vidaNecesaria);
+		return ((portador.getVida() / portador.getVidaMaxima()) <= vidaNecesaria);
 	}
 	
 	@Override
