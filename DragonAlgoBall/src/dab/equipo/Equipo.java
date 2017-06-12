@@ -29,6 +29,7 @@ public class Equipo {
 	
 	public void agregarPersonaje(Personaje personaje){
 		this.integrantes.put(personaje.getNombre(), personaje);
+		personaje.setEquipo(this);
 	}
 	
 	public void quitarPersonaje(Personaje personaje){
