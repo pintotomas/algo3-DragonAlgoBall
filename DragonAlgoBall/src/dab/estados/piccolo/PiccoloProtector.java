@@ -1,6 +1,8 @@
 package dab.estados.piccolo;
 
-public class PiccoloProtector extends PiccoloFortalecido {
+import dab.personajes.Estado;
+
+public class PiccoloProtector extends Estado {
 	
 	public PiccoloProtector(){
 		vidaMaxima = 500;

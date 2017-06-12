@@ -12,7 +12,7 @@ public abstract class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
-	protected List <Potenciador> consumibles = new LinkedList<Potenciador>(); 
+	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
 	protected Estado estado;
@@ -99,11 +99,11 @@ public abstract class Personaje{
 	
 
 	public void nuevoTurno() {
-		for (Potenciador c: consumibles){
+		for (Potenciador c: potenciadores){
 			c.pasoUnTurno();
 			this.agregarKi(c.getKiExtra());
 			if (!c.estaActivo()){
-				consumibles.remove(c);
+				potenciadores.remove(c);
 			}
 		}
 		// TODO Auto-generated method stub
@@ -145,7 +145,7 @@ public abstract class Personaje{
 	public double getPoder() {
 		
 		double multiplicador = 1;
-		for (Potenciador c: consumibles){
+		for (Potenciador c: potenciadores){
 			multiplicador *= c.getMultiplicadorPoderDePelea();
 		}
 		double poderActual = estado.getPoder(); 
@@ -155,7 +155,7 @@ public abstract class Personaje{
 	public int getAlcance() {
 		
 		double multiplicador = 1;
-		for (Potenciador c: consumibles){
+		for (Potenciador c: potenciadores){
 			multiplicador *= c.getMultiplicadorAlcance();
 		}
 		int alcanceActual = estado.getAlcance();
@@ -176,7 +176,7 @@ public abstract class Personaje{
 
 	public int getVelocidad() {
 		int multiplicador = 1;
-		for (Potenciador c: consumibles){
+		for (Potenciador c: potenciadores){
 			multiplicador *= c.getMultiplicadorVelocidad();
 		}
 		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
@@ -211,7 +211,7 @@ public abstract class Personaje{
 	}
 	
 	public void agregarPotenciador(Potenciador c){
-		consumibles.add(c);
+		potenciadores.add(c);
 		this.agregarVida(c.getVidaExtra());
 	}
 }

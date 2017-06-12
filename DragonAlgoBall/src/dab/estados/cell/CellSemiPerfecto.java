@@ -1,7 +1,8 @@
 package dab.estados.cell;
 
+import dab.personajes.Estado;
 
-public class CellSemiPerfecto extends CellBase {
+public class CellSemiPerfecto extends Estado {
 
 	public CellSemiPerfecto() {
 		

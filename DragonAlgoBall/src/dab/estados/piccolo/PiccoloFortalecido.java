@@ -1,7 +1,8 @@
 package dab.estados.piccolo;
 
+import dab.personajes.Estado;
 
-public class PiccoloFortalecido extends PiccoloBase {
+public class PiccoloFortalecido extends Estado {
 	public PiccoloFortalecido(){
 		vidaMaxima = 500;
 		poder = 40;

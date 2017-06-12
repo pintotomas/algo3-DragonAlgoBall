@@ -1,7 +1,8 @@
 package dab.estados.freezer;
 
+import dab.personajes.Estado;
 
-public class FreezerSegundaForma extends FreezerBase{
+public class FreezerSegundaForma extends Estado{
 	//segunda transformacion de freezer
 	
 	

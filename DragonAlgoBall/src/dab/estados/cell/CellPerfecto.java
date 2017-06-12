@@ -1,6 +1,8 @@
 package dab.estados.cell;
 
-public class CellPerfecto extends CellSemiPerfecto {
+import dab.personajes.Estado;
+
+public class CellPerfecto extends Estado {
 	
 	public CellPerfecto(){
 		vidaMaxima = 500;

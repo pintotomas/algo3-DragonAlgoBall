@@ -1,6 +1,8 @@
 package dab.estados.freezer;
 
-public class FreezerDefinitivo extends FreezerSegundaForma {
+import dab.personajes.Estado;
+
+public class FreezerDefinitivo extends Estado {
 	//ultima transformacion de freezer
 	
 	public FreezerDefinitivo(){

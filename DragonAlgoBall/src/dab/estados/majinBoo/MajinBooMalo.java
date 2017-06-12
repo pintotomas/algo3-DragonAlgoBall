@@ -1,6 +1,8 @@
 package dab.estados.majinBoo;
 
-public class MajinBooMalo extends MajinBooBase {
+import dab.personajes.Estado;
+
+public class MajinBooMalo extends Estado {
 
 	public MajinBooMalo(){
 		vidaMaxima = 300;

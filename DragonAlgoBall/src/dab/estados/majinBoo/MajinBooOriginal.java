@@ -1,6 +1,8 @@
 package dab.estados.majinBoo;
 
-public class MajinBooOriginal extends MajinBooMalo {
+import dab.personajes.Estado;
+
+public class MajinBooOriginal extends Estado {
 	public MajinBooOriginal(){
 		vidaMaxima = 300;
 		poder = 60;

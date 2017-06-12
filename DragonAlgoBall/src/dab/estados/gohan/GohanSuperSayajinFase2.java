@@ -1,6 +1,8 @@
 package dab.estados.gohan;
 
-public class GohanSuperSayajinFase2 extends GohanSuperSayajinFase1 {
+import dab.personajes.Estado;
+
+public class GohanSuperSayajinFase2 extends Estado {
 	/*tercera transformacion de gohan*/
 	public GohanSuperSayajinFase2(){
 		
