@@ -13,6 +13,7 @@ public class MajinBoo extends Personaje{
 	public MajinBoo(){ 
 		spec = new ConvierteteEnChocolate(this);
 		kiParaEspecial = 30;
+		estado = new MajinBooBase();
 		estados.add(MajinBooBase.class);
 		estados.add(BooMalo.class);
 		estados.add(BooOriginal.class);

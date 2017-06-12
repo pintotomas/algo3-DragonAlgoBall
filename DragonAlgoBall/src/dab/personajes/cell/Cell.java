@@ -18,6 +18,7 @@ public class Cell extends Personaje{
 		spec = new Absorber(this);
 		kiParaEspecial = 5;
 		kiParaEspecial = 20;
+		estado = new CellBase();
 		estados.add(CellBase.class);
 		estados.add(CellSemiPerfecto.class);
 		estados.add(CellPerfecto.class);

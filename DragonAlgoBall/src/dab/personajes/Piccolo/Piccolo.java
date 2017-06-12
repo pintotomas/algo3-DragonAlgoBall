@@ -13,6 +13,7 @@ public class Piccolo extends Personaje{
 	public Piccolo(){ 
 		spec = new Makankosappo (this);
 		kiParaEspecial = 10;
+		estado = new PiccoloBase();
 		estados.add(PiccoloBase.class);
 		estados.add(PiccoloFortalecido.class);
 		estados.add(PiccoloProtector.class);

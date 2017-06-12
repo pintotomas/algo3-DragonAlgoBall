@@ -13,6 +13,7 @@ public class Gohan extends Personaje{
 	public Gohan(){ 
 		spec = new Masenko(this);
 		kiParaEspecial = 10;
+		estado = new GohanBase();
 		estados.add(GohanBase.class);
 		estados.add(GohanSuperSayajinFase1.class);
 		estados.add(GohanSuperSayajinFase2.class);

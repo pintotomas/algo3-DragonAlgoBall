@@ -13,6 +13,7 @@ public class Freezer extends Personaje{
 	public Freezer(){
 		spec = new RayoMortal(this);
 		kiParaEspecial = 20;
+		estado = new FreezerBase();
 		estados.add(FreezerBase.class);
 		estados.add(FreezerSegundaForma.class);
 		estados.add(FreezerDefinitivo.class);
