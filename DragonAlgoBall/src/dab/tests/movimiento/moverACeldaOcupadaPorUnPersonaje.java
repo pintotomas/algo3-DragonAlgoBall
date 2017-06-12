@@ -3,19 +3,19 @@ package dab.tests.movimiento;
 import org.junit.Test;
 
 import dab.dragonBallExceptions.CeldaOcupada;
-import dab.estados.cell.CellBase;
-import dab.estados.goku.GokuBase;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
+import dab.personajes.Goku.Goku;
+import dab.personajes.cell.Cell;
 public class moverACeldaOcupadaPorUnPersonaje {
 
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero();
-		Personaje goku = new Personaje(new GokuBase());
+		Personaje goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		Personaje cell = new Personaje(new CellBase());
+		Personaje cell = new Cell();
 		int filaCell = 2;
 		int columnaCell = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
