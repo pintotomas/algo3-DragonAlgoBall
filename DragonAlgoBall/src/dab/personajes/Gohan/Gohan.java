@@ -14,10 +14,10 @@ public class Gohan extends Personaje{
 		spec = new Masenko(this);
 		kiParaEspecial = 10;
 		estado = new GohanBase();
-		estados.add(GohanBase.class);
-		estados.add(GohanSuperSayajinFase1.class);
-		estados.add(GohanSuperSayajinFase2.class);
-		Iterator<Class<? extends Estado>> iter = estados.iterator();
+		estados.add(new GohanBase());
+		estados.add(new GohanSuperSayajinFase1());
+		estados.add(new GohanSuperSayajinFase2());
+		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
 	}
 	

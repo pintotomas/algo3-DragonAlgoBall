@@ -14,10 +14,10 @@ public class MajinBoo extends Personaje{
 		spec = new ConvierteteEnChocolate(this);
 		kiParaEspecial = 30;
 		estado = new MajinBooBase();
-		estados.add(MajinBooBase.class);
-		estados.add(BooMalo.class);
-		estados.add(BooOriginal.class);
-		Iterator<Class<? extends Estado>> iter = estados.iterator();
+		estados.add(new MajinBooBase());
+		estados.add(new BooMalo());
+		estados.add(new BooOriginal());
+		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
 		
 	}
