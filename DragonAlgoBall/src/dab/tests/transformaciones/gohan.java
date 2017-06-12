@@ -1,16 +1,14 @@
 package dab.tests.transformaciones;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import dab.equipo.Equipo;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
 
-public class gohan {
+public class TransformacionesGohan {
 	private Gohan gohan;
 	private Goku goku;
 	private Piccolo piccolo;
@@ -29,12 +27,12 @@ public class gohan {
 	}
 	
 	@Test
-	public void primerTransformacionNoDisponible() {
+	public void primerTransformacionNoDisponibleSinKi() {
 		assertFalse(gohan.transformarDisponible());
 	}
 	
 	@Test
-	public void primerTransformacionDisponible() {
+	public void primerTransformacionDisponibleConKi() {
 		gohan.agregarKi(10);
 		assertTrue(gohan.transformarDisponible());
 	}
@@ -48,16 +46,18 @@ public class gohan {
 	public void segundaTransformacionNoDisponibleCompanerosDanados(){
 		gohan.agregarKi(10);
 		gohan.transformar();
-		goku.agregarHp(-goku.getVida()*0.7);
-		piccolo.agregarHp(-piccolo.getVida()*0.7);
+		goku.agregarHp(-goku.getVida()*0.5);
+		piccolo.agregarHp(-piccolo.getVida()*0.5);
+		gohan.agregarKi(10);
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
-	public void segundaTransformacionDisponible(){
+	public void segundaTransformacionDisponibleKiYCondiciones(){
 		gohan.agregarKi(10);
 		gohan.transformar();
 		goku.agregarHp(-goku.getVida()*0.8);
 		piccolo.agregarHp(-piccolo.getVida()*0.8);
+		gohan.agregarKi(10);
 		assertTrue(gohan.transformarDisponible());
 	}
 }
