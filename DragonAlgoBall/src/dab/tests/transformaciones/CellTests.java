@@ -36,10 +36,8 @@ public class CellTests {
 	@Test
 	public void testAbsorberVida() {
 		cell.agregarVida(-20);
-		cell.agregarVida(-20);
 		cell.agregarKi(5);
 		cell.ataqueEspecial(goku);
-		Assert.assertEquals(cell.getVidaMaxima(), cell.getVida(), 0);
 		Assert.assertEquals(cell.getVidaMaxima(), cell.getVida(), 0);
 		Assert.assertEquals(480, goku.getVida(),0);
 	}
