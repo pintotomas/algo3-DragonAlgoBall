@@ -1,23 +1,54 @@
 package dab.tests.movimiento;
 
 import org.junit.Assert;
+
 import org.junit.Test;
 
 import dab.dragonBallExceptions.CeldaOcupada;
-import dab.equipo.EnemigosDeLaTierra;
 import dab.equipo.Equipo;
-import dab.equipo.GuerrerosZ;
-import dab.estados.cell.Cell;
-import dab.estados.goku.Goku;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
-
+import dab.personajes.Goku.Goku;
+import dab.personajes.Piccolo.Piccolo;
+import dab.personajes.Gohan.Gohan;
+import dab.personajes.cell.Cell;
+import dab.personajes.majinBoo.MajinBoo;
+import dab.personajes.Freezer.Freezer;
 public class PruebasIntegradoras1 {
+
+	Goku goku;
+	Piccolo piccolo;
+	Gohan gohan;
+	Cell cell;
+	MajinBoo majinboo;
+	Freezer freezer;
+	Equipo equipo1;
+	Equipo equipo2;
+	
+	protected void setUp() throws Exception {
+		goku = new Goku();
+		gohan = new Gohan();
+		piccolo = new Piccolo();
+		equipo1 = new Equipo("Guerreros Z");
+		equipo1.agregarPersonaje(goku);
+		equipo1.agregarPersonaje(gohan);
+		equipo1.agregarPersonaje(piccolo);
+		
+		cell = new Cell();
+		majinboo = new MajinBoo();
+		freezer = new Freezer();
+		equipo2 = new Equipo("Enemigos De La Tierra");
+		equipo2.agregarPersonaje(cell);
+		equipo2.agregarPersonaje(freezer);
+		equipo2.agregarPersonaje(majinboo);
+		
+	}
+
 	
 	@Test 
 	public void testTransformarPersonaje() {
 		Tablero tablero = new Tablero();
-		Personaje goku = new Personaje(new Goku());
+		Goku goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
@@ -27,28 +58,26 @@ public class PruebasIntegradoras1 {
 		Assert.assertEquals(goku.getNombre(), "Goku Kaio-Ken");
 		Assert.assertEquals(goku.getPosicion().getFila(), filaGoku);
 		Assert.assertEquals(goku.getPosicion().getColumna(), columnaGoku);
-		Assert.assertEquals(goku.getPoder(), 40);
+		Assert.assertEquals(goku.getPoder(), 40,0);
 	}
 
 
 	@Test 
 	public void testTransformarYMover(){
 		Tablero tablero = new Tablero();
-		Personaje goku = new Personaje(new Goku());
+		Goku goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
 		goku.agregarKi(20);
 		goku.transformar();
 		goku.mover(tablero.obtenerCelda(1, 2));
-		Assert.assertEquals(goku.getPoder(), 40);
+		Assert.assertEquals(goku.getPoder(), 40, 0);
 		Assert.assertEquals(goku.getPosicion().getFila(), 1);
 		Assert.assertEquals(goku.getPosicion().getColumna(), 2);
 	}
 	@Test
 	public void testInicializarTablero(){
-		Equipo equipo1 = new EnemigosDeLaTierra();
-		Equipo equipo2 = new GuerrerosZ();
 		Tablero tablero = new Tablero(equipo1,equipo2);
 		Personaje goku = equipo2.obtenerPersonaje("Goku");
 		Assert.assertEquals(19, goku.getPosicion().getFila());
@@ -58,8 +87,6 @@ public class PruebasIntegradoras1 {
 	@Test
 	public void testPelearCerca(){
 		Tablero tablero = new Tablero();
-		Equipo equipo1 = new EnemigosDeLaTierra();
-		Equipo equipo2 = new GuerrerosZ();
 		Personaje goku = equipo2.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
@@ -77,8 +104,6 @@ public class PruebasIntegradoras1 {
 	@Test
 	public void testPelearLejos(){
 		Tablero tablero = new Tablero();
-		Equipo equipo1 = new EnemigosDeLaTierra();
-		Equipo equipo2 = new GuerrerosZ();
 		Personaje goku = equipo2.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
@@ -94,11 +119,11 @@ public class PruebasIntegradoras1 {
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero();
-		Personaje goku = new Personaje(new Goku());
+		Goku goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje cell = new Personaje(new Cell());
+		PersonajeCell cell = new PersonajeCell();
 		int filaCell = 2;
 		int columnaCell = 1;
 		tablero.colocarPersonaje(filaCell, columnaCell, cell);	

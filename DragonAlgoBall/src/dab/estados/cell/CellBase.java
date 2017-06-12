@@ -1,11 +1,11 @@
 package dab.estados.cell;
 import dab.personajes.Estado;
 
-public class Cell extends Estado{
+public class CellBase extends Estado{
 	
 	/*Representa al personaje Cell*/
 	
-	public Cell(){ 
+	public CellBase(){ 
 		vidaMaxima = 500;
 		vida = vidaMaxima;
 		poder = 20;

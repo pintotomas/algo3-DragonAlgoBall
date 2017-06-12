@@ -1,7 +1,7 @@
 package dab.estados.freezer;
 
 
-public class FreezerSegundaForma extends Freezer{
+public class FreezerSegundaForma extends FreezerBase{
 	//segunda transformacion de freezer
 	
 	

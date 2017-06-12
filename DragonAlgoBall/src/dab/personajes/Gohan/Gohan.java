@@ -2,18 +2,18 @@ package dab.personajes.Gohan;
 import java.util.Iterator;
 
 import dab.ataquesEspeciales.Masenko;
-import dab.estados.gohan.Gohan;
+import dab.estados.gohan.GohanBase;
 import dab.estados.gohan.GohanSuperSayajinFase1;
 import dab.estados.gohan.GohanSuperSayajinFase2;
 import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class PersonajeGohan extends Personaje{
+public class Gohan extends Personaje{
 	
-	public PersonajeGohan(){ 
+	public Gohan(){ 
 		spec = new Masenko(this);
 		kiParaEspecial = 10;
-		estados.add(Gohan.class);
+		estados.add(GohanBase.class);
 		estados.add(GohanSuperSayajinFase1.class);
 		estados.add(GohanSuperSayajinFase2.class);
 		Iterator<Class<? extends Estado>> iter = estados.iterator();

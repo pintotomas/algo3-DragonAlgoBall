@@ -2,12 +2,12 @@ package dab.estados.freezer;
 
 import dab.personajes.Estado;
 
-public class Freezer extends Estado{
+public class FreezerBase extends Estado{
 	
 /*Representa al personaje Freezer*/
 	
 	
-	public Freezer(){
+	public FreezerBase(){
 		vidaMaxima = 400;
 		vida = vidaMaxima;
 		poder = 20;

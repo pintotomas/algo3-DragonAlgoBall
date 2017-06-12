@@ -1,12 +1,12 @@
 package dab.estados.piccolo;
 import dab.personajes.Estado;
 
-public class Piccolo extends Estado {
+public class PiccoloBase extends Estado {
 
 		
 	/*Representa al personaje Piccolo*/
 		
-		public Piccolo(){
+		public PiccoloBase(){
 			vidaMaxima = 500;
 			vida = vidaMaxima;
 			poder = 20;

@@ -2,11 +2,11 @@ package dab.estados.gohan;
 
 import dab.personajes.Estado;
 
-public class Gohan extends Estado {
+public class GohanBase extends Estado {
 	
 	/*Representa al personaje Gohan*/
 		
-	public Gohan(){
+	public GohanBase(){
 		vidaMaxima = 300;
 		vida = vidaMaxima;
 		poder = 15;

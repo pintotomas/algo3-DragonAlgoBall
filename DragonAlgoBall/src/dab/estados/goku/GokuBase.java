@@ -1,13 +1,13 @@
 package dab.estados.goku;
 import dab.personajes.Estado;
 
-public class Goku extends Estado{
+public class GokuBase extends Estado{
 	
 	/*Representa al personaje Goku*/
 	
 
 	
-	public Goku(){
+	public GokuBase(){
 		vidaMaxima = 500;
 		vida = vidaMaxima;
 		poder = 20;

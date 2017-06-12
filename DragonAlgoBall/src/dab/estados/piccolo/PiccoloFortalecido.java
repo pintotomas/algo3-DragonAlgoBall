@@ -1,7 +1,7 @@
 package dab.estados.piccolo;
 
 
-public class PiccoloFortalecido extends Piccolo {
+public class PiccoloFortalecido extends PiccoloBase {
 	public PiccoloFortalecido(){
 		vida = 500;
 		poder = 40;

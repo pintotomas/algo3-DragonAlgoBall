@@ -2,18 +2,18 @@ package dab.personajes.Piccolo;
 import java.util.Iterator;
 
 import dab.ataquesEspeciales.Makankosappo;
-import dab.estados.piccolo.Piccolo;
+import dab.estados.piccolo.PiccoloBase;
 import dab.estados.piccolo.PiccoloFortalecido;
 import dab.estados.piccolo.PiccoloProtector;
 import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class PersonajePiccolo extends Personaje{
+public class Piccolo extends Personaje{
 	
-	public PersonajePiccolo(){ 
+	public Piccolo(){ 
 		spec = new Makankosappo (this);
 		kiParaEspecial = 10;
-		estados.add(Piccolo.class);
+		estados.add(PiccoloBase.class);
 		estados.add(PiccoloFortalecido.class);
 		estados.add(PiccoloProtector.class);
 		Iterator<Class<? extends Estado>> iter = estados.iterator();

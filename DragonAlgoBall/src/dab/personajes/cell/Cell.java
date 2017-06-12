@@ -2,23 +2,23 @@ package dab.personajes.cell;
 import java.util.Iterator;
 
 import dab.ataquesEspeciales.Absorber;
-import dab.estados.cell.Cell;
+import dab.estados.cell.CellBase;
 import dab.estados.cell.CellPerfecto;
 import dab.estados.cell.CellSemiPerfecto;
 import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class PersonajeCell extends Personaje{
+public class Cell extends Personaje{
 	
 	protected int absorbidosParaTransformarCellSemiPerfecto;
 	protected int absorbidosParaTransformarCellPerfecto;
 	protected int absorbidos;
 
-	public PersonajeCell(){
+	public Cell(){
 		spec = new Absorber(this);
 		kiParaEspecial = 5;
 		kiParaEspecial = 20;
-		estados.add(Cell.class);
+		estados.add(CellBase.class);
 		estados.add(CellSemiPerfecto.class);
 		estados.add(CellPerfecto.class);
 		Iterator<Class<? extends Estado>> iter = estados.iterator();
@@ -39,7 +39,7 @@ public class PersonajeCell extends Personaje{
 		if(estado.getClass() == CellSemiPerfecto.class){			
 			return(absorbidos >= absorbidosParaTransformarCellPerfecto);
 		}
-		if(estado.getClass() == Cell.class){			
+		if(estado.getClass() == CellBase.class){			
 			return(absorbidos >= absorbidosParaTransformarCellSemiPerfecto);
 		}
 		return false;		

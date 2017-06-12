@@ -1,6 +1,6 @@
 package dab.estados.goku;
 
-public class GokuKaioKen extends Goku{
+public class GokuKaioKen extends GokuBase{
 	/*Representa a la primer transformacion de Goku*/
 
 	public GokuKaioKen(){

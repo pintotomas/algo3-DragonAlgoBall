@@ -6,7 +6,7 @@ import java.util.List;
 
 import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.consumibles.Consumible;
-import dab.equipos.Equipo;
+import dab.equipo.Equipo;
 import dab.juego.Celda;
 
 public abstract class Personaje{

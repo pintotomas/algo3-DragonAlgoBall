@@ -1,6 +1,6 @@
 package dab.estados.majinBoo;
 
-public class BooMalo extends MajinBoo {
+public class BooMalo extends MajinBooBase {
 
 	public BooMalo(){
 		vidaMaxima = 300;

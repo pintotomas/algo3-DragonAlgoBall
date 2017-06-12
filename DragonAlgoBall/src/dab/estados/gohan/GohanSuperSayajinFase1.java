@@ -1,6 +1,6 @@
 package dab.estados.gohan;
 
-public class GohanSuperSayajinFase1 extends Gohan{
+public class GohanSuperSayajinFase1 extends GohanBase{
 	/*segunda transformacion de gohan*/
 		public GohanSuperSayajinFase1(){
 		vida = 300;

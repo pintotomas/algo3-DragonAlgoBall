@@ -1,7 +1,7 @@
 package dab.estados.cell;
 
 
-public class CellSemiPerfecto extends Cell {
+public class CellSemiPerfecto extends CellBase {
 
 	public CellSemiPerfecto() {
 		vida = 500;

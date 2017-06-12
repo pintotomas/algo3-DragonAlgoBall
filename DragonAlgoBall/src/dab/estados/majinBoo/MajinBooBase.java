@@ -1,12 +1,12 @@
 package dab.estados.majinBoo;
 import dab.personajes.Estado;
 
-public class MajinBoo extends Estado{
+public class MajinBooBase extends Estado{
 	
 	/*Representa al personaje MajinBoo*/
 	
 		
-	public MajinBoo(){
+	public MajinBooBase(){
 		vida = 300;
 		poder = 30;
 		alcance = 2;

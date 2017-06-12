@@ -19,7 +19,7 @@ public class Equipo {
 		this.integrantes = new HashMap<String, Personaje>();
 	}
 	
-	public String getNombreEquipo(){
+	public String getNombre(){
 		return this.nombreEquipo;
 	}
 	
@@ -27,11 +27,11 @@ public class Equipo {
 		return this.integrantes.size();
 	}
 	
-	public void agregarParticipante(Personaje personaje){
+	public void agregarPersonaje(Personaje personaje){
 		this.integrantes.put(personaje.getNombre(), personaje);
 	}
 	
-	public void borrarParticipante(Personaje personaje){
+	public void quitarPersonaje(Personaje personaje){
 		this.integrantes.remove(personaje.getNombre());
 	}
 	
@@ -41,6 +41,12 @@ public class Equipo {
 	
 	public void agregarEsferaDelDragon(){
 		this.cantidadEsferasDelDragon += 1;
+	}
+	
+	public void agregarPersonajes(Collection<Personaje> personajes){
+		for(Personaje p: personajes){
+			this.agregarPersonaje(p);
+		}
 	}
 	
 	public Collection<Personaje> obtenerPersonajes(){
@@ -55,5 +61,23 @@ public class Equipo {
 		Personaje personaje = this.integrantes.get(nombre);
 		if(personaje == null) throw new RuntimeException("nombre incorrecto en obtener personaje" + nombre);
 		return personaje;
+	}
+
+	private void notificarNuevoTurnoAPersonajes(){
+		Collection<Personaje> personajesEquipo = integrantes.values();
+		for (Personaje p: personajesEquipo){
+			p.nuevoTurno();
+		}
+	}
+
+	public void otorgarKi(int cantidad){
+		Collection<Personaje> personajesEquipo = integrantes.values();
+		for (Personaje p: personajesEquipo){
+			p.agregarKi(cantidad);
+		}
+	}
+
+	public void nuevoTurno(){
+		notificarNuevoTurnoAPersonajes();
 	}	
 }
