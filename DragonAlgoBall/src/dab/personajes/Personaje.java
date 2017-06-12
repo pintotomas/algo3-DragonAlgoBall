@@ -18,6 +18,8 @@ public abstract class Personaje{
 	protected AtaqueEspecial spec;
 	protected Estado estado;
 	protected List<Estado> estados = new LinkedList<Estado>();
+	protected double vida;
+	protected int ki;
 	Iterator<Estado> iter;
 	
 	
@@ -53,7 +55,7 @@ public abstract class Personaje{
 		cantidadAtaques += 1;
 	}
 	public boolean ataqueEspecialDisponible() {
-		return estado.getKi() >= kiParaEspecial;
+		return this.getKi() >= kiParaEspecial;
 	}
 
 	
@@ -63,9 +65,7 @@ public abstract class Personaje{
 	}
 	
 	
-	
-	
-	
+
 	
 	
 	
@@ -116,27 +116,17 @@ public abstract class Personaje{
 	 ***********************/
 	
 	
-	public void agregarKi(int cantidad){
-		/* Modifica el ki agregando 'cantidad'. 
-		 * PRE: Cantidad es un numero entero.
-		 * POST: El ki es modificado
-		 */
-		estado.agregarKi(this.getKi() + cantidad);
+	public void agregarKi(int aumento) {
+		ki = ki + aumento;
 	}
-	
-	
-	public void agregarHp(double cantidad){
-		/* Modifica la vida agregando 'cantidad'. 
-		 * PRE: Cantidad es un numero entero.
-		 * POST: La vida es modificada
-		 */
-		estado.agregarVida(cantidad);
-		//faltaria agregar que pasa si se muere.
-	
+
+	public void agregarVida(double cantidad) {
+		if(vida + cantidad > this.getVidaMaxima()){
+			vida = this.getVidaMaxima();
+		}else{
+			vida += cantidad;
+		}
 	}
-	
-	
-	
 	
 	/*****************
 	 * 
@@ -169,7 +159,7 @@ public abstract class Personaje{
 	
 
 	public boolean transformarDisponible() {
-		return (iter.hasNext() && estado.getKi() >= estado.kiParaTransformar());
+		return (iter.hasNext() && this.getKi() >= estado.kiParaTransformar());
 	}
 	
 	public void transformar(){
@@ -200,13 +190,11 @@ public abstract class Personaje{
 		
 	}
 	
-	public int getVidaMaxima(){
+	public double getVidaMaxima(){
 		return estado.getVidaMaxima();
 	}
 	
-	public int getVida() {
-		return estado.getVida();
-	}
+	
 
 	public double getPoder() {
 		
@@ -224,9 +212,16 @@ public abstract class Personaje{
 		
 	}
 
-	public int getKi() {
-		return estado.getKi();
+	
+	public double getVida() {
+		return vida;
 	}
+	
+	public int getKi() {
+		return ki;
+	}
+	
+	
 
 	public int getVelocidad() {
 		int multiplicador = 1;
@@ -264,11 +259,11 @@ public abstract class Personaje{
 		if(poderEnemigo < this.getPoder()){
 			poderEnemigo = (int)(poderEnemigo * 0.8);		
 		}
-		this.agregarHp(-poderEnemigo);	
+		this.agregarVida(-poderEnemigo);	
 	}
 	
 	public void agregarConsumible(Consumible c){
 		consumibles.add(c);
-		this.agregarHp(c.getVidaExtra());
+		this.agregarVida(c.getVidaExtra());
 	}
 }

@@ -10,7 +10,11 @@ import dab.personajes.Personaje;
 
 public class Gohan extends Personaje{
 	
+	public double porcentajeVidaAmigosParaTransformar = 0.3;
+	/*PUBLICO PARA TESTING*/
+	
 	public Gohan(){ 
+		
 		spec = new Masenko(this);
 		kiParaEspecial = 10;
 		estado = new GohanBase();
@@ -19,6 +23,7 @@ public class Gohan extends Personaje{
 		estados.add(new GohanSuperSayajinFase2());
 		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
+		
 	}
 	
 	
@@ -37,7 +42,7 @@ public class Gohan extends Personaje{
 	private boolean segundaTransformacionDisponible(){
 		for(Personaje amigo : this.getEquipo().obtenerPersonajes()){
 			if(amigo != this){
-				if((amigo.getVida() / amigo.getVidaMaxima()) > 0.25){		
+				if((amigo.getVida() / amigo.getVidaMaxima()) >= porcentajeVidaAmigosParaTransformar){		
 					//si alguno no esta bajo de vida
 					return false;						
 				}
@@ -47,7 +52,5 @@ public class Gohan extends Personaje{
 		return true;
 
 	}
-
-
 
 }

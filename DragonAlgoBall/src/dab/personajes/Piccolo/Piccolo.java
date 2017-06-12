@@ -10,6 +10,8 @@ import dab.personajes.Personaje;
 
 public class Piccolo extends Personaje{
 	
+	public double porcetanejVidaGohanParaTransformar = 0.20;
+	
 	public Piccolo(){ 
 		spec = new Makankosappo (this);
 		kiParaEspecial = 10;
@@ -26,7 +28,7 @@ public class Piccolo extends Personaje{
 		if(super.transformarDisponible()){
 			if(estado.getClass() == PiccoloFortalecido.class){
 				Personaje gohan = equipo.obtenerPersonaje("Gohan");
-				if(gohan.getVida() / gohan.getVidaMaxima() > 0.25){
+				if(gohan.getVida() / gohan.getVidaMaxima() >= porcetanejVidaGohanParaTransformar){
 					return false;
 				}
 			}

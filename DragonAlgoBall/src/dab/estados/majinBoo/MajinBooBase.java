@@ -7,10 +7,9 @@ public class MajinBooBase extends Estado{
 	
 		
 	public MajinBooBase(){
-		vida = 300;
+		vidaMaxima = 300;
 		poder = 30;
 		alcance = 2;
-		ki = 0;
 		velocidad = 3;
 		nombre = "MajinBoo";
 		kiParaEspecial = 30;

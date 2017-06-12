@@ -1,21 +1,16 @@
 package dab.personajes;
 
 public abstract class Estado {
-	protected int vidaMaxima;
-	protected int vida;
+	protected double vidaMaxima;
 	protected int poder;
 	protected int alcance;
-	protected int ki;
 	protected int velocidad;
 	protected String nombre;
 	protected int kiParaEspecial;
 	protected int kiParaTransformar;
-	public int getVidaMaxima() {
+	
+	public double getVidaMaxima() {
 		return vidaMaxima;
-	}
-
-	public int getVida() {
-		return vida;
 	}
 
 	public int getPoder() {
@@ -26,9 +21,7 @@ public abstract class Estado {
 		return alcance;
 	}
 
-	public int getKi() {
-		return ki;
-	}
+
 
 	public int getVelocidad() {
 		return velocidad;
@@ -37,19 +30,6 @@ public abstract class Estado {
 	public String getNombre() {
 		return nombre;
 	}
-
-	public void agregarKi(int aumento) {
-		ki = ki + aumento;
-	}
-
-	public void agregarVida(double cantidad) {
-		if(vida + cantidad > this.getVidaMaxima()){
-			vida = this.getVidaMaxima();
-		}else{
-			vida += cantidad;
-		}
-	}
-
 
 	public int kiParaTransformar() {
 		return kiParaTransformar;
