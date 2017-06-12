@@ -1,6 +1,5 @@
 package dab.personajes.Goku;
 import java.util.Iterator;
-
 import dab.ataquesEspeciales.Kamehameha;
 import dab.estados.goku.GokuBase;
 import dab.estados.goku.GokuKaioKen;

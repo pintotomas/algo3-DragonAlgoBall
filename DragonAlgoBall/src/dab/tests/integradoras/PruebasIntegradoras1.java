@@ -7,7 +7,6 @@ import org.junit.Test;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.equipo.Equipo;
 import dab.juego.Tablero;
-import dab.personajes.Personaje;
 import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.Gohan.Gohan;
@@ -48,7 +47,6 @@ public class PruebasIntegradoras1 {
 	@Test 
 	public void testTransformarPersonaje() {
 		Tablero tablero = new Tablero();
-		Goku goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
@@ -65,7 +63,6 @@ public class PruebasIntegradoras1 {
 	@Test 
 	public void testTransformarYMover(){
 		Tablero tablero = new Tablero();
-		Goku goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
@@ -78,20 +75,16 @@ public class PruebasIntegradoras1 {
 	}
 	@Test
 	public void testInicializarTablero(){
-		Tablero tablero = new Tablero(equipo1,equipo2);
-		Personaje goku = equipo2.obtenerPersonaje("Goku");
+		Tablero tablero = new Tablero(equipo2,equipo1);
 		Assert.assertEquals(19, goku.getPosicion().getFila());
-		Personaje freezer = equipo1.obtenerPersonaje("Freezer");
 		Assert.assertEquals(0, freezer.getPosicion().getFila());
 	}
 	@Test
 	public void testPelearCerca(){
 		Tablero tablero = new Tablero();
-		Personaje goku = equipo1.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje freezer = equipo2.obtenerPersonaje("Freezer");
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
@@ -104,11 +97,9 @@ public class PruebasIntegradoras1 {
 	@Test
 	public void testPelearLejos(){
 		Tablero tablero = new Tablero();
-		Personaje goku = equipo1.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje freezer = equipo2.obtenerPersonaje("Freezer");
 		int filaFreezer = 9;
 		int columnaFreezer = 1;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
@@ -119,11 +110,9 @@ public class PruebasIntegradoras1 {
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero();
-		Goku goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Cell cell = new Cell();
 		int filaCell = 2;
 		int columnaCell = 1;
 		tablero.colocarPersonaje(filaCell, columnaCell, cell);	

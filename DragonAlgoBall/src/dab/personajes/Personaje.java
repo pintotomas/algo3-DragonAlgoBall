@@ -3,7 +3,7 @@ package dab.personajes;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.LinkedList;
 import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.consumibles.Consumible;
 import dab.equipo.Equipo;
@@ -13,7 +13,7 @@ public abstract class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
-	List <Consumible> consumibles; 
+	protected List <Consumible> consumibles = new LinkedList<Consumible>(); 
 	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
