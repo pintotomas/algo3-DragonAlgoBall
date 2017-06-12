@@ -1,54 +1,84 @@
 package dab.tests.atacar;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import dab.equipo.EnemigosDeLaTierra;
 import dab.equipo.Equipo;
-import dab.equipo.GuerrerosZ;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
+import dab.personajes.Freezer.Freezer;
+import dab.personajes.Gohan.Gohan;
+import dab.personajes.Goku.Goku;
+import dab.personajes.Piccolo.Piccolo;
+import dab.personajes.cell.Cell;
+import dab.personajes.majinBoo.MajinBoo;
 
 public class pruebaAtacar{
+	
+	private Gohan gohan;
+	private Goku goku;
+	private Piccolo piccolo;
+	private Equipo guerrerosZ;
+	
+	private Cell cell;
+	private MajinBoo boo;
+	private Freezer freezer;
+	private Equipo enemigosDeLaTierra;
+	
+	@Before
+	public void before(){
 		
+		gohan = new Gohan();
+		goku = new Goku();
+		piccolo = new Piccolo();
+		guerrerosZ = new Equipo("Guerreros Z");
+		guerrerosZ.agregarPersonaje(gohan);
+		guerrerosZ.agregarPersonaje(goku);
+		guerrerosZ.agregarPersonaje(piccolo);
+		
+		cell = new Cell();
+		boo = new MajinBoo();
+		freezer = new Freezer();
+		
+		enemigosDeLaTierra.agregarPersonaje(cell);
+		enemigosDeLaTierra.agregarPersonaje(boo);
+		enemigosDeLaTierra.agregarPersonaje(freezer);
+	}
 	@Test
 	public void testAtacarMismoPP(){
-		Equipo equipo1 = new GuerrerosZ();
-		Equipo equipo2 = new EnemigosDeLaTierra();
 		Tablero tablero = new Tablero();
-		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
-		Personaje cell = equipo2.obtenerPersonaje("Cell");
+		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
+		Personaje cell = enemigosDeLaTierra.obtenerPersonaje("Cell");
 		tablero.colocarPersonaje(5, 6, piccolo);
 		tablero.colocarPersonaje(5, 7,cell);
 		
-		int vidaEsperada = cell.getVida() - piccolo.getPoder();
+		double vidaEsperada = cell.getVida() - piccolo.getPoder();
 		piccolo.atacarA(cell);
-		assert(cell.getVida() == vidaEsperada);	
+		assertEquals(cell.getVida(), vidaEsperada, 0);	
 	}
 	
 	@Test
 	public void pruebaAtacarMayorPP(){
-		Equipo equipo1 = new GuerrerosZ();
-		Equipo equipo2 = new EnemigosDeLaTierra();
 		Tablero tablero = new Tablero();
-		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
-		Personaje majinboo = equipo2.obtenerPersonaje("MajinBoo");
+		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
+		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
 		
 		tablero.colocarPersonaje(5, 6, piccolo);
 		tablero.colocarPersonaje(5, 7,majinboo);
 		
-		int vidaEsperada = majinboo.getVida() - (int)(piccolo.getPoder() * 0.8);
+		double vidaEsperada = majinboo.getVida() - (int)(piccolo.getPoder() * 0.8);
 		piccolo.atacarA(majinboo);
-		assert(majinboo.getVida() == vidaEsperada);
+		assertEquals(majinboo.getVida(), vidaEsperada, 0);
 	}
 	
 	@Test
 	public void atacarADistancia(){
-		Equipo equipo1 = new GuerrerosZ();
-		Equipo equipo2 = new EnemigosDeLaTierra();
 		@SuppressWarnings("unused")
-		Tablero tablero = new Tablero(equipo1, equipo2);
-		Personaje piccolo = equipo1.obtenerPersonaje("Piccolo");
-		Personaje majinboo = equipo2.obtenerPersonaje("MajinBoo");
+		Tablero tablero = new Tablero(guerrerosZ, enemigosDeLaTierra);
+		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
+		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
 		
 		assert(!piccolo.puedeAtacar(majinboo));
 		
