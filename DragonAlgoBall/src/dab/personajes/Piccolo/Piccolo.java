@@ -14,10 +14,10 @@ public class Piccolo extends Personaje{
 		spec = new Makankosappo (this);
 		kiParaEspecial = 10;
 		estado = new PiccoloBase();
-		estados.add(PiccoloBase.class);
-		estados.add(PiccoloFortalecido.class);
-		estados.add(PiccoloProtector.class);
-		Iterator<Class<? extends Estado>> iter = estados.iterator();
+		estados.add(new PiccoloBase());
+		estados.add(new PiccoloFortalecido());
+		estados.add(new PiccoloProtector());
+		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
 	}
 

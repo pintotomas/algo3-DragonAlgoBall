@@ -1,6 +1,5 @@
 package dab.personajes;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
@@ -18,8 +17,8 @@ public abstract class Personaje{
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
 	protected Estado estado;
-	protected List<Class<? extends Estado>> estados = new ArrayList<Class<? extends Estado>>();
-	Iterator<Class<? extends Estado>> iter;
+	protected List<Estado> estados = new LinkedList<Estado>();
+	Iterator<Estado> iter;
 	
 	
 
@@ -174,11 +173,7 @@ public abstract class Personaje{
 	}
 	
 	public void transformar(){
-		try {
-			estado = (iter.next()).newInstance();
-		} catch (InstantiationException | IllegalAccessException e) { //despues vemos como lo manejamos, pero ni ida que son los errores.
-			e.printStackTrace();
-		}
+		estado = (iter.next());
 	}
 	
 	
@@ -195,8 +190,9 @@ public abstract class Personaje{
 	 *****************/
 	
 	
-	public void setIter(Iterator<Class<? extends Estado>> iter_){
-		iter = iter_;		
+	public void setIter(Iterator<Estado> iter2){
+		iter = iter2;		
+		iter.next();
 	}
 	
 	public void setEstado(Estado estado_){

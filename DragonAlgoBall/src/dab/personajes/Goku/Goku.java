@@ -14,10 +14,10 @@ public class Goku extends Personaje{
 		spec = new Kamehameha(this);
 		kiParaEspecial = 20;
 		estado = new GokuBase();
-		estados.add(GokuBase.class);
-		estados.add(GokuKaioKen.class);
-		estados.add(GokuSuperSayajin.class);
-		Iterator<Class<? extends Estado>> iter = estados.iterator();
-		setIter(iter);		
+		estados.add(new GokuBase());
+		estados.add(new GokuKaioKen());
+		estados.add(new GokuSuperSayajin());
+		Iterator<Estado> iter = estados.iterator();
+		setIter(iter);
 	}
 }

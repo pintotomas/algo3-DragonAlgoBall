@@ -14,10 +14,10 @@ public class Freezer extends Personaje{
 		spec = new RayoMortal(this);
 		kiParaEspecial = 20;
 		estado = new FreezerBase();
-		estados.add(FreezerBase.class);
-		estados.add(FreezerSegundaForma.class);
-		estados.add(FreezerDefinitivo.class);
-		Iterator<Class<? extends Estado>> iter = estados.iterator();
+		estados.add(new FreezerBase());
+		estados.add(new FreezerSegundaForma());
+		estados.add(new FreezerDefinitivo());
+		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
 		
 	}

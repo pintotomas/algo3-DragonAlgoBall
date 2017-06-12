@@ -19,10 +19,10 @@ public class Cell extends Personaje{
 		kiParaEspecial = 5;
 		kiParaEspecial = 20;
 		estado = new CellBase();
-		estados.add(CellBase.class);
-		estados.add(CellSemiPerfecto.class);
-		estados.add(CellPerfecto.class);
-		Iterator<Class<? extends Estado>> iter = estados.iterator();
+		estados.add(new CellBase());
+		estados.add(new CellSemiPerfecto());
+		estados.add(new CellPerfecto());
+		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);	
 	}
 
