@@ -6,6 +6,7 @@ import dab.estados.goku.GokuKaioKen;
 import dab.estados.goku.GokuSuperSayajin;
 import dab.personajes.Estado;
 import dab.personajes.Personaje;
+import dab.potenciadores.Furia;
 
 public class Goku extends Personaje{
 	
@@ -19,5 +20,6 @@ public class Goku extends Personaje{
 		estados.add(new GokuSuperSayajin());
 		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
+		this.agregarPotenciador(new Furia(this));
 	}
 }

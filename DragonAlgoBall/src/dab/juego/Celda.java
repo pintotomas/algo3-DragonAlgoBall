@@ -1,10 +1,9 @@
 package dab.juego;
-import dab.consumibles.Consumible;
-
 import dab.dragonBallExceptions.CeldaNoContieneConsumible;
 import dab.dragonBallExceptions.CeldaNoContienePersonaje;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.personajes.Personaje;
+import dab.potenciadores.Potenciador;
 
 
 public class Celda {
@@ -12,7 +11,7 @@ public class Celda {
 	boolean ocupa_personaje;
 	boolean ocupa_consumible;
 	Personaje personaje_ocupante;
-	Consumible consumible_ocupante;
+	Potenciador consumible_ocupante;
 	
 	public Celda(int fila_, int columna_){
 		fila = fila_;
@@ -34,7 +33,7 @@ public class Celda {
 		return personaje_ocupante;
 	}
 	
-	public Consumible darConsumibleOcupante(){
+	public Potenciador darConsumibleOcupante(){
 		if(!ocupa_consumible) throw new CeldaNoContieneConsumible();
 		return consumible_ocupante;
 	}
@@ -44,7 +43,7 @@ public class Celda {
 		personaje_ocupante = personaje;
 		ocupa_personaje = true;
 		if(ocupa_consumible){
-			personaje.agregarConsumible(consumible_ocupante);
+			personaje.agregarPotenciador(consumible_ocupante);
 			ocupa_consumible = false;
 		}
 	}

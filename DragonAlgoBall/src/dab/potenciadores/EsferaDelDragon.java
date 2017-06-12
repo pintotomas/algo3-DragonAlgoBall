@@ -1,18 +1,19 @@
-package dab.consumibles;
+package dab.potenciadores;
 
-public class SemillaDelErmitanio extends Consumible {
-	
-	public SemillaDelErmitanio(){
-		nombre = "Semilla del Ermitanio";
-		vidaExtra = 100;
+public class EsferaDelDragon extends Potenciador {
+
+	public EsferaDelDragon(){
+		
+		nombre = "Esfera del Dragon";
+		multiplicadorPoderDePelea = 1.25;
 		multiplicadorVelocidad = 1;
-		multiplicadorPoderDePelea = 1;
-		duracion = 1;
-		multiplicadorDistanciaAtaque = 1;
+		vidaExtra = 0;
+		duracion = 3; //1 mas para que pueda usarlo 2 turnos
 		multiplicadorAlcance = 1;
+		multiplicadorDistanciaAtaque = 1;
 		kiExtra = 0;
 	}
-
+	
 	@Override
 	public double getMultiplicadorVelocidad() {
 		// TODO Auto-generated method stub
@@ -48,5 +49,4 @@ public class SemillaDelErmitanio extends Consumible {
 		// TODO Auto-generated method stub
 		return kiExtra;
 	}
-
 }

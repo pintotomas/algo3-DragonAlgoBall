@@ -31,7 +31,7 @@ public class Cell extends Personaje{
 	public void ataqueEspecial(Personaje enemigo) {
 		super.ataqueEspecial(enemigo);
 		absorbidos += 1;
-		this.agregarHp(this.getPoder());
+		this.agregarVida(this.getPoder());
 		
 	}
 	

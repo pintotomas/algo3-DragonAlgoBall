@@ -1,29 +1,30 @@
-package dab.consumibles;
+package dab.potenciadores;
 
-public class EsferaDelDragon extends Consumible {
+import dab.juego.Celda;
 
-	public EsferaDelDragon(){
-		
-		nombre = "Esfera del Dragon";
-		multiplicadorPoderDePelea = 1.25;
-		multiplicadorVelocidad = 1;
+public class Inutilizador extends Potenciador {
+	
+	public Inutilizador(){
+		//Problema?: No usa celda
+		duracion = 3;
+		multiplicadorVelocidad = 0;
+		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
-		duracion = 3; //1 mas para que pueda usarlo 2 turnos
-		multiplicadorAlcance = 1;
-		multiplicadorDistanciaAtaque = 1;
-		kiExtra = 0;
+		multiplicadorDistanciaAtaque = 0;
+		multiplicadorAlcance = 0;
+		kiExtra = -5;
 	}
 	
-	@Override
-	public double getMultiplicadorVelocidad() {
-		// TODO Auto-generated method stub
-		return multiplicadorVelocidad;
-	}
-
 	@Override
 	public double getMultiplicadorPoderDePelea() {
 		// TODO Auto-generated method stub
 		return multiplicadorPoderDePelea;
+	}
+
+	@Override
+	public double getMultiplicadorVelocidad() {
+		// TODO Auto-generated method stub
+		return multiplicadorVelocidad;
 	}
 
 	@Override
@@ -49,4 +50,5 @@ public class EsferaDelDragon extends Consumible {
 		// TODO Auto-generated method stub
 		return kiExtra;
 	}
+
 }

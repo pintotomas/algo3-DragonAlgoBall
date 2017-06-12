@@ -1,30 +1,28 @@
-package dab.consumibles;
+package dab.potenciadores;
 
-import dab.juego.Celda;
-
-public class Inutilizador extends Consumible {
+public class NubeVoladora extends Potenciador {
 	
-	public Inutilizador(){
-		//Problema?: No usa celda
+	public NubeVoladora(){
+		nombre = "Nube Voladora";
 		duracion = 3;
-		multiplicadorVelocidad = 0;
+		multiplicadorVelocidad = 2;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
-		multiplicadorDistanciaAtaque = 0;
-		multiplicadorAlcance = 0;
-		kiExtra = -5;
-	}
-	
-	@Override
-	public double getMultiplicadorPoderDePelea() {
-		// TODO Auto-generated method stub
-		return multiplicadorPoderDePelea;
+		multiplicadorDistanciaAtaque = 1;
+		multiplicadorAlcance = 1;
+		kiExtra = 0;
 	}
 
 	@Override
 	public double getMultiplicadorVelocidad() {
 		// TODO Auto-generated method stub
 		return multiplicadorVelocidad;
+	}
+
+	@Override
+	public double getMultiplicadorPoderDePelea() {
+		// TODO Auto-generated method stub
+		return multiplicadorPoderDePelea;
 	}
 
 	@Override

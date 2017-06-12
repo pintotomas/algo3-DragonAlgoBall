@@ -1,7 +1,7 @@
 package dab.ataquesEspeciales;
 
-import dab.consumibles.Inutilizador;
 import dab.personajes.Personaje;
+import dab.potenciadores.Inutilizador;
 
 public class ConvierteteEnChocolate extends AtaqueEspecial {
 
@@ -12,6 +12,6 @@ public class ConvierteteEnChocolate extends AtaqueEspecial {
 
 	@Override
 	public void lanzar(Personaje enemigo){
-		enemigo.agregarConsumible(new Inutilizador());
+		enemigo.agregarPotenciador(new Inutilizador());
 	}
 }
