@@ -10,14 +10,14 @@ import dab.personajes.Personaje;
 
 public class Cell extends Personaje{
 	
-	protected int absorbidosParaTransformarCellSemiPerfecto;
-	protected int absorbidosParaTransformarCellPerfecto;
+	protected int absorbidosParaTransformarCellSemiPerfecto = 4;
+	protected int absorbidosParaTransformarCellPerfecto = 8;
 	protected int absorbidos;
 
 	public Cell(){
 		spec = new Absorber(this);
 		kiParaEspecial = 5;
-		kiParaEspecial = 20;
+		absorbidos = 0;
 		estado = new CellBase();
 		estados.add(new CellBase());
 		estados.add(new CellSemiPerfecto());
