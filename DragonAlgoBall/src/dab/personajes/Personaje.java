@@ -4,15 +4,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
 import dab.ataquesEspeciales.AtaqueEspecial;
-import dab.consumibles.Consumible;
 import dab.equipo.Equipo;
 import dab.juego.Celda;
+import dab.potenciadores.Potenciador;
 
 public abstract class Personaje{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
-	protected List <Consumible> consumibles = new LinkedList<Consumible>(); 
+	protected List <Potenciador> consumibles = new LinkedList<Potenciador>(); 
 	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
@@ -146,7 +146,7 @@ public abstract class Personaje{
 	}
 
 	public void nuevoTurno() {
-		for (Consumible c: consumibles){
+		for (Potenciador c: consumibles){
 			c.pasoUnTurno();
 			if (!c.estaActivo()){
 				consumibles.remove(c);
@@ -199,7 +199,7 @@ public abstract class Personaje{
 	public double getPoder() {
 		
 		double multiplicador = 1;
-		for (Consumible c: consumibles){
+		for (Potenciador c: consumibles){
 			multiplicador *= c.getMultiplicadorPoderDePelea();
 		}
 		double poderActual = estado.getPoder(); 
@@ -225,7 +225,7 @@ public abstract class Personaje{
 
 	public int getVelocidad() {
 		int multiplicador = 1;
-		for (Consumible c: consumibles){
+		for (Potenciador c: consumibles){
 			multiplicador *= c.getMultiplicadorVelocidad();
 		}
 		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
@@ -262,7 +262,7 @@ public abstract class Personaje{
 		this.agregarVida(-poderEnemigo);	
 	}
 	
-	public void agregarConsumible(Consumible c){
+	public void agregarPotenciador(Potenciador c){
 		consumibles.add(c);
 		this.agregarVida(c.getVidaExtra());
 	}

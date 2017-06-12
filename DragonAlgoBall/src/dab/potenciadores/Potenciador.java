@@ -1,12 +1,12 @@
-package dab.consumibles;
+package dab.potenciadores;
 
 import dab.juego.Celda;
 
-public abstract class Consumible{
+public abstract class Potenciador{
 	
 	protected String nombre;
 	protected Celda posicion;
-	protected int duracion;
+	protected double duracion;
 	protected int multiplicadorVelocidad;
 	protected double multiplicadorPoderDePelea;
 	protected double vidaExtra;
