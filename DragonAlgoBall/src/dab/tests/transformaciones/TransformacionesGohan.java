@@ -46,18 +46,18 @@ public class TransformacionesGohan {
 	public void segundaTransformacionNoDisponibleCompanerosDanados(){
 		gohan.agregarKi(10);
 		gohan.transformar();
-		goku.agregarHp(-goku.getVida()*0.5);
-		piccolo.agregarHp(-piccolo.getVida()*0.5);
-		gohan.agregarKi(10);
+		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
+		piccolo.agregarVida(-piccolo.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
+		gohan.agregarKi(30);
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionDisponibleKiYCondiciones(){
 		gohan.agregarKi(10);
 		gohan.transformar();
-		goku.agregarHp(-goku.getVida()*0.8);
-		piccolo.agregarHp(-piccolo.getVida()*0.8);
-		gohan.agregarKi(10);
+		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar + 0.1));
+		piccolo.agregarVida(-piccolo.getVida()* (1 - gohan.porcentajeVidaAmigosParaTransformar + 0.1));
+		gohan.agregarKi(30);
 		assertTrue(gohan.transformarDisponible());
 	}
 }

@@ -6,10 +6,9 @@ public class FreezerSegundaForma extends FreezerBase{
 	
 	
 	public FreezerSegundaForma(){
-		vida = 400;
+		vidaMaxima = 400;
 		poder = 40;
 		alcance = 3;
-		ki = 0;
 		velocidad = 4;
 		nombre = "Freezer Segunda Forma";
 		kiParaTransformar = 0;

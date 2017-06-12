@@ -7,10 +7,8 @@ public class CellBase extends Estado{
 	
 	public CellBase(){ 
 		vidaMaxima = 500;
-		vida = vidaMaxima;
 		poder = 20;
 		alcance = 3;
-		ki = 0;
 		velocidad = 2;
 		nombre = "Cell";
 	}
