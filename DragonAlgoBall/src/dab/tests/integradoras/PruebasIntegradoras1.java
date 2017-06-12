@@ -1,4 +1,4 @@
-package dab.tests.movimiento;
+package dab.tests.integradoras;
 
 import org.junit.Assert;
 

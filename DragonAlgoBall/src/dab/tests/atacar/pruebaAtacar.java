@@ -1,4 +1,4 @@
-package dab.tests.movimiento;
+package dab.tests.atacar;
 
 import org.junit.Test;
 
