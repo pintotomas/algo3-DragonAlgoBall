@@ -14,6 +14,7 @@ public class Freezer extends Personaje{
 		spec = new RayoMortal(this);
 		kiParaEspecial = 20;
 		estado = new FreezerBase();
+		vida = estado.getVidaMaxima();
 		estados.add(new FreezerBase());
 		estados.add(new FreezerSegundaForma());
 		estados.add(new FreezerDefinitivo());

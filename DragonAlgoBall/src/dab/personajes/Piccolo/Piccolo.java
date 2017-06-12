@@ -16,6 +16,7 @@ public class Piccolo extends Personaje{
 		spec = new Makankosappo (this);
 		kiParaEspecial = 10;
 		estado = new PiccoloBase();
+		vida = estado.getVidaMaxima();
 		estados.add(new PiccoloBase());
 		estados.add(new PiccoloFortalecido());
 		estados.add(new PiccoloProtector());

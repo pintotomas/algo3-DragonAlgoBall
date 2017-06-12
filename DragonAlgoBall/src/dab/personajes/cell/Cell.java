@@ -19,6 +19,7 @@ public class Cell extends Personaje{
 		kiParaEspecial = 5;
 		absorbidos = 0;
 		estado = new CellBase();
+		vida = estado.getVidaMaxima();
 		estados.add(new CellBase());
 		estados.add(new CellSemiPerfecto());
 		estados.add(new CellPerfecto());

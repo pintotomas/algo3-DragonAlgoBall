@@ -88,10 +88,10 @@ public class PruebasIntegradoras1 {
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
-		Assert.assertEquals(400, freezer.getVida());
+		Assert.assertEquals(400, freezer.getVida(),0);
 		if (goku.puedeAtacar(freezer))
 			goku.atacarA(freezer);	
-		Assert.assertEquals(380, freezer.getVida());
+		Assert.assertEquals(380, freezer.getVida(),0);
 	}
 	
 	@Test
@@ -105,7 +105,7 @@ public class PruebasIntegradoras1 {
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
 		if (goku.puedeAtacar(freezer))
 			goku.atacarA(freezer);
-		Assert.assertEquals(400, freezer.getVida());
+		Assert.assertEquals(400, freezer.getVida(),0);
 	}
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {

@@ -15,6 +15,7 @@ public class Goku extends Personaje{
 		spec = new Kamehameha(this);
 		kiParaEspecial = 20;
 		estado = new GokuBase();
+		vida = estado.getVidaMaxima();
 		estados.add(new GokuBase());
 		estados.add(new GokuKaioKen());
 		estados.add(new GokuSuperSayajin());

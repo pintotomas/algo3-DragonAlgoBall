@@ -39,7 +39,7 @@ public class ConvierteteEnChocolateTest {
 			goku.agregarKi(5);
 			goku.nuevoTurno();
 		}
-		Assert.assertEquals(3, goku.getVelocidad());
+		Assert.assertEquals(2, goku.getVelocidad());
 		Assert.assertEquals(0, goku.getKi());
 	}
 

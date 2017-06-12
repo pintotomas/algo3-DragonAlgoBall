@@ -18,19 +18,18 @@ public class Gohan extends Personaje{
 		spec = new Masenko(this);
 		kiParaEspecial = 10;
 		estado = new GohanBase();
+		vida = estado.getVidaMaxima();
 		estados.add(new GohanBase());
 		estados.add(new GohanSuperSayajinFase1());
 		estados.add(new GohanSuperSayajinFase2());
 		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);
-		
 	}
-	
 	
 	@Override
 	public boolean transformarDisponible() {
 		if(super.transformarDisponible()){
-			if(estado.getClass() == GohanSuperSayajinFase1.class){
+			if(estado.getNombre() == "Gohan Super Sayajin Fase 1"){
 				return this.segundaTransformacionDisponible();
 			}
 			return true;

@@ -1,8 +1,8 @@
 package dab.estados.majinBoo;
 
-public class BooMalo extends MajinBooBase {
+public class MajinBooMalo extends MajinBooBase {
 
-	public BooMalo(){
+	public MajinBooMalo(){
 		vidaMaxima = 300;
 		poder = 50;
 		alcance = 2;
