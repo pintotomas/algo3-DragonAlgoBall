@@ -101,6 +101,7 @@ public abstract class Personaje{
 	public void nuevoTurno() {
 		for (Potenciador c: consumibles){
 			c.pasoUnTurno();
+			this.agregarKi(c.getKiExtra());
 			if (!c.estaActivo()){
 				consumibles.remove(c);
 			}
