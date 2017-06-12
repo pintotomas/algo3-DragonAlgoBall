@@ -1,10 +1,7 @@
 package dab.tests.potenciadores;
 
 import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
-
 import dab.personajes.Goku.Goku;
 
 public class FuriaTests {
