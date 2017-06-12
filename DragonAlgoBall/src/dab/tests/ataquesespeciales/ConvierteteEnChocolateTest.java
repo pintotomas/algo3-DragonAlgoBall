@@ -35,6 +35,12 @@ public class ConvierteteEnChocolateTest {
 		majinboo.ataqueEspecial(goku);
 		Assert.assertEquals(0,goku.getAlcance());
 		Assert.assertEquals(0,goku.getVelocidad());
+		for (int i = 0; i < 3; i ++){
+			goku.agregarKi(5);
+			goku.nuevoTurno();
+		}
+		Assert.assertEquals(3, goku.getVelocidad());
+		Assert.assertEquals(0, goku.getKi());
 	}
 
 }
