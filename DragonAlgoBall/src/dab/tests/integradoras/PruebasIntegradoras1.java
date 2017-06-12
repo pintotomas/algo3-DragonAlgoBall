@@ -1,7 +1,7 @@
 package dab.tests.integradoras;
 
 import org.junit.Assert;
-
+import org.junit.Before;
 import org.junit.Test;
 
 import dab.dragonBallExceptions.CeldaOcupada;
@@ -24,11 +24,11 @@ public class PruebasIntegradoras1 {
 	Freezer freezer;
 	Equipo equipo1;
 	Equipo equipo2;
-	
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		goku = new Goku();
 		gohan = new Gohan();
-		piccolo = new Piccolo();
+		piccolo = new Piccolo();	
 		equipo1 = new Equipo("Guerreros Z");
 		equipo1.agregarPersonaje(goku);
 		equipo1.agregarPersonaje(gohan);
@@ -87,11 +87,11 @@ public class PruebasIntegradoras1 {
 	@Test
 	public void testPelearCerca(){
 		Tablero tablero = new Tablero();
-		Personaje goku = equipo2.obtenerPersonaje("Goku");
+		Personaje goku = equipo1.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje freezer = equipo1.obtenerPersonaje("Freezer");
+		Personaje freezer = equipo2.obtenerPersonaje("Freezer");
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
@@ -104,11 +104,11 @@ public class PruebasIntegradoras1 {
 	@Test
 	public void testPelearLejos(){
 		Tablero tablero = new Tablero();
-		Personaje goku = equipo2.obtenerPersonaje("Goku");
+		Personaje goku = equipo1.obtenerPersonaje("Goku");
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		Personaje freezer = equipo1.obtenerPersonaje("Freezer");
+		Personaje freezer = equipo2.obtenerPersonaje("Freezer");
 		int filaFreezer = 9;
 		int columnaFreezer = 1;
 		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
@@ -123,7 +123,7 @@ public class PruebasIntegradoras1 {
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		PersonajeCell cell = new PersonajeCell();
+		Cell cell = new Cell();
 		int filaCell = 2;
 		int columnaCell = 1;
 		tablero.colocarPersonaje(filaCell, columnaCell, cell);	
