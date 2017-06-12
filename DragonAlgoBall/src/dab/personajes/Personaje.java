@@ -13,29 +13,17 @@ public abstract class Personaje{
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
 	protected List <Potenciador> consumibles = new LinkedList<Potenciador>(); 
-	private int cantidadAtaques = 0; //Lo dejo, pero no se para que está
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
 	protected Estado estado;
 	protected List<Estado> estados = new LinkedList<Estado>();
 	protected double vida;
-	protected int ki;
+	protected int ki = 0;
 	Iterator<Estado> iter;
-	
-	
 
-
-
-	/***************
-	 * 
-	 *  ATAQUE
-	 * 
-	 * 
-	 ****************/
-	
-	
-	
-	
+	/**********************************************************
+							ATAQUE
+	 **********************************************************/
 
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
@@ -52,31 +40,19 @@ public abstract class Personaje{
 	
 	public void atacarA(Personaje personaje){
 		personaje.recibirAtaque(this.getPoder());
-		cantidadAtaques += 1;
 	}
 	public boolean ataqueEspecialDisponible() {
 		return this.getKi() >= kiParaEspecial;
 	}
-
 	
 	public void ataqueEspecial(Personaje enemigo) {
 		spec.lanzar(enemigo);
 		this.agregarKi(-1*(kiParaEspecial));
 	}
-	
-	
 
-	
-	
-	
-	
-	/**************
-	 * 
-	 * MOVIMIENTO
-	 * 
-	 * 
-	 **************/
-	
+	/********************************************************
+							MOVIMIENTO
+	 ********************************************************/
 		
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
@@ -100,20 +76,9 @@ public abstract class Personaje{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**********************
-	 * 
-	 * AGREGAR KI Y VIDA
-	 * 
-	 * 
-	 ***********************/
+	/**********************************************************
+ 						AGREGAR KI Y VIDA
+	 **********************************************************/
 	
 	
 	public void agregarKi(int aumento) {
@@ -128,22 +93,10 @@ public abstract class Personaje{
 		}
 	}
 	
-	/*****************
-	 * 
-	 * TRANSFORMAR Y TURNO
-	 * 
-	 * 
-	 * 
-	 ***************/
+	/**********************************************************
+	    				TRANSFORMAR Y TURNO
+	***********************************************************/
 	
-	
-
-	public void convertirEnChocolate(){
-		
-		/*faltaria implementar para la especial de boo. 
-		* teniendo en cuenta que deven pasar 3 turnos.	
-		*/
-	}
 
 	public void nuevoTurno() {
 		for (Potenciador c: consumibles){
@@ -167,18 +120,10 @@ public abstract class Personaje{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	/*****************
-	 * 
-	 *  GETERS Y SETERS
-	 * 
-	 *****************/
-	
+	/**********************************************************
+						GETERS Y SETERS
+	 **********************************************************/
+
 	
 	public void setIter(Iterator<Estado> iter2){
 		iter = iter2;		
@@ -256,10 +201,7 @@ public abstract class Personaje{
 	public void setEquipo(Equipo equipo_) {
 		equipo = equipo_;
 	}
-	
-	public int getNumeroAtaque(){
-		return cantidadAtaques;
-	}
+
 	private void recibirAtaque(double poderEnemigo) {
 		if(poderEnemigo < this.getPoder()){
 			poderEnemigo = (int)(poderEnemigo * 0.8);		
