@@ -25,11 +25,25 @@ public class Tablero {
 				tablero[fila][columna] = new Celda(fila, columna);
 			}
 		}
-		ubicarPersonajes(equipo1, equipo2);		
+		this.ubicarPersonajesEnPosicionInicial(equipo1, equipo2);		
+	}
+	
+	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, Equipo equipo2){
+		int i = 0;
+		int primeraPosicion = anchoDeTablero/2;
+		for(Personaje personaje : equipo1.obtenerPersonajes()){
+			this.colocarPersonaje(0,primeraPosicion + i , personaje);
+			i += 1;
+		}
+		i = 0;
+		for(Personaje personaje : equipo2.obtenerPersonajes()){
+			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
+			i += 1;
+		}
 	}
 	
 	public void colocarPersonaje(int fila, int columna,Personaje personaje){
-		Celda celda = tablero[fila][columna];
+		Celda celda = this.obtenerCelda(fila, columna);
 		celda.colocarPersonaje(personaje);
 		personaje.setPosicion(celda);
 	}
@@ -59,35 +73,20 @@ public class Tablero {
 		
 	}
 	
-	
-	private void ubicarPersonajes(Equipo equipo1, Equipo equipo2){
-		int i = 0;
-		int primeraPosicion = anchoDeTablero/2;
-		for(Personaje personaje : equipo1.obtenerPersonajes()){
-			this.colocarPersonaje(0,primeraPosicion + i , personaje);
-			i += 1;
-		}
-		i = 0;
-		for(Personaje personaje : equipo2.obtenerPersonajes()){
-			this.colocarPersonaje(altoDeTablero - 1,primeraPosicion + i , personaje);
-			i += 1;
-		}
-	}
-	
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}
 	
-	public int filaPersonaje(Personaje aPersonaje){
-		return aPersonaje.getPosicion().getFila();
+	public int filaPersonaje(Personaje personaje){
+		return personaje.getPosicion().getFila();
 	}
 	
-	public int columnaPersonaje(Personaje aPersonaje){
-		return aPersonaje.getPosicion().getColumna();
+	public int columnaPersonaje(Personaje personaje){
+		return personaje.getPosicion().getColumna();
 	}
 	
 	public boolean celdaOcupada(int fila, int columna){
-		return tablero[fila][columna].estaOcupadaPorPersonaje();
+		return this.obtenerCelda(fila, columna).estaOcupadaPorPersonaje();
 	}
 	
 }

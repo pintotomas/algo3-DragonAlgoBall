@@ -10,7 +10,6 @@ import dab.potenciadores.Furia;
 
 public class Goku extends Personaje{
 	
-
 	public Goku(){ 
 		spec = new Kamehameha(this);
 		kiParaEspecial = 20;

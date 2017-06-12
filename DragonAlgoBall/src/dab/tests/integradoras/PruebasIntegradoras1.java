@@ -73,12 +73,14 @@ public class PruebasIntegradoras1 {
 		Assert.assertEquals(goku.getPosicion().getFila(), 1);
 		Assert.assertEquals(goku.getPosicion().getColumna(), 2);
 	}
+	
 	@Test
 	public void testInicializarTablero(){
-		Tablero tablero = new Tablero(equipo2,equipo1);
-		Assert.assertEquals(19, goku.getPosicion().getFila());
-		Assert.assertEquals(0, freezer.getPosicion().getFila());
+		Tablero tablero = new Tablero();
+		Assert.assertEquals(19, tablero.filaPersonaje(goku));
+		Assert.assertEquals(0, tablero.filaPersonaje(piccolo));
 	}
+	
 	@Test
 	public void testPelearCerca(){
 		Tablero tablero = new Tablero();

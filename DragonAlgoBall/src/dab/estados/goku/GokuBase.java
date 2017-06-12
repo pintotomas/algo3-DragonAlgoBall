@@ -1,8 +1,7 @@
 package dab.estados.goku;
 import dab.personajes.Estado;
 
-public class GokuBase extends Estado{
-	
+public class GokuBase extends Estado{	
 	/*Representa al personaje Goku*/
 	
 	public GokuBase(){
@@ -14,10 +13,5 @@ public class GokuBase extends Estado{
 		nombre = "Goku";
 		kiParaTransformar = 20;
 	}
-
-
-
-
-
 
 }

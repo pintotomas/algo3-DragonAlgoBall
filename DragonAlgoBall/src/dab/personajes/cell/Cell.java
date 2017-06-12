@@ -8,8 +8,7 @@ import dab.estados.cell.CellSemiPerfecto;
 import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
-public class Cell extends Personaje{
-	
+public class Cell extends Personaje{	
 	protected int absorbidosParaTransformarCellSemiPerfecto = 4;
 	protected int absorbidosParaTransformarCellPerfecto = 8;
 	protected int absorbidos;
@@ -26,7 +25,6 @@ public class Cell extends Personaje{
 		Iterator<Estado> iter = estados.iterator();
 		setIter(iter);	
 	}
-
 	
 	@Override
 	public void ataqueEspecial(Personaje enemigo) {
@@ -35,7 +33,6 @@ public class Cell extends Personaje{
 		this.agregarVida(this.getPoder());
 		
 	}
-	
 	
 	public boolean transformarDisponible() {
 		if(estado.getClass() == CellSemiPerfecto.class){			
@@ -46,9 +43,5 @@ public class Cell extends Personaje{
 		}
 		return false;		
 	}
-	
-
-	
-	
 
 }

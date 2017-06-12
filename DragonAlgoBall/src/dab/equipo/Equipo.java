@@ -64,21 +64,23 @@ public class Equipo {
 		return personaje;
 	}
 
-	private void notificarNuevoTurnoAPersonajes(){
-		Collection<Personaje> personajesEquipo = integrantes.values();
-		for (Personaje p: personajesEquipo){
-			p.nuevoTurno();
-		}
-	}
-
 	public void otorgarKi(int cantidad){
-		Collection<Personaje> personajesEquipo = integrantes.values();
+		Collection<Personaje> personajesEquipo = this.integrantes.values();
 		for (Personaje p: personajesEquipo){
 			p.agregarKi(cantidad);
 		}
 	}
 
 	public void nuevoTurno(){
-		notificarNuevoTurnoAPersonajes();
-	}	
+		this.notificarNuevoTurnoAPersonajes();
+	}
+	
+
+	private void notificarNuevoTurnoAPersonajes(){
+		Collection<Personaje> personajesEquipo = this.integrantes.values();
+		for (Personaje p: personajesEquipo){
+			p.nuevoTurno();
+		}
+	}
+
 }

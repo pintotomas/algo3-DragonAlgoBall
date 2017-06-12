@@ -21,8 +21,6 @@ public abstract class Estado {
 		return alcance;
 	}
 
-
-
 	public int getVelocidad() {
 		return velocidad;
 	}

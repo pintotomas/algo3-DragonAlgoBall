@@ -76,7 +76,7 @@ public class pruebaAtacar{
 	@Test
 	public void atacarADistancia(){
 		@SuppressWarnings("unused")
-		Tablero tablero = new Tablero(guerrerosZ, enemigosDeLaTierra);
+		Tablero tablero = new Tablero();
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
 		
@@ -86,5 +86,3 @@ public class pruebaAtacar{
 	}
 	
 }
-
-

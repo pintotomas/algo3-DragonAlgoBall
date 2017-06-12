@@ -13,7 +13,7 @@ public class ConvierteteEnChocolateTest {
 	
 	MajinBoo majinboo;
 	Goku goku;
-	Equipo enemigos, guerrerosz;
+	Equipo enemigos, guerrerosZ;
 	Tablero tablero;
 	
 	@Before
@@ -22,9 +22,9 @@ public class ConvierteteEnChocolateTest {
 		enemigos = new Equipo("Enemigos de la Tierra");
 		enemigos.agregarPersonaje(majinboo);
 		goku = new Goku();
-		guerrerosz = new Equipo("Guerreros Z");
-		guerrerosz.agregarPersonaje(goku);
-		tablero = new Tablero();
+		guerrerosZ = new Equipo("Guerreros Z");
+		guerrerosZ.agregarPersonaje(goku);
+		tablero = new Tablero(guerrerosZ,enemigos);
 		tablero.colocarPersonaje(1,1,goku);
 		tablero.colocarPersonaje(1,2,majinboo);
 	}
