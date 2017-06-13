@@ -1,4 +1,6 @@
 package dab.juego;
+import java.util.ArrayList;
+
 import dab.equipo.Equipo;
 import dab.personajes.Personaje;
 
@@ -48,30 +50,64 @@ public class Tablero {
 		personaje.setPosicion(celda);
 	}
 	
-	public boolean trayectoriaValida(Celda origen, Celda destino){
-		int filaO, filaD, columnaO, columnaD,x,y;
-		filaO = origen.getFila();
-		filaD = destino.getFila();
-		columnaO = origen.getColumna();
-		columnaD = destino.getColumna();
+	
+	
+	/*********************************
+	 * 
+	 * celdas a las que se puede mover
+	 * 
+	 **********************************/
+	
+	private ArrayList<Celda> adyacentesCeldaValidos(Celda celda, int colMax, int filMax, int colMin, int filMin){
+		//para encontrar las 8 celdas adyacentes
+		ArrayList<Celda> celdas = new ArrayList<Celda>();
+		int newCol, newFil;
+		Celda nuevaCelda;
 		
-		if(filaO > filaD) x = -1;
-		else if (filaD > filaO) x = 1;
-		else x = 0;
-		
-		if(columnaO > filaD) y = -1;
-		else if (columnaD > columnaO) y = 1;
-		else y = 0;
-		
-		
-		while(filaO != filaD || columnaO != columnaD){
-			if(this.obtenerCelda(filaO, columnaO).estaOcupadaPorPersonaje()) return false;
-			filaO += x;
-			columnaO += y;	
+		for(int x = -1 ; x < 2 ; x++){
+			for(int y  = -1; x < 2; y++){
+				if( !(x == 0 && y == 0)){
+					newCol = celda.getColumna() + x;
+					newFil = celda.getFila() + y;
+					if(newCol >= colMin && newFil >= filMin && newCol <= colMax){
+						nuevaCelda = this.obtenerCelda(newFil, newCol);
+						if(!nuevaCelda.estaOcupadaPorPersonaje());
+							celdas.add(nuevaCelda);
+					}
+				}
+			}
 		}
-		return true;
-		
+		return celdas;
 	}
+	
+	
+	private void celdasPermitidasAux(Celda origen, ArrayList<Celda> celdasDisponibles, int colMax, int filMax, int colMin, int filMin){
+		for(Celda celda : adyacentesCeldaValidos(origen, colMax, filMax, colMin, filMin)){
+			if(!celdasDisponibles.contains(celda)){
+				celdasDisponibles.add(celda);
+				celdasPermitidasAux(celda,celdasDisponibles, colMax, filMax, colMin, filMin);
+			}
+		}		
+	}
+	
+	
+	public ArrayList<Celda> celdasPermitidas(Celda origen, int rango){
+		ArrayList<Celda> celdasDisponibles = new ArrayList<Celda>();
+		int filaOrigen, columnaOrigen, maxFila, maxColumna, minFila, minColumna;
+		filaOrigen = origen.getFila();
+		columnaOrigen = origen.getColumna();
+		maxFila = (filaOrigen + rango > (altoDeTablero - 1)) ? filaOrigen : (altoDeTablero - 1);
+		maxColumna = (columnaOrigen + rango > (anchoDeTablero - 1)) ? columnaOrigen : (anchoDeTablero - 1);
+		minFila = (filaOrigen - rango < 0 ) ? filaOrigen - rango : 0;
+		minColumna = (columnaOrigen - rango < 0 ) ? columnaOrigen - rango : 0;
+		celdasPermitidasAux(origen, celdasDisponibles, maxColumna, maxFila, minColumna, minFila);
+		return celdasDisponibles;			
+	}
+	
+	
+	/********************************/
+	
+	
 	
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
