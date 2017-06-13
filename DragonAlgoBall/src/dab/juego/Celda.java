@@ -1,5 +1,7 @@
 package dab.juego;
-import dab.dragonBallExceptions.CeldaNoContieneConsumible;
+import java.util.LinkedList;
+import java.util.List;
+
 import dab.dragonBallExceptions.CeldaNoContienePersonaje;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.personajes.Personaje;
@@ -8,50 +10,39 @@ import dab.potenciadores.Potenciador;
 
 public class Celda {
 	int fila, columna;
-	boolean ocupa_personaje;
-	boolean ocupa_consumible;
-	Personaje personaje_ocupante;
-	Potenciador consumible_ocupante;
+	Personaje personaje;
+	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
+	boolean ocupada;
 	
-	public Celda(int fila_, int columna_){
-		fila = fila_;
-		columna = columna_;
-		ocupa_personaje = false;
-		ocupa_consumible = false;
+	public Celda(int fila, int columna){
+		this.fila = fila;
+		this.columna = columna;
+		ocupada = false;
 	}
 	
-	public boolean estaOcupadaPorPersonaje(){
-		return ocupa_personaje;
-	}
-	
-	public boolean estaOcupadaPorConsumible(){
-		return ocupa_personaje;
+	public boolean estaOcupada(){
+		return ocupada;
 	}
 	
 	public Personaje darPersonajeOcupante(){
-		if(!ocupa_personaje) throw new CeldaNoContienePersonaje();
-		return personaje_ocupante;
-	}
-	
-	public Potenciador darConsumibleOcupante(){
-		if(!ocupa_consumible) throw new CeldaNoContieneConsumible();
-		return consumible_ocupante;
+		if(!ocupada) throw new CeldaNoContienePersonaje();
+		return personaje;
 	}
 	
 	public void colocarPersonaje(Personaje personaje){
-		if(ocupa_personaje) throw new CeldaOcupada();
-		personaje_ocupante = personaje;
-		ocupa_personaje = true;
-		if(ocupa_consumible){
-			personaje.agregarPotenciador(consumible_ocupante);
-			ocupa_consumible = false;
+		if(ocupada) throw new CeldaOcupada();
+		this.personaje = personaje;
+		ocupada = true;
+		for(Potenciador p: potenciadores){
+			personaje.agregarPotenciador(p);
+			potenciadores.remove(p);
 		}
 	}
 
 	public void quitarPersonaje(){
-		if(!ocupa_personaje) throw new CeldaNoContienePersonaje();
-		personaje_ocupante = null;
-		ocupa_personaje = false;
+		if(!ocupada) throw new CeldaNoContienePersonaje();
+		personaje = null;
+		ocupada = false;
 	}
 	
 	public int getFila(){

@@ -57,7 +57,7 @@ public abstract class Personaje{
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
-		if(celda.estaOcupadaPorPersonaje()) return false; 
+		if(celda.estaOcupada()) return false; 
 		
 		int maxFila = posicion.getFila() + this.getVelocidad();
 		int maxColumna = posicion.getColumna() + this.getVelocidad();
