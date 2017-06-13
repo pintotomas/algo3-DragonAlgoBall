@@ -1,5 +1,7 @@
 package dab.estados;
 
+import dab.interfaces.IProveedorDeKi;
+
 public abstract class Estado {
 	protected double vidaMaxima;
 	protected int poder;
@@ -8,7 +10,10 @@ public abstract class Estado {
 	protected String nombre;
 	protected int kiParaEspecial;
 	protected int kiParaTransformar;
-	
+	protected IProveedorDeKi proovedorDeKi;
+	protected Estado(IProveedorDeKi proovedorDeKi){
+		this.proovedorDeKi = proovedorDeKi;
+	}
 	public double getVidaMaxima() {
 		return vidaMaxima;
 	}
@@ -35,6 +40,8 @@ public abstract class Estado {
 
 	public abstract Estado transformar();
 
-	public abstract boolean transformarDisponible();
+	public boolean transformarDisponible() {
+		return proveedorDeKi.getKi() >= kiParaTransformar;
+	}
 
 }

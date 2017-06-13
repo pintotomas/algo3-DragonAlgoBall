@@ -19,13 +19,11 @@ public class GokuBase extends Estado{
 	
 	@Override	
 	public Estado transformar() {
-		// TODO Auto-generated method stub
 		return new GokuKaioKen(proveedorDeKi);
 	}
 
 	@Override
 	public boolean transformarDisponible() {
-		// TODO Auto-generated method stub
 		return proveedorDeKi.getKi() >= kiParaTransformar;
 	}
 
