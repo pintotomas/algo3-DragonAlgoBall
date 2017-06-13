@@ -65,7 +65,7 @@ public class Tablero {
 		
 		
 		while(filaO != filaD || columnaO != columnaD){
-			if(this.obtenerCelda(filaO, columnaO).estaOcupadaPorPersonaje()) return false;
+			if(this.obtenerCelda(filaO, columnaO).estaOcupada()) return false;
 			filaO += x;
 			columnaO += y;	
 		}
@@ -86,7 +86,7 @@ public class Tablero {
 	}
 	
 	public boolean celdaOcupada(int fila, int columna){
-		return this.obtenerCelda(fila, columna).estaOcupadaPorPersonaje();
+		return this.obtenerCelda(fila, columna).estaOcupada();
 	}
 	
 }
