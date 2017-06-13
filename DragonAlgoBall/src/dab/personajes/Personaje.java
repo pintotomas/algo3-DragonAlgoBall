@@ -1,14 +1,15 @@
 package dab.personajes;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
 import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
+import dab.estados.Estado;
+import dab.interfaces.IProveedorDeKi;
 import dab.juego.Celda;
 import dab.potenciadores.Potenciador;
 
-public abstract class Personaje{
+public abstract class Personaje implements IProveedorDeKi{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
@@ -16,10 +17,9 @@ public abstract class Personaje{
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
 	protected Estado estado;
-	protected List<Estado> estados = new LinkedList<Estado>();
 	protected double vida;
 	protected int ki = 0;
-	Iterator<Estado> iter;
+	protected int kiParaTransformar;
 
 	/**********************************************************
 							ATAQUE
@@ -96,8 +96,14 @@ public abstract class Personaje{
 	/**********************************************************
 	    				TRANSFORMAR Y TURNO
 	***********************************************************/
-	
+	public void transformar(){
+		this.estado = estado.transformar();
+	}
 
+	public boolean transformarDisponible(){
+		return estado.transformarDisponible();
+	}
+	
 	public void nuevoTurno() {
 		for (Potenciador c: potenciadores){
 			c.pasoUnTurno();
@@ -111,30 +117,11 @@ public abstract class Personaje{
 		
 	}	
 	
-
-	public boolean transformarDisponible() {
-		return (iter.hasNext() && this.getKi() >= estado.kiParaTransformar());
-	}
-	
-	public void transformar(){
-		estado = (iter.next());
-	}
-	
-	
 	/**********************************************************
 						GETERS Y SETERS
 	 **********************************************************/
 
 	
-	public void setIter(Iterator<Estado> iter2){
-		iter = iter2;		
-		iter.next();
-	}
-	
-	public void setEstado(Estado estado_){
-		estado = estado_;
-		
-	}
 	
 	public double getVidaMaxima(){
 		return estado.getVidaMaxima();
@@ -199,8 +186,8 @@ public abstract class Personaje{
 		return equipo;
 	}
 	
-	public void setEquipo(Equipo equipo_) {
-		equipo = equipo_;
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
 	}
 
 	private void recibirAtaque(double poderEnemigo) {

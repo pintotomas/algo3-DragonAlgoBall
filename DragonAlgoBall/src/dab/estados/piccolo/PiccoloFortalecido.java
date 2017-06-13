@@ -1,6 +1,6 @@
 package dab.estados.piccolo;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class PiccoloFortalecido extends Estado {
 	public PiccoloFortalecido(){

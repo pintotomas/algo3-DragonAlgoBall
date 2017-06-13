@@ -2,10 +2,10 @@ package dab.personajes.cell;
 import java.util.Iterator;
 
 import dab.ataquesEspeciales.Absorber;
+import dab.estados.Estado;
 import dab.estados.cell.CellBase;
 import dab.estados.cell.CellPerfecto;
 import dab.estados.cell.CellSemiPerfecto;
-import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
 public class Cell extends Personaje{	

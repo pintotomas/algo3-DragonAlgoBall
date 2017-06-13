@@ -1,4 +1,4 @@
-package dab.personajes;
+package dab.estados;
 
 public abstract class Estado {
 	protected double vidaMaxima;
@@ -32,5 +32,9 @@ public abstract class Estado {
 	public int kiParaTransformar() {
 		return kiParaTransformar;
 	}
+
+	public abstract Estado transformar();
+
+	public abstract boolean transformarDisponible();
 
 }

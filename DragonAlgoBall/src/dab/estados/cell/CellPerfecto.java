@@ -1,6 +1,6 @@
 package dab.estados.cell;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class CellPerfecto extends Estado {
 	

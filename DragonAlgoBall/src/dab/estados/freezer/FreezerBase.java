@@ -1,6 +1,6 @@
 package dab.estados.freezer;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class FreezerBase extends Estado{
 	

@@ -1,6 +1,6 @@
 package dab.estados.majinBoo;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class MajinBooOriginal extends Estado {
 	public MajinBooOriginal(){

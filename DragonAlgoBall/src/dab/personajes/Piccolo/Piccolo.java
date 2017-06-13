@@ -2,10 +2,10 @@ package dab.personajes.Piccolo;
 import java.util.Iterator;
 
 import dab.ataquesEspeciales.Makankosappo;
+import dab.estados.Estado;
 import dab.estados.piccolo.PiccoloBase;
 import dab.estados.piccolo.PiccoloFortalecido;
 import dab.estados.piccolo.PiccoloProtector;
-import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
 public class Piccolo extends Personaje{

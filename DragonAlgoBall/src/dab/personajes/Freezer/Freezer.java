@@ -2,10 +2,10 @@ package dab.personajes.Freezer;
 import java.util.Iterator;
 
 import dab.ataquesEspeciales.RayoMortal;
+import dab.estados.Estado;
 import dab.estados.freezer.FreezerBase;
 import dab.estados.freezer.FreezerDefinitivo;
 import dab.estados.freezer.FreezerSegundaForma;
-import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
 public class Freezer extends Personaje{

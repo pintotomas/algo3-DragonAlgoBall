@@ -1,6 +1,6 @@
 package dab.estados.goku;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class GokuSuperSayajin extends Estado{
 	/*Representa a la segunda transformacion de Goku*/
@@ -14,6 +14,18 @@ public class GokuSuperSayajin extends Estado{
 		velocidad = 5;
 		nombre = "Goku Super Sayajin";
 		kiParaTransformar = 0;
+	}
+
+	@Override
+	public Estado transformar() {
+		// TODO Auto-generated method stub
+		return null; // crear excepcion
+	}
+
+	@Override
+	public boolean transformarDisponible() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

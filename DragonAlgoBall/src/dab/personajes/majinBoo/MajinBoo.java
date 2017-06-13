@@ -4,8 +4,8 @@ import java.util.Iterator;
 import dab.ataquesEspeciales.ConvierteteEnChocolate;
 import dab.estados.majinBoo.MajinBooMalo;
 import dab.estados.majinBoo.MajinBooOriginal;
+import dab.estados.Estado;
 import dab.estados.majinBoo.MajinBooBase;
-import dab.personajes.Estado;
 import dab.personajes.Personaje;
 
 public class MajinBoo extends Personaje{
