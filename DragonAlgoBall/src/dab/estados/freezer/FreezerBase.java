@@ -7,17 +7,18 @@ public class FreezerBase extends Estado{
 	
 /*Representa al personaje Freezer*/
 	
-	private int kiParaTransformar = 20;
 	public FreezerBase(IProveedorDeKi proveedorDeKi){
-		super(proovedorDeKi);
+		super(proveedorDeKi);
 		vidaMaxima = 400;
 		poder = 20;
 		alcance = 2;
 		velocidad = 4;
+		kiParaTransformar = 20;
 	}
 
 	@Override
 	public Estado transformar() {
+		proveedorDeKi.modificarKi(-kiParaTransformar);
 		return new FreezerSegundaForma(proveedorDeKi);
 	}
 

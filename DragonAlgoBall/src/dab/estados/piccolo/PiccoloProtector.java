@@ -11,5 +11,14 @@ public class PiccoloProtector extends Estado {
 		velocidad = 4;
 		nombre = "Piccolo Protector";
 	}
+	
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 
+	@Override
+	public boolean transformarDisponible() {
+		return false;
+	}
 }

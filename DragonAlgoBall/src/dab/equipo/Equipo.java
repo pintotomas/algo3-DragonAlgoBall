@@ -70,10 +70,14 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 		return personaje.getVida();
 	}
 
+	public double obtenerPorcentajeDeVidaDelPersonaje(String nombre){
+		Personaje personaje = this.integrantes.get(nombre);
+		return personaje.getPorcentajeDeVida();
+	}
 	public void otorgarKi(int cantidad){
 		Collection<Personaje> personajesEquipo = this.integrantes.values();
 		for (Personaje p: personajesEquipo){
-			p.agregarKi(cantidad);
+			p.modificarKi(cantidad);
 		}
 	}
 

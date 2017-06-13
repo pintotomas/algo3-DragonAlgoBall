@@ -11,5 +11,15 @@ public class CellPerfecto extends Estado {
 		velocidad = 4;
 		nombre = "Cell Perfecto";
 	}
+	
+	@Override
+	public boolean transformarDisponible() {
+		return false;
+	}
+
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 }
 

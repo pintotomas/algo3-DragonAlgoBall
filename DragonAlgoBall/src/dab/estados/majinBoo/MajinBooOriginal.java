@@ -12,8 +12,14 @@ public class MajinBooOriginal extends Estado {
 		kiParaEspecial = 30;
 	}
 
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 
-
-
+	@Override
+	public boolean transformarDisponible(){
+		return false;
+	}
 
 }

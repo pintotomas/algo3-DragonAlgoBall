@@ -33,31 +33,31 @@ public class TransformacionesGohan {
 	
 	@Test
 	public void primerTransformacionDisponibleConKi() {
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		assertTrue(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionNoDisponibleCompanerosConTodaLaVida() {
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		gohan.transformar();
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionNoDisponibleCompanerosDanados(){
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		gohan.transformar();
 		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
 		piccolo.agregarVida(-piccolo.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
-		gohan.agregarKi(30);
+		gohan.modificarKi(30);
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionDisponibleKiYCondiciones(){
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		gohan.transformar();
 		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar + 0.1));
 		piccolo.agregarVida(-piccolo.getVida()* (1 - gohan.porcentajeVidaAmigosParaTransformar + 0.1));
-		gohan.agregarKi(30);
+		gohan.modificarKi(30);
 		assertTrue(gohan.transformarDisponible());
 	}
 }

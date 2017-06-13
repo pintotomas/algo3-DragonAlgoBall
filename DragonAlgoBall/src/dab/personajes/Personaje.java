@@ -47,7 +47,7 @@ public abstract class Personaje implements IProveedorDeKi{
 	
 	public void ataqueEspecial(Personaje enemigo) {
 		spec.lanzar(enemigo);
-		this.agregarKi(-1*(kiParaEspecial));
+		this.modificarKi(-1*(kiParaEspecial));
 	}
 
 	/********************************************************
@@ -81,7 +81,7 @@ public abstract class Personaje implements IProveedorDeKi{
 	 **********************************************************/
 	
 	
-	public void agregarKi(int aumento) {
+	public void modificarKi(int aumento) {
 		ki = ki + aumento;
 	}
 
@@ -107,7 +107,7 @@ public abstract class Personaje implements IProveedorDeKi{
 	public void nuevoTurno() {
 		for (Potenciador c: potenciadores){
 			c.pasoUnTurno();
-			this.agregarKi(c.getKiExtra());
+			this.modificarKi(c.getKiExtra());
 			if (!c.estaActivo()){
 				potenciadores.remove(c);
 			}
@@ -127,7 +127,10 @@ public abstract class Personaje implements IProveedorDeKi{
 		return estado.getVidaMaxima();
 	}
 	
-	
+	public double getPorcentajeDeVida(){
+		//Devuelve el porcentaje de vida respecto del total
+		return (this.getVida() / this.getVidaMaxima()) * 100;
+	}
 
 	public double getPoder() {
 		
@@ -150,7 +153,6 @@ public abstract class Personaje implements IProveedorDeKi{
 		
 	}
 
-	
 	public double getVida() {
 		return vida;
 	}
@@ -158,7 +160,6 @@ public abstract class Personaje implements IProveedorDeKi{
 	public int getKi() {
 		return ki;
 	}
-	
 	
 
 	public int getVelocidad() {

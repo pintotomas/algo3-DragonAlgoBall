@@ -7,7 +7,6 @@ public class GokuSuperSayajin extends Estado{
 	
 	
 	public GokuSuperSayajin(){
-		
 		vidaMaxima = 500;
 		poder = 60;
 		alcance = 4;
@@ -18,13 +17,11 @@ public class GokuSuperSayajin extends Estado{
 
 	@Override
 	public Estado transformar() {
-		// TODO Auto-generated method stub
-		return null; // crear excepcion
+		return this;
 	}
 
 	@Override
 	public boolean transformarDisponible() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

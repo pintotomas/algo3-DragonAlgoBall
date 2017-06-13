@@ -6,25 +6,20 @@ import dab.interfaces.IProveedorDeKi;
 public class FreezerSegundaForma extends Estado{
 	//segunda transformacion de freezer
 	
-	private int kiParaTransformar = 50;
-	private IProveedorDeKi proveedorDeKi;
-	
 	public FreezerSegundaForma(IProveedorDeKi proveedorDeKi){
+		super(proveedorDeKi);
 		vidaMaxima = 400;
 		poder = 40;
 		alcance = 3;
 		velocidad = 4;
 		nombre = "Freezer Segunda Forma";
+		kiParaTransformar = 50;
 	}
 
 	@Override
 	public Estado transformar() {
-		return new FreezerDefinitivo(proveedorDeKi);
+		proveedorDeKi.modificarKi(-kiParaTransformar);
+		return new FreezerDefinitivo();
 	}
 
-	@Override
-	public boolean transformarDisponible() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

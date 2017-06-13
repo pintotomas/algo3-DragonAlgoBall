@@ -13,5 +13,14 @@ public class FreezerDefinitivo extends Estado {
 		nombre = "Freezer Definitivo";
 		kiParaTransformar = 50;
 	}
-		
+	
+	@Override
+	public boolean transformarDisponible() {
+		return false;
+	}
+
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 }

@@ -34,7 +34,7 @@ public class TransformacionesPiccolo {
 	
 	@Test
 	public void primerTransformacionDisponibleConKiSuficiente(){
-		piccolo.agregarKi(20);
+		piccolo.modificarKi(20);
 		assertTrue(piccolo.transformarDisponible());
 	}
 	
@@ -46,7 +46,7 @@ public class TransformacionesPiccolo {
 	
 	@Test
 	public void segundaTransformacionDisponibleGohanConPocaVida(){
-		piccolo.agregarKi(20);
+		piccolo.modificarKi(20);
 		piccolo.transformar();
 		gohan.agregarVida(-gohan.getVida()*(1 - piccolo.porcetanejVidaGohanParaTransformar + 0.1));
 		assertTrue(piccolo.transformarDisponible());

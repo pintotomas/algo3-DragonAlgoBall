@@ -10,10 +10,11 @@ public abstract class Estado {
 	protected String nombre;
 	protected int kiParaEspecial;
 	protected int kiParaTransformar;
-	protected IProveedorDeKi proovedorDeKi;
-	protected Estado(IProveedorDeKi proovedorDeKi){
-		this.proovedorDeKi = proovedorDeKi;
+	protected IProveedorDeKi proveedorDeKi;
+	protected Estado(IProveedorDeKi proveedorDeKi){
+		this.proveedorDeKi = proveedorDeKi;
 	}
+	protected Estado(){};
 	public double getVidaMaxima() {
 		return vidaMaxima;
 	}

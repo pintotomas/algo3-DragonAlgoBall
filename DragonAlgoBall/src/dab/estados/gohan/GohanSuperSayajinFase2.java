@@ -4,8 +4,8 @@ import dab.estados.Estado;
 
 public class GohanSuperSayajinFase2 extends Estado {
 	/*tercera transformacion de gohan*/
+	
 	public GohanSuperSayajinFase2(){
-		
 		vidaMaxima = 300;
 		poder = 100;
 		alcance = 4;
@@ -15,13 +15,11 @@ public class GohanSuperSayajinFase2 extends Estado {
 
 	@Override
 	public Estado transformar() {
-		// TODO Auto-generated method stub
-		return null; //EXcepcion?
+		return this;
 	}
 
 	@Override
 	public boolean transformarDisponible() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
