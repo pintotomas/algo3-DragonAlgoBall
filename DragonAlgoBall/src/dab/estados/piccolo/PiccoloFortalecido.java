@@ -28,9 +28,6 @@ public class PiccoloFortalecido extends Estado {
 	@Override
 	public boolean transformarDisponible(){
 		//gohan con menos de 20% de vida?	
-		double porcentajeVidaDeGohan = proveedorDeVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Gohan");
-		if (porcentajeVidaDeGohan <= maximoPorcentajeDeVidaDeGohanNecesarioParaTransformar)
-			return true;
-		return false;
-	}
+		return (proveedorDeVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Gohan")  
+				<= maximoPorcentajeDeVidaDeGohanNecesarioParaTransformar);}
 }
