@@ -71,12 +71,7 @@ public class Equipo {
 		}
 	}
 
-	public void nuevoTurno(){
-		this.notificarNuevoTurnoAPersonajes();
-	}
-	
-
-	private void notificarNuevoTurnoAPersonajes(){
+	public void notificarNuevoTurnoAPersonajes(){
 		Collection<Personaje> personajesEquipo = this.integrantes.values();
 		for (Personaje p: personajesEquipo){
 			p.nuevoTurno();

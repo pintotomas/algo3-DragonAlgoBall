@@ -21,6 +21,7 @@ public class Turno {
 		movio = false;
 		ataco = false;
 		personajeSeleccionado = null;
+		equipo.notificarNuevoTurnoAPersonajes();
 	}
 	
 	private void otorgarKi(){
