@@ -32,7 +32,7 @@ public class Celda {
 	public void colocarPersonaje(Personaje personaje){
 		if(ocupada) throw new CeldaOcupada();
 		this.personaje = personaje;
-		ocupada = false;
+		ocupada = true;
 		for(Potenciador p: potenciadores){
 			personaje.agregarPotenciador(p);
 			potenciadores.remove(p);
