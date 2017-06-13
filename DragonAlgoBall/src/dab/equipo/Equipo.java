@@ -3,9 +3,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import dab.interfaces.IProveedorDeVidaDePersonajes;
 import dab.personajes.Personaje;
 
-public class Equipo {
+public class Equipo implements IProveedorDeVidaDePersonajes{
 	/*contiene a los personajes, y a su vez,  podria ser que los personajes contengan al equipo.
 	 * asi por ejemplo para la habilidad de picollo y gohan podemos acceder a los personajes del equipo de
 	 * forma rapida
@@ -63,11 +64,20 @@ public class Equipo {
 		if(personaje == null) throw new RuntimeException("nombre incorrecto en obtener personaje" + nombre);
 		return personaje;
 	}
+	
+	public double obtenerVidaDelPersonaje(String nombre){
+		Personaje personaje = this.integrantes.get(nombre);
+		return personaje.getVida();
+	}
 
+	public double obtenerPorcentajeDeVidaDelPersonaje(String nombre){
+		Personaje personaje = this.integrantes.get(nombre);
+		return personaje.getPorcentajeDeVida();
+	}
 	public void otorgarKi(int cantidad){
 		Collection<Personaje> personajesEquipo = this.integrantes.values();
 		for (Personaje p: personajesEquipo){
-			p.agregarKi(cantidad);
+			p.modificarKi(cantidad);
 		}
 	}
 

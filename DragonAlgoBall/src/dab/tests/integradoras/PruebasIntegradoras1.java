@@ -50,7 +50,7 @@ public class PruebasIntegradoras1 {
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		goku.agregarKi(20);
+		goku.modificarKi(20);
 		Assert.assertTrue(goku.transformarDisponible());
 		goku.transformar();
 		Assert.assertEquals(goku.getNombre(), "Goku Kaio-Ken");
@@ -66,7 +66,7 @@ public class PruebasIntegradoras1 {
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		goku.agregarKi(20);
+		goku.modificarKi(20);
 		goku.transformar();
 		goku.mover(tablero.obtenerCelda(1, 2));
 		Assert.assertEquals(goku.getPoder(), 40, 0);

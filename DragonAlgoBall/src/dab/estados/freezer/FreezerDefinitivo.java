@@ -1,6 +1,6 @@
 package dab.estados.freezer;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class FreezerDefinitivo extends Estado {
 	//ultima transformacion de freezer
@@ -13,5 +13,14 @@ public class FreezerDefinitivo extends Estado {
 		nombre = "Freezer Definitivo";
 		kiParaTransformar = 50;
 	}
-		
+	
+	@Override
+	public boolean transformarDisponible() {
+		return false;
+	}
+
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 }

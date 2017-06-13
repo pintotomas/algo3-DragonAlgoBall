@@ -1,6 +1,6 @@
 package dab.estados.cell;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class CellPerfecto extends Estado {
 	
@@ -10,6 +10,16 @@ public class CellPerfecto extends Estado {
 		alcance = 4;
 		velocidad = 4;
 		nombre = "Cell Perfecto";
+	}
+	
+	@Override
+	public boolean transformarDisponible() {
+		return false;
+	}
+
+	@Override
+	public Estado transformar() {
+		return this;
 	}
 }
 

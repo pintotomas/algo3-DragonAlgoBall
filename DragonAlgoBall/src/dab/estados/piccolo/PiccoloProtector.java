@@ -1,6 +1,6 @@
 package dab.estados.piccolo;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class PiccoloProtector extends Estado {
 	
@@ -11,5 +11,14 @@ public class PiccoloProtector extends Estado {
 		velocidad = 4;
 		nombre = "Piccolo Protector";
 	}
+	
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 
+	@Override
+	public boolean transformarDisponible() {
+		return false;
+	}
 }
