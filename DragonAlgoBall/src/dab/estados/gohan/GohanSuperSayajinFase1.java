@@ -29,15 +29,12 @@ public class GohanSuperSayajinFase1 extends Estado{
 
 		@Override
 		public boolean transformarDisponible() {
-			if (proveedorDeKi.getKi() < kiParaTransformar){
-				return false;
-			}
+	
 			double porcentajeVidaGoku = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Goku");
 			double porcentajeVidaPiccolo = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Piccolo");
-			if (porcentajeVidaGoku >= porcentajeVidaAliadosNecesarioParaTransformar)
-				return false;
-			if (porcentajeVidaPiccolo >= porcentajeVidaAliadosNecesarioParaTransformar)
-				return false;
-			return true;
+			
+			return ((porcentajeVidaGoku >= porcentajeVidaAliadosNecesarioParaTransformar) &&
+					(porcentajeVidaPiccolo >= porcentajeVidaAliadosNecesarioParaTransformar) &&
+					(proveedorDeKi.getKi() >= kiParaTransformar));
 		}
 }
