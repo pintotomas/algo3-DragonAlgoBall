@@ -32,7 +32,7 @@ public abstract class Personaje implements IProveedorDeKi{
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
 		}
-		if(celda.darPersonajeOcupante().getEquipo() == this.getEquipo()){
+		if(celda.getPersonaje().getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;
@@ -57,7 +57,7 @@ public abstract class Personaje implements IProveedorDeKi{
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
-		if(celda.estaOcupada()) return false; 
+		
 		
 		int maxFila = posicion.getFila() + this.getVelocidad();
 		int maxColumna = posicion.getColumna() + this.getVelocidad();

@@ -24,7 +24,7 @@ public class Celda {
 		return ocupada;
 	}
 	
-	public Personaje darPersonajeOcupante(){
+	public Personaje getPersonaje(){
 		if(!ocupada) throw new CeldaNoContienePersonaje();
 		return personaje;
 	}
@@ -40,7 +40,6 @@ public class Celda {
 	}
 
 	public void quitarPersonaje(){
-		if(!ocupada) throw new CeldaNoContienePersonaje();
 		personaje = null;
 		ocupada = false;
 	}
