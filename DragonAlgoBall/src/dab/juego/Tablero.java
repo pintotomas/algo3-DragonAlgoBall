@@ -63,19 +63,20 @@ public class Tablero {
 		ArrayList<Celda> celdas = new ArrayList<Celda>();
 		int newCol, newFil;
 		Celda nuevaCelda;
-		
-		for(int x = -1 ; x < 2 ; x++){
-			for(int y  = -1; x < 2; y++){
-				if( !(x == 0 && y == 0)){
-					newCol = celda.getColumna() + x;
-					newFil = celda.getFila() + y;
-					if(newCol >= colMin && newFil >= filMin && newCol <= colMax){
+		for(int fil = -1; fil < 2; fil++){
+			for(int col = -1; col < 2; col ++){
+				if(!(col == 0 && fil == 0)){
+					newCol = celda.getColumna() + col;
+					newFil =celda.getFila() + fil;
+					if(newFil <= filMax && newCol <= colMax && newFil >= filMin && newCol >= colMin){
 						nuevaCelda = this.obtenerCelda(newFil, newCol);
-						if(!nuevaCelda.estaOcupadaPorPersonaje());
+						if(!nuevaCelda.estaOcupada()){
 							celdas.add(nuevaCelda);
+						}
 					}
 				}
 			}
+			
 		}
 		return celdas;
 	}
@@ -122,7 +123,7 @@ public class Tablero {
 	}
 	
 	public boolean celdaOcupada(int fila, int columna){
-		return this.obtenerCelda(fila, columna).estaOcupadaPorPersonaje();
+		return this.obtenerCelda(fila, columna).estaOcupada();
 	}
 	
 }
