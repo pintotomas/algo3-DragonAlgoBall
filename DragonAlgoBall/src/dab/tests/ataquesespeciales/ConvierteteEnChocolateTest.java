@@ -25,18 +25,18 @@ public class ConvierteteEnChocolateTest {
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(goku);
 		tablero = new Tablero(guerrerosZ,enemigos);
-		tablero.colocarPersonaje(1,1,goku);
-		tablero.colocarPersonaje(1,2,majinboo);
+		tablero.colocarPersonaje(goku,1,1);
+		tablero.colocarPersonaje(majinboo,1,2);
 	}
 
 	@Test
 	public void testSeConvierteEnChocolate() {
-		majinboo.agregarKi(30);
+		majinboo.modificarKi(30);
 		majinboo.ataqueEspecial(goku);
 		Assert.assertEquals(0,goku.getAlcance());
 		Assert.assertEquals(0,goku.getVelocidad());
 		for (int i = 0; i < 3; i ++){
-			goku.agregarKi(5);
+			goku.modificarKi(5);
 			goku.nuevoTurno();
 		}
 		Assert.assertEquals(2, goku.getVelocidad());

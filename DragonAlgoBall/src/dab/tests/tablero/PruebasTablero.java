@@ -14,81 +14,82 @@ import dab.personajes.Goku.Goku;
 public class PruebasTablero{
 
 	@Test
-	public void testPosicionInicialCorrecta() {
+	public void testCoordenadasDelPersonajeCorrectasAlPosicionarEnTablero() {
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
 		assertEquals(tableroDab.filaPersonaje(goku), 5);
 		assertEquals(tableroDab.columnaPersonaje(goku), 6);
 		
 	}
 	@Test
-	public void testMoverPersonajeLoDesplaza(){
+	public void testCoordenadasActualizadasAlMoverPersonaje(){ 
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(4, 5, goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.colocarPersonaje(goku, 4, 5);
 		assertEquals(tableroDab.filaPersonaje(goku), 4);
 		assertEquals(tableroDab.columnaPersonaje(goku), 5);
 	}
 	@Test
-	public void testMoverPersonajeDejaLibreCeldaAnterior(){
+	public void testCeldaAnteriorQuedaLibreAlMoverPersonaje(){ 
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(4, 5, goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.moverPersonaje(goku, 4, 5);
 		assertFalse(tableroDab.celdaOcupada(5, 6));
 	}
 
 	@Test
-	public void testMoverPersonajeHorizontalAlcanceMaximo(){
+	public void testPersonajePuedeMoverseEnSentidoHorizontalHastaSuAlcanceMaximo(){ 
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(5 + goku.getVelocidad(), 6, goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.colocarPersonaje(goku, 5 + goku.getVelocidad(), 6);
 		assertEquals(tableroDab.filaPersonaje(goku), 5+ goku.getVelocidad());
 		assertEquals(tableroDab.columnaPersonaje(goku), 6);
 	}
 	
 	@Test
-	public void testMoverPersonajeVerticalAlcanceMaximo(){
+	public void testPersonajePuedeMoverseEnSentidoVerticalHastaSuAlcanceMaximo(){
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(5, 6 + goku.getVelocidad(), goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.colocarPersonaje(goku, 5, 6 + goku.getVelocidad());
 		assertEquals(tableroDab.filaPersonaje(goku), 5);
 		assertEquals(tableroDab.columnaPersonaje(goku), 6 + goku.getVelocidad());
 	}
 	@Test
-	public void testMoverPersonajeDiagonalAlcanceMaximo(){
+	public void testPersonajePuedeMoverseEnSentidoDiagonalHastaSuAlcanceMaximo(){
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(5 + ((int)(goku.getVelocidad())), 6 + ((int)(goku.getVelocidad())), goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.colocarPersonaje(goku, 5 + ((int)(goku.getVelocidad())), 6 + ((int)(goku.getVelocidad())));
 		assertEquals(tableroDab.filaPersonaje(goku), 5 + ((int)(goku.getVelocidad())));
 		assertEquals(tableroDab.columnaPersonaje(goku), 6 + ((int)(goku.getVelocidad())));
 	}
 	@Test(expected = MovimientoInvalido.class)
-	public void testMoverseHorizontalMayorQueAlcanceLanzaMovimientoInvalido(){
+	public void testMoverPersonajeHorizontalMayorQueAlcanceLanzaMovimientoInvalido(){
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(5 + goku.getVelocidad() + 1, 6 , goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		
+		tableroDab.moverPersonaje(goku, 5 + goku.getVelocidad() + 1, 6);
 	}
 	
 	@Test(expected = MovimientoInvalido.class)
 	public void testMoverPersonajeVerticalMayorQueAlcanceLanzaMovimientoInvalido(){
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(5, 6 + goku.getVelocidad() + 1, goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.moverPersonaje(goku, 5, 6 + goku.getVelocidad() + 1);
 	}
 	@Test(expected = MovimientoInvalido.class)
-	public void testMoverPersonajeDiagonalMayorAlcanceMaximo(){
+	public void testMoverPersonajeDiagonalMayorAlcanceMaximoLanzaMovimientoInvalido(){
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(5 + 1 + ((int)(goku.getVelocidad())), 6 + ((int)(goku.getVelocidad())), goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.moverPersonaje(goku, 5 + 1 + ((int)(goku.getVelocidad())), 6 + ((int)(goku.getVelocidad())));
 	}
 	
 	@Test(expected = MovimientoInvalido.class)
@@ -96,18 +97,20 @@ public class PruebasTablero{
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
 		Gohan gohan = new Gohan();
-		tableroDab.colocarPersonaje(5, 6, goku);
-		tableroDab.colocarPersonaje(6, 6, gohan);
-		tableroDab.colocarPersonaje(7,6,goku);
+		tableroDab.colocarPersonaje(goku, 5, 6);
+		tableroDab.colocarPersonaje(gohan, 6, 6);
+		tableroDab.moverPersonaje(goku, 7 , 6);
+		//para que funcione falta la funcion de existeCamino
+		
 	}
 	@Test(expected = MovimientoInvalido.class)
 	public void testMoverPersonajeSobrepasandoOtroDiagonalLanzaError(){
 		Tablero tableroDab = new Tablero();
 		Goku goku = new Goku();
 		Gohan gohan = new Gohan();
-		tableroDab.colocarPersonaje(5, 7, goku);
-		tableroDab.colocarPersonaje(6, 6, gohan);
-		tableroDab.colocarPersonaje(7,5,goku);
+		tableroDab.colocarPersonaje(goku, 5, 7);
+		tableroDab.colocarPersonaje(gohan, 6, 6);
+		tableroDab.colocarPersonaje(goku,7,5);
 	}
 	
 }

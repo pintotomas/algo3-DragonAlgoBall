@@ -13,13 +13,15 @@ public class TransformacionesGohan {
 	private Goku goku;
 	private Piccolo piccolo;
 	private Equipo guerrerosZ;
-
+	private double limite = 0.0000000000000001;
+	//se usa para comprobar que gohan pueda transformarse cuando tenga 29.9999% de vida
+	//con mas precision, falla
 	@Before
 	public void before(){
-		gohan = new Gohan();
-		goku = new Goku();
-		piccolo = new Piccolo();
 		guerrerosZ = new Equipo("Guerreros Z");
+		gohan = new Gohan(guerrerosZ);
+		goku = new Goku(guerrerosZ);
+		piccolo = new Piccolo(guerrerosZ);
 		guerrerosZ.agregarPersonaje(gohan);
 		guerrerosZ.agregarPersonaje(goku);
 		guerrerosZ.agregarPersonaje(piccolo);
@@ -33,31 +35,31 @@ public class TransformacionesGohan {
 	
 	@Test
 	public void primerTransformacionDisponibleConKi() {
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		assertTrue(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionNoDisponibleCompanerosConTodaLaVida() {
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		gohan.transformar();
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionNoDisponibleCompanerosDanados(){
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		gohan.transformar();
 		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
 		piccolo.agregarVida(-piccolo.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
-		gohan.agregarKi(30);
+		gohan.modificarKi(30);
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionDisponibleKiYCondiciones(){
-		gohan.agregarKi(10);
+		gohan.modificarKi(10);
 		gohan.transformar();
-		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar + 0.1));
-		piccolo.agregarVida(-piccolo.getVida()* (1 - gohan.porcentajeVidaAmigosParaTransformar + 0.1));
-		gohan.agregarKi(30);
+		goku.agregarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar + limite));
+		piccolo.agregarVida(-piccolo.getVida()* (1 - gohan.porcentajeVidaAmigosParaTransformar + limite));
+		gohan.modificarKi(30);
 		assertTrue(gohan.transformarDisponible());
 	}
 }

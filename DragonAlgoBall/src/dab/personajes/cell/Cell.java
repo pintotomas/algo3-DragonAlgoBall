@@ -1,14 +1,12 @@
 package dab.personajes.cell;
-import java.util.Iterator;
 
 import dab.ataquesEspeciales.Absorber;
+import dab.equipo.Equipo;
 import dab.estados.cell.CellBase;
-import dab.estados.cell.CellPerfecto;
-import dab.estados.cell.CellSemiPerfecto;
-import dab.personajes.Estado;
+import dab.interfaces.IProveedorDeCantidadAbsorbidos;
 import dab.personajes.Personaje;
 
-public class Cell extends Personaje{	
+public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{	
 	protected int absorbidosParaTransformarCellSemiPerfecto = 4;
 	protected int absorbidosParaTransformarCellPerfecto = 8;
 	protected int absorbidos;
@@ -17,31 +15,28 @@ public class Cell extends Personaje{
 		spec = new Absorber(this);
 		kiParaEspecial = 5;
 		absorbidos = 0;
-		estado = new CellBase();
+		estado = new CellBase(this);
 		vida = estado.getVidaMaxima();
-		estados.add(new CellBase());
-		estados.add(new CellSemiPerfecto());
-		estados.add(new CellPerfecto());
-		Iterator<Estado> iter = estados.iterator();
-		setIter(iter);	
 	}
 	
+	public Cell(Equipo equipo){
+		spec = new Absorber(this);
+		kiParaEspecial = 5;
+		absorbidos = 0;
+		estado = new CellBase(this);
+		vida = estado.getVidaMaxima();
+		this.equipo = equipo;
+		
+	}
 	@Override
 	public void ataqueEspecial(Personaje enemigo) {
 		super.ataqueEspecial(enemigo);
 		absorbidos += 1;
 		this.agregarVida(this.getPoder());
-		
 	}
 	
-	public boolean transformarDisponible() {
-		if(estado.getClass() == CellSemiPerfecto.class){			
-			return(absorbidos >= absorbidosParaTransformarCellPerfecto);
-		}
-		if(estado.getClass() == CellBase.class){			
-			return(absorbidos >= absorbidosParaTransformarCellSemiPerfecto);
-		}
-		return false;		
+	public int getCantidadAbsorbidos(){
+		return absorbidos;
 	}
 
 }

@@ -1,21 +1,26 @@
 package dab.estados.freezer;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
+import dab.interfaces.IProveedorDeKi;
 
 public class FreezerBase extends Estado{
 	
 /*Representa al personaje Freezer*/
 	
-	
-	public FreezerBase(){
+	public FreezerBase(IProveedorDeKi proveedorDeKi){
+		super(proveedorDeKi);
 		vidaMaxima = 400;
 		poder = 20;
 		alcance = 2;
 		velocidad = 4;
-		nombre = "Freezer";
 		kiParaTransformar = 20;
 	}
-	
-	
+
+	@Override
+	public Estado transformar() {
+		proveedorDeKi.modificarKi(-kiParaTransformar);
+		return new FreezerSegundaForma(proveedorDeKi);
+	}
+
 	
 }

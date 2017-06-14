@@ -25,8 +25,8 @@ public class CellTests {
 		guerrerosz = new Equipo("Guerreros Z");
 		guerrerosz.agregarPersonaje(goku);
 		tablero = new Tablero();
-		tablero.colocarPersonaje(1,1,goku);
-		tablero.colocarPersonaje(1,2,cell);
+		tablero.colocarPersonaje(goku,1,1);
+		tablero.colocarPersonaje(cell,1,2);
 	}
 
 	@Test
@@ -36,7 +36,7 @@ public class CellTests {
 	@Test
 	public void testAbsorberVida() {
 		cell.agregarVida(-20);
-		cell.agregarKi(5);
+		cell.modificarKi(5);
 		cell.ataqueEspecial(goku);
 		Assert.assertEquals(cell.getVidaMaxima(), cell.getVida(), 0);
 		Assert.assertEquals(480, goku.getVida(),0);
@@ -44,7 +44,7 @@ public class CellTests {
 	@Test
 	public void testTransformar(){
 		for (int i = 0; i < 4; i++) {
-			cell.agregarKi(5);
+			cell.modificarKi(5);
 			cell.ataqueEspecial(goku);
 		}
 		Assert.assertTrue(cell.transformarDisponible());

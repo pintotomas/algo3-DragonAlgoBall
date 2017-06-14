@@ -1,6 +1,6 @@
 package dab.estados.majinBoo;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
 
 public class MajinBooOriginal extends Estado {
 	public MajinBooOriginal(){
@@ -12,8 +12,14 @@ public class MajinBooOriginal extends Estado {
 		kiParaEspecial = 30;
 	}
 
+	@Override
+	public Estado transformar() {
+		return this;
+	}
 
-
-
+	@Override
+	public boolean transformarDisponible(){
+		return false;
+	}
 
 }

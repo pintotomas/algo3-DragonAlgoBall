@@ -1,12 +1,14 @@
 package dab.estados.goku;
 
-import dab.personajes.Estado;
+import dab.estados.Estado;
+import dab.interfaces.IProveedorDeKi;
 
 public class GokuKaioKen extends Estado{
 	/*Representa a la primer transformacion de Goku*/
-
-	public GokuKaioKen(){
-		
+	
+	
+	public GokuKaioKen(IProveedorDeKi proveedorDeKi){
+		super(proveedorDeKi);
 		vidaMaxima = 500;
 		poder = 40;
 		alcance = 4;
@@ -14,4 +16,11 @@ public class GokuKaioKen extends Estado{
 		nombre = "Goku Kaio-Ken";
 		kiParaTransformar = 50;
 	}
+
+	@Override
+	public Estado transformar() {
+		proveedorDeKi.modificarKi(-kiParaTransformar);
+		return new GokuSuperSayajin();
+	}
+
 }

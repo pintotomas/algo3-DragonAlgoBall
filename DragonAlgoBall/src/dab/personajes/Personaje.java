@@ -1,14 +1,15 @@
 package dab.personajes;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
 import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
+import dab.estados.Estado;
+import dab.interfaces.IProveedorDeKi;
 import dab.juego.Celda;
 import dab.potenciadores.Potenciador;
 
-public abstract class Personaje{
+public abstract class Personaje implements IProveedorDeKi{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
 	protected Celda posicion;
@@ -16,15 +17,14 @@ public abstract class Personaje{
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
 	protected Estado estado;
-	protected List<Estado> estados = new LinkedList<Estado>();
 	protected double vida;
 	protected int ki = 0;
-	Iterator<Estado> iter;
+	protected int kiParaTransformar;
 
 	/**********************************************************
 							ATAQUE
 	 **********************************************************/
-
+	
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
 		int maxColumna = posicion.getColumna() + this.getAlcance();
@@ -32,7 +32,7 @@ public abstract class Personaje{
 		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
 			return false;
 		}
-		if(celda.darPersonajeOcupante().getEquipo() == this.getEquipo()){
+		if(celda.getPersonaje().getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;
@@ -47,7 +47,7 @@ public abstract class Personaje{
 	
 	public void ataqueEspecial(Personaje enemigo) {
 		spec.lanzar(enemigo);
-		this.agregarKi(-1*(kiParaEspecial));
+		this.modificarKi(-1*(kiParaEspecial));
 	}
 
 	/********************************************************
@@ -57,7 +57,7 @@ public abstract class Personaje{
 	public boolean movimientoPosible(Celda celda){
 		//verifica que el movimiento se pueda hacer.
 		//verifica que la celda destino este libre
-		if(celda.estaOcupadaPorPersonaje()) return false; 
+		
 		
 		int maxFila = posicion.getFila() + this.getVelocidad();
 		int maxColumna = posicion.getColumna() + this.getVelocidad();
@@ -81,7 +81,7 @@ public abstract class Personaje{
 	 **********************************************************/
 	
 	
-	public void agregarKi(int aumento) {
+	public void modificarKi(int aumento) {
 		ki = ki + aumento;
 	}
 
@@ -96,12 +96,18 @@ public abstract class Personaje{
 	/**********************************************************
 	    				TRANSFORMAR Y TURNO
 	***********************************************************/
-	
+	public void transformar(){
+		this.estado = estado.transformar();
+	}
 
+	public boolean transformarDisponible(){
+		return estado.transformarDisponible();
+	}
+	
 	public void nuevoTurno() {
 		for (Potenciador c: potenciadores){
 			c.pasoUnTurno();
-			this.agregarKi(c.getKiExtra());
+			this.modificarKi(c.getKiExtra());
 			if (!c.estaActivo()){
 				potenciadores.remove(c);
 			}
@@ -111,36 +117,20 @@ public abstract class Personaje{
 		
 	}	
 	
-
-	public boolean transformarDisponible() {
-		return (iter.hasNext() && this.getKi() >= estado.kiParaTransformar());
-	}
-	
-	public void transformar(){
-		estado = (iter.next());
-	}
-	
-	
 	/**********************************************************
 						GETERS Y SETERS
 	 **********************************************************/
 
 	
-	public void setIter(Iterator<Estado> iter2){
-		iter = iter2;		
-		iter.next();
-	}
-	
-	public void setEstado(Estado estado_){
-		estado = estado_;
-		
-	}
 	
 	public double getVidaMaxima(){
 		return estado.getVidaMaxima();
 	}
 	
-	
+	public double getPorcentajeDeVida(){
+		//Devuelve el porcentaje de vida respecto del total
+		return (this.getVida() / this.getVidaMaxima()) * 100;
+	}
 
 	public double getPoder() {
 		
@@ -163,7 +153,6 @@ public abstract class Personaje{
 		
 	}
 
-	
 	public double getVida() {
 		return vida;
 	}
@@ -171,7 +160,6 @@ public abstract class Personaje{
 	public int getKi() {
 		return ki;
 	}
-	
 	
 
 	public int getVelocidad() {
@@ -199,8 +187,8 @@ public abstract class Personaje{
 		return equipo;
 	}
 	
-	public void setEquipo(Equipo equipo_) {
-		equipo = equipo_;
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
 	}
 
 	private void recibirAtaque(double poderEnemigo) {
