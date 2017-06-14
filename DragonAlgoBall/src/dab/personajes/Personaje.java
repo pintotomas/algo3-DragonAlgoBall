@@ -6,13 +6,14 @@ import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
-import dab.juego.Celda;
+import dab.interfaces.ICoordenadasXY;
+import dab.interfaces.IFichaMovible;
 import dab.potenciadores.Potenciador;
 
-public abstract class Personaje implements IProveedorDeKi{
+public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
-	protected Celda posicion;
+	protected ICoordenadasXY coordenadas;
 	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
@@ -26,13 +27,14 @@ public abstract class Personaje implements IProveedorDeKi{
 	 **********************************************************/
 	
 	public boolean puedeAtacar(Personaje personaje) {
-		int maxFila = posicion.getFila() + this.getAlcance();
-		int maxColumna = posicion.getColumna() + this.getAlcance();
-		Celda celda = personaje.getPosicion();
-		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
+		int maxFila = coordenadas.getX() + this.getAlcance();
+		int maxColumna = coordenadas.getY() + this.getAlcance();
+		ICoordenadasXY coordenadasEnemigo = personaje.getPosicion();
+		if(coordenadasEnemigo.getY() > maxColumna  ||  coordenadasEnemigo.getX() > maxFila){
 			return false;
 		}
-		if(celda.getPersonaje().getEquipo() == this.getEquipo()){
+		//Ver si esto se puede chequear en otro lado como juego
+		if(((Personaje) coordenadasEnemigo.getFicha()).getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;
@@ -54,27 +56,18 @@ public abstract class Personaje implements IProveedorDeKi{
 							MOVIMIENTO
 	 ********************************************************/
 		
-	public boolean movimientoPosible(Celda celda){
+	public boolean movimientoPosible(ICoordenadasXY coordenadasDestino){
 		//verifica que el movimiento se pueda hacer.
-		//verifica que la celda destino este libre
-		
-		
-		int maxFila = posicion.getFila() + this.getVelocidad();
-		int maxColumna = posicion.getColumna() + this.getVelocidad();
+	
+		int maxFila = coordenadas.getX() + this.getVelocidad();
+		int maxColumna = coordenadas.getY() + this.getVelocidad();
 		//verifica que el movimiento se pueda hacer.
-		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
+		if(coordenadasDestino.getY() > maxColumna  ||  coordenadasDestino.getX() > maxFila){
 			return false;
 		}
 		return true;
 	}
-	
-	
-	public void mover(Celda celda) {
-		celda.colocarPersonaje(this); //si tira error que lo mande para arriba.
-		posicion.quitarPersonaje();
-		posicion = celda;
-	}
-	
+		
 	
 	/**********************************************************
  						AGREGAR KI Y VIDA
@@ -120,8 +113,6 @@ public abstract class Personaje implements IProveedorDeKi{
 	/**********************************************************
 						GETERS Y SETERS
 	 **********************************************************/
-
-	
 	
 	public double getVidaMaxima(){
 		return estado.getVidaMaxima();
@@ -175,12 +166,12 @@ public abstract class Personaje implements IProveedorDeKi{
 		return estado.getNombre();
 	}
 
-	public Celda getPosicion(){
-		return posicion;
+	public ICoordenadasXY getPosicion(){
+		return coordenadas;
 	}
 	
-	public void setPosicion(Celda celda){
-		posicion = celda;
+	public void setPosicion(ICoordenadasXY coordenadas){
+		this.coordenadas = coordenadas;
 	}
 	
 	public Equipo getEquipo(){
@@ -198,7 +189,7 @@ public abstract class Personaje implements IProveedorDeKi{
 		this.agregarVida(-poderEnemigo);	
 	}
 	
-	public void agregarPotenciador(Potenciador c){
+	public void agarrarPotenciador(Potenciador c){
 		potenciadores.add(c);
 		this.agregarVida(c.getVidaExtra());
 	}

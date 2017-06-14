@@ -1,7 +1,7 @@
 package dab.juego;
 
 import dab.dragonBallExceptions.AtaqueNoValido;
-import dab.dragonBallExceptions.CeldaNoContienePersonaje;
+import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.dragonBallExceptions.NadaSeleccionado;
 import dab.equipo.Equipo;
@@ -43,7 +43,7 @@ public class Turno {
 		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
 		if(personajeSeleccionado == null) throw new NadaSeleccionado();
 		if(personajeSeleccionado.movimientoPosible(celda) && tablero.trayectoriaValida(celdaSeleccionada, celda)){
-			 personajeSeleccionado.mover(celda);
+			 tablero.moverFicha(personajeSeleccionado, celda.getX(), celda.getY());
 			 movio = true;
 		}
 		else{
@@ -54,8 +54,8 @@ public class Turno {
 	public void atacar(Celda celda){
 		// el atacar es similar al mover. 
 
-		if(!celda.estaOcupada()) throw new CeldaNoContienePersonaje();
-		Personaje personaje_atacado = celda.getPersonaje();
+		if(!celda.estaOcupada()) throw new CeldaNoContieneFicha();
+		Personaje personaje_atacado = (Personaje) celda.getFicha();
 		if(personajeSeleccionado.puedeAtacar(personaje_atacado)){
 			personajeSeleccionado.atacarA(personaje_atacado);
 			ataco = true;

@@ -1,7 +1,10 @@
 package dab.juego;
-import dab.dragonBallExceptions.CeldaNoContienePersonaje;
+import dab.dragonBallExceptions.CeldaNoContieneFicha;
+import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
+import dab.interfaces.IFichaMovible;
+import dab.interfaces.IFichaUbicable;
 import dab.personajes.Personaje;
 
 public class Tablero {
@@ -22,48 +25,60 @@ public class Tablero {
 		
 	public Tablero(Equipo equipo1, Equipo equipo2){
 		//inicio las celdas del tablero
+		
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
 				tablero[fila][columna] = new Celda(fila, columna);
 			}
 		}
-		this.ubicarPersonajesEnPosicionInicial(equipo1, equipo2);		
+		
+		this.ubicarPersonajesEnPosicionInicial(equipo1, equipo2);
+		
 	}
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, Equipo equipo2){
+		//De ubicarlos en el tablero se podria ocupar la clase Juego, asi tenemos un metodo solo
+		//de ubicarFichas y lo que recibiria seria una coleccion de fichas y el rango donde ponerlas
 		int i = 0;
 		int primeraPosicion = anchoDeTablero/2;
 		for(Personaje personaje : equipo1.obtenerPersonajes()){
-			this.colocarPersonaje(personaje,0 , primeraPosicion + i);
+			this.colocarFichaMovil(personaje,0 , primeraPosicion + i);
 			i += 1;
 		}
 		i = 0;
 		for(Personaje personaje : equipo2.obtenerPersonajes()){
-			this.colocarPersonaje(personaje,altoDeTablero - 1 , primeraPosicion + i);
+			this.colocarFichaMovil(personaje,altoDeTablero - 1 , primeraPosicion + i);
 			i += 1;
 		}
 	}
 	
-	public void colocarPersonaje(Personaje personaje, int fila,int columna){
+	public void colocarFichaMovil(IFichaMovible ficha, int fila,int columna){
 		Celda celda = this.obtenerCelda(fila, columna);
-		celda.colocarPersonaje(personaje);
-		personaje.setPosicion(celda);
+		celda.colocarFichaMovil(ficha);
+		ficha.setPosicion(celda);
 	}
 	
-	public void moverPersonaje(Personaje aPersonaje, int x, int y){
+	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
+	
+	public void moverFicha(IFichaMovible ficha, int x, int y){
 		
-		Celda celdaInicio = tablero[aPersonaje.getPosicion().getFila()][aPersonaje.getPosicion().getColumna()];
+		Celda celdaInicio = tablero[ficha.getPosicion().getX()][ficha.getPosicion().getY()];
 		//Cambiar para que personaje en vez de conocer la celda, conozca sus coordenadas x,y
 		Celda celdaFin = tablero[x][y];
 		if (!celdaInicio.estaOcupada()){
-			throw new CeldaNoContienePersonaje();
+			throw new CeldaNoContieneFicha();
 		}
-		Personaje personaje = celdaInicio.getPersonaje();
-		if (celdaInicio.getPersonaje().movimientoPosible(celdaFin) && !celdaFin.estaOcupada()){
+		
+		if (celdaFin.estaOcupada()){
+			throw new CeldaOcupada();
+		}
+		
+		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada()){
 			//&&hayCaminoLibre(celdaInicio, celdaFin)
-			celdaInicio.quitarPersonaje();
-			celdaFin.colocarPersonaje(personaje);
+			celdaInicio.quitarFichaMovible();
+			this.colocarFichaMovil(ficha, x, y);
 		}
+	
 		else{
 			throw new MovimientoInvalido();
 		}
@@ -71,10 +86,10 @@ public class Tablero {
 	
 	public boolean trayectoriaValida(Celda origen, Celda destino){
 		int filaO, filaD, columnaO, columnaD,x,y;
-		filaO = origen.getFila();
-		filaD = destino.getFila();
-		columnaO = origen.getColumna();
-		columnaD = destino.getColumna();
+		filaO = origen.getX();
+		filaD = destino.getX();
+		columnaO = origen.getY();
+		columnaD = destino.getY();
 		
 		if(filaO > filaD) x = -1;
 		else if (filaD > filaO) x = 1;
@@ -98,12 +113,12 @@ public class Tablero {
 		return tablero[fila][columna];		
 	}
 	
-	public int filaPersonaje(Personaje personaje){
-		return personaje.getPosicion().getFila();
+	public int getFilaDeLaFicha(IFichaUbicable ficha){
+		return ficha.getPosicion().getX();
 	}
 	
-	public int columnaPersonaje(Personaje personaje){
-		return personaje.getPosicion().getColumna();
+	public int getColumnaDeLaFicha(IFichaUbicable ficha){
+		return ficha.getPosicion().getY();
 	}
 	
 	public boolean celdaOcupada(int fila, int columna){

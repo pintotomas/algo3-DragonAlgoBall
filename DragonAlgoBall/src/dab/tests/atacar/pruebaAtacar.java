@@ -51,8 +51,8 @@ public class pruebaAtacar{
 		Tablero tablero = new Tablero();
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje cell = enemigosDeLaTierra.obtenerPersonaje("Cell");
-		tablero.colocarPersonaje(piccolo, 5, 6);
-		tablero.colocarPersonaje(cell, 5,7);
+		tablero.colocarFichaMovil(piccolo, 5, 6);
+		tablero.colocarFichaMovil(cell, 5,7);
 		
 		double vidaEsperada = cell.getVida() - piccolo.getPoder();
 		piccolo.atacarA(cell);
@@ -65,8 +65,8 @@ public class pruebaAtacar{
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
 		
-		tablero.colocarPersonaje(piccolo, 5, 6);
-		tablero.colocarPersonaje(majinboo, 5,7);
+		tablero.colocarFichaMovil(piccolo, 5, 6);
+		tablero.colocarFichaMovil(majinboo, 5,7);
 		
 		double vidaEsperada = majinboo.getVida() - (int)(piccolo.getPoder() * 0.8);
 		piccolo.atacarA(majinboo);
@@ -78,8 +78,8 @@ public class pruebaAtacar{
 		Tablero tablero = new Tablero();
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
-		tablero.colocarPersonaje(piccolo, 5, 6);
-		tablero.colocarPersonaje(majinboo, 10, 8);
+		tablero.colocarFichaMovil(piccolo, 5, 6);
+		tablero.colocarFichaMovil(majinboo, 10, 8);
 		assert(!piccolo.puedeAtacar(majinboo));
 		
 		

@@ -14,7 +14,7 @@ public class Goku extends Personaje{
 		kiParaTransformar = 20;
 		estado = new GokuBase(this);
 		vida = estado.getVidaMaxima();
-		this.agregarPotenciador(new Furia(this));
+		this.agarrarPotenciador(new Furia(this));
 	}
 	
 	public Goku(Equipo equipo){
@@ -23,7 +23,7 @@ public class Goku extends Personaje{
 		kiParaTransformar = 20;
 		estado = new GokuBase(this);
 		vida = estado.getVidaMaxima();
-		this.agregarPotenciador(new Furia(this));
+		this.agarrarPotenciador(new Furia(this));
 		this.equipo = equipo;
 	}
 }
