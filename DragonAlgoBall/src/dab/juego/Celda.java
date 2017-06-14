@@ -10,14 +10,15 @@ import dab.potenciadores.Potenciador;
 
 
 public class Celda implements IContenedorDeFicha{
-	int x, y;
+	
+	int fila, columna;
 	IFichaMovible ficha;
 	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	boolean ocupada;
 	
 	public Celda(int fila, int columna){
-		this.x = fila;
-		this.y = columna;
+		this.fila = fila;
+		this.columna = columna;
 		ocupada = false;
 	}
 	
@@ -47,12 +48,12 @@ public class Celda implements IContenedorDeFicha{
 		ocupada = false;
 	}
 	
-	public int getX(){
-		return x;		
+	public int getFila(){
+		return fila;		
 	}
 	
-	public int getY(){
-		return y;
+	public int getColumna(){
+		return columna;
 	}
 
 }

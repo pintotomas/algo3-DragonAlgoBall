@@ -1,4 +1,6 @@
 package dab.juego;
+import java.util.ArrayList;
+
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
@@ -62,8 +64,7 @@ public class Tablero {
 	
 	public void moverFicha(IFichaMovible ficha, int x, int y){
 		
-		Celda celdaInicio = tablero[ficha.getPosicion().getX()][ficha.getPosicion().getY()];
-		//Cambiar para que personaje en vez de conocer la celda, conozca sus coordenadas x,y
+		Celda celdaInicio = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		Celda celdaFin = tablero[x][y];
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
@@ -72,8 +73,8 @@ public class Tablero {
 		if (celdaFin.estaOcupada()){
 			throw new CeldaOcupada();
 		}
-		
-		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada()){
+		ArrayList<Celda> celdasAlcanzables = celdasPermitidas(celdaInicio, ficha.getVelocidad());
+		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada() && celdasAlcanzables.contains(celdaFin)){
 			//&&hayCaminoLibre(celdaInicio, celdaFin)
 			celdaInicio.quitarFichaMovible();
 			this.colocarFichaMovil(ficha, x, y);
@@ -84,41 +85,66 @@ public class Tablero {
 		}
 	}
 	
-	public boolean trayectoriaValida(Celda origen, Celda destino){
-		int filaO, filaD, columnaO, columnaD,x,y;
-		filaO = origen.getX();
-		filaD = destino.getX();
-		columnaO = origen.getY();
-		columnaD = destino.getY();
-		
-		if(filaO > filaD) x = -1;
-		else if (filaD > filaO) x = 1;
-		else x = 0;
-		
-		if(columnaO > filaD) y = -1;
-		else if (columnaD > columnaO) y = 1;
-		else y = 0;
-		
-		
-		while(filaO != filaD || columnaO != columnaD){
-			if(this.obtenerCelda(filaO, columnaO).estaOcupada()) return false;
-			filaO += x;
-			columnaO += y;	
+
+	private ArrayList<Celda> adyacentesCeldaValidos(Celda celda, int colMax, int filMax, int colMin, int filMin){
+		//para encontrar las 8 celdas adyacentes
+		ArrayList<Celda> celdas = new ArrayList<Celda>();
+		int newCol, newFil;
+		Celda nuevaCelda;
+		for(int fil = -1; fil < 2; fil++){
+			for(int col = -1; col < 2; col ++){
+				if(!(col == 0 && fil == 0)){
+					newCol = celda.getColumna() + col;
+					newFil =celda.getFila() + fil;
+					if(newFil <= filMax && newCol <= colMax && newFil >= filMin && newCol >= colMin){
+						nuevaCelda = this.obtenerCelda(newFil, newCol);
+						if(!nuevaCelda.estaOcupada()){
+							celdas.add(nuevaCelda);
+						}
+					}
+				}
+			}
+			
 		}
-		return true;
-		
+		return celdas;
 	}
+	
+	
+	private void celdasPermitidasAux(Celda origen, ArrayList<Celda> celdasDisponibles, int colMax, int filMax, int colMin, int filMin){
+		for(Celda celda : adyacentesCeldaValidos(origen, colMax, filMax, colMin, filMin)){
+			if(!celdasDisponibles.contains(celda)){
+				celdasDisponibles.add(celda);
+				celdasPermitidasAux(celda,celdasDisponibles, colMax, filMax, colMin, filMin);
+			}
+		}		
+	}
+	
+	
+	public ArrayList<Celda> celdasPermitidas(Celda origen, int rango){
+		ArrayList<Celda> celdasDisponibles = new ArrayList<Celda>();
+		int filaOrigen, columnaOrigen, maxFila, maxColumna, minFila, minColumna;
+		filaOrigen = origen.getFila();
+		columnaOrigen = origen.getColumna();
+		maxFila = (filaOrigen + rango > (altoDeTablero - 1)) ? filaOrigen : (altoDeTablero - 1);
+		maxColumna = (columnaOrigen + rango > (anchoDeTablero - 1)) ? columnaOrigen : (anchoDeTablero - 1);
+		minFila = (filaOrigen - rango < 0 ) ? filaOrigen - rango : 0;
+		minColumna = (columnaOrigen - rango < 0 ) ? columnaOrigen - rango : 0;
+		celdasPermitidasAux(origen, celdasDisponibles, maxColumna, maxFila, minColumna, minFila);
+		return celdasDisponibles;			
+	}
+	
+	
 	
 	public Celda obtenerCelda(int fila, int columna) {
 		return tablero[fila][columna];		
 	}
 	
 	public int getFilaDeLaFicha(IFichaUbicable ficha){
-		return ficha.getPosicion().getX();
+		return ficha.getPosicion().getFila();
 	}
 	
 	public int getColumnaDeLaFicha(IFichaUbicable ficha){
-		return ficha.getPosicion().getY();
+		return ficha.getPosicion().getColumna();
 	}
 	
 	public boolean celdaOcupada(int fila, int columna){

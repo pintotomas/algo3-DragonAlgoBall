@@ -4,4 +4,6 @@ public interface IFichaMovible extends IFichaUbicable {
 
 	boolean movimientoPosible(IContenedorDeFicha celdaFin);
 
+	int getVelocidad();
+
 }

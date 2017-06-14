@@ -39,17 +39,18 @@ public class Turno {
 	}
 	
 	
-	public void Mover(Celda celda){
-		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
-		if(personajeSeleccionado == null) throw new NadaSeleccionado();
-		if(personajeSeleccionado.movimientoPosible(celda) && tablero.trayectoriaValida(celdaSeleccionada, celda)){
-			 tablero.moverFicha(personajeSeleccionado, celda.getX(), celda.getY());
-			 movio = true;
-		}
-		else{
-			throw new MovimientoInvalido();
-		}
-	}
+//	public void Mover(Celda celda){
+//		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
+//		if(personajeSeleccionado == null) throw new NadaSeleccionado();
+//		if(personajeSeleccionado.movimientoPosible(celda) && tablero.trayectoriaValida(celdaSeleccionada, celda)){
+//			 tablero.moverFicha(personajeSeleccionado, celda.getX(), celda.getY());
+//			 movio = true;
+//		}
+//		else{
+//			throw new MovimientoInvalido();
+//		}
+//	}
+	//Ahora se encarga el tablero de mover
 	
 	public void atacar(Celda celda){
 		// el atacar es similar al mover. 

@@ -27,10 +27,10 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	 **********************************************************/
 	
 	public boolean puedeAtacar(Personaje personaje) {
-		int maxFila = coordenadas.getX() + this.getAlcance();
-		int maxColumna = coordenadas.getY() + this.getAlcance();
+		int maxFila = coordenadas.getFila() + this.getAlcance();
+		int maxColumna = coordenadas.getColumna() + this.getAlcance();
 		IContenedorDeFicha coordenadasEnemigo = personaje.getPosicion();
-		if(coordenadasEnemigo.getY() > maxColumna  ||  coordenadasEnemigo.getX() > maxFila){
+		if(coordenadasEnemigo.getColumna() > maxColumna  ||  coordenadasEnemigo.getFila() > maxFila){
 			return false;
 		}
 		//Ver si esto se puede chequear en otro lado como juego
@@ -59,10 +59,10 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	public boolean movimientoPosible(IContenedorDeFicha coordenadasDestino){
 		//verifica que el movimiento se pueda hacer.
 	
-		int maxFila = coordenadas.getX() + this.getVelocidad();
-		int maxColumna = coordenadas.getY() + this.getVelocidad();
+		int maxFila = coordenadas.getFila() + this.getVelocidad();
+		int maxColumna = coordenadas.getColumna() + this.getVelocidad();
 		//verifica que el movimiento se pueda hacer.
-		if(coordenadasDestino.getY() > maxColumna  ||  coordenadasDestino.getX() > maxFila){
+		if(coordenadasDestino.getColumna() > maxColumna  ||  coordenadasDestino.getFila() > maxFila){
 			return false;
 		}
 		return true;

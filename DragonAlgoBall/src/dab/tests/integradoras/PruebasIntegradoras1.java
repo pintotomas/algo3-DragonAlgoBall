@@ -54,8 +54,8 @@ public class PruebasIntegradoras1 {
 		Assert.assertTrue(goku.transformarDisponible());
 		goku.transformar();
 		Assert.assertEquals(goku.getNombre(), "Goku Kaio-Ken");
-		Assert.assertEquals(goku.getPosicion().getX(), filaGoku);
-		Assert.assertEquals(goku.getPosicion().getY(), columnaGoku);
+		Assert.assertEquals(goku.getPosicion().getFila(), filaGoku);
+		Assert.assertEquals(goku.getPosicion().getColumna(), columnaGoku);
 		Assert.assertEquals(goku.getPoder(), 40,0);
 	}
 
@@ -70,8 +70,8 @@ public class PruebasIntegradoras1 {
 		goku.transformar();
 		tablero.moverFicha(goku, 1, 2);
 		Assert.assertEquals(goku.getPoder(), 40, 0);
-		Assert.assertEquals(goku.getPosicion().getX(), 1);
-		Assert.assertEquals(goku.getPosicion().getY(), 2);
+		Assert.assertEquals(goku.getPosicion().getFila(), 1);
+		Assert.assertEquals(goku.getPosicion().getColumna(), 2);
 	}
 	
 //	@Test
