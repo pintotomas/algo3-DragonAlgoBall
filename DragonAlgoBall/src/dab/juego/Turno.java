@@ -18,9 +18,9 @@ public class Turno {
 		this.equipo = equipo;
 		this.tablero = tablero;
 		otorgarKi();
-		movio = false;
-		ataco = false;
-		personajeSeleccionado = null;
+		this.movio = false;
+		this.ataco = false;
+		this.personajeSeleccionado = null;
 	}
 	
 	private void otorgarKi(){
@@ -33,9 +33,9 @@ public class Turno {
 		*/
 	}
 	
-	public void seleccionarPersonaje(Personaje aPersonaje){
+	public void seleccionarPersonaje(Personaje personaje){
 		// verificar que personaje sea de equipo o poner como precondicion
-		personajeSeleccionado = aPersonaje;
+		personajeSeleccionado = personaje;
 	}
 	
 	
@@ -56,10 +56,10 @@ public class Turno {
 		// el atacar es similar al mover. 
 
 		if(!celda.estaOcupada()) throw new CeldaNoContieneFicha();
-		Personaje personaje_atacado = (Personaje) celda.getFicha();
-		if(personajeSeleccionado.puedeAtacar(personaje_atacado)){
-			personajeSeleccionado.atacarA(personaje_atacado);
-			ataco = true;
+		Personaje personajeAtacado = (Personaje) celda.getFicha();
+		if(personajeSeleccionado.puedeAtacar(personajeAtacado)){
+			personajeSeleccionado.atacarA(personajeAtacado);
+			this.ataco = true;
 		}else throw new AtaqueNoValido();
 	}
 	

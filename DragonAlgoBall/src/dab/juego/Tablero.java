@@ -26,18 +26,14 @@ public class Tablero {
 	}
 		
 	public Tablero(Equipo equipo1, Equipo equipo2){
-		//inicio las celdas del tablero
-		
+		//constructor que ubica personajes en el tablero
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
 				tablero[fila][columna] = new Celda(fila, columna);
 			}
 		}
-		
 		this.ubicarPersonajesEnPosicionInicial(equipo1, equipo2);
-		
 	}
-	
 	
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, Equipo equipo2){
@@ -70,13 +66,11 @@ public class Tablero {
 	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
 	
 	public void moverFicha(IFichaMovible ficha, int x, int y){
-		
 		Celda celdaInicio = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		Celda celdaFin = tablero[x][y];
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
 		}
-		
 		if (celdaFin.estaOcupada()){
 			throw new CeldaOcupada();
 		}
@@ -139,7 +133,6 @@ public class Tablero {
 		celdasPermitidasAux(origen, celdasDisponibles, maxColumna, maxFila, minColumna, minFila);
 		return celdasDisponibles;			
 	}
-	
 	
 	
 	public Celda obtenerCelda(int fila, int columna) {

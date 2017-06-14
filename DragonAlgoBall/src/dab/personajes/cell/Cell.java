@@ -4,7 +4,6 @@ import dab.ataquesEspeciales.Absorber;
 import dab.equipo.Equipo;
 import dab.estados.cell.CellBase;
 import dab.interfaces.IProveedorDeCantidadAbsorbidos;
-import dab.juego.Celda;
 import dab.personajes.Personaje;
 
 public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{	
@@ -13,7 +12,7 @@ public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{
 	protected int absorbidos;
 
 	public Cell(){
-		spec = new Absorber(this);
+		ataqueEspecial = new Absorber(this);
 		kiParaEspecial = 5;
 		absorbidos = 0;
 		estado = new CellBase(this);
@@ -21,7 +20,7 @@ public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{
 	}
 	
 	public Cell(Equipo equipo){
-		spec = new Absorber(this);
+		ataqueEspecial = new Absorber(this);
 		kiParaEspecial = 5;
 		absorbidos = 0;
 		estado = new CellBase(this);
@@ -33,7 +32,7 @@ public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{
 	public void ataqueEspecial(Personaje enemigo) {
 		super.ataqueEspecial(enemigo);
 		absorbidos += 1;
-		this.agregarVida(this.getPoder());
+		this.modificarVida(this.getPoder());
 	}
 	
 	public int getCantidadAbsorbidos(){

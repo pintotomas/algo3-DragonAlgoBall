@@ -10,9 +10,9 @@ public class FuriaTests {
 	public void testFuria() {
 		Goku goku = new Goku();
 		double poderInicial = goku.getPoder();
-		goku.agregarVida(-450);
+		goku.modificarVida(-450);
 		assertEquals(poderInicial*1.2, goku.getPoder(), 0.5);
-		goku.agregarVida(450);
+		goku.modificarVida(450);
 		assertEquals(poderInicial, goku.getPoder(), 0.5);
 	}
 

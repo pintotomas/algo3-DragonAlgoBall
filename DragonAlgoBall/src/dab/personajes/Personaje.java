@@ -12,11 +12,11 @@ import dab.potenciadores.Potenciador;
 
 public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	
-	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
+	protected Equipo equipo; 
 	protected IContenedorDeFicha coordenadas;
-	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
+	protected List <Potenciador> potenciadoresActivos = new LinkedList<Potenciador>(); 
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
-	protected AtaqueEspecial spec;
+	protected AtaqueEspecial ataqueEspecial;
 	protected Estado estado;
 	protected double vida;
 	protected int ki = 0;
@@ -34,7 +34,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 			return false;
 		}
 		//Ver si esto se puede chequear en otro lado como juego
-		if(((Personaje) coordenadasEnemigo.getFicha()).getEquipo() == this.getEquipo()){
+		if(personaje.getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;
@@ -48,8 +48,15 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	}
 	
 	public void ataqueEspecial(Personaje enemigo) {
-		spec.lanzar(enemigo);
+		ataqueEspecial.lanzar(enemigo);
 		this.modificarKi(-1*(kiParaEspecial));
+	}
+	
+	private void recibirAtaque(double poderEnemigo) {
+		if(poderEnemigo < this.getPoder()){
+			poderEnemigo = (int)(poderEnemigo * 0.8);		
+		}
+		this.modificarVida(-poderEnemigo);	
 	}
 
 	/********************************************************
@@ -78,7 +85,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		ki = ki + aumento;
 	}
 
-	public void agregarVida(double cantidad) {
+	public void modificarVida(double cantidad) {
 		if(vida + cantidad > this.getVidaMaxima()){
 			vida = this.getVidaMaxima();
 		}else{
@@ -98,16 +105,13 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	}
 	
 	public void nuevoTurno() {
-		for (Potenciador c: potenciadores){
-			c.pasoUnTurno();
-			this.modificarKi(c.getKiExtra());
-			if (!c.estaActivo()){
-				potenciadores.remove(c);
+		for (Potenciador potenciador: potenciadoresActivos){
+			potenciador.pasoUnTurno();
+			this.modificarKi(potenciador.getKiExtra());
+			if (!potenciador.estaActivo()){
+				potenciadoresActivos.remove(potenciador);
 			}
 		}
-		// TODO Auto-generated method stub
-		//aca hacer l
-		
 	}	
 	
 	/**********************************************************
@@ -126,22 +130,20 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	public double getPoder() {
 		
 		double multiplicador = 1;
-		for (Potenciador c: potenciadores){
-			multiplicador *= c.getMultiplicadorPoderDePelea();
+		for (Potenciador potenciador: potenciadoresActivos){
+			multiplicador *= potenciador.getMultiplicadorPoderDePelea();
 		}
 		double poderActual = estado.getPoder(); 
 		return poderActual *= multiplicador;
 	}
 
 	public int getAlcance() {
-		
 		double multiplicador = 1;
-		for (Potenciador c: potenciadores){
-			multiplicador *= c.getMultiplicadorAlcance();
+		for (Potenciador potenciador: potenciadoresActivos){
+			multiplicador *= potenciador.getMultiplicadorAlcance();
 		}
 		int alcanceActual = estado.getAlcance();
 		return (int) (alcanceActual*multiplicador);
-		
 	}
 
 	public double getVida() {
@@ -152,14 +154,13 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		return ki;
 	}
 	
-
 	public int getVelocidad() {
 		int multiplicador = 1;
-		for (Potenciador c: potenciadores){
-			multiplicador *= c.getMultiplicadorVelocidad();
+		for (Potenciador potenciador: potenciadoresActivos){
+			multiplicador *= potenciador.getMultiplicadorVelocidad();
 		}
-		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
-		return velocidadActual *= multiplicador; // *=;
+		int velocidadActual = estado.getVelocidad();
+		return velocidadActual *= multiplicador; 
 	}
 
 	public String getNombre() {
@@ -181,16 +182,9 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
-
-	private void recibirAtaque(double poderEnemigo) {
-		if(poderEnemigo < this.getPoder()){
-			poderEnemigo = (int)(poderEnemigo * 0.8);		
-		}
-		this.agregarVida(-poderEnemigo);	
-	}
 	
-	public void agarrarPotenciador(Potenciador c){
-		potenciadores.add(c);
-		this.agregarVida(c.getVidaExtra());
+	public void agarrarPotenciador(Potenciador potenciador){
+		potenciadoresActivos.add(potenciador);
+		this.modificarVida(potenciador.getVidaExtra());
 	}
 }

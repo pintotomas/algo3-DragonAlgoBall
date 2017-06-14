@@ -9,7 +9,7 @@ import dab.potenciadores.Furia;
 public class Goku extends Personaje{
 	
 	public Goku(){ 
-		spec = new Kamehameha(this);
+		ataqueEspecial = new Kamehameha(this);
 		kiParaEspecial = 20;
 		kiParaTransformar = 20;
 		estado = new GokuBase(this);
@@ -18,7 +18,7 @@ public class Goku extends Personaje{
 	}
 	
 	public Goku(Equipo equipo){
-		spec = new Kamehameha(this);
+		ataqueEspecial = new Kamehameha(this);
 		kiParaEspecial = 20;
 		kiParaTransformar = 20;
 		estado = new GokuBase(this);

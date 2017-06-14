@@ -8,14 +8,14 @@ import dab.personajes.Personaje;
 public class Freezer extends Personaje{
 	
 	public Freezer(){
-		spec = new RayoMortal(this);
+		ataqueEspecial = new RayoMortal(this);
 		kiParaEspecial = 20;
 		estado = new FreezerBase(this);
 		vida = estado.getVidaMaxima();
 	}
 	
 	public Freezer(Equipo equipo){
-		spec = new RayoMortal(this);
+		ataqueEspecial = new RayoMortal(this);
 		kiParaEspecial = 20;
 		estado = new FreezerBase(this);
 		vida = estado.getVidaMaxima();

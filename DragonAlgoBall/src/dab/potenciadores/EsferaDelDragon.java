@@ -16,37 +16,31 @@ public class EsferaDelDragon extends Potenciador {
 	
 	@Override
 	public double getMultiplicadorVelocidad() {
-		// TODO Auto-generated method stub
 		return multiplicadorVelocidad;
 	}
 
 	@Override
 	public double getMultiplicadorPoderDePelea() {
-		// TODO Auto-generated method stub
 		return multiplicadorPoderDePelea;
 	}
 
 	@Override
 	public double getVidaExtra() {
-		// TODO Auto-generated method stub
 		return vidaExtra;
 	}
 
 	@Override
 	public int getMultiplicadorAlcance() {
-		// TODO Auto-generated method stub
 		return multiplicadorAlcance;
 	}
 
 	@Override
 	public int getMultiplicadorDistanciaAtaque() {
-		// TODO Auto-generated method stub
 		return multiplicadorDistanciaAtaque;
 	}
 
 	@Override
 	public int getKiExtra() {
-		// TODO Auto-generated method stub
 		return kiExtra;
 	}
 }

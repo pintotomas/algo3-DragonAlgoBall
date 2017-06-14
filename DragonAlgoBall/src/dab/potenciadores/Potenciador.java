@@ -22,13 +22,10 @@ public abstract class Potenciador{
 	public abstract int getKiExtra();
 	
 	public void pasoUnTurno() {
-		// TODO Auto-generated method stub
 		duracion -= 1;
-		
 	}
 
 	public boolean estaActivo() {
-		// TODO Auto-generated method stub
 		return duracion > 0;
 	}
 }

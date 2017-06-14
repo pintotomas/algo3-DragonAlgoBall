@@ -46,6 +46,7 @@ public class pruebaAtacar{
 		enemigosDeLaTierra.agregarPersonaje(boo);
 		enemigosDeLaTierra.agregarPersonaje(freezer);
 	}
+	
 	@Test
 	public void testAtacarMismoPP(){
 		Tablero tablero = new Tablero();

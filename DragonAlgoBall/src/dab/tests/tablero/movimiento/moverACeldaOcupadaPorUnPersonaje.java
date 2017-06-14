@@ -1,4 +1,4 @@
-package dab.tests.movimiento;
+package dab.tests.tablero.movimiento;
 
 import org.junit.Test;
 
