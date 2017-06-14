@@ -19,9 +19,9 @@ public class TransformacionesPiccolo {
 	
 	@Before
 	public void before(){
-		gohan = new Gohan();
-		piccolo = new Piccolo();
 		guerrerosZ = new Equipo("Guerreros Z");
+		gohan = new Gohan(guerrerosZ);
+		piccolo = new Piccolo(guerrerosZ);		
 		guerrerosZ.agregarPersonaje(gohan);
 		guerrerosZ.agregarPersonaje(piccolo);
 		
