@@ -38,6 +38,8 @@ public class Tablero {
 		
 	}
 	
+	
+	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, Equipo equipo2){
 		//De ubicarlos en el tablero se podria ocupar la clase Juego, asi tenemos un metodo solo
 		//de ubicarFichas y lo que recibiria seria una coleccion de fichas y el rango donde ponerlas
@@ -52,6 +54,11 @@ public class Tablero {
 			this.colocarFichaMovil(personaje,altoDeTablero - 1 , primeraPosicion + i);
 			i += 1;
 		}
+	}
+	
+	public void removerFicha(IFichaUbicable ficha){
+		Celda celdaConLaFicha = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
+		celdaConLaFicha.quitarFichaMovible();
 	}
 	
 	public void colocarFichaMovil(IFichaMovible ficha, int fila,int columna){
@@ -127,8 +134,8 @@ public class Tablero {
 		columnaOrigen = origen.getColumna();
 		maxFila = (filaOrigen + rango > (altoDeTablero - 1)) ? filaOrigen : (altoDeTablero - 1);
 		maxColumna = (columnaOrigen + rango > (anchoDeTablero - 1)) ? columnaOrigen : (anchoDeTablero - 1);
-		minFila = (filaOrigen - rango < 0 ) ? filaOrigen - rango : 0;
-		minColumna = (columnaOrigen - rango < 0 ) ? columnaOrigen - rango : 0;
+		minFila = (filaOrigen - rango > 0 ) ? filaOrigen - rango : 0;
+		minColumna = (columnaOrigen - rango > 0 ) ? columnaOrigen - rango : 0;
 		celdasPermitidasAux(origen, celdasDisponibles, maxColumna, maxFila, minColumna, minFila);
 		return celdasDisponibles;			
 	}
