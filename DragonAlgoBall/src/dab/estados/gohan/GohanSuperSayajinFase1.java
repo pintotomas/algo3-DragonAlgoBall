@@ -8,7 +8,7 @@ public class GohanSuperSayajinFase1 extends Estado{
 	/*segunda transformacion de gohan*/
 	
 		private IProveedorDeVidaDePersonajes proveedorVidaAliados;
-		private double porcentajeVidaAliadosNecesarioParaTransformar = 30;
+		private double porcentajeVidaAliadosMinimoParaTransformar = 30;
 		
 		public GohanSuperSayajinFase1(IProveedorDeVidaDePersonajes proveedorVidaAliados, IProveedorDeKi proveedorDeKi){
 			super(proveedorDeKi);
@@ -33,8 +33,8 @@ public class GohanSuperSayajinFase1 extends Estado{
 			double porcentajeVidaGoku = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Goku");
 			double porcentajeVidaPiccolo = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Piccolo");
 			
-			return ((porcentajeVidaGoku >= porcentajeVidaAliadosNecesarioParaTransformar) &&
-					(porcentajeVidaPiccolo >= porcentajeVidaAliadosNecesarioParaTransformar) &&
+			return ((porcentajeVidaGoku < porcentajeVidaAliadosMinimoParaTransformar) &&
+					(porcentajeVidaPiccolo < porcentajeVidaAliadosMinimoParaTransformar) &&
 					(proveedorDeKi.getKi() >= kiParaTransformar));
 		}
 }

@@ -24,7 +24,7 @@ public abstract class Personaje implements IProveedorDeKi{
 	/**********************************************************
 							ATAQUE
 	 **********************************************************/
-
+	
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = posicion.getFila() + this.getAlcance();
 		int maxColumna = posicion.getColumna() + this.getAlcance();
