@@ -4,9 +4,9 @@ import dab.potenciadores.Potenciador;
 
 public interface IFichaUbicable {
 
-	ICoordenadasXY getPosicion();
+	IContenedorDeFicha getPosicion();
 
-	void setPosicion(ICoordenadasXY celda);
+	void setPosicion(IContenedorDeFicha celda);
 
 	void agarrarPotenciador(Potenciador p);
 

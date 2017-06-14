@@ -6,14 +6,14 @@ import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
-import dab.interfaces.ICoordenadasXY;
+import dab.interfaces.IContenedorDeFicha;
 import dab.interfaces.IFichaMovible;
 import dab.potenciadores.Potenciador;
 
 public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	
 	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
-	protected ICoordenadasXY coordenadas;
+	protected IContenedorDeFicha coordenadas;
 	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial spec;
@@ -29,7 +29,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	public boolean puedeAtacar(Personaje personaje) {
 		int maxFila = coordenadas.getX() + this.getAlcance();
 		int maxColumna = coordenadas.getY() + this.getAlcance();
-		ICoordenadasXY coordenadasEnemigo = personaje.getPosicion();
+		IContenedorDeFicha coordenadasEnemigo = personaje.getPosicion();
 		if(coordenadasEnemigo.getY() > maxColumna  ||  coordenadasEnemigo.getX() > maxFila){
 			return false;
 		}
@@ -56,7 +56,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 							MOVIMIENTO
 	 ********************************************************/
 		
-	public boolean movimientoPosible(ICoordenadasXY coordenadasDestino){
+	public boolean movimientoPosible(IContenedorDeFicha coordenadasDestino){
 		//verifica que el movimiento se pueda hacer.
 	
 		int maxFila = coordenadas.getX() + this.getVelocidad();
@@ -166,11 +166,11 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		return estado.getNombre();
 	}
 
-	public ICoordenadasXY getPosicion(){
+	public IContenedorDeFicha getPosicion(){
 		return coordenadas;
 	}
 	
-	public void setPosicion(ICoordenadasXY coordenadas){
+	public void setPosicion(IContenedorDeFicha coordenadas){
 		this.coordenadas = coordenadas;
 	}
 	

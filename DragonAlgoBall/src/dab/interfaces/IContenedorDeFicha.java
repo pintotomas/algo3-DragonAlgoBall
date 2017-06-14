@@ -1,6 +1,6 @@
 package dab.interfaces;
 
-public interface ICoordenadasXY {
+public interface IContenedorDeFicha {
 	
 	public int getX();
 	public int getY();

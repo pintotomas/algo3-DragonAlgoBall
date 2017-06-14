@@ -4,12 +4,12 @@ import java.util.List;
 
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
-import dab.interfaces.ICoordenadasXY;
+import dab.interfaces.IContenedorDeFicha;
 import dab.interfaces.IFichaMovible;
 import dab.potenciadores.Potenciador;
 
 
-public class Celda implements ICoordenadasXY{
+public class Celda implements IContenedorDeFicha{
 	int x, y;
 	IFichaMovible ficha;
 	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
