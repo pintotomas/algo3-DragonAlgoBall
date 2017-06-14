@@ -55,7 +55,7 @@ public class Turno {
 		// el atacar es similar al mover. 
 
 		if(!celda.estaOcupada()) throw new CeldaNoContienePersonaje();
-		Personaje personaje_atacado = celda.darPersonajeOcupante();
+		Personaje personaje_atacado = celda.getPersonaje();
 		if(personajeSeleccionado.puedeAtacar(personaje_atacado)){
 			personajeSeleccionado.atacarA(personaje_atacado);
 			ataco = true;

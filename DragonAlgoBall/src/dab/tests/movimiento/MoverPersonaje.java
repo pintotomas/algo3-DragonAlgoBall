@@ -13,10 +13,10 @@ public class MoverPersonaje {
 	public void moverPersonaje() {
 		Tablero tablero = new Tablero();
 		Personaje piccolo = new Piccolo();
-		tablero.colocarPersonaje(1, 1, piccolo);
+		tablero.colocarPersonaje(piccolo, 1, 1);
 		Celda destino = tablero.obtenerCelda(1, 2);
 		assert(piccolo.movimientoPosible(destino));
 		piccolo.mover(destino);
-		assert(destino.darPersonajeOcupante() == piccolo);
+		assert(destino.getPersonaje() == piccolo);
 	}	
 }

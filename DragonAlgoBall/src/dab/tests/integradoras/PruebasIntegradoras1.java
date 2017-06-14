@@ -49,7 +49,7 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
+		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
 		goku.modificarKi(20);
 		Assert.assertTrue(goku.transformarDisponible());
 		goku.transformar();
@@ -65,7 +65,7 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
+		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
 		goku.modificarKi(20);
 		goku.transformar();
 		goku.mover(tablero.obtenerCelda(1, 2));
@@ -86,10 +86,10 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
+		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
-		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
+		tablero.colocarPersonaje(freezer, filaFreezer, columnaFreezer);
 		Assert.assertEquals(400, freezer.getVida(),0);
 		if (goku.puedeAtacar(freezer))
 			goku.atacarA(freezer);	
@@ -101,10 +101,10 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
+		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
 		int filaFreezer = 9;
 		int columnaFreezer = 1;
-		tablero.colocarPersonaje(filaFreezer, columnaFreezer, freezer);
+		tablero.colocarPersonaje(freezer, filaFreezer, columnaFreezer);
 		if (goku.puedeAtacar(freezer))
 			goku.atacarA(freezer);
 		Assert.assertEquals(400, freezer.getVida(),0);
@@ -114,10 +114,10 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
+		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
 		int filaCell = 2;
 		int columnaCell = 1;
-		tablero.colocarPersonaje(filaCell, columnaCell, cell);	
+		tablero.colocarPersonaje(cell, filaCell, columnaCell);	
 		goku.mover(tablero.obtenerCelda(2, 1));
 	}
 

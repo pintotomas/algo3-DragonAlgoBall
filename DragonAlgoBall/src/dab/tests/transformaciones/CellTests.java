@@ -25,8 +25,8 @@ public class CellTests {
 		guerrerosz = new Equipo("Guerreros Z");
 		guerrerosz.agregarPersonaje(goku);
 		tablero = new Tablero();
-		tablero.colocarPersonaje(1,1,goku);
-		tablero.colocarPersonaje(1,2,cell);
+		tablero.colocarPersonaje(goku,1,1);
+		tablero.colocarPersonaje(cell,1,2);
 	}
 
 	@Test

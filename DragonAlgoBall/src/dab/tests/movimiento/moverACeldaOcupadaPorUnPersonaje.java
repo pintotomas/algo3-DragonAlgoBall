@@ -18,8 +18,8 @@ public class moverACeldaOcupadaPorUnPersonaje {
 		Personaje cell = new Cell();
 		int filaCell = 2;
 		int columnaCell = 1;
-		tablero.colocarPersonaje(filaGoku, columnaGoku, goku);
-		tablero.colocarPersonaje(filaCell, columnaCell, cell);
+		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
+		tablero.colocarPersonaje(cell, filaCell, columnaCell);
 		goku.mover(tablero.obtenerCelda(2, 1));
 	}
 
