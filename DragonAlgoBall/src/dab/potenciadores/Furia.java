@@ -5,7 +5,7 @@ import dab.personajes.Personaje;
 public class Furia extends Potenciador {
 
 	private Personaje portador;
-	private double vidaNecesaria = 0.3;
+	static private double porcentajeVidaNecesaria = 0.3;
 	private int multiplicadorDefecto = 1;
 	
 	public Furia(Personaje portador){
@@ -14,8 +14,8 @@ public class Furia extends Potenciador {
 		multiplicadorPoderDePelea = 1.2;
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
-		duracionTurnos = (int) Double.POSITIVE_INFINITY;
-		duracionAtaques = duracionTurnos;
+		duracionTurnos = Double.POSITIVE_INFINITY;
+		duracionAtaques = Double.POSITIVE_INFINITY;
 		multiplicadorAlcance = 1;
 		multiplicadorDistanciaAtaque = 1;
 		kiExtra = 0;
@@ -23,7 +23,7 @@ public class Furia extends Potenciador {
 	}
 
 	private boolean vidaSuficienteParaAplicarEfectos(){
-		return ((portador.getVida() / portador.getVidaMaxima()) <= vidaNecesaria);
+		return ((portador.getVida() / portador.getVidaMaxima()) <= porcentajeVidaNecesaria);
 	}
 	
 	@Override
@@ -73,8 +73,8 @@ public class Furia extends Potenciador {
 		return kiExtra;
 	}
 	
-	@Override
-	public boolean estaActivo() {
-		return duracionTurnos > 0;
+	public static double porcentajeVidaNecesariaParaActivar(){
+		//testing
+		return porcentajeVidaNecesaria;
 	}
 }

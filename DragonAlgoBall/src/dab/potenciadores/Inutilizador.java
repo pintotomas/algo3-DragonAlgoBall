@@ -4,7 +4,7 @@ public class Inutilizador extends Potenciador {
 	
 	public Inutilizador(){
 		duracionTurnos = 3;
-		duracionAtaques = 0;
+		duracionAtaques = Double.POSITIVE_INFINITY;
 		multiplicadorVelocidad = 0;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
@@ -42,9 +42,5 @@ public class Inutilizador extends Potenciador {
 	public int getKiExtra() {
 		return kiExtra;
 	}
-	
-	@Override
-	public boolean estaActivo() {
-		return duracionTurnos > 0;
-	}
+
 }

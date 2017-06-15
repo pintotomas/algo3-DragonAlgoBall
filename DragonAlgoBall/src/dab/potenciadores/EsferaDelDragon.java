@@ -8,7 +8,7 @@ public class EsferaDelDragon extends Potenciador {
 		multiplicadorPoderDePelea = 1.25;
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
-		duracionTurnos = 0;
+		duracionTurnos = Double.POSITIVE_INFINITY;
 		duracionAtaques = 2;
 		multiplicadorAlcance = 1;
 		multiplicadorDistanciaAtaque = 1;
@@ -45,8 +45,4 @@ public class EsferaDelDragon extends Potenciador {
 		return kiExtra;
 	}
 	
-	@Override
-	public boolean estaActivo() {
-		return duracionAtaques > 0;
-	}
 }

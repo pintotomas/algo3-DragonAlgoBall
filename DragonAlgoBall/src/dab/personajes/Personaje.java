@@ -40,10 +40,21 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		return true;
 	}
 	
-	public void atacarA(Personaje personaje){
-		personaje.recibirAtaque(this.getPoder());
-		personaje.ataco();
+	public void atacarA(Personaje personajeEnemigo){
+		personajeEnemigo.recibirAtaque(this.getPoder());
+		this.notificarAtaqueAPotenciadores();
 	}
+	
+	private void notificarAtaqueAPotenciadores(){
+		for (Potenciador potenciador: potenciadoresActivos){
+			potenciador.pasoUnAtaque();
+			
+			if (!potenciador.estaActivo()){
+				potenciadoresActivos.remove(potenciador);
+			}
+		}
+	}
+	
 	public boolean ataqueEspecialDisponible() {
 		return this.getKi() >= kiParaEspecial;
 	}
@@ -93,7 +104,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	}
 	
 	/**********************************************************
-	    			TRANSFORMAR, TURNO y ATACO
+	    			TRANSFORMAR, TURNO 
 	***********************************************************/
 	public void transformar(){
 		this.estado = estado.transformar();
@@ -112,16 +123,6 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 			}
 		}
 	}	
-	
-	private void ataco(){
-		for (Potenciador potenciador: potenciadoresActivos){
-			potenciador.pasoUnAtaque();
-			this.modificarKi(potenciador.getKiExtra());
-			if (!potenciador.estaActivo()){
-				potenciadoresActivos.remove(potenciador);
-			}
-		}
-	}
 	
 	/**********************************************************
 						GETERS Y SETERS

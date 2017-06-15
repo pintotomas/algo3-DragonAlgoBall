@@ -11,6 +11,7 @@ public abstract class Estado {
 	protected int kiParaEspecial;
 	protected int kiParaTransformar;
 	protected IProveedorDeKi proveedorDeKi;
+	
 	protected Estado(IProveedorDeKi proveedorDeKi){
 		this.proveedorDeKi = proveedorDeKi;
 	}

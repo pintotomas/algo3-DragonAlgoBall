@@ -5,7 +5,7 @@ public class NubeVoladora extends Potenciador {
 	public NubeVoladora(){
 		nombre = "Nube Voladora";
 		duracionTurnos = 3;
-		duracionAtaques = 0;
+		duracionAtaques = Double.POSITIVE_INFINITY;
 		multiplicadorVelocidad = 2;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;

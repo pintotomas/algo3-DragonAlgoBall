@@ -15,7 +15,6 @@ public class TransformacionesGohan {
 	private Equipo guerrerosZ;
 	private double limite = 0.0000000000000001;
 	//se usa para comprobar que gohan pueda transformarse cuando tenga 29.9999% de vida
-	//con mas precision, falla
 	@Before
 	public void before(){
 		guerrerosZ = new Equipo("Guerreros Z");
