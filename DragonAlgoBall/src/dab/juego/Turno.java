@@ -1,7 +1,7 @@
 package dab.juego;
 
 import dab.dragonBallExceptions.AtaqueNoValido;
-import dab.dragonBallExceptions.CeldaNoContienePersonaje;
+import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.dragonBallExceptions.NadaSeleccionado;
 import dab.equipo.Equipo;
@@ -18,9 +18,9 @@ public class Turno {
 		this.equipo = equipo;
 		this.tablero = tablero;
 		otorgarKi();
-		movio = false;
-		ataco = false;
-		personajeSeleccionado = null;
+		this.movio = false;
+		this.ataco = false;
+		this.personajeSeleccionado = null;
 	}
 	
 	private void otorgarKi(){
@@ -33,32 +33,33 @@ public class Turno {
 		*/
 	}
 	
-	public void seleccionarPersonaje(Personaje aPersonaje){
+	public void seleccionarPersonaje(Personaje personaje){
 		// verificar que personaje sea de equipo o poner como precondicion
-		personajeSeleccionado = aPersonaje;
+		personajeSeleccionado = personaje;
 	}
 	
 	
-	public void Mover(Celda celda){
-		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
-		if(personajeSeleccionado == null) throw new NadaSeleccionado();
-		if(personajeSeleccionado.movimientoPosible(celda) && tablero.trayectoriaValida(celdaSeleccionada, celda)){
-			 personajeSeleccionado.mover(celda);
-			 movio = true;
-		}
-		else{
-			throw new MovimientoInvalido();
-		}
-	}
+//	public void Mover(Celda celda){
+//		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
+//		if(personajeSeleccionado == null) throw new NadaSeleccionado();
+//		if(personajeSeleccionado.movimientoPosible(celda) && tablero.trayectoriaValida(celdaSeleccionada, celda)){
+//			 tablero.moverFicha(personajeSeleccionado, celda.getX(), celda.getY());
+//			 movio = true;
+//		}
+//		else{
+//			throw new MovimientoInvalido();
+//		}
+//	}
+	//Ahora se encarga el tablero de mover
 	
 	public void atacar(Celda celda){
 		// el atacar es similar al mover. 
 
-		if(!celda.estaOcupada()) throw new CeldaNoContienePersonaje();
-		Personaje personaje_atacado = celda.getPersonaje();
-		if(personajeSeleccionado.puedeAtacar(personaje_atacado)){
-			personajeSeleccionado.atacarA(personaje_atacado);
-			ataco = true;
+		if(!celda.estaOcupada()) throw new CeldaNoContieneFicha();
+		Personaje personajeAtacado = (Personaje) celda.getFicha();
+		if(personajeSeleccionado.puedeAtacar(personajeAtacado)){
+			personajeSeleccionado.atacarA(personajeAtacado);
+			this.ataco = true;
 		}else throw new AtaqueNoValido();
 	}
 	

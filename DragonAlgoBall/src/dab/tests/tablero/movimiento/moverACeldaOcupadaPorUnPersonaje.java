@@ -1,4 +1,4 @@
-package dab.tests.movimiento;
+package dab.tests.tablero.movimiento;
 
 import org.junit.Test;
 
@@ -18,9 +18,9 @@ public class moverACeldaOcupadaPorUnPersonaje {
 		Personaje cell = new Cell();
 		int filaCell = 2;
 		int columnaCell = 1;
-		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
-		tablero.colocarPersonaje(cell, filaCell, columnaCell);
-		goku.mover(tablero.obtenerCelda(2, 1));
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(cell, filaCell, columnaCell);
+		tablero.moverFicha(goku, 2, 1);
 	}
 
 }

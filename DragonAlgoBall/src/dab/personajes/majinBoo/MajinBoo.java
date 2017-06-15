@@ -7,14 +7,14 @@ import dab.personajes.Personaje;
 public class MajinBoo extends Personaje{
 	
 	public MajinBoo(){ 
-		spec = new ConvierteteEnChocolate(this);
+		ataqueEspecial = new ConvierteteEnChocolate(this);
 		kiParaEspecial = 30;
 		estado = new MajinBooBase(this);
 		vida = estado.getVidaMaxima();
 	}
 	
 	public MajinBoo(Equipo equipo){
-		spec = new ConvierteteEnChocolate(this);
+		ataqueEspecial = new ConvierteteEnChocolate(this);
 		kiParaEspecial = 30;
 		estado = new MajinBooBase(this);
 		vida = estado.getVidaMaxima();

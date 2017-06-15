@@ -11,15 +11,14 @@ public class Gohan extends Personaje{
 	/*PUBLICO PARA TESTING*/
 	
 	public Gohan(){ 
-		
-		spec = new Masenko(this);
+		ataqueEspecial = new Masenko(this);
 		kiParaEspecial = 10;
 		estado = new GohanBase(equipo, this);
 		vida = estado.getVidaMaxima();
 	}
 	
 	public Gohan(Equipo equipo){
-		spec = new Masenko(this);
+		ataqueEspecial = new Masenko(this);
 		kiParaEspecial = 10;
 		estado = new GohanBase(equipo, this);
 		vida = estado.getVidaMaxima();

@@ -7,7 +7,8 @@ public class SemillaDelErmitanio extends Potenciador {
 		vidaExtra = 100;
 		multiplicadorVelocidad = 1;
 		multiplicadorPoderDePelea = 1;
-		duracion = 1;
+		duracionTurnos = 0;
+		duracionAtaques = 0;
 		multiplicadorDistanciaAtaque = 1;
 		multiplicadorAlcance = 1;
 		kiExtra = 0;
@@ -15,38 +16,31 @@ public class SemillaDelErmitanio extends Potenciador {
 
 	@Override
 	public double getMultiplicadorVelocidad() {
-		// TODO Auto-generated method stub
 		return multiplicadorVelocidad;
 	}
 
 	@Override
 	public double getMultiplicadorPoderDePelea() {
-		// TODO Auto-generated method stub
 		return multiplicadorPoderDePelea;
 	}
 
 	@Override
 	public double getVidaExtra() {
-		// TODO Auto-generated method stub
 		return vidaExtra;
 	}
 
 	@Override
 	public int getMultiplicadorAlcance() {
-		// TODO Auto-generated method stub
 		return multiplicadorAlcance;
 	}
 
 	@Override
 	public int getMultiplicadorDistanciaAtaque() {
-		// TODO Auto-generated method stub
 		return multiplicadorDistanciaAtaque;
 	}
 
 	@Override
 	public int getKiExtra() {
-		// TODO Auto-generated method stub
 		return kiExtra;
 	}
-
 }

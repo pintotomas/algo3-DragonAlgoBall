@@ -4,7 +4,8 @@ public class NubeVoladora extends Potenciador {
 	
 	public NubeVoladora(){
 		nombre = "Nube Voladora";
-		duracion = 3;
+		duracionTurnos = 3;
+		duracionAtaques = Double.POSITIVE_INFINITY;
 		multiplicadorVelocidad = 2;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
@@ -15,38 +16,37 @@ public class NubeVoladora extends Potenciador {
 
 	@Override
 	public double getMultiplicadorVelocidad() {
-		// TODO Auto-generated method stub
 		return multiplicadorVelocidad;
 	}
 
 	@Override
 	public double getMultiplicadorPoderDePelea() {
-		// TODO Auto-generated method stub
 		return multiplicadorPoderDePelea;
 	}
 
 	@Override
 	public double getVidaExtra() {
-		// TODO Auto-generated method stub
 		return vidaExtra;
 	}
 
 	@Override
 	public int getMultiplicadorAlcance() {
-		// TODO Auto-generated method stub
 		return multiplicadorAlcance;
 	}
 
 	@Override
 	public int getMultiplicadorDistanciaAtaque() {
-		// TODO Auto-generated method stub
 		return multiplicadorDistanciaAtaque;
 	}
 
 	@Override
 	public int getKiExtra() {
-		// TODO Auto-generated method stub
 		return kiExtra;
+	}
+
+	@Override
+	public boolean estaActivo() {
+		return duracionTurnos > 0;
 	}
 
 }

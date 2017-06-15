@@ -25,8 +25,8 @@ public class CellTests {
 		guerrerosz = new Equipo("Guerreros Z");
 		guerrerosz.agregarPersonaje(goku);
 		tablero = new Tablero();
-		tablero.colocarPersonaje(goku,1,1);
-		tablero.colocarPersonaje(cell,1,2);
+		tablero.colocarFichaMovil(goku,1,1);
+		tablero.colocarFichaMovil(cell,1,2);
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class CellTests {
 	}
 	@Test
 	public void testAbsorberVida() {
-		cell.agregarVida(-20);
+		cell.modificarVida(-20);
 		cell.modificarKi(5);
 		cell.ataqueEspecial(goku);
 		Assert.assertEquals(cell.getVidaMaxima(), cell.getVida(), 0);

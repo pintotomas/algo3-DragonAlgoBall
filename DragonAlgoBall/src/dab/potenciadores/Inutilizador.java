@@ -1,12 +1,10 @@
 package dab.potenciadores;
 
-import dab.juego.Celda;
-
 public class Inutilizador extends Potenciador {
 	
 	public Inutilizador(){
-		//Problema?: No usa celda
-		duracion = 3;
+		duracionTurnos = 3;
+		duracionAtaques = Double.POSITIVE_INFINITY;
 		multiplicadorVelocidad = 0;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
@@ -17,37 +15,31 @@ public class Inutilizador extends Potenciador {
 	
 	@Override
 	public double getMultiplicadorPoderDePelea() {
-		// TODO Auto-generated method stub
 		return multiplicadorPoderDePelea;
 	}
 
 	@Override
 	public double getMultiplicadorVelocidad() {
-		// TODO Auto-generated method stub
 		return multiplicadorVelocidad;
 	}
 
 	@Override
 	public double getVidaExtra() {
-		// TODO Auto-generated method stub
 		return vidaExtra;
 	}
 
 	@Override
 	public int getMultiplicadorAlcance() {
-		// TODO Auto-generated method stub
 		return multiplicadorAlcance;
 	}
 
 	@Override
 	public int getMultiplicadorDistanciaAtaque() {
-		// TODO Auto-generated method stub
 		return multiplicadorDistanciaAtaque;
 	}
 
 	@Override
 	public int getKiExtra() {
-		// TODO Auto-generated method stub
 		return kiExtra;
 	}
 

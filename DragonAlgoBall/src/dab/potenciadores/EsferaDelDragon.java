@@ -8,7 +8,8 @@ public class EsferaDelDragon extends Potenciador {
 		multiplicadorPoderDePelea = 1.25;
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
-		duracion = 3; //1 mas para que pueda usarlo 2 turnos
+		duracionTurnos = Double.POSITIVE_INFINITY;
+		duracionAtaques = 2;
 		multiplicadorAlcance = 1;
 		multiplicadorDistanciaAtaque = 1;
 		kiExtra = 0;
@@ -16,37 +17,32 @@ public class EsferaDelDragon extends Potenciador {
 	
 	@Override
 	public double getMultiplicadorVelocidad() {
-		// TODO Auto-generated method stub
 		return multiplicadorVelocidad;
 	}
 
 	@Override
 	public double getMultiplicadorPoderDePelea() {
-		// TODO Auto-generated method stub
 		return multiplicadorPoderDePelea;
 	}
 
 	@Override
 	public double getVidaExtra() {
-		// TODO Auto-generated method stub
 		return vidaExtra;
 	}
 
 	@Override
 	public int getMultiplicadorAlcance() {
-		// TODO Auto-generated method stub
 		return multiplicadorAlcance;
 	}
 
 	@Override
 	public int getMultiplicadorDistanciaAtaque() {
-		// TODO Auto-generated method stub
 		return multiplicadorDistanciaAtaque;
 	}
 
 	@Override
 	public int getKiExtra() {
-		// TODO Auto-generated method stub
 		return kiExtra;
 	}
+	
 }

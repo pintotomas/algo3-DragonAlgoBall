@@ -2,15 +2,17 @@ package dab.juego;
 import java.util.LinkedList;
 import java.util.List;
 
-import dab.dragonBallExceptions.CeldaNoContienePersonaje;
+import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
-import dab.personajes.Personaje;
+import dab.interfaces.IContenedorDeFicha;
+import dab.interfaces.IFichaMovible;
 import dab.potenciadores.Potenciador;
 
 
-public class Celda {
+public class Celda implements IContenedorDeFicha{
+	
 	int fila, columna;
-	Personaje personaje;
+	IFichaMovible ficha;
 	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	boolean ocupada;
 	
@@ -24,23 +26,25 @@ public class Celda {
 		return ocupada;
 	}
 	
-	public Personaje getPersonaje(){
-		if(!ocupada) throw new CeldaNoContienePersonaje();
-		return personaje;
+	public IFichaMovible getFicha(){
+		if(!ocupada) throw new CeldaNoContieneFicha();
+		return ficha;
 	}
 	
-	public void colocarPersonaje(Personaje personaje){
+	public void colocarFichaMovil(IFichaMovible ficha){
 		if(ocupada) throw new CeldaOcupada();
-		this.personaje = personaje;
+		this.ficha = ficha;
 		ocupada = true;
 		for(Potenciador p: potenciadores){
-			personaje.agregarPotenciador(p);
+			ficha.agarrarPotenciador(p);
 			potenciadores.remove(p);
 		}
 	}
+	
+	//hay que agregar un metodo para colocar los consumibles que reciba un IFichaUbicable
 
-	public void quitarPersonaje(){
-		personaje = null;
+	public void quitarFichaMovible(){
+		ficha = null;
 		ocupada = false;
 	}
 	

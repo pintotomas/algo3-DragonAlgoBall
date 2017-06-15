@@ -49,7 +49,7 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
 		goku.modificarKi(20);
 		Assert.assertTrue(goku.transformarDisponible());
 		goku.transformar();
@@ -65,10 +65,10 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
 		goku.modificarKi(20);
 		goku.transformar();
-		goku.mover(tablero.obtenerCelda(1, 2));
+		tablero.moverFicha(goku, 1, 2);
 		Assert.assertEquals(goku.getPoder(), 40, 0);
 		Assert.assertEquals(goku.getPosicion().getFila(), 1);
 		Assert.assertEquals(goku.getPosicion().getColumna(), 2);
@@ -86,10 +86,10 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
 		int filaFreezer = 1;
 		int columnaFreezer = 2;
-		tablero.colocarPersonaje(freezer, filaFreezer, columnaFreezer);
+		tablero.colocarFichaMovil(freezer, filaFreezer, columnaFreezer);
 		Assert.assertEquals(400, freezer.getVida(),0);
 		if (goku.puedeAtacar(freezer))
 			goku.atacarA(freezer);	
@@ -101,10 +101,10 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
 		int filaFreezer = 9;
 		int columnaFreezer = 1;
-		tablero.colocarPersonaje(freezer, filaFreezer, columnaFreezer);
+		tablero.colocarFichaMovil(freezer, filaFreezer, columnaFreezer);
 		if (goku.puedeAtacar(freezer))
 			goku.atacarA(freezer);
 		Assert.assertEquals(400, freezer.getVida(),0);
@@ -114,11 +114,11 @@ public class PruebasIntegradoras1 {
 		Tablero tablero = new Tablero();
 		int filaGoku = 1;
 		int columnaGoku = 1;
-		tablero.colocarPersonaje(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
 		int filaCell = 2;
 		int columnaCell = 1;
-		tablero.colocarPersonaje(cell, filaCell, columnaCell);	
-		goku.mover(tablero.obtenerCelda(2, 1));
+		tablero.colocarFichaMovil(cell, filaCell, columnaCell);	
+		tablero.moverFicha(goku, 2, 1);
 	}
 
 }

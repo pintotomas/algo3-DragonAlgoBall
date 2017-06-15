@@ -9,21 +9,21 @@ import dab.potenciadores.Furia;
 public class Goku extends Personaje{
 	
 	public Goku(){ 
-		spec = new Kamehameha(this);
+		ataqueEspecial = new Kamehameha(this);
 		kiParaEspecial = 20;
 		kiParaTransformar = 20;
 		estado = new GokuBase(this);
 		vida = estado.getVidaMaxima();
-		this.agregarPotenciador(new Furia(this));
+		this.agarrarPotenciador(new Furia(this));
 	}
 	
 	public Goku(Equipo equipo){
-		spec = new Kamehameha(this);
+		ataqueEspecial = new Kamehameha(this);
 		kiParaEspecial = 20;
 		kiParaTransformar = 20;
 		estado = new GokuBase(this);
 		vida = estado.getVidaMaxima();
-		this.agregarPotenciador(new Furia(this));
+		this.agarrarPotenciador(new Furia(this));
 		this.equipo = equipo;
 	}
 }

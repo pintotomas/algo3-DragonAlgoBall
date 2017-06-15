@@ -6,16 +6,17 @@ import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
-import dab.juego.Celda;
+import dab.interfaces.IContenedorDeFicha;
+import dab.interfaces.IFichaMovible;
 import dab.potenciadores.Potenciador;
 
-public abstract class Personaje implements IProveedorDeKi{
+public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	
-	protected Equipo equipo; //falta agregar el equipo en todos los constructores. 
-	protected Celda posicion;
-	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
-	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
-	protected AtaqueEspecial spec;
+	protected Equipo equipo; 
+	protected IContenedorDeFicha coordenadas;
+	protected List <Potenciador> potenciadoresActivos = new LinkedList<Potenciador>(); 
+	protected int kiParaEspecial;  //puede estar aca porque no cambia con los estados.
+	protected AtaqueEspecial ataqueEspecial;
 	protected Estado estado;
 	protected double vida;
 	protected int ki = 0;
@@ -26,66 +27,75 @@ public abstract class Personaje implements IProveedorDeKi{
 	 **********************************************************/
 	
 	public boolean puedeAtacar(Personaje personaje) {
-		int maxFila = posicion.getFila() + this.getAlcance();
-		int maxColumna = posicion.getColumna() + this.getAlcance();
-		Celda celda = personaje.getPosicion();
-		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
+		//Ver si esto se puede chequear en otro lado como juego. falta chequear trayectoriaValida
+		int maxFila = coordenadas.getFila() + this.getAlcance();
+		int maxColumna = coordenadas.getColumna() + this.getAlcance();
+		IContenedorDeFicha coordenadasEnemigo = personaje.getPosicion();
+		if(coordenadasEnemigo.getColumna() > maxColumna  ||  coordenadasEnemigo.getFila() > maxFila){
 			return false;
 		}
-		if(celda.getPersonaje().getEquipo() == this.getEquipo()){
+		if(personaje.getEquipo() == this.getEquipo()){
 			return false;
 		}
 		return true;
 	}
 	
-	public void atacarA(Personaje personaje){
-		personaje.recibirAtaque(this.getPoder());
+	public void atacarA(Personaje personajeEnemigo){
+		personajeEnemigo.recibirAtaque(this.getPoder());
+		this.notificarAtaqueAPotenciadores();
 	}
+	
+	private void notificarAtaqueAPotenciadores(){
+		for (Potenciador potenciador: potenciadoresActivos){
+			potenciador.pasoUnAtaque();
+			
+			if (!potenciador.estaActivo()){
+				potenciadoresActivos.remove(potenciador);
+			}
+		}
+	}
+	
 	public boolean ataqueEspecialDisponible() {
 		return this.getKi() >= kiParaEspecial;
 	}
 	
 	public void ataqueEspecial(Personaje enemigo) {
-		spec.lanzar(enemigo);
+		ataqueEspecial.lanzar(enemigo);
 		this.modificarKi(-1*(kiParaEspecial));
+	}
+	
+	private void recibirAtaque(double poderEnemigo) {
+		if(poderEnemigo < this.getPoder()){
+			poderEnemigo = (int)(poderEnemigo * 0.8);		
+		}
+		this.modificarVida(-poderEnemigo);	
 	}
 
 	/********************************************************
 							MOVIMIENTO
 	 ********************************************************/
 		
-	public boolean movimientoPosible(Celda celda){
+	public boolean movimientoPosible(IContenedorDeFicha coordenadasDestino){
 		//verifica que el movimiento se pueda hacer.
-		//verifica que la celda destino este libre
-		
-		
-		int maxFila = posicion.getFila() + this.getVelocidad();
-		int maxColumna = posicion.getColumna() + this.getVelocidad();
+		int maxFila = coordenadas.getFila() + this.getVelocidad();
+		int maxColumna = coordenadas.getColumna() + this.getVelocidad();
 		//verifica que el movimiento se pueda hacer.
-		if(celda.getColumna() > maxColumna  ||  celda.getFila() > maxFila){
+		if(coordenadasDestino.getColumna() > maxColumna  ||  coordenadasDestino.getFila() > maxFila){
 			return false;
 		}
 		return true;
 	}
-	
-	
-	public void mover(Celda celda) {
-		celda.colocarPersonaje(this); //si tira error que lo mande para arriba.
-		posicion.quitarPersonaje();
-		posicion = celda;
-	}
-	
+		
 	
 	/**********************************************************
  						AGREGAR KI Y VIDA
 	 **********************************************************/
 	
-	
 	public void modificarKi(int aumento) {
 		ki = ki + aumento;
 	}
 
-	public void agregarVida(double cantidad) {
+	public void modificarVida(double cantidad) {
 		if(vida + cantidad > this.getVidaMaxima()){
 			vida = this.getVidaMaxima();
 		}else{
@@ -94,7 +104,7 @@ public abstract class Personaje implements IProveedorDeKi{
 	}
 	
 	/**********************************************************
-	    				TRANSFORMAR Y TURNO
+	    			TRANSFORMAR, TURNO 
 	***********************************************************/
 	public void transformar(){
 		this.estado = estado.transformar();
@@ -105,23 +115,18 @@ public abstract class Personaje implements IProveedorDeKi{
 	}
 	
 	public void nuevoTurno() {
-		for (Potenciador c: potenciadores){
-			c.pasoUnTurno();
-			this.modificarKi(c.getKiExtra());
-			if (!c.estaActivo()){
-				potenciadores.remove(c);
+		for (Potenciador potenciador: potenciadoresActivos){
+			potenciador.pasoUnTurno();
+			this.modificarKi(potenciador.getKiExtra());
+			if (!potenciador.estaActivo()){
+				potenciadoresActivos.remove(potenciador);
 			}
 		}
-		// TODO Auto-generated method stub
-		//aca hacer l
-		
 	}	
 	
 	/**********************************************************
 						GETERS Y SETERS
 	 **********************************************************/
-
-	
 	
 	public double getVidaMaxima(){
 		return estado.getVidaMaxima();
@@ -135,22 +140,20 @@ public abstract class Personaje implements IProveedorDeKi{
 	public double getPoder() {
 		
 		double multiplicador = 1;
-		for (Potenciador c: potenciadores){
-			multiplicador *= c.getMultiplicadorPoderDePelea();
+		for (Potenciador potenciador: potenciadoresActivos){
+			multiplicador *= potenciador.getMultiplicadorPoderDePelea();
 		}
 		double poderActual = estado.getPoder(); 
 		return poderActual *= multiplicador;
 	}
 
 	public int getAlcance() {
-		
 		double multiplicador = 1;
-		for (Potenciador c: potenciadores){
-			multiplicador *= c.getMultiplicadorAlcance();
+		for (Potenciador potenciador: potenciadoresActivos){
+			multiplicador *= potenciador.getMultiplicadorAlcance();
 		}
 		int alcanceActual = estado.getAlcance();
 		return (int) (alcanceActual*multiplicador);
-		
 	}
 
 	public double getVida() {
@@ -161,26 +164,25 @@ public abstract class Personaje implements IProveedorDeKi{
 		return ki;
 	}
 	
-
 	public int getVelocidad() {
 		int multiplicador = 1;
-		for (Potenciador c: potenciadores){
-			multiplicador *= c.getMultiplicadorVelocidad();
+		for (Potenciador potenciador: potenciadoresActivos){
+			multiplicador *= potenciador.getMultiplicadorVelocidad();
 		}
-		int velocidadActual = estado.getVelocidad(); //cambiarlo a double?
-		return velocidadActual *= multiplicador; // *=;
+		int velocidadActual = estado.getVelocidad();
+		return velocidadActual *= multiplicador; 
 	}
 
 	public String getNombre() {
 		return estado.getNombre();
 	}
 
-	public Celda getPosicion(){
-		return posicion;
+	public IContenedorDeFicha getPosicion(){
+		return coordenadas;
 	}
 	
-	public void setPosicion(Celda celda){
-		posicion = celda;
+	public void setPosicion(IContenedorDeFicha coordenadas){
+		this.coordenadas = coordenadas;
 	}
 	
 	public Equipo getEquipo(){
@@ -190,16 +192,9 @@ public abstract class Personaje implements IProveedorDeKi{
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
-
-	private void recibirAtaque(double poderEnemigo) {
-		if(poderEnemigo < this.getPoder()){
-			poderEnemigo = (int)(poderEnemigo * 0.8);		
-		}
-		this.agregarVida(-poderEnemigo);	
-	}
 	
-	public void agregarPotenciador(Potenciador c){
-		potenciadores.add(c);
-		this.agregarVida(c.getVidaExtra());
+	public void agarrarPotenciador(Potenciador potenciador){
+		potenciadoresActivos.add(potenciador);
+		this.modificarVida(potenciador.getVidaExtra());
 	}
 }
