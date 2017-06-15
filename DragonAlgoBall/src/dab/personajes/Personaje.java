@@ -15,7 +15,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	protected Equipo equipo; 
 	protected IContenedorDeFicha coordenadas;
 	protected List <Potenciador> potenciadoresActivos = new LinkedList<Potenciador>(); 
-	protected int kiParaEspecial;   //puede estar aca porque no cambia con los estados.
+	protected int kiParaEspecial;  //puede estar aca porque no cambia con los estados.
 	protected AtaqueEspecial ataqueEspecial;
 	protected Estado estado;
 	protected double vida;
@@ -27,13 +27,13 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	 **********************************************************/
 	
 	public boolean puedeAtacar(Personaje personaje) {
+		//Ver si esto se puede chequear en otro lado como juego. falta chequear trayectoriaValida
 		int maxFila = coordenadas.getFila() + this.getAlcance();
 		int maxColumna = coordenadas.getColumna() + this.getAlcance();
 		IContenedorDeFicha coordenadasEnemigo = personaje.getPosicion();
 		if(coordenadasEnemigo.getColumna() > maxColumna  ||  coordenadasEnemigo.getFila() > maxFila){
 			return false;
 		}
-		//Ver si esto se puede chequear en otro lado como juego
 		if(personaje.getEquipo() == this.getEquipo()){
 			return false;
 		}
@@ -42,6 +42,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	
 	public void atacarA(Personaje personaje){
 		personaje.recibirAtaque(this.getPoder());
+		personaje.ataco();
 	}
 	public boolean ataqueEspecialDisponible() {
 		return this.getKi() >= kiParaEspecial;
@@ -65,7 +66,6 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		
 	public boolean movimientoPosible(IContenedorDeFicha coordenadasDestino){
 		//verifica que el movimiento se pueda hacer.
-	
 		int maxFila = coordenadas.getFila() + this.getVelocidad();
 		int maxColumna = coordenadas.getColumna() + this.getVelocidad();
 		//verifica que el movimiento se pueda hacer.
@@ -80,7 +80,6 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
  						AGREGAR KI Y VIDA
 	 **********************************************************/
 	
-	
 	public void modificarKi(int aumento) {
 		ki = ki + aumento;
 	}
@@ -94,7 +93,7 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 	}
 	
 	/**********************************************************
-	    				TRANSFORMAR Y TURNO
+	    			TRANSFORMAR, TURNO y ATACO
 	***********************************************************/
 	public void transformar(){
 		this.estado = estado.transformar();
@@ -113,6 +112,16 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 			}
 		}
 	}	
+	
+	private void ataco(){
+		for (Potenciador potenciador: potenciadoresActivos){
+			potenciador.pasoUnAtaque();
+			this.modificarKi(potenciador.getKiExtra());
+			if (!potenciador.estaActivo()){
+				potenciadoresActivos.remove(potenciador);
+			}
+		}
+	}
 	
 	/**********************************************************
 						GETERS Y SETERS

@@ -1,12 +1,10 @@
 package dab.potenciadores;
 
-import dab.juego.Celda;
-
 public class Inutilizador extends Potenciador {
 	
 	public Inutilizador(){
-		//Problema?: No usa celda
-		duracion = 3;
+		duracionTurnos = 3;
+		duracionAtaques = 0;
 		multiplicadorVelocidad = 0;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
@@ -44,5 +42,9 @@ public class Inutilizador extends Potenciador {
 	public int getKiExtra() {
 		return kiExtra;
 	}
-
+	
+	@Override
+	public boolean estaActivo() {
+		return duracionTurnos > 0;
+	}
 }

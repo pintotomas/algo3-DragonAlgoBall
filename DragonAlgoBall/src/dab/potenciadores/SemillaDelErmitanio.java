@@ -7,7 +7,8 @@ public class SemillaDelErmitanio extends Potenciador {
 		vidaExtra = 100;
 		multiplicadorVelocidad = 1;
 		multiplicadorPoderDePelea = 1;
-		duracion = 0; //es aplicado en el momento que lo agrega Personaje
+		duracionTurnos = 0; //es aplicado en el momento que lo agrega Personaje
+		duracionAtaques = 0;
 		multiplicadorDistanciaAtaque = 1;
 		multiplicadorAlcance = 1;
 		kiExtra = 0;
@@ -42,5 +43,9 @@ public class SemillaDelErmitanio extends Potenciador {
 	public int getKiExtra() {
 		return kiExtra;
 	}
-
+	
+	@Override
+	public boolean estaActivo() {
+		return duracionTurnos > 0;
+	}
 }

@@ -10,6 +10,6 @@ public class AtaqueEspecial {
 		this.lanzador = lanzador;
 	}
 	public  void lanzar(Personaje enemigo){ //interfaz atacable
-		enemigo.agregarVida(-multiplicador*lanzador.getPoder());
+		enemigo.modificarVida(-multiplicador*lanzador.getPoder());
 	}
 }

@@ -4,7 +4,8 @@ public class NubeVoladora extends Potenciador {
 	
 	public NubeVoladora(){
 		nombre = "Nube Voladora";
-		duracion = 3;
+		duracionTurnos = 3;
+		duracionAtaques = 0;
 		multiplicadorVelocidad = 2;
 		multiplicadorPoderDePelea = 1;
 		vidaExtra = 0;
@@ -41,6 +42,11 @@ public class NubeVoladora extends Potenciador {
 	@Override
 	public int getKiExtra() {
 		return kiExtra;
+	}
+
+	@Override
+	public boolean estaActivo() {
+		return duracionTurnos > 0;
 	}
 
 }

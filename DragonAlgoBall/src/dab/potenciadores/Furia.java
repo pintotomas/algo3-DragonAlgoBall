@@ -14,7 +14,8 @@ public class Furia extends Potenciador {
 		multiplicadorPoderDePelea = 1.2;
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
-		duracion = Double.POSITIVE_INFINITY;
+		duracionTurnos = (int) Double.POSITIVE_INFINITY;
+		duracionAtaques = duracionTurnos;
 		multiplicadorAlcance = 1;
 		multiplicadorDistanciaAtaque = 1;
 		kiExtra = 0;
@@ -70,5 +71,10 @@ public class Furia extends Potenciador {
 	public int getKiExtra() {
 		// TODO Auto-generated method stub
 		return kiExtra;
+	}
+	
+	@Override
+	public boolean estaActivo() {
+		return duracionTurnos > 0;
 	}
 }

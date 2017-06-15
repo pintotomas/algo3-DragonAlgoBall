@@ -6,7 +6,8 @@ public abstract class Potenciador{
 	
 	protected String nombre;
 	protected Celda posicion;
-	protected double duracion;
+	protected int duracionTurnos;
+	protected int duracionAtaques;
 	protected int multiplicadorVelocidad;
 	protected double multiplicadorPoderDePelea;
 	protected double vidaExtra;
@@ -20,12 +21,13 @@ public abstract class Potenciador{
 	public abstract int getMultiplicadorAlcance();
 	public abstract int getMultiplicadorDistanciaAtaque();
 	public abstract int getKiExtra();
+	public abstract boolean estaActivo();
 	
 	public void pasoUnTurno() {
-		duracion -= 1;
+		duracionTurnos -= 1;
 	}
-
-	public boolean estaActivo() {
-		return duracion > 0;
+	
+	public void pasoUnAtaque(){
+		duracionAtaques -= 1;
 	}
 }

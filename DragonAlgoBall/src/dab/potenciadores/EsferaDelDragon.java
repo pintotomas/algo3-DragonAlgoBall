@@ -8,7 +8,8 @@ public class EsferaDelDragon extends Potenciador {
 		multiplicadorPoderDePelea = 1.25;
 		multiplicadorVelocidad = 1;
 		vidaExtra = 0;
-		duracion = 3; //1 mas para que pueda usarlo 2 turnos
+		duracionTurnos = 0;
+		duracionAtaques = 2;
 		multiplicadorAlcance = 1;
 		multiplicadorDistanciaAtaque = 1;
 		kiExtra = 0;
@@ -42,5 +43,10 @@ public class EsferaDelDragon extends Potenciador {
 	@Override
 	public int getKiExtra() {
 		return kiExtra;
+	}
+	
+	@Override
+	public boolean estaActivo() {
+		return duracionAtaques > 0;
 	}
 }
