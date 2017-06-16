@@ -9,10 +9,10 @@ import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
 import dab.personajes.Personaje;
 
-public class Tablero {
+public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
-	private Celda[][] tablero;
+	private Celda[][] coleccionCeldas;
 	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
 	
@@ -20,10 +20,10 @@ public class Tablero {
 		//constructor que no ubica personajes en el tablero
 		this.altoDeTablero = altoDeTablero;
 		this.anchoDeTablero = anchoDeTablero;
-		tablero = new Celda[altoDeTablero][anchoDeTablero];
+		coleccionCeldas = new Celda[altoDeTablero][anchoDeTablero];
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
-				tablero[fila][columna] = new Celda(fila, columna);
+				coleccionCeldas[fila][columna] = new Celda(fila, columna);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ public class Tablero {
 	}
 	
 	public void removerFicha(IFichaUbicable ficha){
-		Celda celdaConLaFicha = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
+		Celda celdaConLaFicha = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		celdaConLaFicha.quitarFichaMovible();
 	}
 	
@@ -65,8 +65,8 @@ public class Tablero {
 	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
 	
 	public void moverFicha(IFichaMovible ficha, int x, int y){
-		Celda celdaInicio = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
-		Celda celdaFin = tablero[x][y];
+		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
+		Celda celdaFin = coleccionCeldas[x][y];
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
 		}
@@ -142,7 +142,7 @@ public class Tablero {
 	
 	/********************************/
 	public Celda obtenerCelda(int fila, int columna) {
-		return tablero[fila][columna];		
+		return coleccionCeldas[fila][columna];		
 	}
 	
 	public int getFilaDeLaFicha(IFichaUbicable ficha){
@@ -155,6 +155,10 @@ public class Tablero {
 	
 	public boolean celdaOcupada(int fila, int columna){
 		return this.obtenerCelda(fila, columna).estaOcupada();
+	}
+
+	public Celda[][] getCeldas(){
+		return coleccionCeldas;
 	}
 	
 }
