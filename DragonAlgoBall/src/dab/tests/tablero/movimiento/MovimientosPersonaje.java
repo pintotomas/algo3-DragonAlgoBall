@@ -227,5 +227,40 @@ public class MovimientosPersonaje {
 		}
 		assertEquals(pudoMoverseEnCualquierOportunidad, true);
 	}
+
+	@Test
+	public void testPersonajeRodeadoEnEsquinaDelTableroNoTieneMovimientosPosibles(){
+		
+		Tablero tablero = new Tablero();
+		//hacer que tablero reciba la cantidad de filas y columnas
+		int filasTablero = 20;
+		int columnasTablero = 20;
+		
+		Personaje cell = new Cell();
+		int filaCell = filasTablero - 1;
+		int columnaCell = columnasTablero - 1;
+		tablero.colocarFichaMovil(cell, filaCell, columnaCell);
+						
+		Personaje majinBoo = new MajinBoo();
+		int filaMajinBoo = filasTablero - 2;
+		int columnaMajinBoo = columnasTablero - 1;
+		tablero.colocarFichaMovil(majinBoo, filaMajinBoo, columnaMajinBoo);
+		
+		Personaje freezer = new Freezer();
+		int filaFreezer= filasTablero - 2;
+		int columnaFreezer = columnasTablero - 2;
+		tablero.colocarFichaMovil(freezer, filaFreezer, columnaFreezer);
+		
+		Personaje piccolo = new Piccolo();
+		int filaPiccolo = filasTablero - 1;
+		int columnaPiccolo = columnasTablero - 2;
+		tablero.colocarFichaMovil(piccolo, filaPiccolo, columnaPiccolo);
+		
+		ArrayList<Celda> celdasDisponiblesParaQueSeMuevaCell= tablero.celdasPermitidas((Celda) cell.getPosicion(), cell.getVelocidad());
+		assertEquals(celdasDisponiblesParaQueSeMuevaCell.isEmpty(), true);
+		
+		
+	}
 		
 }
+	
