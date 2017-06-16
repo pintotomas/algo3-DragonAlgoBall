@@ -23,10 +23,10 @@ public class VistaCelda {
 	public StackPane dibujar(){
 		Text text;
 		if (celda.estaOcupada()){
-			text = new Text("O");
+			text = new Text(celda.getFicha().getNombre());
 		}
 		else{
-			text = new Text("Libre");
+			text = new Text("");
 		}
 		
 		rectangulo.setWidth(recHeight);
