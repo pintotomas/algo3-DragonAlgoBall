@@ -1,10 +1,11 @@
 package vista;
 
 import dab.juego.Celda;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
+//import javafx.scene.text.TextAlignment;
 
 public class VistaCelda {
 	
@@ -19,27 +20,25 @@ public class VistaCelda {
 		rectangulo.setFill(Color.AQUAMARINE);
 	}
 	
-	public Rectangle dibujar(){
+	public StackPane dibujar(){
+		Text text;
+		if (celda.estaOcupada()){
+			text = new Text("O");
+		}
+		else{
+			text = new Text("Libre");
+		}
+		
 		rectangulo.setWidth(recHeight);
 		rectangulo.setHeight(recWidth);
 		rectangulo.setFill(Color.AQUAMARINE);
 		rectangulo.setStroke(Color.BLACK);
-		
-		return rectangulo;
+	    StackPane layout = new StackPane();
+	    layout.getChildren().addAll(
+	                rectangulo,
+	                text
+	        );
+		return layout;
 	}
-
-	public Text getTextoRepresentativo() {
-		// TODO Auto-generated method stub
-		Text texto;
-		if (celda.estaOcupada()){
-			texto = new Text("O");
-		}
-		else{
-			texto = new Text("L");
-		}
-		return texto;
-	}
-	
-	
 	
 }

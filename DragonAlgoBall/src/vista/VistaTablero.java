@@ -6,13 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
+import javafx.scene.layout.StackPane;
 
 public class VistaTablero extends Application{
-
-
-
 	
 	public static void main(String[] args){
 	        launch(args);
@@ -33,14 +29,11 @@ public class VistaTablero extends Application{
 	        	VistaCelda celda = new VistaCelda(celdasLogicas[row][col]);
 	        	celdasGUI[row][col] = celda;
 	        	
-	            Rectangle dibujoCelda = celda.dibujar();
-	            Text infoCelda = celda.getTextoRepresentativo();
+	            StackPane dibujoCelda = celda.dibujar();
 	            GridPane.setRowIndex(dibujoCelda, row);
 	            GridPane.setColumnIndex(dibujoCelda, col);
-	            //Ver como centrar la informacion de la celda. Igual no vamos a usar textos
-	            GridPane.setRowIndex(infoCelda, row);
-	            GridPane.setColumnIndex(infoCelda, col);
-	            grid.getChildren().addAll(dibujoCelda, infoCelda);
+
+	            grid.getChildren().addAll(dibujoCelda);
 	            
 	        }
 	    }
