@@ -46,7 +46,7 @@ public class PruebasIntegradoras1 {
 	
 	@Test 
 	public void testTransformarPersonaje() {
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
@@ -62,7 +62,7 @@ public class PruebasIntegradoras1 {
 
 	@Test 
 	public void testTransformarYMover(){
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
@@ -83,7 +83,7 @@ public class PruebasIntegradoras1 {
 	
 	@Test
 	public void testPelearCerca(){
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
@@ -98,7 +98,7 @@ public class PruebasIntegradoras1 {
 	
 	@Test
 	public void testPelearLejos(){
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
@@ -111,7 +111,7 @@ public class PruebasIntegradoras1 {
 	}
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		int filaGoku = 1;
 		int columnaGoku = 1;
 		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);

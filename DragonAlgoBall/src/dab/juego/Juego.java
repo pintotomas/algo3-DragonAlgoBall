@@ -31,7 +31,7 @@ public class Juego {
 		equipoEnemigosDeLaTierra.agregarPersonaje(cellBase);
 		equipoEnemigosDeLaTierra.agregarPersonaje(booBase);
 		equipoEnemigosDeLaTierra.agregarPersonaje(freezerBase);
-		this.tablero = new Tablero(equipoGuerrerosZ,equipoEnemigosDeLaTierra);
+		this.tablero = new Tablero(equipoGuerrerosZ,equipoEnemigosDeLaTierra, 20, 20);
 		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ);// habria que hacer input para pedir el nombre
 		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra);// habria que hacer input para pedir el nombre
 		this.iniciarLoopPrincipalJuego();

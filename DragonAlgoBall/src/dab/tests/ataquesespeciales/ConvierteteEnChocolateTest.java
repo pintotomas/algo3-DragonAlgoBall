@@ -24,7 +24,7 @@ public class ConvierteteEnChocolateTest {
 		goku = new Goku();
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(goku);
-		tablero = new Tablero(guerrerosZ,enemigos);
+		tablero = new Tablero(guerrerosZ,enemigos, 20, 20);
 		tablero.colocarFichaMovil(goku,1,1);
 		tablero.colocarFichaMovil(majinboo,1,2);
 	}
