@@ -33,4 +33,10 @@ public abstract class Potenciador{
 	public boolean estaActivo(){
 		return (duracionTurnos > 0 && duracionAtaques > 0);
 	}
+	
+	public double getDuracionTurnos(){
+		//usar solo en testing
+		return duracionTurnos;
+	}
+	
 }

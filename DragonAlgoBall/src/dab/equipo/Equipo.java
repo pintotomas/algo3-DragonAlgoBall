@@ -14,6 +14,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	Map<String, Personaje> integrantes;
 	private int cantidadEsferasDelDragon;
 	private String nombreEquipo;
+	private int kiNuevoTurno = 5; //Ver si lo puede hacer turno 
 	
 	public Equipo(String nombre){
 		this.nombreEquipo = nombre;
@@ -82,6 +83,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 
 	public void nuevoTurno(){
+		this.otorgarKi(kiNuevoTurno);
 		this.notificarNuevoTurnoAPersonajes();
 	}
 	
