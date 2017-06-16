@@ -49,7 +49,7 @@ public class pruebaAtacar{
 	
 	@Test
 	public void testAtacarMismoPP(){
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje cell = enemigosDeLaTierra.obtenerPersonaje("Cell");
 		tablero.colocarFichaMovil(piccolo, 5, 6);
@@ -62,7 +62,7 @@ public class pruebaAtacar{
 	
 	@Test
 	public void pruebaAtacarMayorPP(){
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
 		
@@ -76,7 +76,7 @@ public class pruebaAtacar{
 	
 	@Test
 	public void atacarADistancia(){
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
 		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
 		tablero.colocarFichaMovil(piccolo, 5, 6);

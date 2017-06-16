@@ -11,7 +11,7 @@ public class moverACeldaOcupadaPorUnPersonaje {
 
 	@Test(expected=CeldaOcupada.class)
 	public void testMoverACeldaOcupada() {
-		Tablero tablero = new Tablero();
+		Tablero tablero = new Tablero(20, 20);
 		Personaje goku = new Goku();
 		int filaGoku = 1;
 		int columnaGoku = 1;

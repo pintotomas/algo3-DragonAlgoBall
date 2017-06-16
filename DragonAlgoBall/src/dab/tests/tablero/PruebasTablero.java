@@ -11,7 +11,7 @@ public class PruebasTablero{
 
 	@Test
 	public void testCoordenadasDelPersonajeCorrectasAlPosicionarEnTablero() {
-		Tablero tableroDab = new Tablero();
+		Tablero tableroDab = new Tablero(20, 20);
 		Goku goku = new Goku();
 		tableroDab.colocarFichaMovil(goku, 5, 6);
 		assertEquals(tableroDab.getFilaDeLaFicha(goku), 5);
@@ -20,7 +20,7 @@ public class PruebasTablero{
 	}
 	@Test
 	public void testCoordenadasActualizadasAlMoverPersonaje(){ 
-		Tablero tableroDab = new Tablero();
+		Tablero tableroDab = new Tablero(20, 20);
 		Goku goku = new Goku();
 		tableroDab.colocarFichaMovil(goku, 5, 6);
 		tableroDab.colocarFichaMovil(goku, 4, 5);
@@ -29,7 +29,7 @@ public class PruebasTablero{
 	}
 	@Test
 	public void testCeldaAnteriorQuedaLibreAlMoverPersonaje(){ 
-		Tablero tableroDab = new Tablero();
+		Tablero tableroDab = new Tablero(20, 20);
 		Goku goku = new Goku();
 		tableroDab.colocarFichaMovil(goku, 5, 6);
 		tableroDab.moverFicha(goku, 4, 5);
