@@ -3,24 +3,28 @@ package vista;
 import dab.equipo.Equipo;
 import dab.juego.Celda;
 import dab.juego.Tablero;
+import dab.juego.Turno;
 import dab.personajes.Freezer.Freezer;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
-import javafx.stage.Stage;
-import vista.eventos.SeleccionarCeldaHandler;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import vista.eventos.SeleccionarCeldaHandler;
 
 public class VistaTablero extends GridPane{
 	
 	Stage stage;
-	
+	int altoTablero = 10; 
+    int anchoTablero = 10;
 	public VistaTablero(Stage stage) {
 		this.stage = stage;
 		Equipo guerrerosZ, enemigosDeLaTierra;
+		Tablero tablero;
+		Turno turno;
 		guerrerosZ = new Equipo("Guerreros Z");
 		enemigosDeLaTierra = new Equipo("Enemigos de la tierra");
 		
@@ -33,13 +37,12 @@ public class VistaTablero extends GridPane{
 		enemigosDeLaTierra.agregarPersonaje(new Freezer());
 		enemigosDeLaTierra.agregarPersonaje(new MajinBoo());
 		
-		
-		
+		tablero = new Tablero(altoTablero, anchoTablero, guerrerosZ, enemigosDeLaTierra);
+		turno = new Turno(guerrerosZ, tablero);
 	
 	 	this.setGridLinesVisible(true);
 	 	
-	    int altoTablero = 10; 
-	    int anchoTablero = 10;
+	    
 	    Tablero tableroJuego = new Tablero(altoTablero, anchoTablero, guerrerosZ, enemigosDeLaTierra);
 	    Celda[][] celdasLogicas = tableroJuego.getCeldas();
 	    VistaCelda[][] celdasGUI = new VistaCelda[altoTablero][anchoTablero];
@@ -52,7 +55,7 @@ public class VistaTablero extends GridPane{
 	        	
 	            StackPane dibujoCelda = celda.dibujar();
 	            
-	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(celda, tableroJuego, celdasGUI);
+	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(celda, tableroJuego, celdasGUI, turno);
 	            dibujoCelda.setOnMousePressed(seleccionCeldaHandler);
 	            
 	            VistaTablero.setRowIndex(dibujoCelda, row);
