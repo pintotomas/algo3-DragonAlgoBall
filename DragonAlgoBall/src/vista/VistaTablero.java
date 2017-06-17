@@ -9,21 +9,17 @@ import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import vista.eventos.SeleccionarCeldaHandler;
-import javafx.application.Application;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
-public class VistaTablero extends Application{
+public class VistaTablero extends GridPane{
 	
-	public static void main(String[] args){
-	        launch(args);
-	    }
+	Stage stage;
 	
-	public void start(Stage primaryStage) {
-		
+	public VistaTablero(Stage stage) {
+		this.stage = stage;
 		Equipo guerrerosZ, enemigosDeLaTierra;
 		guerrerosZ = new Equipo("Guerreros Z");
 		enemigosDeLaTierra = new Equipo("Enemigos de la tierra");
@@ -37,8 +33,11 @@ public class VistaTablero extends Application{
 		enemigosDeLaTierra.agregarPersonaje(new Freezer());
 		enemigosDeLaTierra.agregarPersonaje(new MajinBoo());
 		
-	    GridPane grid = new GridPane();
-	 	grid.setGridLinesVisible(true);
+		
+		
+	
+	 	this.setGridLinesVisible(true);
+	 	
 	    int altoTablero = 10; 
 	    int anchoTablero = 10;
 	    Tablero tableroJuego = new Tablero(altoTablero, anchoTablero, guerrerosZ, enemigosDeLaTierra);
@@ -56,18 +55,20 @@ public class VistaTablero extends Application{
 	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(celda, tableroJuego, celdasGUI);
 	            dibujoCelda.setOnMousePressed(seleccionCeldaHandler);
 	            
-	            GridPane.setRowIndex(dibujoCelda, row);
-	            GridPane.setColumnIndex(dibujoCelda, col);
+	            VistaTablero.setRowIndex(dibujoCelda, row);
+	            VistaTablero.setColumnIndex(dibujoCelda, col);
 
-	            grid.getChildren().addAll(dibujoCelda);
+	            this.getChildren().addAll(dibujoCelda);
 	            
 	        }
 	    }
+	    
+	    stage.setTitle("DragonAlgoBall");
 
-	    Scene scene = new Scene(grid, 350, 250);
-
-	    primaryStage.setTitle("Grid");
-	    primaryStage.setScene(scene);
-	    primaryStage.show();
+//	    Scene scene = new Scene(this, 350, 250);
+//
+//	    stage.setTitle("DragonAlgoBall");
+//	    stage.setScene(scene);
+//	    stage.show();
 	}
 }

@@ -3,6 +3,7 @@ package vista;
 import dab.juego.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,13 +25,16 @@ public class ContenedorNombresUsuarios extends VBox {
         this.setSpacing(20);
         this.setPadding(new Insets(25));
         
+        VistaTablero tablero = new VistaTablero(stage);
+        Scene siguienteEscena = new Scene(tablero);
+        
         String textoLabelGuerrerosZ = "Ingrese su nombre. Jugara con Guerreros Z";
         String textoLabelEnemigosDeLaTierra = "Ingrese su nombre. Jugara con Enenemigos De La Tierra";
         
         this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
         
-        BotonComenzarPartidaEventHandler comenzarPartida= new BotonComenzarPartidaEventHandler();
+        BotonComenzarPartidaEventHandler comenzarPartida= new BotonComenzarPartidaEventHandler(stage, siguienteEscena);
         Button botonComenzarPartida = new Button("Comenzar partida");
         botonComenzarPartida.setOnMouseClicked(comenzarPartida);
         this.getChildren().addAll(botonComenzarPartida);
