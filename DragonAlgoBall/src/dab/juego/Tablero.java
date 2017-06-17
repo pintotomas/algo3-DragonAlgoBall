@@ -136,8 +136,8 @@ public class Tablero{
 		int filaOrigen, columnaOrigen, maxFila, maxColumna, minFila, minColumna;
 		filaOrigen = origen.getFila();
 		columnaOrigen = origen.getColumna();
-		maxFila = (filaOrigen + rango > (altoDeTablero - 1)) ? filaOrigen : (altoDeTablero - 1);
-		maxColumna = (columnaOrigen + rango > (anchoDeTablero - 1)) ? columnaOrigen : (anchoDeTablero - 1);
+		maxFila = (filaOrigen + rango < (altoDeTablero - 1)) ? filaOrigen + rango : (altoDeTablero - 1);
+		maxColumna = (columnaOrigen + rango < (anchoDeTablero - 1)) ? columnaOrigen + rango : (anchoDeTablero - 1);
 		minFila = (filaOrigen - rango > 0 ) ? filaOrigen - rango : 0;
 		minColumna = (columnaOrigen - rango > 0 ) ? columnaOrigen - rango : 0;
 		celdasPermitidasAux(origen, celdasDisponibles, maxColumna, maxFila, minColumna, minFila);
