@@ -7,10 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vista.Eventos.BotonListoNombreEventHandler;
+import vista.Eventos.BotonComenzarPartidaEventHandler;
 
 public class ContenedorNombresUsuarios extends VBox {
     Stage stage;
@@ -28,14 +27,17 @@ public class ContenedorNombresUsuarios extends VBox {
         String textoLabelGuerrerosZ = "Ingrese su nombre. Jugara con Guerreros Z";
         String textoLabelEnemigosDeLaTierra = "Ingrese su nombre. Jugara con Enenemigos De La Tierra";
         
+
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
-        Button botonListoNombre = new Button("Listo!");
-        HBox contenedorHorizontal = new HBox(botonListoNombre);
-        contenedorHorizontal.setAlignment(Pos.CENTER);
-        BotonListoNombreEventHandler listoNombreEventHandler = new BotonListoNombreEventHandler(this.stage,this.escenaPrincipal,this.juego,campoNombreUsuarioGuerreros,campoNombreUsuarioEnemigos);
-        botonListoNombre.setOnAction(listoNombreEventHandler);
-        this.getChildren().add(contenedorHorizontal);
+
+        this.contenedorNombreUsuario(textoLabelGuerrerosZ);
+        this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
+        
+        BotonComenzarPartidaEventHandler comenzarPartida= new BotonComenzarPartidaEventHandler();
+        Button botonComenzarPartida = new Button("Comenzar partida");
+        botonComenzarPartida.setOnMouseClicked(comenzarPartida);
+        this.getChildren().addAll(botonComenzarPartida);
     }
     
     private TextField contenedorNombreUsuario(String textoLabel){
