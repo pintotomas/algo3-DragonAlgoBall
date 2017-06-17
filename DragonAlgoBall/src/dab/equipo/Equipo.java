@@ -21,6 +21,13 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 		this.integrantes = new HashMap<String, Personaje>();
 	}
 	
+	public Equipo(String nombre, Personaje...personaje){
+		this(nombre);
+		for (Personaje pj: personaje){
+			this.agregarPersonaje(pj);
+		}
+	}
+	
 	public String getNombre(){
 		return this.nombreEquipo;
 	}
