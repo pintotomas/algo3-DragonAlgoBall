@@ -19,4 +19,8 @@ public class ContenedorPrincipal extends BorderPane{
 		this.barraDeMenu = new BarraDeMenu(stage);
         this.setTop(barraDeMenu);
 	}
+	
+	public BarraDeMenu getBarraDeMenu(){
+		return this.barraDeMenu;
+	}
 }

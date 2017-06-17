@@ -4,6 +4,7 @@ import dab.juego.Juego;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import vista.Eventos.AplicacionOnKeyPressEventHandler;
 
 public class Aplicacion extends Application {
 	private final int pixelesAnchoSD = 640;
@@ -21,6 +22,9 @@ public class Aplicacion extends Application {
         
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage,juegoDAB);
         Scene escenaPrincipal = new Scene(contenedorPrincipal);
+        
+        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        escenaPrincipal.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
         
         ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage,juegoDAB,escenaPrincipal);
         Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
