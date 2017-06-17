@@ -8,13 +8,22 @@ import dab.equipo.Equipo;
 import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
 import dab.personajes.majinBoo.MajinBoo;
+import dab.potenciadores.Inutilizador;
 
 public class ConvierteteEnChocolateTest {
 	
-	MajinBoo majinboo;
-	Goku goku;
-	Equipo enemigos, guerrerosZ;
-	Tablero tablero;
+	private MajinBoo majinboo;
+	private Goku goku;
+	private Equipo enemigos, guerrerosZ;
+	private Tablero tablero;
+	
+	private int anchoTablero = 20;
+	private int altoTablero = 20;
+	
+	private int filaGoku = 1;
+	private int filaBoo = 1;
+	private int columnaGoku = 1;
+	private int columnaBoo = 2;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -24,23 +33,32 @@ public class ConvierteteEnChocolateTest {
 		goku = new Goku();
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(goku);
-		tablero = new Tablero(guerrerosZ,enemigos, 20, 20);
-		tablero.colocarFichaMovil(goku,1,1);
-		tablero.colocarFichaMovil(majinboo,1,2);
+		tablero = new Tablero(altoTablero,anchoTablero, guerrerosZ, enemigos);
+		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
+		tablero.colocarFichaMovil(majinboo, filaBoo, columnaBoo);
 	}
 
 	@Test
-	public void testSeConvierteEnChocolate() {
+	public void testConvertirGokuEnChocolateModificaAlcanceYVelocidad() {
 		majinboo.modificarKi(30);
 		majinboo.ataqueEspecial(goku);
 		Assert.assertEquals(0,goku.getAlcance());
 		Assert.assertEquals(0,goku.getVelocidad());
-		for (int i = 0; i < 3; i ++){
-			goku.modificarKi(5);
-			goku.nuevoTurno();
+		
+	}
+	
+	@Test
+	public void testConvertirEnChocolateYPasarTurnosHastaFinalizarEfectoRestauraAtributosDeGoku(){
+		majinboo.modificarKi(30);
+		majinboo.ataqueEspecial(goku);
+		
+		double turnosInutilizador = new Inutilizador().getDuracionTurnos();
+		for (int i = 0; i < turnosInutilizador; i ++){
+			guerrerosZ.nuevoTurno();
 		}
 		Assert.assertEquals(2, goku.getVelocidad());
 		Assert.assertEquals(0, goku.getKi());
+		Assert.assertEquals(2, goku.getAlcance());
 	}
 
 }

@@ -9,6 +9,7 @@ public class FreezerBase extends Estado{
 	
 	public FreezerBase(IProveedorDeKi proveedorDeKi){
 		super(proveedorDeKi);
+		nombre = "Freezer";
 		vidaMaxima = 400;
 		poder = 20;
 		alcance = 2;

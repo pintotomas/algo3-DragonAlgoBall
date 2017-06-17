@@ -2,7 +2,7 @@
 <class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="dab.juego.Tablero" project="DragonAlgoBall" 
-    file="/DragonAlgoBall/src/dab/juego/Tablero.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/juego/Tablero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="97" y="271"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -11,7 +11,7 @@
     </display>  
   </class>  
   <class id="2" language="java" name="dab.juego.Celda" project="DragonAlgoBall" 
-    file="/DragonAlgoBall/src/dab/juego/Celda.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/juego/Celda.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="459" y="596"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -20,7 +20,7 @@
     </display>  
   </class>  
   <class id="3" language="java" name="dab.juego.Turno" project="DragonAlgoBall" 
-    file="/DragonAlgoBall/src/dab/juego/Turno.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/juego/Turno.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="472" y="138"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -29,7 +29,7 @@
     </display>  
   </class>  
   <class id="4" language="java" name="dab.equipo.Equipo" project="DragonAlgoBall" 
-    file="/DragonAlgoBall/src/dab/equipo/Equipo.java" binary="false" corner="BOTTOM_RIGHT">    
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/equipo/Equipo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="839" y="251"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -38,51 +38,51 @@
     </display>  
   </class>  
   <association id="5">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+    <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
       <attribute id="6" name="tablero">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="7" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="8">    
-    <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="9" name="tablero">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="10" minimum="0" maximum="1">        
+      <multiplicity id="7" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="8">    
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="9" name="coleccionCeldas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="10" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="11">    
     <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="12" name="equipo">        
+      <attribute id="12" name="celdaSeleccionada">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="13" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="14">    
     <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="15" name="celdaSeleccionada">        
+      <attribute id="15" name="equipo">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="16" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

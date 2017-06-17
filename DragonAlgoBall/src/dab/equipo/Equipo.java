@@ -14,10 +14,18 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	Map<String, Personaje> integrantes;
 	private int cantidadEsferasDelDragon;
 	private String nombreEquipo;
+	private int kiNuevoTurno = 5; //Ver si lo puede hacer turno 
 	
 	public Equipo(String nombre){
 		this.nombreEquipo = nombre;
 		this.integrantes = new HashMap<String, Personaje>();
+	}
+	
+	public Equipo(String nombre, Personaje...personaje){
+		this(nombre);
+		for (Personaje pj: personaje){
+			this.agregarPersonaje(pj);
+		}
 	}
 	
 	public String getNombre(){
@@ -82,6 +90,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 
 	public void nuevoTurno(){
+		this.otorgarKi(kiNuevoTurno);
 		this.notificarNuevoTurnoAPersonajes();
 	}
 	

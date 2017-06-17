@@ -4,55 +4,60 @@ import java.util.ArrayList;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
+import dab.dragonBallExceptions.SoloDosEquiposError;
 import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
 import dab.personajes.Personaje;
 
-public class Tablero {
+public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
-	private Celda[][] tablero;
+	private Celda[][] coleccionCeldas;
 	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
 	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
+		
 		this.altoDeTablero = altoDeTablero;
 		this.anchoDeTablero = anchoDeTablero;
-		tablero = new Celda[altoDeTablero][anchoDeTablero];
+		coleccionCeldas = new Celda[altoDeTablero][anchoDeTablero];
+		
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
-				tablero[fila][columna] = new Celda(fila, columna);
+				coleccionCeldas[fila][columna] = new Celda(fila, columna);
 			}
 		}
 	}
 		
-	public Tablero(Equipo equipo1, Equipo equipo2, int altoDeTablero, int anchoDeTablero){
-		//constructor que ubica personajes en el tablero
+	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo... equipo){
+		
 		this(altoDeTablero, anchoDeTablero);
-		this.ubicarPersonajesEnPosicionInicial(equipo1, equipo2);
+		if (equipo.length > 2){
+			throw new SoloDosEquiposError();
+		}
+		int columnaInicial = anchoDeTablero/2;
+		int filaActual = 0;
+		for (Equipo equi: equipo){
+			this.ubicarPersonajesEnPosicionInicial(equi, filaActual, columnaInicial);
+			filaActual += altoDeTablero - 1;
+		}
+		
 	}
 	
 	
-	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, Equipo equipo2){
+	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
 		//De ubicarlos en el tablero se podria ocupar la clase Juego, asi tenemos un metodo solo
 		//de ubicarFichas y lo que recibiria seria una coleccion de fichas y el rango donde ponerlas
 		int i = 0;
-		int primeraPosicion = anchoDeTablero/2;
 		for(Personaje personaje : equipo1.obtenerPersonajes()){
-			this.colocarFichaMovil(personaje,0 , primeraPosicion + i);
-			i += 1;
-		}
-		i = 0;
-		for(Personaje personaje : equipo2.obtenerPersonajes()){
-			this.colocarFichaMovil(personaje,altoDeTablero - 1 , primeraPosicion + i);
+			this.colocarFichaMovil(personaje,fila , columnaInicial + i);
 			i += 1;
 		}
 	}
-	
 	public void removerFicha(IFichaUbicable ficha){
-		Celda celdaConLaFicha = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
+		Celda celdaConLaFicha = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		celdaConLaFicha.quitarFichaMovible();
 	}
 	
@@ -65,8 +70,8 @@ public class Tablero {
 	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
 	
 	public void moverFicha(IFichaMovible ficha, int x, int y){
-		Celda celdaInicio = tablero[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
-		Celda celdaFin = tablero[x][y];
+		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
+		Celda celdaFin = coleccionCeldas[x][y];
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
 		}
@@ -131,8 +136,8 @@ public class Tablero {
 		int filaOrigen, columnaOrigen, maxFila, maxColumna, minFila, minColumna;
 		filaOrigen = origen.getFila();
 		columnaOrigen = origen.getColumna();
-		maxFila = (filaOrigen + rango > (altoDeTablero - 1)) ? filaOrigen : (altoDeTablero - 1);
-		maxColumna = (columnaOrigen + rango > (anchoDeTablero - 1)) ? columnaOrigen : (anchoDeTablero - 1);
+		maxFila = (filaOrigen + rango < (altoDeTablero - 1)) ? filaOrigen + rango : (altoDeTablero - 1);
+		maxColumna = (columnaOrigen + rango < (anchoDeTablero - 1)) ? columnaOrigen + rango : (anchoDeTablero - 1);
 		minFila = (filaOrigen - rango > 0 ) ? filaOrigen - rango : 0;
 		minColumna = (columnaOrigen - rango > 0 ) ? columnaOrigen - rango : 0;
 		celdasPermitidasAux(origen, celdasDisponibles, maxColumna, maxFila, minColumna, minFila);
@@ -142,7 +147,7 @@ public class Tablero {
 	
 	/********************************/
 	public Celda obtenerCelda(int fila, int columna) {
-		return tablero[fila][columna];		
+		return coleccionCeldas[fila][columna];		
 	}
 	
 	public int getFilaDeLaFicha(IFichaUbicable ficha){
@@ -155,6 +160,10 @@ public class Tablero {
 	
 	public boolean celdaOcupada(int fila, int columna){
 		return this.obtenerCelda(fila, columna).estaOcupada();
+	}
+
+	public Celda[][] getCeldas(){
+		return coleccionCeldas;
 	}
 	
 }

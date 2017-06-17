@@ -6,4 +6,6 @@ public interface IFichaMovible extends IFichaUbicable {
 
 	int getVelocidad();
 
+	String getNombre();
+
 }
