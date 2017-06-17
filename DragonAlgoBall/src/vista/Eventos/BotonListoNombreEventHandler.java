@@ -17,5 +17,6 @@ public class BotonListoNombreEventHandler implements EventHandler<ActionEvent>{
 	@Override
 	public void handle(ActionEvent event) {
 		this.botonListoNombre.setDisable(true);
+		this.botonListoNombre.setText("Esperando al enemigo..");
 	}
 }

@@ -19,6 +19,7 @@ public class BotonCambiarNombreEventHandler implements EventHandler<ActionEvent>
         this.textField.requestFocus();
         if(this.botonListoNombre.isDisable()){
         	this.botonListoNombre.setDisable(false);
+        	this.botonListoNombre.setText("Listo!");
         }
     }
 }

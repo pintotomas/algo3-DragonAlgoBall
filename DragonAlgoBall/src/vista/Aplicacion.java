@@ -24,7 +24,6 @@ public class Aplicacion extends Application {
 
         stage.setScene(escenaInicial);
         stage.setFullScreen(true);
-        stage.setMaximized(true);
         stage.show();
     }
 }

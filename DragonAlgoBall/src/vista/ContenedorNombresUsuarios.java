@@ -34,7 +34,7 @@ public class ContenedorNombresUsuarios extends VBox {
         Button botonListoNombre = new Button("Listo!");
         Button botonReiniciarNombre = new Button("Cambiar Nombre");
         HBox contenedorHorizontal = new HBox(botonListoNombre,botonReiniciarNombre);
-        contenedorHorizontal.setSpacing(10);
+        contenedorHorizontal.setSpacing(20);
         BotonCambiarNombreEventHandler reiniciarNombreEventHandler = new BotonCambiarNombreEventHandler(campoNombreUsuario,botonListoNombre);
         botonReiniciarNombre.setOnAction(reiniciarNombreEventHandler);
         BotonListoNombreEventHandler listoNombreEventHandler = new BotonListoNombreEventHandler(botonListoNombre,campoNombreUsuario);
