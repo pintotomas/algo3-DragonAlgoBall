@@ -10,7 +10,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import vista.Eventos.BotonJugarEventHandler;
+import vista.eventos.BotonJugarEventHandler;
 
 public class ContenedorInicial extends StackPane {
     Stage stage;

@@ -4,7 +4,7 @@ import dab.juego.Juego;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import vista.Eventos.AplicacionOnKeyPressEventHandler;
+import vista.eventos.AplicacionOnKeyPressEventHandler;
 
 public class Aplicacion extends Application {
 	private final int pixelesAnchoSD = 640;

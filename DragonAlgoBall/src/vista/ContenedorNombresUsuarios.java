@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vista.Eventos.BotonListoNombreEventHandler;
+import vista.eventos.BotonListoNombreEventHandler;
 
 public class ContenedorNombresUsuarios extends VBox {
     Stage stage;

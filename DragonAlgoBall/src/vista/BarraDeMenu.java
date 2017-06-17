@@ -5,9 +5,9 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
-import vista.Eventos.OpcionAcercaDeEventHandler;
-import vista.Eventos.OpcionPantallaCompletaEventHandler;
-import vista.Eventos.OpcionSalirEventHandler;
+import vista.eventos.OpcionAcercaDeEventHandler;
+import vista.eventos.OpcionPantallaCompletaEventHandler;
+import vista.eventos.OpcionSalirEventHandler;
 
 public class BarraDeMenu extends MenuBar {
 

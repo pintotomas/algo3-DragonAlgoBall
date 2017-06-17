@@ -1,4 +1,4 @@
-package vista.Eventos;
+package vista.eventos;
 
 import dab.juego.Juego;
 import javafx.event.ActionEvent;
