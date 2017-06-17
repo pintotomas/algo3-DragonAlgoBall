@@ -40,7 +40,7 @@ public class VistaTablero extends Application{
 	 	grid.setGridLinesVisible(true);
 	    int altoTablero = 10; 
 	    int anchoTablero = 10;
-	    Celda[][] celdasLogicas = new Tablero(guerrerosZ, enemigosDeLaTierra, altoTablero, anchoTablero).getCeldas();
+	    Celda[][] celdasLogicas = new Tablero(altoTablero, anchoTablero, guerrerosZ, enemigosDeLaTierra).getCeldas();
 	    VistaCelda[][] celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 	    
 	    for (int row = 0; row < anchoTablero; row++) {

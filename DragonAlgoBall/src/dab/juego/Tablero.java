@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
+import dab.dragonBallExceptions.SoloDosEquiposError;
 import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
@@ -18,9 +19,11 @@ public class Tablero{
 	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
+		
 		this.altoDeTablero = altoDeTablero;
 		this.anchoDeTablero = anchoDeTablero;
 		coleccionCeldas = new Celda[altoDeTablero][anchoDeTablero];
+		
 		for(int fila = 0; fila < altoDeTablero; fila++){
 			for(int columna = 0; columna < anchoDeTablero; columna++){
 				coleccionCeldas[fila][columna] = new Celda(fila, columna);
@@ -28,29 +31,31 @@ public class Tablero{
 		}
 	}
 		
-	public Tablero(Equipo equipo1, Equipo equipo2, int altoDeTablero, int anchoDeTablero){
-		//constructor que ubica personajes en el tablero
+	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo... equipo){
+		
 		this(altoDeTablero, anchoDeTablero);
-		this.ubicarPersonajesEnPosicionInicial(equipo1, equipo2);
+		if (equipo.length > 2){
+			throw new SoloDosEquiposError();
+		}
+		int columnaInicial = anchoDeTablero/2;
+		int filaActual = 0;
+		for (Equipo equi: equipo){
+			this.ubicarPersonajesEnPosicionInicial(equi, filaActual, columnaInicial);
+			filaActual += altoDeTablero - 1;
+		}
+		
 	}
 	
 	
-	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, Equipo equipo2){
+	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
 		//De ubicarlos en el tablero se podria ocupar la clase Juego, asi tenemos un metodo solo
 		//de ubicarFichas y lo que recibiria seria una coleccion de fichas y el rango donde ponerlas
 		int i = 0;
-		int primeraPosicion = anchoDeTablero/2;
 		for(Personaje personaje : equipo1.obtenerPersonajes()){
-			this.colocarFichaMovil(personaje,0 , primeraPosicion + i);
-			i += 1;
-		}
-		i = 0;
-		for(Personaje personaje : equipo2.obtenerPersonajes()){
-			this.colocarFichaMovil(personaje,altoDeTablero - 1 , primeraPosicion + i);
+			this.colocarFichaMovil(personaje,fila , columnaInicial + i);
 			i += 1;
 		}
 	}
-	
 	public void removerFicha(IFichaUbicable ficha){
 		Celda celdaConLaFicha = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		celdaConLaFicha.quitarFichaMovible();
