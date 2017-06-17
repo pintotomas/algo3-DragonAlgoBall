@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vista.Eventos.BotonComenzarPartidaEventHandler;
+import vista.Eventos.BotonListoNombreEventHandler;
 
 public class ContenedorNombresUsuarios extends VBox {
     Stage stage;
@@ -30,14 +30,11 @@ public class ContenedorNombresUsuarios extends VBox {
 
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
-
-        this.contenedorNombreUsuario(textoLabelGuerrerosZ);
-        this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
         
-        BotonComenzarPartidaEventHandler comenzarPartida= new BotonComenzarPartidaEventHandler();
-        Button botonComenzarPartida = new Button("Comenzar partida");
-        botonComenzarPartida.setOnMouseClicked(comenzarPartida);
-        this.getChildren().addAll(botonComenzarPartida);
+        Button botonListoNombres = new Button("Listo!");
+        BotonListoNombreEventHandler listoNombreEventHandler = new BotonListoNombreEventHandler(this.stage,this.escenaPrincipal,this.juego,campoNombreUsuarioGuerreros,campoNombreUsuarioEnemigos);
+        botonListoNombres.setOnAction(listoNombreEventHandler);
+        this.getChildren().addAll(botonListoNombres);
     }
     
     private TextField contenedorNombreUsuario(String textoLabel){
