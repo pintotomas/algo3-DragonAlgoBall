@@ -47,6 +47,10 @@ public class VistaCelda {
 		return layout;
 	}
 	
+	public void liberada(){
+		rectangulo.setFill(colorUnpressed);
+	}
+	
 	public void presionada(){
 		
 		rectangulo.setFill(colorPressed);

@@ -38,6 +38,20 @@ public class Turno {
 		personajeSeleccionado = personaje;
 	}
 	
+	public Personaje getPersonajeSeleccionado(){
+		
+		return personajeSeleccionado;
+		
+	}
+	
+	public void seleccionarCelda(Celda celda){
+		celdaSeleccionada = celda;		
+	}
+	
+	public Celda getCeldaSeleccionada(){
+		return celdaSeleccionada;
+	}
+	
 	
 //	public void Mover(Celda celda){
 //		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.
