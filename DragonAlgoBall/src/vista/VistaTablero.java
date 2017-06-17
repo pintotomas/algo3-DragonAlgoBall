@@ -11,6 +11,7 @@ import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import vista.eventos.SeleccionarCeldaHandler;
 import javafx.application.Application;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -40,7 +41,8 @@ public class VistaTablero extends Application{
 	 	grid.setGridLinesVisible(true);
 	    int altoTablero = 10; 
 	    int anchoTablero = 10;
-	    Celda[][] celdasLogicas = new Tablero(altoTablero, anchoTablero, guerrerosZ, enemigosDeLaTierra).getCeldas();
+	    Tablero tableroJuego = new Tablero(altoTablero, anchoTablero, guerrerosZ, enemigosDeLaTierra);
+	    Celda[][] celdasLogicas = tableroJuego.getCeldas();
 	    VistaCelda[][] celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 	    
 	    for (int row = 0; row < anchoTablero; row++) {
@@ -50,6 +52,10 @@ public class VistaTablero extends Application{
 	        	celdasGUI[row][col] = celda;
 	        	
 	            StackPane dibujoCelda = celda.dibujar();
+	            
+	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(celda, tableroJuego, celdasGUI);
+	            dibujoCelda.setOnMousePressed(seleccionCeldaHandler);
+	            
 	            GridPane.setRowIndex(dibujoCelda, row);
 	            GridPane.setColumnIndex(dibujoCelda, col);
 
