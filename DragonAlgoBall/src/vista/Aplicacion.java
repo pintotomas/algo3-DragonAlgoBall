@@ -12,17 +12,19 @@ public class Aplicacion extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception {
-
         stage.setTitle("Dragon AlgoBall Z");
-
-        ContenedorInicial contenedorInicial = new ContenedorInicial(stage/*, escenaJuego*/);
-        int pixelesAnchoHD = 840;
-        int pixelesAltoHD = 480;
-        Scene escenaInicial = new Scene(contenedorInicial, pixelesAnchoHD, pixelesAltoHD);
+        
+        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage);
+        Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
+        
+        ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios);
+        int pixelesAnchoSD = 840;
+        int pixelesAltoSD = 480;
+        Scene escenaInicial = new Scene(contenedorInicial, pixelesAnchoSD, pixelesAltoSD);
 
         stage.setScene(escenaInicial);
         stage.setFullScreen(true);
-
+        stage.setMaximized(true);
         stage.show();
     }
 }

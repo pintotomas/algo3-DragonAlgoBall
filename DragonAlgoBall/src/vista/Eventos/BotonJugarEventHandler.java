@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
-
     Stage stage;
     Scene proximaEscena;
 
