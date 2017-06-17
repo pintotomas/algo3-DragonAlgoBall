@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import vista.Eventos.BotonComenzarPartidaEventHandler;
 import vista.Eventos.BotonListoNombreEventHandler;
 
 public class ContenedorNombresUsuarios extends VBox {
@@ -28,6 +29,12 @@ public class ContenedorNombresUsuarios extends VBox {
         
         this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
+        
+        BotonComenzarPartidaEventHandler comenzarPartida= new BotonComenzarPartidaEventHandler();
+        Button botonComenzarPartida = new Button("Comenzar partida");
+        botonComenzarPartida.setOnMouseClicked(comenzarPartida);
+        this.getChildren().addAll(botonComenzarPartida);
+        
         
     }
     
