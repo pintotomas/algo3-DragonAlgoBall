@@ -1,5 +1,7 @@
 package dab.juego;
 
+import java.util.ArrayList;
+
 import dab.dragonBallExceptions.AtaqueNoValido;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.MovimientoInvalido;
@@ -21,6 +23,7 @@ public class Turno {
 		this.movio = false;
 		this.ataco = false;
 		this.personajeSeleccionado = null;
+		ArrayList<Celda> celdasPermitidasAlPersonaje;
 	}
 	
 	private void otorgarKi(){
@@ -45,13 +48,20 @@ public class Turno {
 	}
 	
 	public void seleccionarCelda(Celda celda){
-		celdaSeleccionada = celda;		
+		celdaSeleccionada = celda;
 	}
 	
 	public Celda getCeldaSeleccionada(){
 		return celdaSeleccionada;
 	}
 	
+	public ArrayList<Celda> getCeldasPermitidas(){
+		if(personajeSeleccionado == null){
+			return new ArrayList<Celda>();
+		}
+		
+		return tablero.celdasPermitidas(celdaSeleccionada, personajeSeleccionado.getVelocidad());
+	}
 	
 //	public void Mover(Celda celda){
 //		// a la hora de crear la interfaz grafica, asumo que los lugares de alcanze del jugador cambiaran de color o algo asi, para que se sepa a donde puede ir.

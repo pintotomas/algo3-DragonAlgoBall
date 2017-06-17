@@ -29,17 +29,15 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent event) {
 		if(celda.getCelda() != turno.getCeldaSeleccionada()){
-			if(turno.getPersonajeSeleccionado() != null){
-				ArrayList<Celda> celdasPermitidas = tableroJuego.celdasPermitidas(turno.getCeldaSeleccionada(), turno.getCeldaSeleccionada().getFicha().getVelocidad());
-				for (Celda c: celdasPermitidas){
+				for (Celda c: turno.getCeldasPermitidas()){
 					celdasGUI[c.getFila()][c.getColumna()].liberada();
 				}
-			}		
+					
 			if (celda.estaOcupada()){
-				ArrayList<Celda> celdasPermitidas = tableroJuego.celdasPermitidas(celda.getCelda(), celda.getCelda().getFicha().getVelocidad());
-				for (Celda c: celdasPermitidas){
-					celdasGUI[c.getFila()][c.getColumna()].presionada();
+				turno.seleccionarCelda(celda.getCelda());
 				turno.seleccionarPersonaje((Personaje)(celda.getCelda().getFicha()));
+				for (Celda c: turno.getCeldasPermitidas()){
+					celdasGUI[c.getFila()][c.getColumna()].presionada();
 				}
 			}else{
 				turno.seleccionarPersonaje(null);
