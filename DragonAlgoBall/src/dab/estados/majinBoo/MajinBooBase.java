@@ -11,7 +11,7 @@ public class MajinBooBase extends Estado{
 		vidaMaxima = 300;
 		poder = 30;
 		alcance = 2;
-		velocidad = 3;
+		velocidad = 2;
 		nombre = "MajinBoo";
 		kiParaTransformar = 50;
 	}
