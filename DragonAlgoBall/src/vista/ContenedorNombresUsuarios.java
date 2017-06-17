@@ -31,12 +31,14 @@ public class ContenedorNombresUsuarios extends VBox {
     private void contenedorNombreUsuario(String textoLabel){
     	Label labelNombreUsuario = new Label(textoLabel);
         TextField campoNombreUsuario = new TextField();
-        Button botonListoNombre = new BotonListoNombreEventHandler();
-        botonListoNombre.setText("Listo!");
-        Button botonCambiarNombre = new BotonCambiarNombreEventHandler();
-        botonCambiarNombre.setText("Reiniciar Nombre");
-        HBox contenedorHorizontal = new HBox(botonListoNombre,botonCambiarNombre);
+        Button botonListoNombre = new Button("Listo!");
+        Button botonReiniciarNombre = new Button("Cambiar Nombre");
+        HBox contenedorHorizontal = new HBox(botonListoNombre,botonReiniciarNombre);
         contenedorHorizontal.setSpacing(10);
+        BotonCambiarNombreEventHandler reiniciarNombreEventHandler = new BotonCambiarNombreEventHandler(campoNombreUsuario,botonListoNombre);
+        botonReiniciarNombre.setOnAction(reiniciarNombreEventHandler);
+        BotonListoNombreEventHandler listoNombreEventHandler = new BotonListoNombreEventHandler(botonListoNombre,campoNombreUsuario);
+        botonListoNombre.setOnAction(listoNombreEventHandler);
         this.getChildren().addAll(labelNombreUsuario,campoNombreUsuario,contenedorHorizontal);
     }
 }
