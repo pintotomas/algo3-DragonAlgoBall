@@ -1,5 +1,6 @@
 package vista;
 
+import dab.juego.Juego;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,7 +15,9 @@ public class Aplicacion extends Application {
     public void start(final Stage stage) throws Exception {
         stage.setTitle("Dragon AlgoBall Z");
         
-        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage);
+        Juego juegoDAB = new Juego();
+        
+        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage,juegoDAB);
         Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
         
         ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios);

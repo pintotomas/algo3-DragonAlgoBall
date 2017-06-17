@@ -32,31 +32,15 @@ public class Juego {
 		equipoEnemigosDeLaTierra.agregarPersonaje(booBase);
 		equipoEnemigosDeLaTierra.agregarPersonaje(freezerBase);
 		this.tablero = new Tablero(equipoGuerrerosZ,equipoEnemigosDeLaTierra, 20, 20);
-		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ);// habria que hacer input para pedir el nombre
-		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra);// habria que hacer input para pedir el nombre
-		this.iniciarLoopPrincipalJuego();
+		this.usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ);
+		this.usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra);
 	}
 	
-	private void iniciarLoopPrincipalJuego(){
-		while(true){
-			Usuario usuarioTurnoActual;
-			if(contadorTurno % 2 != 0){
-				usuarioTurnoActual = this.usuarioGuerrerosZ;
-			}else{
-				usuarioTurnoActual = this.usuarioEnemigosDeLaTierra;
-			}
-			Turno turno = new Turno(usuarioTurnoActual.getEquipo(),this.tablero);
-			for(int i = 0;i < this.cantidadJugadasPosibles;i += 1){
-				// turno.haceralgo
-			}
-			this.contadorTurno += 1;
-		}
+	public void setNombreUsuarioGuerrerosZ(String nombre){
+		this.usuarioGuerrerosZ.setNombre(nombre);
 	}
 	
-	private void traducirJugada(String jugada){
-		// aca traducimos lo que nos dijo el usuario a mensajes entre los objetos de nuestro modelo
-		// con interfaz grafica, no recibiria un string. Combiene implementarlo despues
+	public void setNombreUsuarioEnemigosDeLaTierra(String nombre){
+		this.usuarioEnemigosDeLaTierra.setNombre(nombre);
 	}
-
-	
 }
