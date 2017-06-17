@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application {
-
+	private final int pixelesAnchoSD = 640;
+    private final int pixelesAltoSD = 480;
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -17,12 +19,13 @@ public class Aplicacion extends Application {
         
         Juego juegoDAB = new Juego();
         
-        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage,juegoDAB);
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage,juegoDAB);
+        Scene escenaPrincipal = new Scene(contenedorPrincipal);
+        
+        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage,juegoDAB,escenaPrincipal);
         Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
         
         ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios);
-        int pixelesAnchoSD = 840;
-        int pixelesAltoSD = 480;
         Scene escenaInicial = new Scene(contenedorInicial, pixelesAnchoSD, pixelesAltoSD);
 
         stage.setScene(escenaInicial);
