@@ -31,14 +31,15 @@ public class VistaTablero extends Application{
 		guerrerosZ.agregarPersonaje(new Gohan());
 		guerrerosZ.agregarPersonaje(new Piccolo());
 		
+		
+		enemigosDeLaTierra.agregarPersonaje(new Cell());
 		enemigosDeLaTierra.agregarPersonaje(new Freezer());
 		enemigosDeLaTierra.agregarPersonaje(new MajinBoo());
-		enemigosDeLaTierra.agregarPersonaje(new Cell());
 		
 	    GridPane grid = new GridPane();
 	 	grid.setGridLinesVisible(true);
-	    int altoTablero = 15; //esto deberia obtenerlo del tablero
-	    int anchoTablero = 15;
+	    int altoTablero = 10; 
+	    int anchoTablero = 10;
 	    Celda[][] celdasLogicas = new Tablero(guerrerosZ, enemigosDeLaTierra, altoTablero, anchoTablero).getCeldas();
 	    VistaCelda[][] celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 	    

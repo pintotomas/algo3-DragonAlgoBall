@@ -11,8 +11,8 @@ public class VistaCelda {
 	
 	private Celda celda;
 	private Rectangle rectangulo;
-	private int recHeight = 40;
-	private int recWidth = 40;
+	private int recHeight = 70;
+	private int recWidth = 70;
 
 	public VistaCelda(Celda celda){
 		this.celda = celda;
