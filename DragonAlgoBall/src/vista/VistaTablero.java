@@ -19,7 +19,8 @@ public class VistaTablero extends GridPane{
     Juego juego;
     Turno turno;
     Tablero tablero;
-    
+    Celda[][] celdasLogicas;
+    VistaCelda[][] celdasGUI;
 	public VistaTablero(Stage stage, Juego juego) {
 		this.stage = stage;
 		this.juego = juego;
@@ -35,7 +36,8 @@ public class VistaTablero extends GridPane{
 	    dibujarTablero();
 	    agregarBotones();
 	      
-	    
+	    celdasLogicas = tablero.getCeldas();
+		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 	    
 	    stage.setTitle("DragonAlgoBall");
 
@@ -47,8 +49,8 @@ public class VistaTablero extends GridPane{
 	}
 	public void dibujarTablero(){
 		
-		Celda[][] celdasLogicas = tablero.getCeldas();
-		VistaCelda[][] celdasGUI = new VistaCelda[altoTablero][anchoTablero];
+		celdasLogicas = tablero.getCeldas();
+		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 		for (int row = 0; row < anchoTablero; row++) {
 	        for (int col = 0; col < altoTablero; col++) {
 	        	
@@ -70,7 +72,7 @@ public class VistaTablero extends GridPane{
 
 	private void agregarBotones(){
 		 Button botonPasarTurno = new Button("CEDER TURNO");
-	        BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego);
+	        BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego,celdasGUI);
 	        botonPasarTurno.setOnAction(pasarTurnoEventHandler);
 	        VistaTablero.setRowIndex(botonPasarTurno, anchoTablero + 1);
 	        VistaTablero.setColumnIndex(botonPasarTurno, altoTablero + 1);

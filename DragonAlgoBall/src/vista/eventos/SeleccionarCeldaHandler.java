@@ -31,12 +31,12 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 	
 	
 	
-	/*****
+	/*****************************************
 	 * 
 	 * fuciones para achicar el event de click
 	 * 
 	 * 
-	 */
+	 *****************************************/
 	
 	private void funcionParaMover(){
 		ArrayList<Celda> celdas = turno.getCeldasPermitidas();
