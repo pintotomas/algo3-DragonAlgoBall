@@ -56,7 +56,8 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 		if(turno.getCeldaSeleccionada() != null)
 			celdas.add(turno.getCeldaSeleccionada());
 			if(turno.getPersonajeSeleccionado() != null){
-				for(Personaje enemigo : tableroJuego.getEquipoEnemigo(turno.getPersonajeSeleccionado()).obtenerPersonajes()) //permite resetear aunque enemigo ya no este en rango.
+				ArrayList <Personaje> enemigos = tableroJuego.personajesAtacables(turno.getPersonajeSeleccionado());
+				for(Personaje enemigo : enemigos) //permite resetear aunque enemigo ya no este en rango.
 					celdas.add((Celda)enemigo.getPosicion());
 			}
 		for (Celda c: celdas){
