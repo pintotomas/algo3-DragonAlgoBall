@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
-import dab.dragonBallExceptions.SoloDosEquiposError;
 import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
@@ -14,7 +13,7 @@ public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
 	private Celda[][] coleccionCeldas;
-	
+	Equipo equipo1, equipo2;
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
 	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
@@ -31,20 +30,18 @@ public class Tablero{
 		}
 	}
 		
-	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo... equipo){
-		
+	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo equipo1_, Equipo equipo2_){
 		this(altoDeTablero, anchoDeTablero);
-		if (equipo.length > 2){
-			throw new SoloDosEquiposError();
-		}
+		equipo1 = equipo1_;
+		equipo2 = equipo2_;
 		int columnaInicial = anchoDeTablero/2;
 		int filaActual = 0;
-		for (Equipo equi: equipo){
-			this.ubicarPersonajesEnPosicionInicial(equi, filaActual, columnaInicial);
-			filaActual += altoDeTablero - 1;
-		}
-		
+		this.ubicarPersonajesEnPosicionInicial(equipo1, filaActual, columnaInicial);
+		filaActual += altoDeTablero - 1;
+		this.ubicarPersonajesEnPosicionInicial(equipo2, filaActual, columnaInicial);
 	}
+		
+		
 	
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
@@ -89,6 +86,30 @@ public class Tablero{
 			throw new MovimientoInvalido();
 		}
 	}
+	
+	public Equipo getEquipoEnemigo(Personaje personaje){
+		Equipo equipoEnemigo = equipo1;
+		if(personaje.getEquipo() == equipo1){
+			equipoEnemigo = equipo2;
+		}
+		return equipoEnemigo;
+		
+	}
+	
+	public ArrayList<Personaje> personajesAtacables(Personaje personaje){
+		Equipo equipoEnemigo = getEquipoEnemigo(personaje);
+		ArrayList<Personaje> atacables = new ArrayList<Personaje>();   // collection no se puede castear a ArrayList asi que lo tengo que hacer asi.
+		for(Personaje enemigo : equipoEnemigo.obtenerPersonajes()){
+			if(personaje.puedeAtacar(enemigo)){
+				atacables.add(enemigo);
+			}
+		}
+		return atacables;
+				
+		
+	}
+	
+	
 	
 	/*********************************
 	 * 

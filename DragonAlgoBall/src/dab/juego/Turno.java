@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import dab.dragonBallExceptions.AtaqueNoValido;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
-import dab.dragonBallExceptions.MovimientoInvalido;
-import dab.dragonBallExceptions.NadaSeleccionado;
 import dab.equipo.Equipo;
 import dab.personajes.Personaje;
 
@@ -97,6 +95,32 @@ public class Turno {
 	public boolean yaMovio(){
 		return movio;
 	}
+	
+	
+	public void ataco(){
+		ataco = true;
+	}
+	
+	public boolean termino(){
+		return ataco && movio;
+	}
+	
+	
+	public boolean yaAtaco(){
+		return ataco;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

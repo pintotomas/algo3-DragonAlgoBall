@@ -9,7 +9,7 @@ public class CellBase extends Estado{
 	int cantidadAbsorbidosNecesariosParaTransformar = 4;
 	
 	public CellBase(IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos){ 
-		vidaMaxima = 500;
+		vidaMaxima = 10;
 		poder = 20;
 		alcance = 3;
 		velocidad = 2;

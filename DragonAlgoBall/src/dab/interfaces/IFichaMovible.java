@@ -11,5 +11,7 @@ public interface IFichaMovible extends IFichaUbicable {
 	Equipo getEquipo();
 	
 	String getNombre();
+	
+	double getVida();
 
 }

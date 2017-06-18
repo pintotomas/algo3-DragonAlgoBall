@@ -1,6 +1,7 @@
 package vista;
 
 import dab.juego.Celda;
+import dab.personajes.Personaje;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -11,14 +12,16 @@ public class VistaCelda {
 	
 	private Celda celda;
 	private Rectangle rectangulo;
-	private int recHeight = 70;
-	private int recWidth = 70;
-	private boolean disponible;
+	private int recHeight = 80;
+	private int recWidth = 80;
+	private boolean disponible, atacable, estaViva;
 	Text text;
 	
 	private Color colorLiberada = Color.AQUAMARINE;
 	private Color colorDisponible = Color.PALEVIOLETRED;
 	private Color colorSeleccionada = Color.BLUE;
+	private Color colorAtacable = Color.CRIMSON;
+	private Color colorMuerta = Color.BLACK;
 
 	
 	public VistaCelda(Celda celda){
@@ -26,6 +29,8 @@ public class VistaCelda {
 		rectangulo = new Rectangle();
 		rectangulo.setFill(colorLiberada);
 		disponible = false;
+		atacable = false;
+		estaViva = true;
 		text = new Text("");
 	}
 	
@@ -46,9 +51,13 @@ public class VistaCelda {
 		return layout;
 	}
 	
+	
+	
+
 	public void liberada(){
 		rectangulo.setFill(colorLiberada);
 		disponible = false;
+		atacable = false;
 	}
 	
 	public void disponible(){
@@ -62,18 +71,52 @@ public class VistaCelda {
 		
 	}
 	
+	public void atacable(){
+		rectangulo.setFill(colorAtacable);
+		atacable = true;
+	}
+	
+	
+	
+	
+	
+	
+	
 	public void actualizarPersonaje(){
 		if (celda.estaOcupada()){
-			text.setText(celda.getFicha().getNombre());
+			text.setText(celda.getFicha().getNombre() + "\n" + celda.getFicha().getVida());
 		}
 		else{
 			text.setText("");
 		}
 	}
 	
+	public void recivioAtaque(){
+		Personaje personaje = (Personaje) celda.getFicha();
+		if(personaje.getVida() <= 0){
+			estaViva = false;
+			colorLiberada = colorMuerta;
+		}
+	}
+	
+	
+	
+	
+	
 	public boolean estaDisponible(){
 		return disponible;
 	}
+	
+	public boolean esAtacable(){
+		return atacable;
+	}
+	
+	public boolean estaViva(){
+		return estaViva;
+	}
+	
+	
+	
 	
 	
 	public boolean estaOcupada(){
@@ -91,6 +134,8 @@ public class VistaCelda {
 	public Celda getCelda() {
 		return celda;
 	}
+	
+	
 	
 	
 	

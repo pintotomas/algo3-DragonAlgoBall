@@ -14,8 +14,6 @@ public class Juego {
 	private Tablero tablero;
 	private Usuario usuarioGuerrerosZ,usuarioEnemigosDeLaTierra;
 	Equipo equipoGuerrerosZ, equipoEnemigosDeLaTierra;
-	private int contadorTurno = 1;
-	private int cantidadJugadasPosibles = 2;
 	Turno turno;
 	public Juego(){
 		equipoGuerrerosZ = new Equipo(nombreEquipo1);
@@ -48,14 +46,27 @@ public class Juego {
 	}
 
 	public Turno getTurno() {
-		if(turno.getEquipo() == equipoGuerrerosZ){
+		//si se termino el turno devuelve uno nuevo, sino el mismo.
+		if(turno.getEquipo() == equipoGuerrerosZ && turno.termino()){
 			turno =  new Turno(equipoEnemigosDeLaTierra, tablero);		
 			return turno;
 		}
-		turno =  new Turno(equipoGuerrerosZ,tablero);
+		if(turno.getEquipo() == equipoEnemigosDeLaTierra && turno.termino()){
+			turno =  new Turno(equipoGuerrerosZ, tablero);		
+			return turno;
+		};
 		return turno;
 	}
 	public Tablero getTablero(){
 		return tablero;
+	}
+
+	public void pasarTurno() {
+		Equipo equipo = equipoGuerrerosZ;
+		if(turno.getEquipo() == equipo){
+			equipo = equipoEnemigosDeLaTierra;
+		}
+		turno = new Turno(equipo, tablero);
+		
 	}
 }

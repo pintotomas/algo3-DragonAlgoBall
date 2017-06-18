@@ -4,9 +4,11 @@ import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Tablero;
 import dab.juego.Turno;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import vista.eventos.BotonPasarTurnoEventHandler;
 import vista.eventos.SeleccionarCeldaHandler;
 
 public class VistaTablero extends GridPane{
@@ -31,7 +33,7 @@ public class VistaTablero extends GridPane{
 	    anchoTablero = tablero.getAncho();
 	    
 	    dibujarTablero();
-	       
+	    agregarBotones();
 	      
 	    
 	    
@@ -55,7 +57,7 @@ public class VistaTablero extends GridPane{
 	        	
 	            StackPane dibujoCelda = celda.dibujar();
 	            
-	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(celda, tablero, celdasGUI, turno);
+	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(juego, celda,celdasGUI);
 	            dibujoCelda.setOnMousePressed(seleccionCeldaHandler);
 	            
 	            VistaTablero.setRowIndex(dibujoCelda, row);
@@ -66,7 +68,15 @@ public class VistaTablero extends GridPane{
 		}
 	}
 
-
+	private void agregarBotones(){
+		 Button botonPasarTurno = new Button("CEDER TURNO");
+	        BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego);
+	        botonPasarTurno.setOnAction(pasarTurnoEventHandler);
+	        VistaTablero.setRowIndex(botonPasarTurno, anchoTablero + 1);
+	        VistaTablero.setColumnIndex(botonPasarTurno, altoTablero + 1);
+	        this.getChildren().addAll(botonPasarTurno);
+	        
+	}
 
 	public void setTurno(Turno turno){
 		
