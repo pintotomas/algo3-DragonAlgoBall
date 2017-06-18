@@ -6,7 +6,7 @@ import dab.personajes.Personaje;
 
 public class Piccolo extends Personaje{
 	
-	public double porcetanejVidaGohanParaTransformar = 0.20;
+	public double porcentajeVidaGohanParaTransformar = 0.20;
 	
 	public Piccolo(){ 
 		ataqueEspecial = new Makankosappo (this);

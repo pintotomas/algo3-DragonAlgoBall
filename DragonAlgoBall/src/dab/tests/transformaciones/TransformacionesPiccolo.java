@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dab.equipo.Equipo;
+import dab.personajes.Personaje;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Piccolo.Piccolo;
 
@@ -40,15 +41,21 @@ public class TransformacionesPiccolo {
 	
 	@Test
 	public void segundaTransformacionNoDisponibleGohanConDemasiadaVida(){
-		gohan.modificarVida(-gohan.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
+		piccolo.modificarKi(20);
+		piccolo.transformar();
 		assertFalse(piccolo.transformarDisponible());
+	}
+	
+	private void reducirVidaAMenosDel20Porciento(Personaje personaje){
+		double vidaAReducir = personaje.getVidaMaxima()*0.81;
+		personaje.modificarVida(-vidaAReducir);
 	}
 	
 	@Test
 	public void segundaTransformacionDisponibleGohanConPocaVida(){
 		piccolo.modificarKi(20);
 		piccolo.transformar();
-		gohan.modificarVida(-gohan.getVida()*(1 - piccolo.porcetanejVidaGohanParaTransformar + 0.1));
+		reducirVidaAMenosDel20Porciento(gohan);
 		assertTrue(piccolo.transformarDisponible());
 	}
 	
