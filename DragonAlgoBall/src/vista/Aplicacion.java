@@ -18,7 +18,7 @@ public class Aplicacion extends Application {
     public void start(final Stage stage) throws Exception {
         stage.setTitle("Dragon AlgoBall Z");
         
-        Juego juegoDAB = new Juego();
+        Juego juegoDAB = new Juego("","");
         
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage,juegoDAB);
         Scene escenaPrincipal = new Scene(contenedorPrincipal);

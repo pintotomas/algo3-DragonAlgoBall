@@ -24,8 +24,6 @@ public class BotonListoNombreEventHandler implements EventHandler<ActionEvent>{
 	
 	@Override
 	public void handle(ActionEvent event) {
-		this.juego.setNombreUsuarioEnemigosDeLaTierra(this.campoTextoEnemigos.getText());
-		this.juego.setNombreUsuarioGuerrerosZ(this.campoTextoGuerreros.getText());
 		this.stage.setScene(proximaEscena);
 		stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
