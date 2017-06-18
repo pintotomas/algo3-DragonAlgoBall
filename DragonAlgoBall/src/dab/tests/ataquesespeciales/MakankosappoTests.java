@@ -52,7 +52,7 @@ public class MakankosappoTests {
 		piccolo.modificarKi(kiInicial);
 		piccolo.ataqueEspecial(cell);
 		int kiRestanteEsperado = kiInicial-kiParaMakankosappo;
-		assertEquals(kiRestanteEsperado, cell.getKi());
+		assertEquals(kiRestanteEsperado, piccolo.getKi());
 	}
 
 	@Test
