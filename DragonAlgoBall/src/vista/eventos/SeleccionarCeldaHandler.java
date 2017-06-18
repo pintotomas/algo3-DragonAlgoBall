@@ -28,21 +28,40 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 	
 	@Override
 	public void handle(MouseEvent event) {
-		if(celda.getCelda() != turno.getCeldaSeleccionada()){
-				for (Celda c: turno.getCeldasPermitidas()){
+		if(!turno.yaMovio()){
+			if(celda.estaDisponible()){
+				ArrayList<Celda> celdas = turno.getCeldasPermitidas();
+				tableroJuego.moverFicha(turno.getCeldaSeleccionada().getFicha(), celda.getFila(), celda.getColumna());
+				celdas.add(turno.getCeldaSeleccionada());
+				for (Celda c: celdas){
 					celdasGUI[c.getFila()][c.getColumna()].liberada();
+					celdasGUI[c.getFila()][c.getColumna()].actualizarPersonaje();
 				}
-					
-			if (celda.estaOcupada()){
-				turno.seleccionarCelda(celda.getCelda());
-				turno.seleccionarPersonaje((Personaje)(celda.getCelda().getFicha()));
-				for (Celda c: turno.getCeldasPermitidas()){
-					celdasGUI[c.getFila()][c.getColumna()].presionada();
+				turno.movio();
+				
+			}	//si la celda no es la misma que antes. 
+			else if(celda.getCelda() != turno.getCeldaSeleccionada()){
+						ArrayList<Celda> celdas = turno.getCeldasPermitidas();
+						//si alguna celda ya estaba seleccionada la agrega a la lista para liberar.
+						if(turno.getCeldaSeleccionada() != null)
+							celdas.add(turno.getCeldaSeleccionada());
+						for (Celda c: celdas){
+							celdasGUI[c.getFila()][c.getColumna()].liberada();
+						}
+							
+					if (celda.estaOcupada() && celda.getCelda().getFicha().getEquipo() == turno.getEquipo()){
+						turno.seleccionarCelda(celda.getCelda());
+						turno.seleccionarPersonaje((Personaje)(celda.getCelda().getFicha()));
+						for (Celda c: turno.getCeldasPermitidas()){
+							celdasGUI[c.getFila()][c.getColumna()].disponible();
+						}
+						//si la celda tiene un personaje la pinta de azul para que quede claro que personaje es.
+						celda.seleccionada();
+					}else{
+						turno.seleccionarPersonaje(null);
+					}
+					turno.seleccionarCelda(celda.getCelda());
 				}
-			}else{
-				turno.seleccionarPersonaje(null);
 			}
-			turno.seleccionarCelda(celda.getCelda());
-		}
 	}
 }

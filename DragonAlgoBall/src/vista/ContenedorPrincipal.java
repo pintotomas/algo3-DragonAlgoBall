@@ -24,7 +24,7 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setTablero(Stage stage){
-		this.tablero = new VistaTablero(stage);
+		this.tablero = new VistaTablero(stage, juego);
 		this.setCenter(tablero);
 	}
 	

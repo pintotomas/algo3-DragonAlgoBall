@@ -13,27 +13,26 @@ public class VistaCelda {
 	private Rectangle rectangulo;
 	private int recHeight = 70;
 	private int recWidth = 70;
+	private boolean disponible;
+	Text text;
 	
-	private Color colorUnpressed = Color.AQUAMARINE;
-	private Color colorPressed = Color.PALEVIOLETRED;
+	private Color colorLiberada = Color.AQUAMARINE;
+	private Color colorDisponible = Color.PALEVIOLETRED;
+	private Color colorSeleccionada = Color.BLUE;
 
 	
 	public VistaCelda(Celda celda){
 		this.celda = celda;
 		rectangulo = new Rectangle();
-		rectangulo.setFill(colorUnpressed);
+		rectangulo.setFill(colorLiberada);
+		disponible = false;
+		text = new Text("");
 	}
 	
 	public StackPane dibujar(){
-		Text text;
 		
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
-		if (celda.estaOcupada()){
-			text = new Text(celda.getFicha().getNombre());
-		}
-		else{
-			text = new Text("");
-		}
+		actualizarPersonaje();
 		
 		rectangulo.setWidth(recHeight);
 		rectangulo.setHeight(recWidth);
@@ -48,14 +47,35 @@ public class VistaCelda {
 	}
 	
 	public void liberada(){
-		rectangulo.setFill(colorUnpressed);
+		rectangulo.setFill(colorLiberada);
+		disponible = false;
 	}
 	
-	public void presionada(){
+	public void disponible(){
 		
-		rectangulo.setFill(colorPressed);
+		rectangulo.setFill(colorDisponible);
+		disponible = true;
 	}
-
+	
+	public void seleccionada(){
+		rectangulo.setFill(colorSeleccionada);
+		
+	}
+	
+	public void actualizarPersonaje(){
+		if (celda.estaOcupada()){
+			text.setText(celda.getFicha().getNombre());
+		}
+		else{
+			text.setText("");
+		}
+	}
+	
+	public boolean estaDisponible(){
+		return disponible;
+	}
+	
+	
 	public boolean estaOcupada(){
 		return celda.estaOcupada();
 	}
@@ -72,6 +92,6 @@ public class VistaCelda {
 		return celda;
 	}
 	
-
+	
 	
 }

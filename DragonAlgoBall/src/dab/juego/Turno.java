@@ -12,7 +12,7 @@ import dab.personajes.Personaje;
 public class Turno {
 	Equipo equipo;
 	Personaje personajeSeleccionado;
-	Celda celdaSeleccionada;
+	Celda celdaSeleccionada = null;
 	Tablero tablero;
 	boolean movio, ataco, cedioTurno;
 	
@@ -23,7 +23,6 @@ public class Turno {
 		this.movio = false;
 		this.ataco = false;
 		this.personajeSeleccionado = null;
-		ArrayList<Celda> celdasPermitidasAlPersonaje;
 	}
 	
 	private void otorgarKi(){
@@ -86,5 +85,18 @@ public class Turno {
 			this.ataco = true;
 		}else throw new AtaqueNoValido();
 	}
+
+	public Equipo getEquipo(){
+		return equipo;
+	}
+	
+	public void movio(){
+		this.movio =true;
+	}
+	
+	public boolean yaMovio(){
+		return movio;
+	}
+	
 	
 }

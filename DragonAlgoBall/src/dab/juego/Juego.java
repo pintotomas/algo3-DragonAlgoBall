@@ -13,12 +13,13 @@ public class Juego {
 	private String nombreEquipo1 = "guerrerosZ", nombreEquipo2 = "enemigosDeLaTierra";
 	private Tablero tablero;
 	private Usuario usuarioGuerrerosZ,usuarioEnemigosDeLaTierra;
+	Equipo equipoGuerrerosZ, equipoEnemigosDeLaTierra;
 	private int contadorTurno = 1;
 	private int cantidadJugadasPosibles = 2;
-	
+	Turno turno;
 	public Juego(){
-		Equipo equipoGuerrerosZ = new Equipo(nombreEquipo1);
-		Equipo equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2);
+		equipoGuerrerosZ = new Equipo(nombreEquipo1);
+		equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2);
 		Gohan gohanBase = new Gohan();
 		Goku gokuBase = new Goku();
 		Piccolo piccoloBase = new Piccolo();
@@ -31,12 +32,11 @@ public class Juego {
 		equipoEnemigosDeLaTierra.agregarPersonaje(cellBase);
 		equipoEnemigosDeLaTierra.agregarPersonaje(booBase);
 		equipoEnemigosDeLaTierra.agregarPersonaje(freezerBase);
-
-		this.tablero = new Tablero(20,20, equipoGuerrerosZ, equipoEnemigosDeLaTierra);
+		
+		this.tablero = new Tablero(10,10, equipoGuerrerosZ, equipoEnemigosDeLaTierra);
 		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ);// habria que hacer input para pedir el nombre
 		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra);// habria que hacer input para pedir el nombre
-		this.usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ);
-
+		turno = new Turno(equipoGuerrerosZ, tablero);
 	}
 	
 	public void setNombreUsuarioGuerrerosZ(String nombre){
@@ -45,5 +45,17 @@ public class Juego {
 	
 	public void setNombreUsuarioEnemigosDeLaTierra(String nombre){
 		this.usuarioEnemigosDeLaTierra.setNombre(nombre);
+	}
+
+	public Turno getTurno() {
+		if(turno.getEquipo() == equipoGuerrerosZ){
+			turno =  new Turno(equipoEnemigosDeLaTierra, tablero);		
+			return turno;
+		}
+		turno =  new Turno(equipoGuerrerosZ,tablero);
+		return turno;
+	}
+	public Tablero getTablero(){
+		return tablero;
 	}
 }

@@ -69,9 +69,9 @@ public class Tablero{
 	
 	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
 	
-	public void moverFicha(IFichaMovible ficha, int x, int y){
+	public void moverFicha(IFichaMovible ficha, int fila, int columna){
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
-		Celda celdaFin = coleccionCeldas[x][y];
+		Celda celdaFin = coleccionCeldas[fila][columna];
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
 		}
@@ -82,7 +82,7 @@ public class Tablero{
 		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada() && celdasAlcanzables.contains(celdaFin)){
 			//&&hayCaminoLibre(celdaInicio, celdaFin)
 			celdaInicio.quitarFichaMovible();
-			this.colocarFichaMovil(ficha, x, y);
+			this.colocarFichaMovil(ficha, fila, columna);
 		}
 	
 		else{
@@ -166,5 +166,12 @@ public class Tablero{
 		return coleccionCeldas;
 	}
 	
+	public int getAltura(){
+		return altoDeTablero;
+	}
+	
+	public int getAncho(){
+		return anchoDeTablero;
+	}
 }
 
