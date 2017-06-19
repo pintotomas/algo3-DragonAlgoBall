@@ -35,10 +35,13 @@ public class Celda implements IContenedorDeFicha{
 		if(ocupada) throw new CeldaOcupada();
 		this.ficha = ficha;
 		ocupada = true;
-		for(Potenciador p: potenciadores){
-			ficha.agarrarPotenciador(p);
-			potenciadores.remove(p);
+		if (!potenciadores.isEmpty()){
+			for(Potenciador p: potenciadores){
+				ficha.agarrarPotenciador(p);
+				potenciadores.remove(p);
+			}
 		}
+		
 	}
 	
 	public void colocarPotenciador(Potenciador potenciador){

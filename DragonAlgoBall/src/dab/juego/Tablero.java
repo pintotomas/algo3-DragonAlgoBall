@@ -71,6 +71,7 @@ public class Tablero{
 	public void colocarPotenciador(Potenciador consumible, int fila, int columna){
 		Celda celda = this.obtenerCelda(fila, columna);
 		celda.colocarPotenciador(consumible);
+		
 	}
 	
 	public void moverFicha(IFichaMovible ficha, int x, int y){
