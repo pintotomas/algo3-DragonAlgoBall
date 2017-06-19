@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="DragonAlgoBall">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../workspace/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="JavaFX SDK.libraryclasspath">
+        <pathelement location="../../.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_2.4.0.201605112122.jar"/>
+    </path>
+    <path id="DragonAlgoBall.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <path refid="JavaFX SDK.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="DragonAlgoBall/src">
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="DragonAlgoBall/src"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Aplicacion">
+        <java classname="vista.Aplicacion" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="ConvierteteEnChocolateTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="DragonAlgoBall">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <test name="dab.tests.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
+            <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="moverACeldaOcupadaPorUnPersonaje">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="MoverPersonaje">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.movimiento.MoverPersonaje" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="pruebaAtacar">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="PruebasTablero">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="src">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <test name="dab.tests.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
+            <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="VistaTablero">
+        <java classname="vista.VistaTablero" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
