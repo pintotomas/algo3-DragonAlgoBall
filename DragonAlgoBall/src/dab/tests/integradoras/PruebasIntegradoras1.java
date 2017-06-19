@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dab.dragonBallExceptions.CeldaOcupada;
+import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
 import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
@@ -109,7 +110,7 @@ public class PruebasIntegradoras1 {
 			goku.atacarA(freezer);
 		Assert.assertEquals(400, freezer.getVida(),0);
 	}
-	@Test(expected=CeldaOcupada.class)
+	@Test(expected=MovimientoInvalido.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero(20, 20);
 		int filaGoku = 1;

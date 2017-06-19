@@ -1,73 +1,122 @@
 package dab.juego;
 
-import dab.equipo.Equipo;
-import dab.personajes.Freezer.Freezer;
-import dab.personajes.Gohan.Gohan;
-import dab.personajes.Goku.Goku;
-import dab.personajes.Piccolo.Piccolo;
-import dab.personajes.cell.Cell;
-import dab.personajes.majinBoo.MajinBoo;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
+
+import dab.personajes.Personaje;
+
 import dab.usuario.Usuario;
 
 public class Juego {
-	private String nombreEquipo1 = "guerrerosZ", nombreEquipo2 = "enemigosDeLaTierra";
-	private Tablero tablero;
-	private Usuario usuarioGuerrerosZ,usuarioEnemigosDeLaTierra;
-	Equipo equipoGuerrerosZ, equipoEnemigosDeLaTierra;
-	Turno turno;
 	
-	public Juego(String nombreUsuarioGuerrerosZ, String nombreUsuarioEnemigosDeLaTierra){
-		equipoGuerrerosZ = new Equipo(nombreEquipo1);
-		equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2);
-		Gohan gohanBase = new Gohan();
-		Goku gokuBase = new Goku();
-		Piccolo piccoloBase = new Piccolo();
-		equipoGuerrerosZ.agregarPersonaje(gohanBase);
-		equipoGuerrerosZ.agregarPersonaje(gokuBase);
-		equipoGuerrerosZ.agregarPersonaje(piccoloBase);
-		Cell cellBase = new Cell();
-		MajinBoo booBase = new MajinBoo();
-		Freezer freezerBase = new Freezer();
-		equipoEnemigosDeLaTierra.agregarPersonaje(cellBase);
-		equipoEnemigosDeLaTierra.agregarPersonaje(booBase);
-		equipoEnemigosDeLaTierra.agregarPersonaje(freezerBase);
+	
+	////CAMBIOS A HACER:
+	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
+	///QUE LOS TURNOS SE MANEJEN POR USUARIO Y NO POR EQUIPO
+	
+	private Tablero tablero;
+	Turno turno;
+
+	Queue<Usuario> ordenTurnos; 
+	
+	private Personaje personajeSeleccionado;
+	
+	public Juego(int altoTablero, int anchoTablero, Usuario userGuerrerosZ, Usuario userEnemigos){
+		//PRE: SOLO DOS USUARIOS Y EL PRIMERO SERA EL PRIMERO EN JUGAR
+
+	
+		//Cambiaro esto de que el tablero conozca al equipo enemigo de un determinado equipo. Eso lo podria hacer
+		//El juego o el usuario
+		this.tablero = new Tablero(altoTablero, anchoTablero, userGuerrerosZ.getEquipo(), userEnemigos.getEquipo());
+	
+		ordenTurnos = new LinkedList<Usuario>();
+		ordenTurnos.offer(userGuerrerosZ);
+		ordenTurnos.offer(userEnemigos);
 		
-		this.tablero = new Tablero(10,10, equipoGuerrerosZ, equipoEnemigosDeLaTierra);
-		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ, nombreUsuarioGuerrerosZ);
-		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra, nombreUsuarioEnemigosDeLaTierra);
-		turno = new Turno(equipoGuerrerosZ, tablero);
+		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
+
 	}
+	
 
 	public Turno getTurno() {
-		//si se termino el turno devuelve uno nuevo, sino el mismo.
-		if(turno.getEquipo() == equipoGuerrerosZ && turno.termino()){
-			turno =  new Turno(equipoEnemigosDeLaTierra, tablero);		
-			return turno;
+		
+		
+		if (turno.termino()){
+			//POR AHORA ESTO LO DEJO PARA QUE CORRA LA APLICACION, 
+			//PERO NO ESTA BIEN QUE getTurno() HAGA ESTO
+			this.pasarTurno();
 		}
-		if(turno.getEquipo() == equipoEnemigosDeLaTierra && turno.termino()){
-			turno =  new Turno(equipoGuerrerosZ, tablero);		
-			return turno;
-		};
-		return turno;
+		
+		return turno;	
+
 	}
+	
+	public void seleccionarPersonaje(Personaje aPersonaje){
+		if (!turno.puedeJugar(aPersonaje)){
+			throw new EstePersonajeNoPuedeRealizarMovimientosEsteTurno();
+		}
+		personajeSeleccionado = aPersonaje;
+	}
+	
 	public Tablero getTablero(){
 		return tablero;
 	}
 
 	public void pasarTurno() {
-		Equipo equipo = equipoGuerrerosZ;
-		if(turno.getEquipo() == equipo){
-			equipo = equipoEnemigosDeLaTierra;
+
+		personajeSeleccionado = null;
+		ordenTurnos.offer(ordenTurnos.poll());
+		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
+
+	}
+	
+	public boolean personajeSeleccionadoPuedeAtacarA(Personaje otroPersonaje){
+		
+		return personajeSeleccionado.puedeAtacar(otroPersonaje);
+		
+	}
+	
+	public void personajeSeleccionadoAtacaA(Personaje otroPersonaje){
+	
+		personajeSeleccionado.atacarA(otroPersonaje);
+		
+	}
+	
+	public boolean personajeSeleccionadoPuedeMoverseHacia(int fila, int columna){
+		return tablero.puedeTrasladarse(personajeSeleccionado, fila, columna);
+	}
+	
+	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
+		tablero.moverFicha(personajeSeleccionado, fila, columna);
+		turno.movio();
+		this.chequearFinDeTurno();
+	}
+	
+	public void personajeSeleccionadoAtaqueEspecialA(Personaje otroPersonaje){
+		personajeSeleccionado.ataqueEspecial(otroPersonaje);
+		turno.ataco();
+		this.chequearFinDeTurno();
+	}
+	
+	public boolean personajeSeleccionadoTieneAtaqueEspecialDisponible(){
+		return personajeSeleccionado.ataqueEspecialDisponible();
+	}
+	
+	public boolean personajeSeleccionadoTieneTransformacionDisponible(){
+		return personajeSeleccionado.transformarDisponible();
+	}
+	
+	public void personajeSeleccionadoTransformar(){
+		personajeSeleccionado.transformar();
+	}
+	
+	private void chequearFinDeTurno(){
+		if (turno.termino()){
+			this.pasarTurno();
 		}
-		turno = new Turno(equipo, tablero);
 	}
 	
-	public Usuario getUsuarioGuerrerosZ(){
-		return this.usuarioGuerrerosZ;
-	}
-	
-	public Usuario getUsuarioEnemigosDeLaTierra(){
-		return this.usuarioEnemigosDeLaTierra;
-	}
 }
 

@@ -10,7 +10,6 @@ import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Tablero;
 import dab.juego.Turno;
-import dab.personajes.Personaje;
 import dab.personajes.Freezer.Freezer;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
@@ -18,6 +17,7 @@ import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
 import dab.potenciadores.NubeVoladora;
+import dab.usuario.Usuario;
 
 public class PruebasIntegradoras2 {
 
@@ -26,9 +26,21 @@ public class PruebasIntegradoras2 {
 	private Tablero tablero;
 	private Turno turno;
 	private Juego juego;
+	private Usuario userGuerrerosZ;
+	private Usuario userEnemigosDeLaTierra;
+	private int altoTablero;
+	private int anchoTablero;
 	@Before
 	public void setUp() throws Exception {
-		juego = new Juego("Jugador 1", "Jugador 2");
+		userGuerrerosZ = new Usuario(new Equipo("Guerreros Z", new Goku(), new Gohan(), new Piccolo()),
+				"Tomas");
+		
+		userEnemigosDeLaTierra = new Usuario(new Equipo("Enemigos de la Tierra", new Cell(), new Freezer(), new MajinBoo()),
+				"PC");
+		
+		altoTablero = 5;
+		anchoTablero = 5;
+		juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);
 	}
 
 	@Test

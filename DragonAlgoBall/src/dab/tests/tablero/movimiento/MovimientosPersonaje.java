@@ -87,7 +87,7 @@ public class MovimientosPersonaje {
 	}
 		
 	
-	@Test(expected=CeldaOcupada.class)
+	@Test(expected=MovimientoInvalido.class)
 	public void testMoverACeldaOcupadaLanzaError() {
 		Tablero tablero = new Tablero(20, 20);
 		Personaje goku = new Goku();

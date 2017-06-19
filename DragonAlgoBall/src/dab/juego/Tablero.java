@@ -2,7 +2,6 @@ package dab.juego;
 import java.util.ArrayList;
 
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
-import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;
@@ -16,6 +15,7 @@ public class Tablero{
 	private Celda[][] coleccionCeldas;
 	Equipo equipo1, equipo2;
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
+
 	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
@@ -41,9 +41,6 @@ public class Tablero{
 		filaActual += altoDeTablero - 1;
 		this.ubicarPersonajesEnPosicionInicial(equipo2, filaActual, columnaInicial);
 	}
-		
-		
-	
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
 		//De ubicarlos en el tablero se podria ocupar la clase Juego, asi tenemos un metodo solo
@@ -73,16 +70,11 @@ public class Tablero{
 	
 	public void moverFicha(IFichaMovible ficha, int fila, int columna){
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
-		Celda celdaFin = coleccionCeldas[fila][columna];
+
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
 		}
-		if (celdaFin.estaOcupada()){
-			throw new CeldaOcupada();
-		}
-		ArrayList<Celda> celdasAlcanzables = celdasPermitidas(celdaInicio, ficha.getVelocidad());
-		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada() && celdasAlcanzables.contains(celdaFin)){
-			//&&hayCaminoLibre(celdaInicio, celdaFin)
+		if (this.puedeTrasladarse(ficha, fila, columna)){
 			celdaInicio.quitarFichaMovible();
 			this.colocarFichaMovil(ficha, fila, columna);
 		}
@@ -198,6 +190,20 @@ public class Tablero{
 	
 	public int getAncho(){
 		return anchoDeTablero;
+	}
+
+	public boolean puedeTrasladarse(IFichaMovible ficha, int fila, int columna) {
+		// TODO Auto-generated method stub
+		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
+		Celda celdaFin = coleccionCeldas[fila][columna];
+		if (!celdaInicio.estaOcupada()){
+			throw new CeldaNoContieneFicha();
+		}
+		ArrayList<Celda> celdasAlcanzables = celdasPermitidas(celdaInicio, ficha.getVelocidad());
+		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada() && celdasAlcanzables.contains(celdaFin)){
+			return true;
+		}
+		return false;
 	}
 }
 
