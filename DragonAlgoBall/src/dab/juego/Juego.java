@@ -15,6 +15,7 @@ public class Juego {
 	private Usuario usuarioGuerrerosZ,usuarioEnemigosDeLaTierra;
 	Equipo equipoGuerrerosZ, equipoEnemigosDeLaTierra;
 	Turno turno;
+	
 	public Juego(String nombreUsuarioGuerrerosZ, String nombreUsuarioEnemigosDeLaTierra){
 		equipoGuerrerosZ = new Equipo(nombreEquipo1);
 		equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2);
@@ -32,8 +33,8 @@ public class Juego {
 		equipoEnemigosDeLaTierra.agregarPersonaje(freezerBase);
 		
 		this.tablero = new Tablero(10,10, equipoGuerrerosZ, equipoEnemigosDeLaTierra);
-		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ, nombreUsuarioGuerrerosZ);// habria que hacer input para pedir el nombre
-		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra, nombreUsuarioEnemigosDeLaTierra);// habria que hacer input para pedir el nombre
+		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ, nombreUsuarioGuerrerosZ);
+		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra, nombreUsuarioEnemigosDeLaTierra);
 		turno = new Turno(equipoGuerrerosZ, tablero);
 	}
 
@@ -59,6 +60,14 @@ public class Juego {
 			equipo = equipoEnemigosDeLaTierra;
 		}
 		turno = new Turno(equipo, tablero);
-		
+	}
+	
+	public Usuario getUsuarioGuerrerosZ(){
+		return this.usuarioGuerrerosZ;
+	}
+	
+	public Usuario getUsuarioEnemigosDeLaTierra(){
+		return this.usuarioEnemigosDeLaTierra;
 	}
 }
+

@@ -27,10 +27,6 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 		this.juego = juego;
 	}
 	
-		
-	
-	
-	
 	/*****************************************
 	 * 
 	 * fuciones para achicar el event de click
@@ -49,8 +45,6 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 		turno.seleccionarPersonaje(null);
 		turno.movio();
 	}
-	
-	
 	
 	private void liberarCeldasAnteriores(ArrayList<Celda> celdas){
 		if(turno.getCeldaSeleccionada() != null)
@@ -126,7 +120,4 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 		}
 				
 	}
-	
-	
-	
 }

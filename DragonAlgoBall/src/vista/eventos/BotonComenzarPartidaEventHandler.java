@@ -1,6 +1,5 @@
 package vista.eventos;
 
-import dab.juego.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,10 +12,11 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 	Scene proximaEscena;
 	private TextField campoNombreUsuarioGuerreros;
 	private TextField campoNombreUsuarioEnemigos;
+	private final int pixelesAnchoHD = 1920;
+    private final int pixelesAltoHD = 1080;
 	
 	public BotonComenzarPartidaEventHandler(Stage stage, TextField campoNombreUsuarioGuerreros, TextField campoNombreUsuarioEnemigos){
-		this.stage = stage;
-		
+		this.stage = stage;		
 		this.campoNombreUsuarioGuerreros = campoNombreUsuarioGuerreros;
 		this.campoNombreUsuarioEnemigos = campoNombreUsuarioEnemigos;
 	}
@@ -25,7 +25,7 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 	public void handle(ActionEvent event) {
 		
 		ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, campoNombreUsuarioGuerreros.getText(), campoNombreUsuarioEnemigos.getText() );
-        Scene escenaPrincipal = new Scene(contenedorPrincipal);
+        Scene escenaPrincipal = new Scene(contenedorPrincipal,pixelesAnchoHD,pixelesAltoHD);
         
         AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
         escenaPrincipal.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
