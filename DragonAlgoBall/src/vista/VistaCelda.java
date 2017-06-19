@@ -68,14 +68,14 @@ public class VistaCelda {
 	
 	public void actualizarPersonaje(){
 		if (celda.estaOcupada()){
-			text.setText(celda.getFicha().getNombre() + "\n" + celda.getFicha().getVida());
+			text.setText(celda.getFicha().getNombre());
 		}
 		else{
 			text.setText("");
 		}
 	}
 	
-	public void recivioAtaque(){
+	public void recibioAtaque(){
 		Personaje personaje = (Personaje) celda.getFicha();
 		if(personaje.getVida() <= 0){
 			estaViva = false;

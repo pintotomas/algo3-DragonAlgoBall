@@ -9,6 +9,7 @@ import dab.juego.Turno;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import vista.VistaCaracteristicasPersonaje;
 import vista.VistaCelda;
 
 public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
@@ -18,21 +19,16 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 	private final VistaCelda[][] celdasGUI;
 	private Turno turno;
 	private final Juego juego;
+	private VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
 	
-	public SeleccionarCeldaHandler(Juego juego, VistaCelda celda, VistaCelda[][] celdasGUI) {
+	public SeleccionarCeldaHandler(Juego juego, VistaCelda celda, VistaCelda[][] celdasGUI,VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje) {
 		this.celda = celda;
 		this.celdasGUI = celdasGUI;
 		this.tableroJuego = juego.getTablero();
 		this.turno = juego.getTurno();
 		this.juego = juego;
+		this.vistaCaracteristicasPersonaje = vistaCaracteristicasPersonaje;
 	}
-	
-	/*****************************************
-	 * 
-	 * fuciones para achicar el event de click
-	 * 
-	 * 
-	 *****************************************/
 	
 	private void funcionParaMover(){
 		ArrayList<Celda> celdas = turno.getCeldasPermitidas();
@@ -63,7 +59,7 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 		ArrayList<Celda> celdas = turno.getCeldasPermitidas();
 		turno.atacar(celda.getCelda());
 		celdas.add(turno.getCeldaSeleccionada());
-		celda.recivioAtaque(); //le avisa a la celda, para que verifique si se murio.
+		celda.recibioAtaque(); //le avisa a la celda, para que verifique si se murio.
 		liberarCeldasAnteriores(celdas);
 		turno.ataco();
 		//lo sig permite que se dibuje al apretar al personaje luego de atacar.
@@ -115,9 +111,10 @@ public class SeleccionarCeldaHandler implements EventHandler<MouseEvent>{
 				}
 			}
 			if(!accion && celda.getCelda() != turno.getCeldaSeleccionada()){
-					pintarCeldasDondePuedeMoverYAtacar();		
+				pintarCeldasDondePuedeMoverYAtacar();		
 			}
 		}
-				
+		Personaje personajeSeleccionado = this.turno.getPersonajeSeleccionado();
+		this.vistaCaracteristicasPersonaje.update(personajeSeleccionado);		
 	}
 }

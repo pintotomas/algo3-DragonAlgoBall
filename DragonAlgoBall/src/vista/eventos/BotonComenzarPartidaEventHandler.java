@@ -12,8 +12,8 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 	Scene proximaEscena;
 	private TextField campoNombreUsuarioGuerreros;
 	private TextField campoNombreUsuarioEnemigos;
-	private final int pixelesAnchoHD = 1920;
-    private final int pixelesAltoHD = 1080;
+	private int pixelesAnchoHD = 1920;
+    private int pixelesAltoHD = 1080;
 	
 	public BotonComenzarPartidaEventHandler(Stage stage, TextField campoNombreUsuarioGuerreros, TextField campoNombreUsuarioEnemigos){
 		this.stage = stage;		

@@ -17,11 +17,12 @@ public class VistaTablero extends GridPane{
     Tablero tablero;
     Celda[][] celdasLogicas;
     VistaCelda[][] celdasGUI;
+    VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
     
-	public VistaTablero(Juego juego) {
+	public VistaTablero(Juego juego,VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje) {
 		
 		this.juego = juego;
-		
+		this.vistaCaracteristicasPersonaje = vistaCaracteristicasPersonaje;
 	 	this.setGridLinesVisible(true);
 	 	
 	 	turno = juego.getTurno();
@@ -46,7 +47,7 @@ public class VistaTablero extends GridPane{
 	        	
 	            StackPane dibujoCelda = celda.dibujar();
 	            
-	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(juego, celda,celdasGUI);
+	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(juego, celda,celdasGUI,this.vistaCaracteristicasPersonaje);
 	            dibujoCelda.setOnMousePressed(seleccionCeldaHandler);
 	            
 	            VistaTablero.setRowIndex(dibujoCelda, row);

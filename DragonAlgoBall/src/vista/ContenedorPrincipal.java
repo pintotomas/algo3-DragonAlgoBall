@@ -16,9 +16,9 @@ public class ContenedorPrincipal extends BorderPane{
 		juego = new Juego(nombreUsuarioGuerreros, nombreUsuarioEnemigos);
 		this.stage = stage;
 		this.setMenu();
+		this.setCaracteristicasPersonajeSeleccionado();
 		this.setTablero();
 		this.setBotoneraDerecha();
-		this.setCaracteristicasPersonajeSeleccionado();
 	}
 	
 	private void setBotoneraDerecha() {
@@ -37,8 +37,8 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setTablero(){
-		this.tablero = new VistaTablero(juego);
-		this.setCenter(tablero);
+		this.tablero = new VistaTablero(this.juego,this.caracteristicasPersonaje);
+		this.setCenter(this.tablero);
 	}
 	
 	public BarraDeMenu getBarraDeMenu(){
