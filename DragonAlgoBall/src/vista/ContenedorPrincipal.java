@@ -1,6 +1,7 @@
 package vista;
 
 import dab.juego.Juego;
+import dab.usuario.Usuario;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -9,9 +10,12 @@ public class ContenedorPrincipal extends BorderPane{
 	BarraDeMenu barraDeMenu;
 	private Juego juego;
 	private VistaTablero tablero;
+	private int altoTablero = 10;
+	private int anchoTablero = 10;
 	
-	public ContenedorPrincipal(Stage stage, String nombreUsuarioGuerreros, String nombreUsuarioEnemigos){
-		juego = new Juego(nombreUsuarioGuerreros, nombreUsuarioEnemigos);
+	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioenemigos){
+		
+		juego = new Juego(altoTablero, anchoTablero, usuariogz, usuarioenemigos);
 		this.stage = stage;
 		this.setMenu(stage);
 		this.setTablero(stage);

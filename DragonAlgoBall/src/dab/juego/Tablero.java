@@ -2,7 +2,6 @@ package dab.juego;
 import java.util.ArrayList;
 
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
-import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;

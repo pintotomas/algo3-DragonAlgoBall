@@ -1,6 +1,5 @@
 package dab.juego;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -22,34 +21,26 @@ public class Juego {
 	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
 	///QUE LOS TURNOS SE MANEJEN POR USUARIO Y NO POR EQUIPO
 	
-	private String nombreEquipo1 = "guerrerosZ", nombreEquipo2 = "enemigosDeLaTierra";
 	private Tablero tablero;
-	private Usuario usuarioGuerrerosZ,usuarioEnemigosDeLaTierra;
-	Equipo equipoGuerrerosZ, equipoEnemigosDeLaTierra;
 	Turno turno;
-	Queue<Equipo> ordenTurnos; 
+	Queue<Usuario> ordenTurnos; 
 	
 	private Personaje personajeSeleccionado;
 	
-	public Juego(String nombreUsuarioGuerrerosZ, String nombreUsuarioEnemigosDeLaTierra){
-		Gohan gohan = new Gohan();
-		Goku goku = new Goku();
-		Piccolo piccolo = new Piccolo();
-		equipoGuerrerosZ = new Equipo(nombreEquipo1, gohan, goku, piccolo);
+	public Juego(int altoTablero, int anchoTablero, Usuario userGuerrerosZ, Usuario userEnemigos){
+		//PRE: SOLO DOS USUARIOS Y EL PRIMERO SERA EL PRIMERO EN JUGAR
+
+	
+		//Cambiaro esto de que el tablero conozca al equipo enemigo de un determinado equipo. Eso lo podria hacer
+		//El juego o el usuario
+		this.tablero = new Tablero(altoTablero, anchoTablero, userGuerrerosZ.getEquipo(), userEnemigos.getEquipo());
 	
 		
-		Cell cell = new Cell();
-		MajinBoo boo = new MajinBoo();
-		Freezer freezer = new Freezer();
-		equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2, cell, boo, freezer);
-	
-		this.tablero = new Tablero(5,5, equipoGuerrerosZ, equipoEnemigosDeLaTierra);
-		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ, nombreUsuarioGuerrerosZ);// habria que hacer input para pedir el nombre
-		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra, nombreUsuarioEnemigosDeLaTierra);// habria que hacer input para pedir el nombre
+		ordenTurnos = new LinkedList<Usuario>();
+		ordenTurnos.offer(userGuerrerosZ);
+		ordenTurnos.offer(userEnemigos);
 		
-		
-		ordenTurnos = new LinkedList<Equipo>(Arrays.asList(equipoGuerrerosZ, equipoEnemigosDeLaTierra));
-		turno = new Turno(equipoGuerrerosZ, tablero);
+		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
 		
 		
 		
@@ -85,7 +76,7 @@ public class Juego {
 
 		personajeSeleccionado = null;
 		ordenTurnos.offer(ordenTurnos.poll());
-		turno = new Turno(ordenTurnos.peek(), tablero);
+		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
 		
 	}
 	
