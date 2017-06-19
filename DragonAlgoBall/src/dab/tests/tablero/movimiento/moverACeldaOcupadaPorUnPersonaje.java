@@ -2,14 +2,14 @@ package dab.tests.tablero.movimiento;
 
 import org.junit.Test;
 
-import dab.dragonBallExceptions.CeldaOcupada;
+import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
 import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
 public class moverACeldaOcupadaPorUnPersonaje {
 
-	@Test(expected=CeldaOcupada.class)
+	@Test(expected=MovimientoInvalido.class)
 	public void testMoverACeldaOcupada() {
 		Tablero tablero = new Tablero(20, 20);
 		Personaje goku = new Goku();

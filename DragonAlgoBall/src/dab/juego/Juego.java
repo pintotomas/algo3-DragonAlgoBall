@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import dab.equipo.Equipo;
+import dab.personajes.Personaje;
 import dab.personajes.Freezer.Freezer;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
@@ -20,28 +21,29 @@ public class Juego {
 	Equipo equipoGuerrerosZ, equipoEnemigosDeLaTierra;
 	Turno turno;
 	Queue<Equipo> ordenTurnos; 
+	
+	Personaje personajeSeleccionado;
+	
 	public Juego(String nombreUsuarioGuerrerosZ, String nombreUsuarioEnemigosDeLaTierra){
-		equipoGuerrerosZ = new Equipo(nombreEquipo1);
-		equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2);
-		Gohan gohanBase = new Gohan();
-		Goku gokuBase = new Goku();
-		Piccolo piccoloBase = new Piccolo();
-		equipoGuerrerosZ.agregarPersonaje(gohanBase);
-		equipoGuerrerosZ.agregarPersonaje(gokuBase);
-		equipoGuerrerosZ.agregarPersonaje(piccoloBase);
-		Cell cellBase = new Cell();
-		MajinBoo booBase = new MajinBoo();
-		Freezer freezerBase = new Freezer();
-		equipoEnemigosDeLaTierra.agregarPersonaje(cellBase);
-		equipoEnemigosDeLaTierra.agregarPersonaje(booBase);
-		equipoEnemigosDeLaTierra.agregarPersonaje(freezerBase);
+		Gohan gohan = new Gohan();
+		Goku goku = new Goku();
+		Piccolo piccolo = new Piccolo();
+		equipoGuerrerosZ = new Equipo(nombreEquipo1, gohan, goku, piccolo);
+	
 		
+		Cell cell = new Cell();
+		MajinBoo boo = new MajinBoo();
+		Freezer freezer = new Freezer();
+		equipoEnemigosDeLaTierra = new Equipo(nombreEquipo2, cell, boo, freezer);
+	
 		this.tablero = new Tablero(5,5, equipoGuerrerosZ, equipoEnemigosDeLaTierra);
 		usuarioGuerrerosZ = new Usuario (equipoGuerrerosZ, nombreUsuarioGuerrerosZ);// habria que hacer input para pedir el nombre
 		usuarioEnemigosDeLaTierra = new Usuario (equipoEnemigosDeLaTierra, nombreUsuarioEnemigosDeLaTierra);// habria que hacer input para pedir el nombre
-		ordenTurnos = new LinkedList<Equipo>(Arrays.asList(equipoGuerrerosZ, equipoEnemigosDeLaTierra));
 		
+		
+		ordenTurnos = new LinkedList<Equipo>(Arrays.asList(equipoGuerrerosZ, equipoEnemigosDeLaTierra));
 		turno = new Turno(equipoGuerrerosZ, tablero);
+		
 		
 		
 	}
@@ -50,9 +52,10 @@ public class Juego {
 		
 		
 		if (turno.termino()){
-			//Hace falta?
+			//
 			this.pasarTurno();
 		}
+		
 		return turno;	
 //		//si se termino el turno devuelve uno nuevo, sino el mismo.
 //		if(turno.getEquipo() == equipoGuerrerosZ && turno.termino()){
@@ -76,11 +79,29 @@ public class Juego {
 //		}
 		
 		//pongo el primer equipo al final
+		personajeSeleccionado = null;
 		ordenTurnos.offer(ordenTurnos.poll());
 		turno = new Turno(ordenTurnos.peek(), tablero);
 		
 	}
 	
+	public boolean personajeSeleccionadoPuedeAtacarA(Personaje otroPersonaje){
+		
+		return personajeSeleccionado.puedeAtacar(otroPersonaje);
+		
+	}
 	
+	public void personajeSeleccionadoAtacaA(Personaje otroPersonaje){
+		//excepcion si no puede?
+		personajeSeleccionado.atacarA(otroPersonaje);
+	}
+	
+	public boolean personajeSeleccionadoPuedeMoverseHacia(int fila, int columna){
+		return tablero.puedeTrasladarse(personajeSeleccionado, fila, columna);
+	}
+	
+	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
+		tablero.moverFicha(personajeSeleccionado, fila, columna);
+	}
 	
 }
