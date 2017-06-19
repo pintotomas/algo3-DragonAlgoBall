@@ -75,6 +75,7 @@ public class Turno {
 	
 	public void atacar(Celda celda){
 		// el atacar es similar al mover. 
+		//DE ESTO SE ENCARGA JUEGO
 
 		if(!celda.estaOcupada()) throw new CeldaNoContieneFicha();
 		Personaje personajeAtacado = (Personaje) celda.getFicha();
@@ -109,6 +110,10 @@ public class Turno {
 	public boolean yaAtaco(){
 		return ataco;
 		
+	}
+
+	public boolean puedeJugar(Personaje aPersonaje) {
+		return equipo.existePersonajeEnEquipo(aPersonaje);
 	}
 	
 	

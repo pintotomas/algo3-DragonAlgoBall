@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 import dab.equipo.Equipo;
 import dab.personajes.Personaje;
 import dab.personajes.Freezer.Freezer;
@@ -22,7 +23,7 @@ public class Juego {
 	Turno turno;
 	Queue<Equipo> ordenTurnos; 
 	
-	Personaje personajeSeleccionado;
+	private Personaje personajeSeleccionado;
 	
 	public Juego(String nombreUsuarioGuerrerosZ, String nombreUsuarioEnemigosDeLaTierra){
 		Gohan gohan = new Gohan();
@@ -47,38 +48,35 @@ public class Juego {
 		
 		
 	}
+	
+	
 
 	public Turno getTurno() {
 		
 		
 		if (turno.termino()){
-			//
+			//POR AHORA ESTO LO DEJO PARA QUE CORRA LA APLICACION, 
+			//PERO NO ESTA BIEN QUE getTurno() HAGA ESTO
 			this.pasarTurno();
 		}
 		
 		return turno;	
-//		//si se termino el turno devuelve uno nuevo, sino el mismo.
-//		if(turno.getEquipo() == equipoGuerrerosZ && turno.termino()){
-//			turno =  new Turno(equipoEnemigosDeLaTierra, tablero);		
-//			return turno;
-//		}
-//		if(turno.getEquipo() == equipoEnemigosDeLaTierra && turno.termino()){
-//			turno =  new Turno(equipoGuerrerosZ, tablero);		
-//			return turno;
-//		};
-//		return turno;
+
 	}
+	
+	public void seleccionarPersonaje(Personaje aPersonaje){
+		if (!turno.puedeJugar(aPersonaje)){
+			throw new EstePersonajeNoPuedeRealizarMovimientosEsteTurno();
+		}
+		personajeSeleccionado = aPersonaje;
+	}
+	
 	public Tablero getTablero(){
 		return tablero;
 	}
 
 	public void pasarTurno() {
-//		Equipo equipo = equipoGuerrerosZ;
-//		if(turno.getEquipo() == equipo){
-//			equipo = equipoEnemigosDeLaTierra;
-//		}
-		
-		//pongo el primer equipo al final
+
 		personajeSeleccionado = null;
 		ordenTurnos.offer(ordenTurnos.poll());
 		turno = new Turno(ordenTurnos.peek(), tablero);
@@ -92,8 +90,9 @@ public class Juego {
 	}
 	
 	public void personajeSeleccionadoAtacaA(Personaje otroPersonaje){
-		//excepcion si no puede?
+	
 		personajeSeleccionado.atacarA(otroPersonaje);
+		
 	}
 	
 	public boolean personajeSeleccionadoPuedeMoverseHacia(int fila, int columna){
@@ -102,6 +101,32 @@ public class Juego {
 	
 	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
 		tablero.moverFicha(personajeSeleccionado, fila, columna);
+		turno.movio();
+		this.chequearFinDeTurno();
+	}
+	
+	public void personajeSeleccionadoAtaqueEspecialA(Personaje otroPersonaje){
+		personajeSeleccionado.ataqueEspecial(otroPersonaje);
+		turno.ataco();
+		this.chequearFinDeTurno();
+	}
+	
+	public boolean personajeSeleccionadoTieneAtaqueEspecialDisponible(){
+		return personajeSeleccionado.ataqueEspecialDisponible();
+	}
+	
+	public boolean personajeSeleccionadoTieneTransformacionDisponible(){
+		return personajeSeleccionado.transformarDisponible();
+	}
+	
+	public void personajeSeleccionadoTransformar(){
+		personajeSeleccionado.transformar();
+	}
+	
+	private void chequearFinDeTurno(){
+		if (turno.termino()){
+			this.pasarTurno();
+		}
 	}
 	
 }
