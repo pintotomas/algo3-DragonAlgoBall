@@ -1,6 +1,5 @@
 package dab.juego;
 import java.util.ArrayList;
-import java.util.Map;
 
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
@@ -15,9 +14,8 @@ public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
 	private Celda[][] coleccionCeldas;
+	Equipo equipo1, equipo2;
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
-	Map<String, Equipo> equipos;
-	
 	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
@@ -33,16 +31,17 @@ public class Tablero{
 		}
 	}
 		
-	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo... equipos){
+	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo equipo1_, Equipo equipo2_){
 		this(altoDeTablero, anchoDeTablero);
+		equipo1 = equipo1_;
+		equipo2 = equipo2_;
 		int columnaInicial = anchoDeTablero/2;
 		int filaActual = 0;
-		for (Equipo equipo: equipos){
-			this.ubicarPersonajesEnPosicionInicial(equipo, filaActual, columnaInicial);
-			filaActual += altoDeTablero - 1;
-		}
-		
+		this.ubicarPersonajesEnPosicionInicial(equipo1, filaActual, columnaInicial);
+		filaActual += altoDeTablero - 1;
+		this.ubicarPersonajesEnPosicionInicial(equipo2, filaActual, columnaInicial);
 	}
+		
 		
 	
 	
@@ -55,7 +54,6 @@ public class Tablero{
 			i += 1;
 		}
 	}
-	
 	public void removerFicha(IFichaUbicable ficha){
 		Celda celdaConLaFicha = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		celdaConLaFicha.quitarFichaMovible();
@@ -94,18 +92,21 @@ public class Tablero{
 		}
 	}
 	
-
+	public Equipo getEquipoEnemigo(Personaje personaje){
+		Equipo equipoEnemigo = equipo1;
+		if(personaje.getEquipo() == equipo1){
+			equipoEnemigo = equipo2;
+		}
+		return equipoEnemigo;
+		
+	}
 	
 	public ArrayList<Personaje> personajesAtacables(Personaje personaje){
-		ArrayList<Celda> celdasAlcanzables = this.celdasPermitidas((Celda) personaje.getPosicion(), personaje.getAlcance());
+		Equipo equipoEnemigo = getEquipoEnemigo(personaje);
 		ArrayList<Personaje> atacables = new ArrayList<Personaje>();   // collection no se puede castear a ArrayList asi que lo tengo que hacer asi.
-		for (Celda c: celdasAlcanzables){
-			if (c.estaOcupada()){
-				Personaje personajeAlcanzable = (Personaje)c.getFicha();
-			
-				if (personaje.puedeAtacar((Personaje)c.getFicha())){
-					atacables.add(personajeAlcanzable);
-				}
+		for(Personaje enemigo : equipoEnemigo.obtenerPersonajes()){
+			if(personaje.puedeAtacar(enemigo)){
+				atacables.add(enemigo);
 			}
 		}
 		return atacables;
