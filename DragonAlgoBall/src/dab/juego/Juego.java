@@ -16,6 +16,12 @@ import dab.personajes.majinBoo.MajinBoo;
 import dab.usuario.Usuario;
 
 public class Juego {
+	
+	
+	////CAMBIOS A HACER:
+	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
+	///QUE LOS TURNOS SE MANEJEN POR USUARIO Y NO POR EQUIPO
+	
 	private String nombreEquipo1 = "guerrerosZ", nombreEquipo2 = "enemigosDeLaTierra";
 	private Tablero tablero;
 	private Usuario usuarioGuerrerosZ,usuarioEnemigosDeLaTierra;
