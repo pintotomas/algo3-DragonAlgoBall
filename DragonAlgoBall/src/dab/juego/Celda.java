@@ -41,8 +41,10 @@ public class Celda implements IContenedorDeFicha{
 		}
 	}
 	
-	//hay que agregar un metodo para colocar los consumibles que reciba un IFichaUbicable
-
+	public void colocarPotenciador(Potenciador potenciador){
+		potenciadores.add(potenciador);
+	}
+	
 	public void quitarFichaMovible(){
 		ficha = null;
 		ocupada = false;

@@ -2,7 +2,7 @@ package dab.potenciadores;
 
 import dab.juego.Celda;
 
-public abstract class Potenciador{
+public abstract class Potenciador {
 	
 	protected String nombre;
 	protected Celda posicion;
