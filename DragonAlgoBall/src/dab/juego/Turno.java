@@ -17,10 +17,10 @@ public class Turno {
 	public Turno(Equipo equipo,Tablero tablero){
 		this.equipo = equipo;
 		this.tablero = tablero;
-		otorgarKi();
 		this.movio = false;
 		this.ataco = false;
 		this.personajeSeleccionado = null;
+		equipo.nuevoTurno();
 	}
 	
 	private void otorgarKi(){
