@@ -27,12 +27,19 @@ public class NubeVoladoraTests {
 	}
 
 	@Test
-	public void testAgarrarEsferaOtorgaVelocidadEsperada() {
+	public void testAgarrarNubeOtorgaVelocidadEsperada() {
 		int velocidadEsperada = goku.getVelocidad()*2;
 		tablero.moverFicha(goku, filaNube, columnaNube);
 		assertEquals(velocidadEsperada, goku.getVelocidad());
 	}
 
+	@Test
+	public void testVelocidadOtorgadaPermaneceAlPasarUnTurno() {
+		int velocidadEsperada = goku.getVelocidad()*2;
+		tablero.moverFicha(goku, filaNube, columnaNube);
+		goku.nuevoTurno();
+		assertEquals(velocidadEsperada, goku.getVelocidad());
+	}
 	@Test
 	public void testPoderOtorgadoPorEsferaDesapareceAlPasarDosTurnos() {
 		int velocidadInicial = goku.getVelocidad();

@@ -42,9 +42,20 @@ public class EsferaDelDragonTests {
 		double vidaCellPerdida = vidaCellInicial - cell.getVida();
 		assertEquals(ataqueEsperado, vidaCellPerdida, 0.1);
 	}
+	
+	@Test
+	public void testPoderOtorgadoPorEsferaPermaneceAlPasarTurno() {
+		double vidaCellInicial = cell.getVida();
+		double ataqueEsperado = goku.getPoder()*1.25;
+		tablero.moverFicha(goku, filaEsfera, columnaEsfera);
+		goku.nuevoTurno();
+		goku.atacarA(cell);
+		double vidaCellPerdida = vidaCellInicial - cell.getVida();
+		assertEquals(ataqueEsperado, vidaCellPerdida, 0.1);
+	}
 
 	@Test
-	public void testPoderOtorgadoPorEsferaDesapareceAlPasarDosTurnos() {
+	public void testPoderOtorgadoPorEsferaDesapareceAlAtacarDosVeces() {
 		double ataqueInicial = goku.getPoder();
 		tablero.moverFicha(goku, filaEsfera, columnaEsfera);
 		goku.atacarA(cell);
