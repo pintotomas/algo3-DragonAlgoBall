@@ -1,6 +1,7 @@
 package vista;
 
 import dab.juego.Celda;
+import dab.personajes.Personaje;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -11,29 +12,32 @@ public class VistaCelda {
 	
 	private Celda celda;
 	private Rectangle rectangulo;
-	private int recHeight = 70;
-	private int recWidth = 70;
+	private int recHeight = 80;
+	private int recWidth = 80;
+	private boolean disponible, atacable, estaViva;
+	Text text;
 	
-	private Color colorUnpressed = Color.AQUAMARINE;
-	private Color colorPressed = Color.PALEVIOLETRED;
+	private Color colorLiberada = Color.AQUAMARINE;
+	private Color colorDisponible = Color.PALEVIOLETRED;
+	private Color colorSeleccionada = Color.BLUE;
+	private Color colorAtacable = Color.CRIMSON;
+	private Color colorMuerta = Color.BLACK;
 
 	
 	public VistaCelda(Celda celda){
 		this.celda = celda;
 		rectangulo = new Rectangle();
-		rectangulo.setFill(colorUnpressed);
+		rectangulo.setFill(colorLiberada);
+		disponible = false;
+		atacable = false;
+		estaViva = true;
+		text = new Text("");
 	}
 	
 	public StackPane dibujar(){
-		Text text;
 		
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
-		if (celda.estaOcupada()){
-			text = new Text(celda.getFicha().getNombre());
-		}
-		else{
-			text = new Text("");
-		}
+		actualizarPersonaje();
 		
 		rectangulo.setWidth(recHeight);
 		rectangulo.setHeight(recWidth);
@@ -47,15 +51,74 @@ public class VistaCelda {
 		return layout;
 	}
 	
+	
+	
+
 	public void liberada(){
-		rectangulo.setFill(colorUnpressed);
+		rectangulo.setFill(colorLiberada);
+		disponible = false;
+		atacable = false;
 	}
 	
-	public void presionada(){
+	public void disponible(){
 		
-		rectangulo.setFill(colorPressed);
+		rectangulo.setFill(colorDisponible);
+		disponible = true;
 	}
-
+	
+	public void seleccionada(){
+		rectangulo.setFill(colorSeleccionada);
+		
+	}
+	
+	public void atacable(){
+		rectangulo.setFill(colorAtacable);
+		atacable = true;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public void actualizarPersonaje(){
+		if (celda.estaOcupada()){
+			text.setText(celda.getFicha().getNombre() + "\n" + celda.getFicha().getVida());
+		}
+		else{
+			text.setText("");
+		}
+	}
+	
+	public void recivioAtaque(){
+		Personaje personaje = (Personaje) celda.getFicha();
+		if(personaje.getVida() <= 0){
+			estaViva = false;
+			colorLiberada = colorMuerta;
+		}
+	}
+	
+	
+	
+	
+	
+	public boolean estaDisponible(){
+		return disponible;
+	}
+	
+	public boolean esAtacable(){
+		return atacable;
+	}
+	
+	public boolean estaViva(){
+		return estaViva;
+	}
+	
+	
+	
+	
+	
 	public boolean estaOcupada(){
 		return celda.estaOcupada();
 	}
@@ -72,6 +135,8 @@ public class VistaCelda {
 		return celda;
 	}
 	
-
+	
+	
+	
 	
 }

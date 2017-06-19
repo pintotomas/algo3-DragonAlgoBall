@@ -30,11 +30,16 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		//Ver si esto se puede chequear en otro lado como juego. falta chequear trayectoriaValida
 		int maxFila = coordenadas.getFila() + this.getAlcance();
 		int maxColumna = coordenadas.getColumna() + this.getAlcance();
+		int minFila = coordenadas.getFila() - this.getAlcance();
+		int minColumna = coordenadas.getColumna() - this.getAlcance();
 		IContenedorDeFicha coordenadasEnemigo = personaje.getPosicion();
-		if(coordenadasEnemigo.getColumna() > maxColumna  ||  coordenadasEnemigo.getFila() > maxFila){
+		if(coordenadasEnemigo.getColumna() > maxColumna  ||  coordenadasEnemigo.getFila() > maxFila || coordenadasEnemigo.getColumna() < minColumna  ||  coordenadasEnemigo.getFila() < minFila ){
 			return false;
 		}
 		if(personaje.getEquipo() == this.getEquipo()){
+			return false;
+		}
+		if(personaje.getVida() <= 0){
 			return false;
 		}
 		return true;

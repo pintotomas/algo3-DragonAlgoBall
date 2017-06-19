@@ -10,9 +10,9 @@ public class ContenedorPrincipal extends BorderPane{
 	private Juego juego;
 	private VistaTablero tablero;
 	
-	public ContenedorPrincipal(Stage stage, Juego juegoDAB){
+	public ContenedorPrincipal(Stage stage, String nombreUsuarioGuerreros, String nombreUsuarioEnemigos){
+		juego = new Juego(nombreUsuarioGuerreros, nombreUsuarioEnemigos);
 		this.stage = stage;
-		this.juego = juegoDAB;
 		this.setMenu(stage);
 		this.setTablero(stage);
 	}
@@ -24,7 +24,7 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setTablero(Stage stage){
-		this.tablero = new VistaTablero(stage);
+		this.tablero = new VistaTablero(stage, juego);
 		this.setCenter(tablero);
 	}
 	

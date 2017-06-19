@@ -1,10 +1,10 @@
 package dab.juego;
 import java.util.ArrayList;
+import java.util.Map;
 
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
-import dab.dragonBallExceptions.SoloDosEquiposError;
 import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
@@ -14,8 +14,9 @@ public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
 	private Celda[][] coleccionCeldas;
-	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
+	Map<String, Equipo> equipos;
+	
 	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
@@ -31,20 +32,17 @@ public class Tablero{
 		}
 	}
 		
-	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo... equipo){
-		
+	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo... equipos){
 		this(altoDeTablero, anchoDeTablero);
-		if (equipo.length > 2){
-			throw new SoloDosEquiposError();
-		}
 		int columnaInicial = anchoDeTablero/2;
 		int filaActual = 0;
-		for (Equipo equi: equipo){
-			this.ubicarPersonajesEnPosicionInicial(equi, filaActual, columnaInicial);
+		for (Equipo equipo: equipos){
+			this.ubicarPersonajesEnPosicionInicial(equipo, filaActual, columnaInicial);
 			filaActual += altoDeTablero - 1;
 		}
 		
 	}
+		
 	
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
@@ -56,6 +54,7 @@ public class Tablero{
 			i += 1;
 		}
 	}
+	
 	public void removerFicha(IFichaUbicable ficha){
 		Celda celdaConLaFicha = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		celdaConLaFicha.quitarFichaMovible();
@@ -69,9 +68,9 @@ public class Tablero{
 	
 	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
 	
-	public void moverFicha(IFichaMovible ficha, int x, int y){
+	public void moverFicha(IFichaMovible ficha, int fila, int columna){
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
-		Celda celdaFin = coleccionCeldas[x][y];
+		Celda celdaFin = coleccionCeldas[fila][columna];
 		if (!celdaInicio.estaOcupada()){
 			throw new CeldaNoContieneFicha();
 		}
@@ -82,13 +81,34 @@ public class Tablero{
 		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada() && celdasAlcanzables.contains(celdaFin)){
 			//&&hayCaminoLibre(celdaInicio, celdaFin)
 			celdaInicio.quitarFichaMovible();
-			this.colocarFichaMovil(ficha, x, y);
+			this.colocarFichaMovil(ficha, fila, columna);
 		}
 	
 		else{
 			throw new MovimientoInvalido();
 		}
 	}
+	
+
+	
+	public ArrayList<Personaje> personajesAtacables(Personaje personaje){
+		ArrayList<Celda> celdasAlcanzables = this.celdasPermitidas((Celda) personaje.getPosicion(), personaje.getAlcance());
+		ArrayList<Personaje> atacables = new ArrayList<Personaje>();   // collection no se puede castear a ArrayList asi que lo tengo que hacer asi.
+		for (Celda c: celdasAlcanzables){
+			if (c.estaOcupada()){
+				Personaje personajeAlcanzable = (Personaje)c.getFicha();
+			
+				if (personaje.puedeAtacar((Personaje)c.getFicha())){
+					atacables.add(personajeAlcanzable);
+				}
+			}
+		}
+		return atacables;
+				
+		
+	}
+	
+	
 	
 	/*********************************
 	 * 
@@ -166,5 +186,12 @@ public class Tablero{
 		return coleccionCeldas;
 	}
 	
+	public int getAltura(){
+		return altoDeTablero;
+	}
+	
+	public int getAncho(){
+		return anchoDeTablero;
+	}
 }
 
