@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import vista.ContenedorPrincipal;
 
 public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
     Stage stage;
@@ -16,6 +17,8 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+    
+    	
         stage.setScene(proximaEscena);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);

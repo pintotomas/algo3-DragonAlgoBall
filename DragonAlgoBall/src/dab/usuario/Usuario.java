@@ -3,19 +3,20 @@ package dab.usuario;
 import dab.equipo.Equipo;
 
 public class Usuario {
-	private String nombreUsuario;
+	private String nombre;
 	private Equipo equipoUsuario;
 	
-	public Usuario(Equipo equipo){
+	public Usuario(Equipo equipo, String nombre){
 		this.equipoUsuario = equipo;
+		this.nombre = nombre;
 	}
 	
 	public void setNombre(String nombre){
-		this.nombreUsuario = nombre;
+		this.nombre = nombre;
 	}
 	
 	public String getNombreUsuario(){
-		return this.nombreUsuario;
+		return this.nombre;
 	}
 	
 	public Equipo getEquipo(){

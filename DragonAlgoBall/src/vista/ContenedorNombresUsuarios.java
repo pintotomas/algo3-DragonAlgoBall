@@ -1,25 +1,19 @@
 package vista;
 
-import dab.juego.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vista.eventos.BotonListoNombreEventHandler;
+import vista.eventos.BotonComenzarPartidaEventHandler;
 
 public class ContenedorNombresUsuarios extends VBox {
     Stage stage;
-    Scene escenaPrincipal;
-    private Juego juego;
 
-    public ContenedorNombresUsuarios(Stage stage,Juego juegoDAB, Scene escenaPrincipal) {
+    public ContenedorNombresUsuarios(Stage stage) {
         this.stage = stage;
-        this.juego = juegoDAB;
-        this.escenaPrincipal = escenaPrincipal;
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
@@ -31,8 +25,8 @@ public class ContenedorNombresUsuarios extends VBox {
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
         
-        Button botonListoNombres = new Button("Listo!");
-        BotonListoNombreEventHandler listoNombreEventHandler = new BotonListoNombreEventHandler(this.stage,this.escenaPrincipal,this.juego,campoNombreUsuarioGuerreros,campoNombreUsuarioEnemigos);
+        Button botonListoNombres = new Button("Comenzar partida!");
+        BotonComenzarPartidaEventHandler listoNombreEventHandler = new BotonComenzarPartidaEventHandler(this.stage,campoNombreUsuarioGuerreros,campoNombreUsuarioEnemigos);
         botonListoNombres.setOnAction(listoNombreEventHandler);
         this.getChildren().addAll(botonListoNombres);
     }

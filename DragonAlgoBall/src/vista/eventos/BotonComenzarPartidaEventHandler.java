@@ -1,29 +1,37 @@
 package vista.eventos;
 
+import dab.juego.Juego;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import vista.ContenedorPrincipal;
 
-public class BotonComenzarPartidaEventHandler implements EventHandler<MouseEvent> {
-
-	
+public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEvent>{
 	Stage stage;
 	Scene proximaEscena;
-
-    public BotonComenzarPartidaEventHandler(Stage stage, Scene proximaEscena) {
-    	this.stage = stage;
-	    this.proximaEscena = proximaEscena;
-    }
-
-	@Override
-	public void handle(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		stage.setScene(proximaEscena);
-	    stage.setFullScreenExitHint("");
-	    stage.setFullScreen(true);
+	private TextField campoNombreUsuarioGuerreros;
+	private TextField campoNombreUsuarioEnemigos;
+	
+	public BotonComenzarPartidaEventHandler(Stage stage, TextField campoNombreUsuarioGuerreros, TextField campoNombreUsuarioEnemigos){
+		this.stage = stage;
+		
+		this.campoNombreUsuarioGuerreros = campoNombreUsuarioGuerreros;
+		this.campoNombreUsuarioEnemigos = campoNombreUsuarioEnemigos;
 	}
 	
+	@Override
+	public void handle(ActionEvent event) {
+		
+		ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, campoNombreUsuarioGuerreros.getText(), campoNombreUsuarioEnemigos.getText() );
+        Scene escenaPrincipal = new Scene(contenedorPrincipal);
+        
+        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
+        escenaPrincipal.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+        
+        stage.setScene(escenaPrincipal);
+		stage.setFullScreenExitHint("");
+        stage.setFullScreen(true);
+	}
 }
-	
-
