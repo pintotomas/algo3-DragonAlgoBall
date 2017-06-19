@@ -16,6 +16,8 @@ public class Tablero{
 	Equipo equipo1, equipo2;
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
 	
+
+	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
 		

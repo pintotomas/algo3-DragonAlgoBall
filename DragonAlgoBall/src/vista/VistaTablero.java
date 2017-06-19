@@ -51,8 +51,8 @@ public class VistaTablero extends GridPane{
 		
 		celdasLogicas = tablero.getCeldas();
 		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
-		for (int row = 0; row < anchoTablero; row++) {
-	        for (int col = 0; col < altoTablero; col++) {
+		for (int row = 0; row < altoTablero; row++) {
+	        for (int col = 0; col < anchoTablero; col++) {
 	        	
 	        	VistaCelda celda = new VistaCelda(celdasLogicas[row][col]);
 	        	celdasGUI[row][col] = celda;
