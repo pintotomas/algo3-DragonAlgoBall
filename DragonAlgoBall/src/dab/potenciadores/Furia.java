@@ -9,7 +9,6 @@ public class Furia extends Potenciador {
 	private int multiplicadorDefecto = 1;
 	
 	public Furia(Personaje portador){
-		
 		nombre = "Furia";
 		multiplicadorPoderDePelea = 1.2;
 		multiplicadorVelocidad = 1;

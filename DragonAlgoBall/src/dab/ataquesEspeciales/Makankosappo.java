@@ -8,7 +8,7 @@ public class Makankosappo extends AtaqueEspecial {
 	
 	public Makankosappo(Personaje lanzador){
 		super(lanzador);
-		multiplicador = 1.5; //Si un pj lanza un Makankosappo, daña x1.25
+		multiplicador = 1.25; //Si un pj lanza un Makankosappo, daña x1.25
 	}
 	
 }

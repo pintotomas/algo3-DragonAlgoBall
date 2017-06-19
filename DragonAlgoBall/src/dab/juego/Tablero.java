@@ -9,6 +9,7 @@ import dab.equipo.Equipo;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
 import dab.personajes.Personaje;
+import dab.potenciadores.Potenciador;
 
 public class Tablero{
 	private int altoDeTablero;
@@ -66,7 +67,11 @@ public class Tablero{
 		ficha.setPosicion(celda);
 	}
 	
-	//aca tambien vamos a tener que agregar otro metodo para colocar los consumibles
+	public void colocarPotenciador(Potenciador consumible, int fila, int columna){
+		Celda celda = this.obtenerCelda(fila, columna);
+		celda.colocarPotenciador(consumible);
+		
+	}
 	
 	public void moverFicha(IFichaMovible ficha, int fila, int columna){
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];

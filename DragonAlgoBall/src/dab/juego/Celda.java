@@ -35,14 +35,19 @@ public class Celda implements IContenedorDeFicha{
 		if(ocupada) throw new CeldaOcupada();
 		this.ficha = ficha;
 		ocupada = true;
-		for(Potenciador p: potenciadores){
-			ficha.agarrarPotenciador(p);
-			potenciadores.remove(p);
+		if (!potenciadores.isEmpty()){
+			for(Potenciador p: potenciadores){
+				ficha.agarrarPotenciador(p);
+				potenciadores.remove(p);
+			}
 		}
+		
 	}
 	
-	//hay que agregar un metodo para colocar los consumibles que reciba un IFichaUbicable
-
+	public void colocarPotenciador(Potenciador potenciador){
+		potenciadores.add(potenciador);
+	}
+	
 	public void quitarFichaMovible(){
 		ficha = null;
 		ocupada = false;

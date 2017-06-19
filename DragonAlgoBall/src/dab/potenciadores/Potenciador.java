@@ -1,11 +1,8 @@
 package dab.potenciadores;
 
-import dab.juego.Celda;
-
-public abstract class Potenciador{
+public abstract class Potenciador {
 	
 	protected String nombre;
-	protected Celda posicion;
 	protected double duracionTurnos;
 	protected double duracionAtaques;
 	protected int multiplicadorVelocidad;
@@ -38,5 +35,6 @@ public abstract class Potenciador{
 		//usar solo en testing
 		return duracionTurnos;
 	}
+	
 	
 }
