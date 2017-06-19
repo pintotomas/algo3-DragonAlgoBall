@@ -11,6 +11,7 @@ import dab.usuario.Usuario;
 
 public class Juego {
 	
+	// Escribir a mdegiov at gmail.com
 	
 	////CAMBIOS A HACER:
 	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
@@ -41,16 +42,8 @@ public class Juego {
 	
 
 	public Turno getTurno() {
-		
-		
-		if (turno.termino()){
-			//POR AHORA ESTO LO DEJO PARA QUE CORRA LA APLICACION, 
-			//PERO NO ESTA BIEN QUE getTurno() HAGA ESTO
-			this.pasarTurno();
-		}
-		
+		this.verificarFinDeTurno();
 		return turno;	
-
 	}
 	
 	public void seleccionarPersonaje(Personaje aPersonaje){
@@ -91,13 +84,13 @@ public class Juego {
 	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
 		tablero.moverFicha(personajeSeleccionado, fila, columna);
 		turno.movio();
-		this.chequearFinDeTurno();
+		this.verificarFinDeTurno();
 	}
 	
 	public void personajeSeleccionadoAtaqueEspecialA(Personaje otroPersonaje){
 		personajeSeleccionado.ataqueEspecial(otroPersonaje);
 		turno.ataco();
-		this.chequearFinDeTurno();
+		this.verificarFinDeTurno();
 	}
 	
 	public boolean personajeSeleccionadoTieneAtaqueEspecialDisponible(){
@@ -112,7 +105,7 @@ public class Juego {
 		personajeSeleccionado.transformar();
 	}
 	
-	private void chequearFinDeTurno(){
+	private void verificarFinDeTurno(){
 		if (turno.termino()){
 			this.pasarTurno();
 		}

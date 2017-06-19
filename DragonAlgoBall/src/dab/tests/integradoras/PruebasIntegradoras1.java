@@ -1,3 +1,4 @@
+/*
 package dab.tests.integradoras;
 
 import org.junit.Assert;
@@ -123,3 +124,4 @@ public class PruebasIntegradoras1 {
 	}
 
 }
+*/

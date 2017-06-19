@@ -38,8 +38,8 @@ public class PruebasIntegradoras2 {
 		userEnemigosDeLaTierra = new Usuario(new Equipo("Enemigos de la Tierra", new Cell(), new Freezer(), new MajinBoo()),
 				"PC");
 		
-		altoTablero = 5;
-		anchoTablero = 5;
+		altoTablero = 10;
+		anchoTablero = 10;
 		juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);
 	}
 
