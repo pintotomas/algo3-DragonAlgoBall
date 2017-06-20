@@ -1,8 +1,7 @@
 package vista.eventos.celdas;
 
-import dab.interfaces.IFichaMovible;
 import dab.juego.Celda;
-import dab.juego.Tablero;
+import dab.juego.Juego;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import vista.VistaTablero;
@@ -10,24 +9,26 @@ import vista.vistasCelda.VistaCelda;
 
 public class SeleccionarCeldaParaMoverseEventHandler implements EventHandler<MouseEvent> {
 
-	private Tablero tableroJuego;
-	private IFichaMovible fichaAMover;
 	private int filaDestino;
 	private int columnaDestino;
 	private final VistaTablero vistaTablero;
+	private final Juego juego;
 	
-	public SeleccionarCeldaParaMoverseEventHandler(Tablero tableroJuego, VistaCelda origen, Celda destino, VistaTablero vistaTablero){
-		this.tableroJuego = tableroJuego;
-		this.fichaAMover = origen.getCelda().getFicha();
+	public SeleccionarCeldaParaMoverseEventHandler(Juego juego, VistaCelda origen, Celda destino, VistaTablero vistaTablero){
+		
+		
 		this.filaDestino = destino.getFila();
 		this.columnaDestino = destino.getColumna();
 		this.vistaTablero = vistaTablero;
+		this.juego = juego;
 	}
 	
 	@Override
 	public void handle(MouseEvent event) {
-		tableroJuego.moverFicha(fichaAMover, filaDestino, columnaDestino);
-		vistaTablero.dibujarTablero();
+		
+		juego.moverPersonajeSeleccionadoHacia(filaDestino, columnaDestino);
+		juego.seHaEfectuadoUnMovimiento();
+		vistaTablero.dibujarTableroSinNingunaSeleccion();
 		
 	}
 

@@ -3,6 +3,7 @@ package vista.eventos.celdas;
 import java.util.ArrayList;
 
 import dab.juego.Celda;
+import dab.juego.Juego;
 import dab.juego.Tablero;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import vista.VistaTablero;
 import vista.vistasCelda.VistaCelda;
 import vista.vistasCelda.VistaCeldaALaCualSePuedeMover;
 import vista.vistasCelda.VistaCeldaConPersonajeAtacable;
+import vista.vistasCelda.VistaCeldaSeleccionada;
 
 public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>{
 
@@ -18,12 +20,14 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 	private final Tablero tableroJuego;
 	private final VistaCelda[][] celdasGUI;
 	private final VistaTablero vistaTablero;
+	private Juego juego;
 	
-	public SeleccionarCeldaInactivaHandler(VistaCelda celda, Tablero tableroJuego, VistaCelda[][] celdasGUI, VistaTablero vistaTablero) {
+	public SeleccionarCeldaInactivaHandler(VistaCelda celda, Juego juego, VistaCelda[][] celdasGUI, VistaTablero vistaTablero) {
 		this.celdaGUIOrigen = celda;
 		this.celdasGUI = celdasGUI;
-		this.tableroJuego = tableroJuego;
+		this.tableroJuego = juego.getTablero();
 		this.vistaTablero = vistaTablero;
+		this.juego = juego;
 	}
 
 	@Override
@@ -33,13 +37,22 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 		//A las celdas a las cuales puede atacar, las pinta de azul
 		
 		//(Esto hace que se despinten las celdas rojas al seleccionar otro personaje u otra celda vacia)
-		vistaTablero.dibujarTablero(); 
+		vistaTablero.dibujarTableroSinNingunaSeleccion(); 
 		
-		if (celdaGUIOrigen.estaOcupada()){
+		
+		if (juego.sePuedeSeleccionarUnPersonaje(celdaGUIOrigen.getCelda())){
 			
-			this.mostrarCeldasAlcanzables();
-			this.mostrarCeldasConPersonajesAtacables();
+			if (juego.elOcupantePuedeRealizarJugada(celdaGUIOrigen.getCelda())){
+				
+				celdasGUI[celdaGUIOrigen.getFila()][celdaGUIOrigen.getColumna()] = new VistaCeldaSeleccionada(celdaGUIOrigen.getCelda());
+				vistaTablero.refrescar(celdaGUIOrigen.getFila(), celdaGUIOrigen.getColumna(), null);
+				
+				juego.seleccionarPersonajeDeLaCelda(celdaGUIOrigen.getCelda());
+				if (juego.sePuedeEfectuarUnMovimiento()) {this.mostrarCeldasAlcanzables();}
+				if (juego.sePuedeSeguirAtacando()) {this.mostrarCeldasConPersonajesAtacables();}
+			}
 		}
+	
 	}
 	
 	private void mostrarCeldasAlcanzables(){
@@ -48,20 +61,19 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 		for (Celda posibleDestino: celdasPermitidas){
 			celdasGUI[posibleDestino.getFila()][posibleDestino.getColumna()] = new VistaCeldaALaCualSePuedeMover(posibleDestino);
 			EventHandler<MouseEvent> seleccionarCeldaALaCualPuedeMoverseEventHandler = 
-					new SeleccionarCeldaParaMoverseEventHandler(tableroJuego, celdaGUIOrigen, posibleDestino, vistaTablero);
+					new SeleccionarCeldaParaMoverseEventHandler(juego, celdaGUIOrigen, posibleDestino, vistaTablero);
 			vistaTablero.refrescar(posibleDestino.getFila(), posibleDestino.getColumna(), seleccionarCeldaALaCualPuedeMoverseEventHandler);
 		}
 	}
 	
 	private void mostrarCeldasConPersonajesAtacables(){
 		//HACERLO DESDE JUEGO
-		Personaje personajeAtacante = (Personaje)celdaGUIOrigen.getCelda().getFicha();
-		
+
 		ArrayList<Personaje> personajesAtacables = tableroJuego.personajesAtacables((Personaje) celdaGUIOrigen.getCelda().getFicha());
 		for (Personaje enemigo: personajesAtacables){
 			celdasGUI[enemigo.getPosicion().getFila()][enemigo.getPosicion().getColumna()] = 
 					new VistaCeldaConPersonajeAtacable((Celda)enemigo.getPosicion());
-			EventHandler<MouseEvent> seleccionarCeldaConPersonajeAtacable = new SeleccionarCeldaConPersonajeAtacable(personajeAtacante, enemigo, vistaTablero);
+			EventHandler<MouseEvent> seleccionarCeldaConPersonajeAtacable = new SeleccionarCeldaConPersonajeAtacable(juego, enemigo, vistaTablero);
 			vistaTablero.refrescar(enemigo.getPosicion().getFila(), enemigo.getPosicion().getColumna(), seleccionarCeldaConPersonajeAtacable);
 		}
 	}

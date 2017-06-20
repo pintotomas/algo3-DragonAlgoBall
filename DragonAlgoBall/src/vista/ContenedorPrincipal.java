@@ -20,9 +20,9 @@ public class ContenedorPrincipal extends BorderPane{
 	private int anchoTablero = 11;
 
 	
-	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioenemigos){
+	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioEnemigos){
 		
-		juego = new Juego(altoTablero, anchoTablero, usuariogz, usuarioenemigos);
+		juego = new Juego(altoTablero, anchoTablero, usuariogz, usuarioEnemigos);
 		this.stage = stage;
 		this.setMenu();
 		this.setCaracteristicasPersonajeSeleccionado();
@@ -31,7 +31,7 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setBotoneraDerecha() {
-		this.botoneraDerecha = new BotoneraDerecha(this.juego, this.tablero.getCeldas());
+		this.botoneraDerecha = new BotoneraDerecha(this.juego);
 		this.setRight(this.botoneraDerecha);
 	}
 	

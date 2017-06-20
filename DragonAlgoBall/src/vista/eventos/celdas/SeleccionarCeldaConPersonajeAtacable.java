@@ -1,5 +1,6 @@
 package vista.eventos.celdas;
 
+import dab.juego.Juego;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -9,21 +10,24 @@ public class SeleccionarCeldaConPersonajeAtacable implements EventHandler<MouseE
 
 	
 	
-	private Personaje personajeAtacante;
 	private Personaje personajeEnemigo;
 	private VistaTablero vistaTablero;
+	private final Juego juego;
 
-	public SeleccionarCeldaConPersonajeAtacable(Personaje personajeAtacante, Personaje enemigo,
-			VistaTablero vistaTablero) {
-		this.personajeAtacante = personajeAtacante;
+	public SeleccionarCeldaConPersonajeAtacable(Juego juego, Personaje enemigo, VistaTablero vistaTablero) {
+		
 		this.personajeEnemigo = enemigo;
 		this.vistaTablero = vistaTablero;
+		this.juego = juego;
 	}
 
 	@Override
 	public void handle(MouseEvent event) {
-		personajeAtacante.atacarA(personajeEnemigo);
-		vistaTablero.dibujarTablero();
+		
+		juego.personajeSeleccionadoAtacaA(personajeEnemigo);
+		juego.seHaEfectuadoUnAtaque();
+		vistaTablero.dibujarTableroSinNingunaSeleccion();
+		
 	}
 
 }

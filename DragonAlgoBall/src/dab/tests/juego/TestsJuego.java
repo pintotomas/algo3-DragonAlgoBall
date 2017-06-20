@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
-import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
+import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Turno;
 import dab.personajes.Freezer.Freezer;
@@ -52,7 +52,7 @@ public class TestsJuego {
 	public void testNoSePuedeSeleccionarUnPersonajeFueraDelTurnoDeSuRespectivoEquipo(){
 		
 		Juego juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);	
-		juego.seleccionarPersonaje(userEnemigosDeLaTierra.getEquipo().obtenerPersonaje("Freezer"));
+		juego.seleccionarPersonajeDeLaCelda((Celda) (userEnemigosDeLaTierra.getEquipo().obtenerPersonaje("Freezer").getPosicion()));
 	}
 
 }

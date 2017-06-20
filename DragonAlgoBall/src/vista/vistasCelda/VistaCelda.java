@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 public abstract class VistaCelda {
 	
 	protected Celda celda;
-	private Rectangle rectangulo;
+	protected Rectangle rectangulo;
 	private int recHeight = 55;
 	private int recWidth = 55;
 	
@@ -22,11 +22,17 @@ public abstract class VistaCelda {
 	
 	public VistaCelda(Celda celda){
 		this.celda = celda;
-
 	}
 	
 	public StackPane dibujar(){
 		Text text;
+		
+		rectangulo = new Rectangle();
+
+		rectangulo.setWidth(recHeight);
+		rectangulo.setHeight(recWidth);
+		rectangulo.setFill(color);
+		darPropiedadesARectangulo();
 		
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
 		if (celda.estaOcupada()){
@@ -35,17 +41,18 @@ public abstract class VistaCelda {
 		else{
 			text = new Text("");
 		}
-		rectangulo = new Rectangle();
-		rectangulo.setFill(color);
-		rectangulo.setWidth(recHeight);
-		rectangulo.setHeight(recWidth);
-		rectangulo.setStroke(Color.BLACK);
+		
 	    StackPane layout = new StackPane();
 	    layout.getChildren().addAll(
 	                rectangulo,
 	                text
 	        );
 		return layout;
+	}
+	
+	public void darPropiedadesARectangulo(){
+		
+		rectangulo.setStroke(Color.BLACK);
 	}
 
 

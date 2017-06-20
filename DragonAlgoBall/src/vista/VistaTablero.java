@@ -17,7 +17,7 @@ public class VistaTablero extends GridPane{
 	int altoTablero; 
     int anchoTablero;
     Juego juego;
-    Turno turno;
+    
     Tablero tablero;
     Celda[][] celdasLogicas;
     VistaCelda[][] celdasGUI;
@@ -32,23 +32,23 @@ public class VistaTablero extends GridPane{
 	    altoTablero = tablero.getAltura();
 		anchoTablero = tablero.getAncho();
 		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
-	 	turno = juego.getTurno();
+	
 	    tablero = juego.getTablero();
 	   
 	    
-	    dibujarTablero();
+	    dibujarTableroSinNingunaSeleccion();
 	      
 	    celdasLogicas = tablero.getCeldas();
 	}
 	
-	public void dibujarTablero(){
+	public void dibujarTableroSinNingunaSeleccion(){
 		celdasLogicas = tablero.getCeldas();
 		for (int row = 0; row < altoTablero; row++) {
 	        for (int col = 0; col < anchoTablero; col++) {
 	        	//Al inicializar estan todas inactivas.
 	        	VistaCelda celda = new VistaCeldaInactiva(celdasLogicas[row][col]);
 	        	celdasGUI[row][col] = celda;
- 	        	SeleccionarCeldaInactivaHandler seleccionCeldaInactivaHandler = new SeleccionarCeldaInactivaHandler(celda, tablero,celdasGUI, this);
+ 	        	SeleccionarCeldaInactivaHandler seleccionCeldaInactivaHandler = new SeleccionarCeldaInactivaHandler(celda, juego, celdasGUI, this);
 	        	refrescar(row, col, seleccionCeldaInactivaHandler);
 	        	
 	        }
