@@ -41,6 +41,7 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	}
 	
 	public void update(Personaje personaje){
+		this.getChildren().clear();
 		this.dibujar(personaje);
 	}
 }
