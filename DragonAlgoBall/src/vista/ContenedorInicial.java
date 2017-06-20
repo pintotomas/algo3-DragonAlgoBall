@@ -23,6 +23,7 @@ public class ContenedorInicial extends StackPane {
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
+        
         Button botonJugar = new Button();
         botonJugar.setText("Jugar");
         
