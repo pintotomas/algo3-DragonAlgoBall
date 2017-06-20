@@ -74,4 +74,12 @@ public class VistaTablero extends GridPane{
         this.getChildren().add(dibujoCelda);
 		
 	}
+	
+	public VistaCaracteristicasPersonaje getVistaCaracteristicasPersonaje(){
+		return vistaCaracteristicasPersonaje;
+		
+	}
+	
+	
+	
 }
