@@ -9,6 +9,7 @@ public class BotonPasarTurnoEventHandler implements EventHandler<ActionEvent>{
 	
 	Juego juego;
 	private VistaTablero vistaTablero;
+
 	
 	public BotonPasarTurnoEventHandler(Juego juego, VistaTablero vistaTablero){
 		this.juego = juego;	
@@ -19,5 +20,6 @@ public class BotonPasarTurnoEventHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent event) {
 		juego.pasarTurno();
 		vistaTablero.dibujarTableroSinNingunaSeleccion();
+		vistaTablero.getVistaCaracteristicasPersonaje().update(null);
 	}
 }
