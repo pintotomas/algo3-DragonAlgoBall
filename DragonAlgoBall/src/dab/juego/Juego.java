@@ -1,5 +1,6 @@
 package dab.juego;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -141,6 +142,14 @@ public class Juego {
 	public Personaje personajeSeleccionado() {
 		// TODO Auto-generated method stub
 		return personajeSeleccionado;
+	}
+
+	public ArrayList<Celda> celdasPermitidasDelersonajeSeleccionado() {
+		return tablero.celdasPermitidas((Celda) personajeSeleccionado.getPosicion(), personajeSeleccionado.getVelocidad());
+	}
+
+	public ArrayList<Personaje> obtenerPersonajesAtacablesDelSeleccionado() {
+		return tablero.personajesAtacables(personajeSeleccionado);
 	}
 }
 

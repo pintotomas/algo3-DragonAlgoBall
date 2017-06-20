@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import dab.juego.Celda;
 import dab.juego.Juego;
-import dab.juego.Tablero;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -18,15 +17,15 @@ import vista.vistasCelda.VistaCeldaSeleccionada;
 public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>{
 
 	private final VistaCelda celdaGUIOrigen;
-	private final Tablero tableroJuego;
+	
 	private final VistaCelda[][] celdasGUI;
 	private final VistaTablero vistaTablero;
 	private Juego juego;
 	private VistaCaracteristicasPersonaje vistaCaracteristicasPersonajes;
+	
 	public SeleccionarCeldaInactivaHandler(VistaCelda celda, Juego juego, VistaCelda[][] celdasGUI, VistaTablero vistaTablero, VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje) {
 		this.celdaGUIOrigen = celda;
 		this.celdasGUI = celdasGUI;
-		this.tableroJuego = juego.getTablero();
 		this.vistaTablero = vistaTablero;
 		this.juego = juego;
 		this.vistaCaracteristicasPersonajes = vistaCaracteristicasPersonaje;
@@ -60,8 +59,9 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 	
 	private void mostrarCeldasAlcanzables(){
 		
-		ArrayList<Celda> celdasPermitidas = tableroJuego.celdasPermitidas(celdaGUIOrigen.getCelda(), celdaGUIOrigen.getCelda().getFicha().getVelocidad());
-		for (Celda posibleDestino: celdasPermitidas){
+//		ArrayList<Celda> celdasPermitidas = tableroJuego.celdasPermitidas(celdaGUIOrigen.getCelda(), celdaGUIOrigen.getCelda().getFicha().getVelocidad());
+		ArrayList<Celda> celdasPermitidasPersonajeSeleccionado = juego.celdasPermitidasDelersonajeSeleccionado(); 
+		for (Celda posibleDestino: celdasPermitidasPersonajeSeleccionado){
 			celdasGUI[posibleDestino.getFila()][posibleDestino.getColumna()] = new VistaCeldaALaCualSePuedeMover(posibleDestino);
 			EventHandler<MouseEvent> seleccionarCeldaALaCualPuedeMoverseEventHandler = 
 					new SeleccionarCeldaParaMoverseEventHandler(juego, celdaGUIOrigen, posibleDestino, vistaTablero);
@@ -72,7 +72,8 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 	private void mostrarCeldasConPersonajesAtacables(){
 		//HACERLO DESDE JUEGO
 
-		ArrayList<Personaje> personajesAtacables = tableroJuego.personajesAtacables((Personaje) celdaGUIOrigen.getCelda().getFicha());
+//		ArrayList<Personaje> personajesAtacables = tableroJuego.personajesAtacables((Personaje) celdaGUIOrigen.getCelda().getFicha());
+		ArrayList<Personaje> personajesAtacables = juego.obtenerPersonajesAtacablesDelSeleccionado();
 		for (Personaje enemigo: personajesAtacables){
 			celdasGUI[enemigo.getPosicion().getFila()][enemigo.getPosicion().getColumna()] = 
 					new VistaCeldaConPersonajeAtacable((Celda)enemigo.getPosicion());
