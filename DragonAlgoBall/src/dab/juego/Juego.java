@@ -129,17 +129,18 @@ public class Juego {
 
 	public boolean sePuedeSeguirAtacando() {
 		// TODO Auto-generated method stub
-		System.out.println("Se puede seguir atacando: "+ turno.quedanAtaquesDisponibles() );
-		System.out.println("");
-		return turno.quedanAtaquesDisponibles();
+			return turno.quedanAtaquesDisponibles();
 	}
 
 
 	public boolean sePuedeEfectuarUnMovimiento() {
 		// TODO Auto-generated method stub
-		System.out.println("Se puede seguir moviendo: "+ turno.quedanMovimientosDisponibles());
-		
 		return turno.quedanMovimientosDisponibles();
+	}
+
+	public Personaje personajeSeleccionado() {
+		// TODO Auto-generated method stub
+		return personajeSeleccionado;
 	}
 }
 
