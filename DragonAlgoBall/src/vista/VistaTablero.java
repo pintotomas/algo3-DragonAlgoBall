@@ -4,9 +4,13 @@ import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Tablero;
 import dab.juego.Turno;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import vista.eventos.SeleccionarCeldaHandler;
+import vista.eventos.celdas.SeleccionarCeldaInactivaHandler;
+import vista.vistasCelda.VistaCelda;
+import vista.vistasCelda.VistaCeldaInactiva;
 
 public class VistaTablero extends GridPane{
 	
@@ -24,36 +28,29 @@ public class VistaTablero extends GridPane{
 		this.juego = juego;
 		this.vistaCaracteristicasPersonaje = vistaCaracteristicasPersonaje;
 	 	this.setGridLinesVisible(true);
-	 	
+	 	tablero = juego.getTablero();
+	    altoTablero = tablero.getAltura();
+		anchoTablero = tablero.getAncho();
+		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 	 	turno = juego.getTurno();
 	    tablero = juego.getTablero();
-	    altoTablero = tablero.getAltura();
-	    anchoTablero = tablero.getAncho();
+	   
 	    
 	    dibujarTablero();
 	      
 	    celdasLogicas = tablero.getCeldas();
-		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 	}
 	
 	public void dibujarTablero(){
 		celdasLogicas = tablero.getCeldas();
-		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 		for (int row = 0; row < altoTablero; row++) {
 	        for (int col = 0; col < anchoTablero; col++) {
-	        	
-	        	VistaCelda celda = new VistaCelda(celdasLogicas[row][col]);
+	        	//Al inicializar estan todas inactivas.
+	        	VistaCelda celda = new VistaCeldaInactiva(celdasLogicas[row][col]);
 	        	celdasGUI[row][col] = celda;
+ 	        	SeleccionarCeldaInactivaHandler seleccionCeldaInactivaHandler = new SeleccionarCeldaInactivaHandler(celda, tablero,celdasGUI, this);
+	        	refrescar(row, col, seleccionCeldaInactivaHandler);
 	        	
-	            StackPane dibujoCelda = celda.dibujar();
-	            
-	            SeleccionarCeldaHandler seleccionCeldaHandler = new SeleccionarCeldaHandler(juego, celda,celdasGUI,this.vistaCaracteristicasPersonaje);
-	            dibujoCelda.setOnMousePressed(seleccionCeldaHandler);
-	            
-	            VistaTablero.setRowIndex(dibujoCelda, row);
-	            VistaTablero.setColumnIndex(dibujoCelda, col);
-
-	            this.getChildren().addAll(dibujoCelda);
 	        }
 		}
 	}
@@ -64,5 +61,17 @@ public class VistaTablero extends GridPane{
 	
 	public VistaCelda[][] getCeldas(){
 		return this.celdasGUI;
+	}
+
+	public void refrescar(int fila, int columna, EventHandler<MouseEvent> onMousePressedEvent) {
+		
+		
+		VistaCelda celdaARefrescar = celdasGUI[fila][columna];
+		StackPane dibujoCelda = celdaARefrescar.dibujar();
+		dibujoCelda.setOnMousePressed(onMousePressedEvent);
+        VistaTablero.setRowIndex(dibujoCelda, fila);
+        VistaTablero.setColumnIndex(dibujoCelda, columna);
+        this.getChildren().add(dibujoCelda);
+		
 	}
 }

@@ -106,6 +106,13 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		}else{
 			vida += cantidad;
 		}
+		if (estoyMuerto()){
+			equipo.quitarPersonaje(this);
+		}
+	}
+	
+	private boolean estoyMuerto(){
+		return vida <= 0;
 	}
 	
 	/**********************************************************

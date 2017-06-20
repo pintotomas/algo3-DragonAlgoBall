@@ -4,7 +4,8 @@ import dab.juego.Juego;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import vista.eventos.BotonPasarTurnoEventHandler;
+//import vista.eventos.BotonPasarTurnoEventHandler;
+import vista.vistasCelda.VistaCelda;
 
 public class BotoneraDerecha extends VBox{
 	private Juego juego;
@@ -20,8 +21,8 @@ public class BotoneraDerecha extends VBox{
 	
 	private void setBotonCederTurno(){
 		Button botonPasarTurno = new Button("CEDER TURNO");
-		BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego,celdasGUI);
-	    botonPasarTurno.setOnAction(pasarTurnoEventHandler);
+//		BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego,celdasGUI);
+//	    botonPasarTurno.setOnAction(pasarTurnoEventHandler);
 	    this.getChildren().add(botonPasarTurno); 
 	}
 }

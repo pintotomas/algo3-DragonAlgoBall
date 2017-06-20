@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dab.interfaces.IProveedorDeVidaDePersonajes;
+import dab.juego.Celda;
 import dab.personajes.Personaje;
 
 public class Equipo implements IProveedorDeVidaDePersonajes{
@@ -43,12 +44,15 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	
 	public void quitarPersonaje(Personaje personaje){
 		this.integrantes.remove(personaje.getNombre());
+		Celda celdaPersonajeMuerto = (Celda) personaje.getPosicion();
+		//Esto lo deberia hacer el juego. 
+		celdaPersonajeMuerto.quitarFichaMovible();
 	}
 	
 	public int cantidadEsferasDelDragon(){
 		return this.cantidadEsferasDelDragon;
 	}
-	
+
 	public void agregarEsferaDelDragon(){
 		this.cantidadEsferasDelDragon += 1;
 	}
