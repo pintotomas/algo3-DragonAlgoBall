@@ -3,6 +3,11 @@ package vista.vistasCelda;
 import dab.juego.Celda;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -44,17 +49,16 @@ public abstract class VistaCelda extends StackPane{
 		if (celda.estaOcupada()){
 			FabricadorDeRepresentacionDePersonaje fabricador = new FabricadorDeRepresentacionDePersonaje();
 			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
-			System.out.println(urlImagenRepresentadora);
 			Image imagenRepresentador = new Image(urlImagenRepresentadora);
-			
 			Pane pane = new Pane();
-			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
-			   " -fx-background-repeat: no-repeat;"+
-			    "-fx-background-size: contain;"));
+			BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
+			pane.setBackground(new Background(background));
+//			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
+//			   " -fx-background-repeat: no-repeat;"+
+//			    "-fx-background-size: contain;"));
 			text = new Text(celda.getFicha().getNombre());
 			
-			this.getChildren().addAll(pane,rectangulo, text);
-//			this.getChildren().addAll(rectangulo, text);
+			this.getChildren().addAll(rectangulo, pane, text);
 		}
 		else{
 			text = new Text("");
