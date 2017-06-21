@@ -19,7 +19,7 @@ public class Aplicacion extends Application {
         ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage);
         Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
         
-        ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios);
+        ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios, pixelesAnchoHD, pixelesAltoHD);
         Scene escenaInicial = new Scene(contenedorInicial, pixelesAnchoHD, pixelesAltoHD);
 
         stage.setScene(escenaInicial);

@@ -8,19 +8,18 @@ import vista.eventos.BotonPasarTurnoEventHandler;
 
 public class BotoneraDerecha extends VBox{
 	private Juego juego;
-	private VistaCelda[][] celdasGUI;;
 	
-	public BotoneraDerecha(Juego juego,VistaCelda[][] celdas){
+	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero){
 		this.juego = juego;
-		this.celdasGUI = celdas;
 		this.setSpacing(10);
 		this.setPadding(new Insets(30));
-		this.setBotonCederTurno();
+		this.setBotonCederTurno(vistaTablero);
+	
 	}
 	
-	private void setBotonCederTurno(){
+	private void setBotonCederTurno(VistaTablero vistaTablero){
 		Button botonPasarTurno = new Button("CEDER TURNO");
-		BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego,celdasGUI);
+		BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego, vistaTablero);
 	    botonPasarTurno.setOnAction(pasarTurnoEventHandler);
 	    this.getChildren().add(botonPasarTurno); 
 	}

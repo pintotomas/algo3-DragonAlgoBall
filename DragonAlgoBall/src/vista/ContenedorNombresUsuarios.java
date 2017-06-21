@@ -28,8 +28,8 @@ public class ContenedorNombresUsuarios extends VBox {
         Button botonListoNombres = new Button("Comenzar partida!");
         BotonComenzarPartidaEventHandler listoNombreEventHandler = new BotonComenzarPartidaEventHandler(this.stage,campoNombreUsuarioGuerreros,campoNombreUsuarioEnemigos);
         botonListoNombres.setOnAction(listoNombreEventHandler);
-        this.getChildren().addAll(botonListoNombres);
-    }
+        this.getChildren().addAll(botonListoNombres);   
+    } 
     
     private TextField contenedorNombreUsuario(String textoLabel){
     	Label labelNombreUsuario = new Label(textoLabel);

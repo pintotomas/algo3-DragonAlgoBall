@@ -15,14 +15,14 @@ public class ContenedorPrincipal extends BorderPane{
 	VistaCaracteristicasPersonaje caracteristicasPersonaje;
 
 	private Juego juego;
-	private VistaTablero tablero;
+	private VistaTablero vistaTablero;
 	private int altoTablero = 10;
 	private int anchoTablero = 11;
 
 	
-	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioenemigos){
+	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioEnemigos){
 		
-		juego = new Juego(altoTablero, anchoTablero, usuariogz, usuarioenemigos);
+		juego = new Juego(altoTablero, anchoTablero, usuariogz, usuarioEnemigos);
 		this.stage = stage;
 		this.setMenu();
 		this.setCaracteristicasPersonajeSeleccionado();
@@ -31,7 +31,7 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setBotoneraDerecha() {
-		this.botoneraDerecha = new BotoneraDerecha(this.juego, this.tablero.getCeldas());
+		this.botoneraDerecha = new BotoneraDerecha(this.juego, vistaTablero);
 		this.setRight(this.botoneraDerecha);
 	}
 	
@@ -46,8 +46,8 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setTablero(){
-		this.tablero = new VistaTablero(this.juego,this.caracteristicasPersonaje);
-		this.setCenter(this.tablero);
+		this.vistaTablero = new VistaTablero(this.juego,this.caracteristicasPersonaje);
+		this.setCenter(this.vistaTablero);
 	}
 	
 	public BarraDeMenu getBarraDeMenu(){

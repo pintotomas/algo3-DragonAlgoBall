@@ -1,10 +1,10 @@
 package dab.juego;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
-
 import dab.personajes.Personaje;
 
 import dab.usuario.Usuario;
@@ -40,17 +40,11 @@ public class Juego {
 
 	}
 	
-
-	public Turno getTurno() {
-		this.verificarFinDeTurno();
-		return turno;	
-	}
-	
-	public void seleccionarPersonaje(Personaje aPersonaje){
-		if (!turno.puedeJugar(aPersonaje)){
+	public void seleccionarPersonajeDeLaCelda(Celda celda){
+		if (!turno.puedeJugar((Personaje) celda.getFicha())){
 			throw new EstePersonajeNoPuedeRealizarMovimientosEsteTurno();
 		}
-		personajeSeleccionado = aPersonaje;
+		personajeSeleccionado = (Personaje)celda.getFicha();
 	}
 	
 	public Tablero getTablero(){
@@ -63,6 +57,16 @@ public class Juego {
 		ordenTurnos.offer(ordenTurnos.poll());
 		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
 
+	}
+	
+	public void seHaEfectuadoUnAtaque(){
+		turno.seHaEfectuadoUnAtaque();
+		this.verificarFinDeTurno();
+	}
+	
+	public void seHaEfectuadoUnMovimiento(){
+		turno.seHaEfectuadoUnMovimiento();
+		this.verificarFinDeTurno();
 	}
 	
 	public boolean personajeSeleccionadoPuedeAtacarA(Personaje otroPersonaje){
@@ -83,14 +87,14 @@ public class Juego {
 	
 	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
 		tablero.moverFicha(personajeSeleccionado, fila, columna);
-		turno.movio();
-		this.verificarFinDeTurno();
+		turno.seHaEfectuadoUnMovimiento();
+		
 	}
 	
 	public void personajeSeleccionadoAtaqueEspecialA(Personaje otroPersonaje){
 		personajeSeleccionado.ataqueEspecial(otroPersonaje);
-		turno.ataco();
-		this.verificarFinDeTurno();
+		turno.seHaEfectuadoUnAtaque();
+		
 	}
 	
 	public boolean personajeSeleccionadoTieneAtaqueEspecialDisponible(){
@@ -106,10 +110,46 @@ public class Juego {
 	}
 	
 	private void verificarFinDeTurno(){
-		if (turno.termino()){
+		if (turno.haFinalizado()){
 			this.pasarTurno();
 		}
 	}
+
+
+	public boolean sePuedeSeleccionarUnPersonaje(Celda celda) {
+		// TODO Auto-generated method stub
+		return celda.estaOcupada();
+	}
 	
+	public boolean elOcupantePuedeRealizarJugada(Celda celda){
+		/*Devuelve si el ocupante de la celda esta en el turno*/
+		Personaje personaje = (Personaje)celda.getFicha();
+		return turno.puedeJugar(personaje);
+	}
+
+
+	public boolean sePuedeSeguirAtacando() {
+		// TODO Auto-generated method stub
+			return turno.quedanAtaquesDisponibles();
+	}
+
+
+	public boolean sePuedeEfectuarUnMovimiento() {
+		// TODO Auto-generated method stub
+		return turno.quedanMovimientosDisponibles();
+	}
+
+	public Personaje personajeSeleccionado() {
+		// TODO Auto-generated method stub
+		return personajeSeleccionado;
+	}
+
+	public ArrayList<Celda> celdasPermitidasDelersonajeSeleccionado() {
+		return tablero.celdasPermitidas((Celda) personajeSeleccionado.getPosicion(), personajeSeleccionado.getVelocidad());
+	}
+
+	public ArrayList<Personaje> obtenerPersonajesAtacablesDelSeleccionado() {
+		return tablero.personajesAtacables(personajeSeleccionado);
+	}
 }
 
