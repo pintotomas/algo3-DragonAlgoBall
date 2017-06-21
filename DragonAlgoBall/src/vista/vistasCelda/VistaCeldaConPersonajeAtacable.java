@@ -8,7 +8,7 @@ public class VistaCeldaConPersonajeAtacable extends VistaCelda{
 	public VistaCeldaConPersonajeAtacable(Celda celda) {
 		super(celda);
 		color = Color.STEELBLUE;
-		// TODO Auto-generated constructor stub
+		super.setup();
 	}
 
 }

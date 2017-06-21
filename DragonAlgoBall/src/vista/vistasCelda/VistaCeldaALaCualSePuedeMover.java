@@ -8,6 +8,7 @@ public class VistaCeldaALaCualSePuedeMover extends VistaCelda {
 	public VistaCeldaALaCualSePuedeMover(Celda celda) {
 		super(celda);
 		color = Color.PALEVIOLETRED;
+		super.setup();
 	}
 
 }

@@ -7,7 +7,6 @@ import dab.juego.Turno;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import vista.eventos.celdas.SeleccionarCeldaInactivaHandler;
 import vista.vistasCelda.VistaCelda;
 import vista.vistasCelda.VistaCeldaInactiva;
@@ -67,11 +66,11 @@ public class VistaTablero extends GridPane{
 		
 		
 		VistaCelda celdaARefrescar = celdasGUI[fila][columna];
-		StackPane dibujoCelda = celdaARefrescar.dibujar();
-		dibujoCelda.setOnMousePressed(onMousePressedEvent);
-        VistaTablero.setRowIndex(dibujoCelda, fila);
-        VistaTablero.setColumnIndex(dibujoCelda, columna);
-        this.getChildren().add(dibujoCelda);
+//		StackPane dibujoCelda = celdaARefrescar.dibujar();
+		celdaARefrescar.setOnMousePressed(onMousePressedEvent);
+        VistaTablero.setRowIndex(celdaARefrescar, fila);
+        VistaTablero.setColumnIndex(celdaARefrescar, columna);
+        this.getChildren().add(celdaARefrescar);
 		
 	}
 	

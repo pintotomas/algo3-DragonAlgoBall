@@ -7,8 +7,8 @@ public class VistaCeldaSeleccionada extends VistaCelda{
 
 	public VistaCeldaSeleccionada(Celda celda) {
 		super(celda);
+		super.setup();
 		
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void darPropiedadesARectangulo(){

@@ -1,13 +1,17 @@
 package vista.vistasCelda;
 
 import dab.juego.Celda;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 //import javafx.scene.text.TextAlignment;
+import vista.fabricadorPersonaje.FabricadorDeRepresentacionDePersonaje;
 
-public abstract class VistaCelda {
+public abstract class VistaCelda extends StackPane{
 	
 	protected Celda celda;
 	protected Rectangle rectangulo;
@@ -22,9 +26,10 @@ public abstract class VistaCelda {
 	
 	public VistaCelda(Celda celda){
 		this.celda = celda;
+		
 	}
 	
-	public StackPane dibujar(){
+	protected void setup(){
 		Text text;
 		
 		rectangulo = new Rectangle();
@@ -32,22 +37,28 @@ public abstract class VistaCelda {
 		rectangulo.setWidth(recHeight);
 		rectangulo.setHeight(recWidth);
 		rectangulo.setFill(color);
+		
 		darPropiedadesARectangulo();
 		
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
 		if (celda.estaOcupada()){
+			FabricadorDeRepresentacionDePersonaje fabricador = new FabricadorDeRepresentacionDePersonaje();
+			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
+			Image imagenRepresentador = new Image(urlImagenRepresentadora);
+			Pane pane = new Pane();
+			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
+			   " -fx-background-repeat: no-repeat;"+
+			    "-fx-background-size: contain;"));
 			text = new Text(celda.getFicha().getNombre());
+			
+			this.getChildren().addAll(rectangulo, pane, text);
 		}
 		else{
 			text = new Text("");
+			this.getChildren().addAll(rectangulo, text);
 		}
 		
-	    StackPane layout = new StackPane();
-	    layout.getChildren().addAll(
-	                rectangulo,
-	                text
-	        );
-		return layout;
+	    
 	}
 	
 	public void darPropiedadesARectangulo(){
