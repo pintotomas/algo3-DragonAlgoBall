@@ -44,16 +44,17 @@ public abstract class VistaCelda extends StackPane{
 		if (celda.estaOcupada()){
 			FabricadorDeRepresentacionDePersonaje fabricador = new FabricadorDeRepresentacionDePersonaje();
 			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
-//			Image imagenRepresentador = new Image(urlImagenRepresentadora);
+			System.out.println(urlImagenRepresentadora);
+			Image imagenRepresentador = new Image(urlImagenRepresentadora);
 			
-//			Pane pane = new Pane();
-//			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
-//			   " -fx-background-repeat: no-repeat;"+
-//			    "-fx-background-size: contain;"));
+			Pane pane = new Pane();
+			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
+			   " -fx-background-repeat: no-repeat;"+
+			    "-fx-background-size: contain;"));
 			text = new Text(celda.getFicha().getNombre());
 			
-//			this.getChildren().addAll(rectangulo, pane, text);
-			this.getChildren().addAll(rectangulo, text);
+			this.getChildren().addAll(pane,rectangulo, text);
+//			this.getChildren().addAll(rectangulo, text);
 		}
 		else{
 			text = new Text("");

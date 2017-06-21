@@ -9,12 +9,12 @@ public class FabricadorDeRepresentacionDePersonaje {
 	
 
 	private final HashMap<String, String> representacionPersonajes = new HashMap<String, String>() {{
-	    put("Goku","vista/Imagenes/personajes/GokuNormalQuieto.png");
-	    put("Piccolo","vista/Imagenes/personajes/PiccoloNormalQuieto.png");
-	    put("Gohan","vista/Imagenes/personajes/GohanNormalQuieto.png");
-	    put("Cell","vista/Imagenes/personajes/CellImperfectoQuieto.png");
-	    put("MajinBoo","vista/Imagenes/personajes/BuuNormalQuieto.png");
-	    put("Freezer","vista/Imagenes/personajes/FriezaNormalQuieto.png");
+	    put("Goku","vista/Imagenes/personajes/GokuNormalEnEspera.png");
+	    put("Piccolo","vista/Imagenes/personajes/PiccoloNormalEnEspera.png");
+	    put("Gohan","vista/Imagenes/personajes/GohanNormalEnEspera.png");
+	    put("Cell","vista/Imagenes/personajes/CellImperfectoEnEspera.png");
+	    put("MajinBoo","vista/Imagenes/personajes/BuuNormalEnEspera.png");
+	    put("Freezer","vista/Imagenes/personajes/FriezaNormalEnEspera.png");
 	}};
 	
 	
