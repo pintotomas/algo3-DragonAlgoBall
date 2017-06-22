@@ -15,6 +15,8 @@ public class TransformacionesGohan {
 	private Equipo guerrerosZ;
 	private double limite = 0.0000000000000001;
 	//se usa para comprobar que gohan pueda transformarse cuando tenga 29.9999% de vida
+	private int kiParaPrimerTransformacion = 10;
+	private int kiParaSegundaTransformacion = 30;
 	@Before
 	public void before(){
 		guerrerosZ = new Equipo("Guerreros Z");
@@ -23,8 +25,7 @@ public class TransformacionesGohan {
 		piccolo = new Piccolo(guerrerosZ);
 		guerrerosZ.agregarPersonaje(gohan);
 		guerrerosZ.agregarPersonaje(goku);
-		guerrerosZ.agregarPersonaje(piccolo);
-		
+		guerrerosZ.agregarPersonaje(piccolo);	
 	}
 	
 	@Test
@@ -33,32 +34,32 @@ public class TransformacionesGohan {
 	}
 	
 	@Test
-	public void primerTransformacionDisponibleConKi() {
-		gohan.modificarKi(10);
+	public void primerTransformacionDisponibleConKiSuficiente() {
+		gohan.modificarKi(kiParaPrimerTransformacion);
 		assertTrue(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionNoDisponibleCompanerosConTodaLaVida() {
-		gohan.modificarKi(10);
+		gohan.modificarKi(kiParaPrimerTransformacion);
 		gohan.transformar();
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionNoDisponibleCompanerosDanados(){
-		gohan.modificarKi(10);
+		gohan.modificarKi(kiParaPrimerTransformacion);
 		gohan.transformar();
 		goku.modificarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
 		piccolo.modificarVida(-piccolo.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar));
-		gohan.modificarKi(30);
+		gohan.modificarKi(kiParaSegundaTransformacion);
 		assertFalse(gohan.transformarDisponible());
 	}
 	@Test
 	public void segundaTransformacionDisponibleKiYCondiciones(){
-		gohan.modificarKi(10);
+		gohan.modificarKi(kiParaPrimerTransformacion);
 		gohan.transformar();
 		goku.modificarVida(-goku.getVida()*(1 - gohan.porcentajeVidaAmigosParaTransformar + limite));
 		piccolo.modificarVida(-piccolo.getVida()* (1 - gohan.porcentajeVidaAmigosParaTransformar + limite));
-		gohan.modificarKi(30);
+		gohan.modificarKi(kiParaSegundaTransformacion);
 		assertTrue(gohan.transformarDisponible());
 	}
 }

@@ -9,7 +9,6 @@ public class MajinBooOriginal extends Estado {
 		alcance = 3;
 		velocidad = 4;
 		nombre = "Boo Original";
-		kiParaEspecial = 30;
 	}
 
 	@Override

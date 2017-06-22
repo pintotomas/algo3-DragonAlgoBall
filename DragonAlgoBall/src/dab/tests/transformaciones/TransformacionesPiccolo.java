@@ -12,11 +12,13 @@ import dab.personajes.Piccolo.Piccolo;
 
 public class TransformacionesPiccolo {
 
-
-
 	private Gohan gohan;
 	private Piccolo piccolo;
 	private Equipo guerrerosZ;
+	private int kiParaPrimerTransformacion = 20;
+	private int poderBase = 20;
+	private int poderPrimerTransformacion = 40;
+	private int poderSegundaTransformacion = 60;
 	
 	@Before
 	public void before(){
@@ -35,13 +37,13 @@ public class TransformacionesPiccolo {
 	
 	@Test
 	public void primerTransformacionDisponibleConKiSuficiente(){
-		piccolo.modificarKi(20);
+		piccolo.modificarKi(kiParaPrimerTransformacion);
 		assertTrue(piccolo.transformarDisponible());
 	}
 	
 	@Test
 	public void segundaTransformacionNoDisponibleGohanConDemasiadaVida(){
-		piccolo.modificarKi(20);
+		piccolo.modificarKi(kiParaPrimerTransformacion);
 		piccolo.transformar();
 		assertFalse(piccolo.transformarDisponible());
 	}
@@ -53,10 +55,29 @@ public class TransformacionesPiccolo {
 	
 	@Test
 	public void segundaTransformacionDisponibleGohanConPocaVida(){
-		piccolo.modificarKi(20);
+		piccolo.modificarKi(kiParaPrimerTransformacion);
 		piccolo.transformar();
 		reducirVidaAMenosDel20Porciento(gohan);
 		assertTrue(piccolo.transformarDisponible());
+	}
+	
+	@Test
+	public void poderBaseEsperado(){
+		assertEquals(poderBase, piccolo.getPoder(), 0);
+	}
+	@Test
+	public void primerTransformacionAumentaPoderEsperado(){
+		piccolo.modificarKi(kiParaPrimerTransformacion);
+		piccolo.transformar();
+		assertEquals(poderPrimerTransformacion, piccolo.getPoder(), 0);
+	}
+	@Test
+	public void segundaTransformacionAumentaPoderEsperado(){
+		piccolo.modificarKi(kiParaPrimerTransformacion);
+		piccolo.transformar();
+		reducirVidaAMenosDel20Porciento(gohan);
+		piccolo.transformar();
+		assertEquals(poderSegundaTransformacion, piccolo.getPoder(), 0);
 	}
 	
 }

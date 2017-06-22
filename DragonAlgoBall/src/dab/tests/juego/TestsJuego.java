@@ -9,7 +9,6 @@ import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno
 import dab.equipo.Equipo;
 import dab.juego.Celda;
 import dab.juego.Juego;
-import dab.juego.Turno;
 import dab.personajes.Freezer.Freezer;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
@@ -38,19 +37,15 @@ public class TestsJuego {
 	}
 	
 	@Test
-	public void testPasarTurnos() {
-		
+	public void testPasarTurnoCambiaDeEquipo() {
 		Juego juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);		
-		Turno turnoActual = juego.getTurno();
-		String nombreEquipoActual = turnoActual.getEquipo().getNombre();
+		Usuario usuarioInicial = juego.obtenerJugadorActual();
 		juego.pasarTurno();
-		Assert.assertNotSame(nombreEquipoActual, juego.getTurno().getEquipo().getNombre());
-		
+		Assert.assertNotSame(usuarioInicial, juego.obtenerJugadorActual());
 	}
 	
 	@Test(expected=EstePersonajeNoPuedeRealizarMovimientosEsteTurno.class)
 	public void testNoSePuedeSeleccionarUnPersonajeFueraDelTurnoDeSuRespectivoEquipo(){
-		
 		Juego juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);	
 		juego.seleccionarPersonajeDeLaCelda((Celda) (userEnemigosDeLaTierra.getEquipo().obtenerPersonaje("Freezer").getPosicion()));
 	}
