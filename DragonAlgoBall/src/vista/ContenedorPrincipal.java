@@ -18,6 +18,7 @@ public class ContenedorPrincipal extends BorderPane{
 	private VistaTablero vistaTablero;
 	private int altoTablero = 10;
 	private int anchoTablero = 11;
+	private VistaInferiorPersonajes vistaInferiorPersonajes;
 
 	
 	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioEnemigos){
@@ -36,8 +37,8 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setCaracteristicasPersonajeSeleccionado(){
-		this.caracteristicasPersonaje = new VistaCaracteristicasPersonaje(null);
-        this.setBottom(this.caracteristicasPersonaje);
+		this.vistaInferiorPersonajes = new VistaInferiorPersonajes(juego);
+        this.setBottom(this.vistaInferiorPersonajes);
 	}
 
 	private void setMenu(){
@@ -46,7 +47,7 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setTablero(){
-		this.vistaTablero = new VistaTablero(this.juego,this.caracteristicasPersonaje);
+		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes);
 		this.setCenter(this.vistaTablero);
 	}
 	

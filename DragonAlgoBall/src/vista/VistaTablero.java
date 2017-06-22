@@ -21,21 +21,24 @@ public class VistaTablero extends GridPane{
     Celda[][] celdasLogicas;
     VistaCelda[][] celdasGUI;
     VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
+	VistaInferiorPersonajes vistaInferiorPersonaje;
     
-	public VistaTablero(Juego juego,VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje) {
+	public VistaTablero(Juego juego,VistaInferiorPersonajes vistaInferiorPersonaje) {
 		
 		this.juego = juego;
-		this.vistaCaracteristicasPersonaje = vistaCaracteristicasPersonaje;
+		this.vistaInferiorPersonaje = vistaInferiorPersonaje;
 	 	this.setGridLinesVisible(true);
 	 	tablero = juego.getTablero();
 	    altoTablero = tablero.getAltura();
 		anchoTablero = tablero.getAncho();
 		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
+		vistaInferiorPersonaje.setTablero(this);    //permite que la vista inferior tenga acceso a las celdas para poder seleccionarlas.
 	
 	    tablero = juego.getTablero();
 	   
 	    
 	    dibujarTableroSinNingunaSeleccion();
+	    this.vistaInferiorPersonaje.setPersonajeDeTurno();
 	      
 	    celdasLogicas = tablero.getCeldas();
 	}
@@ -47,9 +50,8 @@ public class VistaTablero extends GridPane{
 	        	//Al inicializar estan todas inactivas.
 	        	VistaCelda celda = new VistaCeldaInactiva(celdasLogicas[row][col]);
 	        	celdasGUI[row][col] = celda;
- 	        	SeleccionarCeldaInactivaHandler seleccionCeldaInactivaHandler = new SeleccionarCeldaInactivaHandler(celda, juego, celdasGUI, this, vistaCaracteristicasPersonaje);
+ 	        	SeleccionarCeldaInactivaHandler seleccionCeldaInactivaHandler = new SeleccionarCeldaInactivaHandler(celda, juego, celdasGUI, this, vistaInferiorPersonaje);
 	        	refrescar(row, col, seleccionCeldaInactivaHandler);
-	        	
 	        }
 		}
 	}
@@ -77,6 +79,16 @@ public class VistaTablero extends GridPane{
 	public VistaCaracteristicasPersonaje getVistaCaracteristicasPersonaje(){
 		return vistaCaracteristicasPersonaje;
 		
+	}
+
+	public void actualizarVistaDePersonajes() {
+		this.vistaInferiorPersonaje.setPersonajeDeTurno();
+		
+	}
+
+	public VistaInferiorPersonajes getVistaInferiorPersonajes() {
+		
+		return this.vistaInferiorPersonaje;
 	}
 	
 	

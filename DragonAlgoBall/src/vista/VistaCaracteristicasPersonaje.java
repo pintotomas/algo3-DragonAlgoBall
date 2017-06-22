@@ -21,6 +21,8 @@ public class VistaCaracteristicasPersonaje extends VBox{
         this.dibujar(this.personaje);
 	}
 	
+	
+	
 	public void dibujar(Personaje personaje){
 		if(personaje != null){
 			String fuente = "Arial";
@@ -44,4 +46,10 @@ public class VistaCaracteristicasPersonaje extends VBox{
 		this.getChildren().clear();
 		this.dibujar(personaje);
 	}
+	
+	public Personaje getPersonaje(){
+		return this.personaje;
+	}
+	
+	
 }

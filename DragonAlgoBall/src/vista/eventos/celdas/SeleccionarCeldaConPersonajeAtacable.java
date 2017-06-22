@@ -27,6 +27,7 @@ public class SeleccionarCeldaConPersonajeAtacable implements EventHandler<MouseE
 		juego.personajeSeleccionadoAtacaA(personajeEnemigo);
 		juego.seHaEfectuadoUnAtaque();
 		vistaTablero.dibujarTableroSinNingunaSeleccion();
+		vistaTablero.actualizarVistaDePersonajes();
 		
 	}
 
