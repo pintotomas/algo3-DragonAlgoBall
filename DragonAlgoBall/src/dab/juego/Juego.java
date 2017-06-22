@@ -7,6 +7,10 @@ import java.util.Queue;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 import dab.personajes.Personaje;
+import dab.potenciadores.SemillaDelErmitanio;
+import dab.potenciadores.EsferaDelDragon;
+import dab.potenciadores.NubeVoladora;
+import dab.potenciadores.Potenciador;
 import dab.usuario.Usuario;
 
 public class Juego {
@@ -15,6 +19,9 @@ public class Juego {
 	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
 	///QUE LOS TURNOS SE MANEJEN POR USUARIO Y NO POR EQUIPO
 	
+	private static final int cantidadEsferasDelDragon = 7;
+	private static final int cantidadNubesVoladoras = 5;
+	private static final int cantidadSemillasDelErmitanio = 5;
 	private Tablero tablero;
 	Turno turno;
 
@@ -29,7 +36,12 @@ public class Juego {
 		//Cambiaro esto de que el tablero conozca al equipo enemigo de un determinado equipo. Eso lo podria hacer
 		//El juego o el usuario
 		this.tablero = new Tablero(altoTablero, anchoTablero, userGuerrerosZ.getEquipo(), userEnemigos.getEquipo());
-	
+		try {
+			this.colocarConsumibles();
+		} catch (InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ordenTurnos = new LinkedList<Usuario>();
 		ordenTurnos.offer(userGuerrerosZ);
 		ordenTurnos.offer(userEnemigos);
@@ -38,6 +50,23 @@ public class Juego {
 
 	}
 	
+	private void colocarConsumibles() throws InstantiationException, IllegalAccessException {
+		// TODO Auto-generated method stub
+		ArrayList<Potenciador> potenciadores = new ArrayList<Potenciador>();
+		
+		this.generarPotenciadores(potenciadores, cantidadEsferasDelDragon, EsferaDelDragon.class);
+		this.generarPotenciadores(potenciadores, cantidadNubesVoladoras, NubeVoladora.class);
+		this.generarPotenciadores(potenciadores, cantidadSemillasDelErmitanio, SemillaDelErmitanio.class);
+	} 
+
+	private <T extends Potenciador> void generarPotenciadores(ArrayList<Potenciador> potenciadores, int cantidadAAnadir, Class<T> claseDelPotenciador) throws InstantiationException, IllegalAccessException {
+		
+		for (int i = 0; i < cantidadAAnadir; i++){
+			potenciadores.add(claseDelPotenciador.newInstance());
+		}
+		
+	}
+
 	public void seleccionarPersonajeDeLaCelda(Celda celda){
 		if (!turno.puedeJugar((Personaje) celda.getFicha())){
 			throw new EstePersonajeNoPuedeRealizarMovimientosEsteTurno();
