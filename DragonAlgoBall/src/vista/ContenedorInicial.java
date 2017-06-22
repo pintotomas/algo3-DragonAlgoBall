@@ -44,12 +44,12 @@ public class ContenedorInicial extends StackPane {
         this.getChildren().addAll(imagen, botonJugar);
     }
 	private void startOpening(){
-	/*	// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 		  URL resource = ContenedorInicial.class.getResource("/vista/sonidos/opening/DBZOpening.mp3");
 //		  String path_opening = url.getPath();
 //	      Media media = new Media(new File(path_opening).toURI().toString());
 		  Media media = new Media(resource.toString());
 	      MediaPlayer mediaPlayer = new MediaPlayer(media);
-	      mediaPlayer.play();*/
+	      mediaPlayer.play();
 	}
 }
