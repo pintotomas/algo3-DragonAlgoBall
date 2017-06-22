@@ -12,6 +12,6 @@ public class ConvierteteEnChocolate extends AtaqueEspecial {
 
 	@Override
 	public void lanzar(Personaje enemigo){
-		enemigo.agarrarPotenciador(new Inutilizador());
+		enemigo.interactuarAlContacto(new Inutilizador());
 	}
 }
