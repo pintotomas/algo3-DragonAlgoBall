@@ -49,4 +49,10 @@ public class NubeVoladora extends Potenciador {
 		return duracionTurnos > 0;
 	}
 
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+
 }

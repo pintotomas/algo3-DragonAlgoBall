@@ -44,5 +44,11 @@ public class EsferaDelDragon extends Potenciador {
 	public int getKiExtra() {
 		return kiExtra;
 	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
 	
 }

@@ -1,6 +1,8 @@
 package dab.potenciadores;
 
-public abstract class Potenciador {
+import dab.interfaces.Ficha;
+
+public abstract class Potenciador implements Ficha{
 	
 	protected String nombre;
 	protected double duracionTurnos;
@@ -25,6 +27,16 @@ public abstract class Potenciador {
 	
 	public void pasoUnAtaque(){
 		duracionAtaques -= 1;
+	}
+	
+	@Override
+	public boolean permiteSolapamiento(){
+		return true;
+	}
+	
+	@Override
+	public void interactuarAlContacto(Ficha fichita){
+		
 	}
 	
 	public boolean estaActivo(){
