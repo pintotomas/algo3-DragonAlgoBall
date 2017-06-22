@@ -13,7 +13,7 @@ public class MajinBooBase extends Estado{
 		alcance = 2;
 		velocidad = 2;
 		nombre = "MajinBoo";
-		kiParaTransformar = 50;
+		kiParaTransformar = 20;
 	}
 
 	@Override

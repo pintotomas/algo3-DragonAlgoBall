@@ -1,21 +1,30 @@
 package dab.tests.transformaciones;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import dab.equipo.Equipo;
 import dab.juego.Tablero;
+import dab.personajes.Personaje;
 import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
 
 public class CellTests {
 	
-	Cell cell;
-	Goku goku;
-	Equipo enemigos, guerrerosz;
-	Tablero tablero;
-	
+	private Cell cell;
+	private Goku goku;
+	private Equipo enemigos, guerrerosz;
+	private Tablero tablero;
+	private int kiParaEspecial = 5;
+	private int absorcionesParaPrimerTransformacion = 4;
+	private int absorcionesParaSegundaTransformacion = 4;
+	private int poderBase = 20;
+	private int poderPrimerTransformacion = 40;
+	private int poderSegundaTransformacion = 80;
+
 	@Before
 	public void setUp() throws Exception {
 		cell = new Cell();
@@ -34,24 +43,37 @@ public class CellTests {
 		Assert.assertFalse(cell.transformarDisponible());
 	}
 	@Test
-	public void testAbsorberVida() {
+	public void testAbsorberVidaRecuperaVida() {
 		cell.modificarVida(-20);
-		cell.modificarKi(5);
+		cell.modificarKi(kiParaEspecial);
 		cell.ataqueEspecial(goku);
 		Assert.assertEquals(cell.getVidaMaxima(), cell.getVida(), 0);
 		Assert.assertEquals(480, goku.getVida(),0);
 	}
-	@Test
-	public void testTransformar(){
-		for (int i = 0; i < 4; i++) {
-			cell.modificarKi(5);
-			cell.ataqueEspecial(goku);
+	
+	private void absorberNVeces(Personaje personaje, int n){
+		for (int i = 0; i < n; i++) {
+			cell.modificarKi(kiParaEspecial);
+			cell.ataqueEspecial(personaje);
 		}
-		Assert.assertTrue(cell.transformarDisponible());
-		cell.transformar();
-		Assert.assertEquals(40, cell.getPoder(), 0);
-		Assert.assertEquals(4, cell.getAlcance());
 	}
 	
+	@Test
+	public void testPrimerTransformacionAumentaPoderEsperado(){
+		absorberNVeces(goku, 4);
+		cell.transformar();
+		Assert.assertEquals(poderPrimerTransformacion, cell.getPoder(), 0);
+	}
+	@Test
+	public void testSegundaTransformacionAumentaPoderEsperado(){
+		absorberNVeces(goku, absorcionesParaPrimerTransformacion + absorcionesParaSegundaTransformacion);
+		cell.transformar();
+		cell.transformar();
+		Assert.assertEquals(poderSegundaTransformacion, cell.getPoder(), 0);
+	}
+	@Test
+	public void poderBaseEsperado(){
+		assertEquals(poderBase, cell.getPoder(), 0);
+	}
 
 }

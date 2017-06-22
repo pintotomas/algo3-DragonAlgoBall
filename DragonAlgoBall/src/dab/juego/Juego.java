@@ -11,8 +11,6 @@ import dab.usuario.Usuario;
 
 public class Juego {
 	
-	// Escribir a mdegiov at gmail.com
-	
 	////CAMBIOS A HACER:
 	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
 	///QUE LOS TURNOS SE MANEJEN POR USUARIO Y NO POR EQUIPO
@@ -150,6 +148,18 @@ public class Juego {
 
 	public ArrayList<Personaje> obtenerPersonajesAtacablesDelSeleccionado() {
 		return tablero.personajesAtacables(personajeSeleccionado);
+	}
+	
+	public void seleccionarPersonajeEnPosicion(int fila, int columna){
+		this.seleccionarPersonajeDeLaCelda(tablero.obtenerCelda(fila, columna));
+	}
+	
+	public void moverPersonajeSeleccionadoACelda(Celda celda){
+		moverPersonajeSeleccionadoHacia(celda.getFila(), celda.getColumna());
+	}
+	
+	public Usuario obtenerJugadorActual(){
+		return ordenTurnos.peek();
 	}
 }
 
