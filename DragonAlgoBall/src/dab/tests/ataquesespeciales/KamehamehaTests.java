@@ -36,8 +36,8 @@ public class KamehamehaTests {
 			guerrerosZ = new Equipo("Guerreros Z");
 			guerrerosZ.agregarPersonaje(goku);
 			tablero = new Tablero(altoTablero,anchoTablero, guerrerosZ, enemigos);
-			tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
-			tablero.colocarFichaMovil(majinboo, filaBoo, columnaBoo);
+			tablero.colocarFicha(goku, filaGoku, columnaGoku);
+			tablero.colocarFicha(majinboo, filaBoo, columnaBoo);
 			danoDeKamehameha = goku.getPoder()*1.5;
 		}
 

@@ -35,8 +35,8 @@ public class AbsorberTests {
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(goku);
 		tablero = new Tablero(altoTablero,anchoTablero, guerrerosZ, enemigos);
-		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
-		tablero.colocarFichaMovil(cell, filaCell, columnaCell);
+		tablero.colocarFicha(goku, filaGoku, columnaGoku);
+		tablero.colocarFicha(cell, filaCell, columnaCell);
 		danoHabilidad = cell.getPoder();
 	}
 

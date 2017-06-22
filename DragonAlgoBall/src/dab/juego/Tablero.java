@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
+import dab.interfaces.IFicha;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
 import dab.personajes.Personaje;
-import dab.potenciadores.Potenciador;
-
 public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
@@ -35,11 +34,12 @@ public class Tablero{
 		this(altoDeTablero, anchoDeTablero);
 		equipo1 = equipo1_;
 		equipo2 = equipo2_;
-		int columnaInicial = anchoDeTablero/2;
-		int filaActual = 0;
-		this.ubicarPersonajesEnPosicionInicial(equipo1, filaActual, columnaInicial);
-		filaActual += altoDeTablero - 1;
-		this.ubicarPersonajesEnPosicionInicial(equipo2, filaActual, columnaInicial);
+	
+		int filaInicial = altoDeTablero/2;
+		int columnaActual = 0;
+		this.ubicarPersonajesEnPosicionInicial(equipo1, filaInicial, columnaActual);
+		columnaActual += anchoDeTablero - 2;
+		this.ubicarPersonajesEnPosicionInicial(equipo2, filaInicial, columnaActual);
 	}
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
@@ -47,7 +47,7 @@ public class Tablero{
 		//de ubicarFichas y lo que recibiria seria una coleccion de fichas y el rango donde ponerlas
 		int i = 0;
 		for(Personaje personaje : equipo1.obtenerPersonajes()){
-			this.colocarFichaMovil(personaje, fila , columnaInicial + i);
+			this.colocarFicha(personaje, fila + i, columnaInicial);
 			i += 1;
 		}
 	}
@@ -56,17 +56,14 @@ public class Tablero{
 		celdaConLaFicha.quitarFichaMovible();
 	}
 	
-	public void colocarFichaMovil(IFichaMovible ficha, int fila,int columna){
+
+	public void colocarFicha(IFicha ficha, int fila,int columna){
 		Celda celda = this.obtenerCelda(fila, columna);
 		celda.colocarFicha(ficha);
 		ficha.setPosicion(celda);
 	}
 	
-	public void colocarPotenciador(Potenciador consumible, int fila, int columna){
-		Celda celda = this.obtenerCelda(fila, columna);
-		celda.colocarFicha(consumible);
-		
-	}
+	
 	
 	public void moverFicha(IFichaMovible ficha, int fila, int columna){
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
@@ -76,7 +73,7 @@ public class Tablero{
 		}
 		if (this.puedeTrasladarse(ficha, fila, columna)){
 			celdaInicio.quitarFichaMovible();
-			this.colocarFichaMovil(ficha, fila, columna);
+			this.colocarFicha(ficha, fila, columna);
 		}
 	
 		else{

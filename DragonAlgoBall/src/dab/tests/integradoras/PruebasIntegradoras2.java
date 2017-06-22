@@ -92,7 +92,7 @@ public class PruebasIntegradoras2 {
 		int filaNube = 2;
 		int columnaNube = 5;
 		int velocidadDuplicada = gohan.getVelocidad()*2;
-		tablero.colocarPotenciador(new NubeVoladora(),filaNube,columnaNube);
+		tablero.colocarFicha(new NubeVoladora(),filaNube,columnaNube);
 		juego.seleccionarPersonajeDeLaCelda(celdaGohan);
 		celdaGohan = tablero.obtenerCelda(filaNube, columnaNube);
 		juego.moverPersonajeSeleccionadoACelda(celdaGohan);

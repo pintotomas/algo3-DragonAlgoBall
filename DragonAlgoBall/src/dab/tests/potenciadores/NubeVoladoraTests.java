@@ -22,8 +22,8 @@ public class NubeVoladoraTests {
 	public void setUp() throws Exception {
 		goku = new Goku();
 		tablero = new Tablero(5,5);
-		tablero.colocarPotenciador(nube, filaNube, columnaNube);
-		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);	
+		tablero.colocarFicha(nube, filaNube, columnaNube);
+		tablero.colocarFicha(goku, filaGoku, columnaGoku);	
 	}
 
 	@Test

@@ -36,8 +36,8 @@ public class MasenkoTests {
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(gohan);
 		tablero = new Tablero(altoTablero,anchoTablero, guerrerosZ, enemigos);
-		tablero.colocarFichaMovil(gohan, filaGohan, columnaGohan);
-		tablero.colocarFichaMovil(majinboo, filaBoo, columnaBoo);
+		tablero.colocarFicha(gohan, filaGohan, columnaGohan);
+		tablero.colocarFicha(majinboo, filaBoo, columnaBoo);
 		danoDeMasenko = gohan.getPoder()*1.25;
 	}
 

@@ -36,8 +36,8 @@ public class MakankosappoTests {
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(piccolo);
 		tablero = new Tablero(altoTablero,anchoTablero, guerrerosZ, enemigos);
-		tablero.colocarFichaMovil(piccolo, filaPiccolo, columnaPiccolo);
-		tablero.colocarFichaMovil(cell, filaCell, columnaCell);
+		tablero.colocarFicha(piccolo, filaPiccolo, columnaPiccolo);
+		tablero.colocarFicha(cell, filaCell, columnaCell);
 		danoHabilidad = piccolo.getPoder()*1.25;
 	}
 
