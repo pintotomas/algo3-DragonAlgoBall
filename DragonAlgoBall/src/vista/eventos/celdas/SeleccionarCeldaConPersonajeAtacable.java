@@ -23,11 +23,7 @@ public class SeleccionarCeldaConPersonajeAtacable implements EventHandler<MouseE
 
 	@Override
 	public void handle(MouseEvent event) {
-		
-		juego.personajeSeleccionadoAtacaA(personajeEnemigo);
-		juego.seHaEfectuadoUnAtaque();
-		vistaTablero.dibujarTableroSinNingunaSeleccion();
-		vistaTablero.actualizarVistaDePersonajes();
+		vistaTablero.actualizarVistaEnemigo(personajeEnemigo);
 		
 	}
 

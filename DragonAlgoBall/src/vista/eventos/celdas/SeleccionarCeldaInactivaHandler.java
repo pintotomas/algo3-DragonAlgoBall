@@ -39,7 +39,7 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 		
 		//(Esto hace que se despinten las celdas rojas al seleccionar otro personaje u otra celda vacia)
 		vistaTablero.dibujarTableroSinNingunaSeleccion(); 
-		
+		vistaTablero.actualizarVistaEnemigo(null);
 		
 		if (juego.sePuedeSeleccionarUnPersonaje(celdaGUIOrigen.getCelda())){
 			
@@ -49,7 +49,6 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 				vistaTablero.refrescar(celdaGUIOrigen.getFila(), celdaGUIOrigen.getColumna(), null);
 				
 				juego.seleccionarPersonajeDeLaCelda(celdaGUIOrigen.getCelda());
-				vistaInferiorPersonajes.updateSeleccionado(juego.personajeSeleccionado());
 				if (juego.sePuedeEfectuarUnMovimiento()) {this.mostrarCeldasAlcanzables();}
 				if (juego.sePuedeSeguirAtacando()) {this.mostrarCeldasConPersonajesAtacables();}
 			}

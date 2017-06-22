@@ -29,6 +29,7 @@ public class SeleccionarCeldaParaMoverseEventHandler implements EventHandler<Mou
 		juego.moverPersonajeSeleccionadoHacia(filaDestino, columnaDestino);
 		juego.seHaEfectuadoUnMovimiento();
 		vistaTablero.dibujarTableroSinNingunaSeleccion();
+		vistaTablero.actualizarVistaEnemigo(null);
 		
 	}
 
