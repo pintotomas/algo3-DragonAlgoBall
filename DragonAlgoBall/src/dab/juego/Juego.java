@@ -1,12 +1,12 @@
 package dab.juego;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 import dab.personajes.Personaje;
-
 import dab.usuario.Usuario;
 
 public class Juego {
@@ -133,7 +133,13 @@ public class Juego {
 			return turno.quedanAtaquesDisponibles();
 	}
 
-
+	
+	public Collection<Personaje> getPersonajesDeTurno(){
+		return turno.getEquipo().obtenerPersonajes();
+		
+		
+	}
+	
 	public boolean sePuedeEfectuarUnMovimiento() {
 		// TODO Auto-generated method stub
 		return turno.quedanMovimientosDisponibles();

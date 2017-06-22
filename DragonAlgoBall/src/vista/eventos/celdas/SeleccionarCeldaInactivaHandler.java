@@ -7,7 +7,7 @@ import dab.juego.Juego;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import vista.VistaCaracteristicasPersonaje;
+import vista.VistaInferiorPersonajes;
 import vista.VistaTablero;
 import vista.vistasCelda.VistaCelda;
 import vista.vistasCelda.VistaCeldaALaCualSePuedeMover;
@@ -21,14 +21,14 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 	private final VistaCelda[][] celdasGUI;
 	private final VistaTablero vistaTablero;
 	private Juego juego;
-	private VistaCaracteristicasPersonaje vistaCaracteristicasPersonajes;
+	private VistaInferiorPersonajes vistaInferiorPersonajes;
 	
-	public SeleccionarCeldaInactivaHandler(VistaCelda celda, Juego juego, VistaCelda[][] celdasGUI, VistaTablero vistaTablero, VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje) {
+	public SeleccionarCeldaInactivaHandler(VistaCelda celda, Juego juego, VistaCelda[][] celdasGUI, VistaTablero vistaTablero, VistaInferiorPersonajes vistaInferiorPersonaje) {
 		this.celdaGUIOrigen = celda;
 		this.celdasGUI = celdasGUI;
 		this.vistaTablero = vistaTablero;
 		this.juego = juego;
-		this.vistaCaracteristicasPersonajes = vistaCaracteristicasPersonaje;
+		this.vistaInferiorPersonajes = vistaInferiorPersonaje;
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 				vistaTablero.refrescar(celdaGUIOrigen.getFila(), celdaGUIOrigen.getColumna(), null);
 				
 				juego.seleccionarPersonajeDeLaCelda(celdaGUIOrigen.getCelda());
-				vistaCaracteristicasPersonajes.update(juego.personajeSeleccionado());
+				vistaInferiorPersonajes.updateSeleccionado(juego.personajeSeleccionado());
 				if (juego.sePuedeEfectuarUnMovimiento()) {this.mostrarCeldasAlcanzables();}
 				if (juego.sePuedeSeguirAtacando()) {this.mostrarCeldasConPersonajesAtacables();}
 			}
