@@ -6,11 +6,12 @@ import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
+import dab.interfaces.Ficha;
 import dab.interfaces.IContenedorDeFicha;
 import dab.interfaces.IFichaMovible;
 import dab.potenciadores.Potenciador;
 
-public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
+public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	
 	protected Equipo equipo; 
 	protected IContenedorDeFicha coordenadas;
@@ -106,7 +107,9 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		}else{
 			vida += cantidad;
 		}
-		if (estoyMuerto()){
+		//Parche para que corran las pruebas: o cambiar las pruebas, o 
+		//hacer funcionn
+		if (estoyMuerto() && equipo != null){
 			equipo.quitarPersonaje(this);
 		}
 	}
@@ -205,7 +208,14 @@ public abstract class Personaje implements IProveedorDeKi, IFichaMovible{
 		this.equipo = equipo;
 	}
 	
-	public void agarrarPotenciador(Potenciador potenciador){
+	
+	@Override
+	public boolean permiteSolapamiento(){
+		return false;
+	}
+	
+	public void interactuarAlContacto(Ficha ficha){
+		Potenciador potenciador = (Potenciador) ficha;
 		potenciadoresActivos.add(potenciador);
 		this.modificarVida(potenciador.getVidaExtra());
 	}

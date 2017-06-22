@@ -47,7 +47,7 @@ public class Tablero{
 		//de ubicarFichas y lo que recibiria seria una coleccion de fichas y el rango donde ponerlas
 		int i = 0;
 		for(Personaje personaje : equipo1.obtenerPersonajes()){
-			this.colocarFichaMovil(personaje,fila , columnaInicial + i);
+			this.colocarFichaMovil(personaje, fila , columnaInicial + i);
 			i += 1;
 		}
 	}
@@ -58,13 +58,13 @@ public class Tablero{
 	
 	public void colocarFichaMovil(IFichaMovible ficha, int fila,int columna){
 		Celda celda = this.obtenerCelda(fila, columna);
-		celda.colocarFichaMovil(ficha);
+		celda.colocarFicha(ficha);
 		ficha.setPosicion(celda);
 	}
 	
 	public void colocarPotenciador(Potenciador consumible, int fila, int columna){
 		Celda celda = this.obtenerCelda(fila, columna);
-		celda.colocarPotenciador(consumible);
+		celda.colocarFicha(consumible);
 		
 	}
 	
@@ -127,7 +127,7 @@ public class Tablero{
 					newFil =celda.getFila() + fil;
 					if(newFil <= filMax && newCol <= colMax && newFil >= filMin && newCol >= colMin){
 						nuevaCelda = this.obtenerCelda(newFil, newCol);
-						if(!nuevaCelda.estaOcupada()){
+						if(nuevaCelda.permitePosicionarUnaFicha()){
 							celdas.add(nuevaCelda);
 						}
 					}
@@ -200,10 +200,11 @@ public class Tablero{
 			throw new CeldaNoContieneFicha();
 		}
 		ArrayList<Celda> celdasAlcanzables = celdasPermitidas(celdaInicio, ficha.getVelocidad());
-		if (ficha.movimientoPosible(celdaFin) && !celdaFin.estaOcupada() && celdasAlcanzables.contains(celdaFin)){
+		if (ficha.movimientoPosible(celdaFin) && celdaFin.permitePosicionarUnaFicha() && celdasAlcanzables.contains(celdaFin)){
 			return true;
 		}
 		return false;
 	}
+
 }
 

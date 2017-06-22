@@ -43,4 +43,10 @@ public class Inutilizador extends Potenciador {
 		return kiExtra;
 	}
 
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+
 }
