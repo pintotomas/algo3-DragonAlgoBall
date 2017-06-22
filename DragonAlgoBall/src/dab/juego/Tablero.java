@@ -38,7 +38,7 @@ public class Tablero{
 		int filaInicial = altoDeTablero/2;
 		int columnaActual = 0;
 		this.ubicarPersonajesEnPosicionInicial(equipo1, filaInicial, columnaActual);
-		columnaActual += anchoDeTablero - 2;
+		columnaActual += anchoDeTablero - 1;
 		this.ubicarPersonajesEnPosicionInicial(equipo2, filaInicial, columnaActual);
 	}
 	
