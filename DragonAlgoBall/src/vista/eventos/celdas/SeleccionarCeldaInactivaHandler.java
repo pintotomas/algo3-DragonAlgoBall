@@ -76,7 +76,7 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 		for (Personaje enemigo: personajesAtacables){
 			celdasGUI[enemigo.getPosicion().getFila()][enemigo.getPosicion().getColumna()] = 
 					new VistaCeldaConPersonajeAtacable((Celda)enemigo.getPosicion());
-			EventHandler<MouseEvent> seleccionarCeldaConPersonajeAtacable = new SeleccionarCeldaConPersonajeAtacable(juego, enemigo, vistaTablero);
+			EventHandler<MouseEvent> seleccionarCeldaConPersonajeAtacable = new SeleccionarCeldaConPersonajeAtacable( enemigo, vistaTablero);
 			vistaTablero.refrescar(enemigo.getPosicion().getFila(), enemigo.getPosicion().getColumna(), seleccionarCeldaConPersonajeAtacable);
 		}
 	}
