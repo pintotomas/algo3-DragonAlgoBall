@@ -6,12 +6,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
+
 import dab.personajes.Personaje;
 import dab.potenciadores.SemillaDelErmitanio;
 import dab.potenciadores.EsferaDelDragon;
 import dab.potenciadores.NubeVoladora;
 import dab.potenciadores.Potenciador;
 import dab.usuario.Usuario;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Juego {
 	
@@ -22,6 +24,8 @@ public class Juego {
 	private static final int cantidadEsferasDelDragon = 7;
 	private static final int cantidadNubesVoladoras = 5;
 	private static final int cantidadSemillasDelErmitanio = 5;
+	private int altoTablero;
+	private int anchoTablero;
 	private Tablero tablero;
 	Turno turno;
 
@@ -29,12 +33,15 @@ public class Juego {
 	
 	private Personaje personajeSeleccionado;
 	
+
 	public Juego(int altoTablero, int anchoTablero, Usuario userGuerrerosZ, Usuario userEnemigos){
 		//PRE: SOLO DOS USUARIOS Y EL PRIMERO SERA EL PRIMERO EN JUGAR
 
 	
 		//Cambiaro esto de que el tablero conozca al equipo enemigo de un determinado equipo. Eso lo podria hacer
 		//El juego o el usuario
+		this.altoTablero = altoTablero;
+		this.anchoTablero = anchoTablero;
 		this.tablero = new Tablero(altoTablero, anchoTablero, userGuerrerosZ.getEquipo(), userEnemigos.getEquipo());
 		try {
 			this.colocarConsumibles();
@@ -57,7 +64,27 @@ public class Juego {
 		this.generarPotenciadores(potenciadores, cantidadEsferasDelDragon, EsferaDelDragon.class);
 		this.generarPotenciadores(potenciadores, cantidadNubesVoladoras, NubeVoladora.class);
 		this.generarPotenciadores(potenciadores, cantidadSemillasDelErmitanio, SemillaDelErmitanio.class);
+		
+		for (int i = 0; i < potenciadores.size(); i++){
+			
+			boolean seEncontroUnaPosicionParaUbicarPotenciador = false;
+			
+			while (!seEncontroUnaPosicionParaUbicarPotenciador ){
+				int randomFila = generarNumeroRandom(0, altoTablero);
+				int randomColumna = generarNumeroRandom(0, anchoTablero);
+				if (!tablero.celdaOcupada(randomFila, randomColumna)){
+					tablero.colocarFicha(potenciadores.get(i), randomFila, randomColumna);
+					seEncontroUnaPosicionParaUbicarPotenciador = true;
+				}
+			}
+		}
+		
 	} 
+	
+	private int generarNumeroRandom(int min, int max){
+		int random = ThreadLocalRandom.current().nextInt(min, max);
+		return random;
+	}
 
 	private <T extends Potenciador> void generarPotenciadores(ArrayList<Potenciador> potenciadores, int cantidadAAnadir, Class<T> claseDelPotenciador) throws InstantiationException, IllegalAccessException {
 		
