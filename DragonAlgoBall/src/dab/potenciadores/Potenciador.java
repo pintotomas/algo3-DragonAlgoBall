@@ -1,8 +1,10 @@
 package dab.potenciadores;
 
-import dab.interfaces.Ficha;
+import dab.interfaces.IContenedorDeFicha;
+import dab.interfaces.IFicha;
+import dab.juego.Celda;
 
-public abstract class Potenciador implements Ficha{
+public abstract class Potenciador implements IFicha{
 	
 	protected String nombre;
 	protected double duracionTurnos;
@@ -30,12 +32,16 @@ public abstract class Potenciador implements Ficha{
 	}
 	
 	@Override
-	public boolean permiteSolapamiento(){
+	public boolean permiteSuperposicion(){
 		return true;
 	}
 	
 	@Override
-	public void interactuarAlContacto(Ficha fichita){
+	public void interactuarAlContacto(IFicha ficha){
+		
+	}
+	
+	public void setPosicion(IContenedorDeFicha celda){
 		
 	}
 	

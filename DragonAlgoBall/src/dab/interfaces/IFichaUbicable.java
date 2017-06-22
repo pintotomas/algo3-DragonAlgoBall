@@ -1,12 +1,9 @@
 package dab.interfaces;
 
-import dab.potenciadores.Potenciador;
 
-public interface IFichaUbicable extends Ficha{
+public interface IFichaUbicable extends IFicha{
 
+	
 	IContenedorDeFicha getPosicion();
-
-	void setPosicion(IContenedorDeFicha celda);
-
-
+	
 }

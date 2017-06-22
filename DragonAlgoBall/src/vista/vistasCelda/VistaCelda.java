@@ -48,16 +48,24 @@ public abstract class VistaCelda extends StackPane{
 		if (celda.estaOcupada()){
 			FabricadorDeRepresentacionDePersonaje fabricador = new FabricadorDeRepresentacionDePersonaje();
 			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
-			Image imagenRepresentador = new Image(urlImagenRepresentadora);
-			Pane pane = new Pane();
-			BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
-			pane.setBackground(new Background(background));
+			
+			//sacar este if cuando esten todas las imagenes
+			if (urlImagenRepresentadora != null){
+				Image imagenRepresentador = new Image(urlImagenRepresentadora);
+				Pane pane = new Pane();
+				BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
+				pane.setBackground(new Background(background));
+				text = new Text(celda.getFicha().getNombre());
+				this.getChildren().addAll(rectangulo, pane, text);
+			}
 //			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
 //			   " -fx-background-repeat: no-repeat;"+
 //			    "-fx-background-size: contain;"));
-			text = new Text(celda.getFicha().getNombre());
+			else{
+				text = new Text(celda.getFicha().getNombre());
 			
-			this.getChildren().addAll(rectangulo, pane, text);
+				this.getChildren().addAll(rectangulo, text);
+			}
 		}
 		else{
 			text = new Text("");

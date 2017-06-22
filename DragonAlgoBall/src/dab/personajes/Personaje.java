@@ -6,9 +6,10 @@ import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
-import dab.interfaces.Ficha;
 import dab.interfaces.IContenedorDeFicha;
+import dab.interfaces.IFicha;
 import dab.interfaces.IFichaMovible;
+import dab.interfaces.IFichaUbicable;
 import dab.potenciadores.Potenciador;
 
 public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
@@ -195,7 +196,8 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	public IContenedorDeFicha getPosicion(){
 		return coordenadas;
 	}
-	
+
+	@Override
 	public void setPosicion(IContenedorDeFicha coordenadas){
 		this.coordenadas = coordenadas;
 	}
@@ -210,11 +212,11 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	
 	
 	@Override
-	public boolean permiteSolapamiento(){
+	public boolean permiteSuperposicion(){
 		return false;
 	}
 	
-	public void interactuarAlContacto(Ficha ficha){
+	public void interactuarAlContacto(IFicha ficha){
 		Potenciador potenciador = (Potenciador) ficha;
 		potenciadoresActivos.add(potenciador);
 		this.modificarVida(potenciador.getVidaExtra());

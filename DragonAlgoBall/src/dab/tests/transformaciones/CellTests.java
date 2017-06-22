@@ -34,8 +34,8 @@ public class CellTests {
 		guerrerosz = new Equipo("Guerreros Z");
 		guerrerosz.agregarPersonaje(goku);
 		tablero = new Tablero(20, 20);
-		tablero.colocarFichaMovil(goku,1,1);
-		tablero.colocarFichaMovil(cell,1,2);
+		tablero.colocarFicha(goku,1,1);
+		tablero.colocarFicha(cell,1,2);
 	}
 
 	@Test

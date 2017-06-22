@@ -28,9 +28,9 @@ public class EsferaDelDragonTests {
 		goku = new Goku();
 		cell = new Cell();
 		tablero = new Tablero(5,5);
-		tablero.colocarPotenciador(esfera, filaEsfera, columnaEsfera);
-		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);	
-		tablero.colocarFichaMovil(cell, filaCell, columnaCell);
+		tablero.colocarFicha(esfera, filaEsfera, columnaEsfera);
+		tablero.colocarFicha(goku, filaGoku, columnaGoku);	
+		tablero.colocarFicha(cell, filaCell, columnaCell);
 	}
 
 	@Test

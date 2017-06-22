@@ -21,8 +21,8 @@ public class SemillaDelErmitanioTests {
 	public void setUp() throws Exception {
 		goku = new Goku();
 		tablero = new Tablero(5,5);
-		tablero.colocarPotenciador(semilla, filaSemilla, columnaSemilla);
-		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);	
+		tablero.colocarFicha(semilla, filaSemilla, columnaSemilla);
+		tablero.colocarFicha(goku, filaGoku, columnaGoku);	
 	}
 
 	@Test

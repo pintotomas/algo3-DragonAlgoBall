@@ -36,8 +36,8 @@ public class RayoMortalTests {
 		guerrerosZ = new Equipo("Guerreros Z");
 		guerrerosZ.agregarPersonaje(goku);
 		tablero = new Tablero(altoTablero,anchoTablero, guerrerosZ, enemigos);
-		tablero.colocarFichaMovil(goku, filaGoku, columnaGoku);
-		tablero.colocarFichaMovil(freezer, filaCell, columnaCell);
+		tablero.colocarFicha(goku, filaGoku, columnaGoku);
+		tablero.colocarFicha(freezer, filaCell, columnaCell);
 		danoHabilidad = freezer.getPoder()*1.5;
 	}
 

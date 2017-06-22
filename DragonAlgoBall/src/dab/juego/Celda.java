@@ -1,8 +1,11 @@
 package dab.juego;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
-import dab.interfaces.Ficha;
+
+import dab.interfaces.IFichaMovible;
+import dab.interfaces.IFichaUbicable;
 import dab.interfaces.IContenedorDeFicha;
+import dab.interfaces.IFicha;
 
 
 public class Celda implements IContenedorDeFicha{
@@ -11,7 +14,7 @@ public class Celda implements IContenedorDeFicha{
 //	IFichaMovible ficha;
 //	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	boolean ocupada;
-	Ficha ficha;
+	IFicha ficha;
 	
 	public Celda(int fila, int columna){
 		this.fila = fila;
@@ -23,16 +26,16 @@ public class Celda implements IContenedorDeFicha{
 		return ocupada;
 	}
 	
-	public Ficha getFicha(){
+	public IFicha getFicha(){
 		if(!ocupada) throw new CeldaNoContieneFicha();
 		return ficha;
 	}
 	
-	public void colocarFicha(Ficha ficha){
+	public void colocarFicha(IFicha ficha){
 		
 		if (ocupada){
 			//Si estaba ocupada, puede haber un consumidor
-			if(!this.ficha.permiteSolapamiento()) throw new CeldaOcupada();
+			if(!this.ficha.permiteSuperposicion()) throw new CeldaOcupada();
 			//Si lo habia, la ficha interactua con el
 			ficha.interactuarAlContacto(this.ficha);
 		}
@@ -61,7 +64,7 @@ public class Celda implements IContenedorDeFicha{
 
 	public boolean permitePosicionarUnaFicha() {
 		if (ocupada){
-			return ficha.permiteSolapamiento();
+			return ficha.permiteSuperposicion();
 		}
 		
 		return true;
