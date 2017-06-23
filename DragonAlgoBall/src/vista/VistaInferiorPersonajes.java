@@ -13,6 +13,7 @@ public class VistaInferiorPersonajes extends GridPane{
 	int cantidadDePersonajes = 3; //obviamente hay que cambiar esto.
 	Juego juego;
 	VistaTablero vistaTablero;
+	VistaEnemigo enemigo;
 	public VistaInferiorPersonajes(Juego juego){
 		this.juego = juego;
 		seleccionado = new VistaCaracteristicasPersonaje(null);
@@ -35,12 +36,20 @@ public class VistaInferiorPersonajes extends GridPane{
 			vista.setOnMousePressed(boton);
 			this.getChildren().add(vista);
 			i++;
+			this.enemigo = new VistaEnemigo(null, juego, vistaTablero);
+			VistaInferiorPersonajes.setColumnIndex(enemigo, i);
+			this.getChildren().add(enemigo);
 		}
 	}
 
-
+	
 	public void updateSeleccionado(Personaje personajeSeleccionado) {
 		seleccionado.update(personajeSeleccionado);
+	}
+	
+	
+	public void updateEnemigo(Personaje personajeEnemigo){
+		this.enemigo.update(personajeEnemigo);
 	}
 	
 	

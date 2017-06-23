@@ -4,6 +4,7 @@ import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Tablero;
 import dab.juego.Turno;
+import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -89,6 +90,11 @@ public class VistaTablero extends GridPane{
 	public VistaInferiorPersonajes getVistaInferiorPersonajes() {
 		
 		return this.vistaInferiorPersonaje;
+	}
+
+	public void actualizarVistaEnemigo(Personaje personajeEnemigo) {
+		this.vistaInferiorPersonaje.updateEnemigo(personajeEnemigo);
+		
 	}
 	
 	

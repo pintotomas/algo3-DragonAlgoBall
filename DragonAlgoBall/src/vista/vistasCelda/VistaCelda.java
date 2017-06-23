@@ -19,8 +19,8 @@ public abstract class VistaCelda extends StackPane{
 	
 	protected Celda celda;
 	protected Rectangle rectangulo;
-	private int recHeight = 55;
-	private int recWidth = 55;
+	private int recHeight = 60;
+	private int recWidth = 60;
 	
 	protected Color color;
 	

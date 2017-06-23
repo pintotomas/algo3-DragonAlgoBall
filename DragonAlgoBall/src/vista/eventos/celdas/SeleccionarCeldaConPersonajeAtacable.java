@@ -12,23 +12,16 @@ public class SeleccionarCeldaConPersonajeAtacable implements EventHandler<MouseE
 	
 	private Personaje personajeEnemigo;
 	private VistaTablero vistaTablero;
-	private final Juego juego;
 
-	public SeleccionarCeldaConPersonajeAtacable(Juego juego, Personaje enemigo, VistaTablero vistaTablero) {
+	public SeleccionarCeldaConPersonajeAtacable(Personaje enemigo, VistaTablero vistaTablero) {
 		
 		this.personajeEnemigo = enemigo;
 		this.vistaTablero = vistaTablero;
-		this.juego = juego;
 	}
 
 	@Override
 	public void handle(MouseEvent event) {
-		
-		juego.personajeSeleccionadoAtacaA(personajeEnemigo);
-		juego.seHaEfectuadoUnAtaque();
-		vistaTablero.dibujarTableroSinNingunaSeleccion();
-		vistaTablero.actualizarVistaDePersonajes();
-		
+		vistaTablero.actualizarVistaEnemigo(personajeEnemigo);
 	}
 
 }
