@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import vista.eventos.BotonAtaqueEspecialHandler;
 import vista.eventos.BotonAtaqueNormalHandler;
 
 public class VistaEnemigo extends VBox{
@@ -45,7 +46,10 @@ public class VistaEnemigo extends VBox{
 			//Label etiquetaKi = new Label("Ki: " + String.valueOf(ki));
 			Button ataqueNormal = new Button("ATAQUE NORMAL");
 			ataqueNormal.setOnMousePressed(new BotonAtaqueNormalHandler(personaje, juego, vistaTablero));
-			Button ataqueEspecial = new Button("ATAUE ESPECIAL");
+			Button ataqueEspecial = new Button("ATAQUE ESPECIAL");
+				if(!juego.personajeSeleccionadoTieneAtaqueEspecialDisponible())
+					ataqueEspecial.setStyle("-fx-background-color: red");
+			ataqueEspecial.setOnMousePressed(new BotonAtaqueEspecialHandler(personaje, juego, vistaTablero));
 			this.getChildren().addAll(etiquetaNombre,etiquetaVida,etiquetaPoderDeAtaque,ataqueNormal, ataqueEspecial);
 		}else{
 			this.getChildren().clear();

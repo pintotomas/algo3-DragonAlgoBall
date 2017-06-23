@@ -194,6 +194,9 @@ public class Juego {
 		
 	}
 	
+	public boolean puedeAtaqueEspecial(){
+		return personajeSeleccionado.ataqueEspecialDisponible();
+	}
 	public boolean sePuedeEfectuarUnMovimiento() {
 		// TODO Auto-generated method stub
 		return turno.quedanMovimientosDisponibles();
