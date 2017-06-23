@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 //import javafx.scene.text.TextAlignment;
-import vista.fabricadorPersonaje.FabricadorDeRepresentacionDePersonaje;
+import vista.fabricadorPersonaje.FabricadorDeRepresentacionDeFicha;
 
 public abstract class VistaCelda extends StackPane{
 	
@@ -34,7 +34,6 @@ public abstract class VistaCelda extends StackPane{
 	}
 	
 	protected void setup(){
-		Text text;
 		
 		rectangulo = new Rectangle();
 
@@ -43,33 +42,23 @@ public abstract class VistaCelda extends StackPane{
 		rectangulo.setFill(color);
 		
 		darPropiedadesARectangulo();
-		
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
 		if (celda.estaOcupada()){
-			FabricadorDeRepresentacionDePersonaje fabricador = new FabricadorDeRepresentacionDePersonaje();
+			FabricadorDeRepresentacionDeFicha fabricador = new FabricadorDeRepresentacionDeFicha();
 			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
 			
-			//sacar este if cuando esten todas las imagenes
-			if (urlImagenRepresentadora != null){
-				Image imagenRepresentador = new Image(urlImagenRepresentadora);
-				Pane pane = new Pane();
-				BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
-				pane.setBackground(new Background(background));
-				text = new Text(celda.getFicha().getNombre());
-				this.getChildren().addAll(rectangulo, pane, text);
-			}
+			Image imagenRepresentador = new Image(urlImagenRepresentadora);
+			Pane pane = new Pane();
+			BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
+			pane.setBackground(new Background(background));
+			this.getChildren().addAll(rectangulo, pane);
+			
 //			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
 //			   " -fx-background-repeat: no-repeat;"+
 //			    "-fx-background-size: contain;"));
-			else{
-				text = new Text(celda.getFicha().getNombre());
-			
-				this.getChildren().addAll(rectangulo, text);
-			}
 		}
 		else{
-			text = new Text("");
-			this.getChildren().addAll(rectangulo, text);
+			this.getChildren().addAll(rectangulo);
 		}
 		
 	    

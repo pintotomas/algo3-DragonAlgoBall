@@ -12,7 +12,7 @@ public class CellSemiPerfecto extends Estado {
 		poder = 40;
 		alcance = 4;
 		velocidad = 3;
-		nombre = "Cell semi perfecto";;
+		nombre = "Cell Semi Perfecto";;
 		
 	}
 	@Override

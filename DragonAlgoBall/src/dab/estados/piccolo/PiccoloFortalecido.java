@@ -15,7 +15,7 @@ public class PiccoloFortalecido extends Estado {
 		poder = 40;
 		alcance = 4;
 		velocidad = 3;
-		nombre = "Piccolo fortalecido";
+		nombre = "Piccolo Fortalecido";
 		kiParaTransformar = 0;
 		this.proveedorDeVidaAliados = proveedorDeVida;
 	}
