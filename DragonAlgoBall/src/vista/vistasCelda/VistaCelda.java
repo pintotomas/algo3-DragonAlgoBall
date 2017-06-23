@@ -19,8 +19,8 @@ public abstract class VistaCelda extends StackPane{
 	
 	protected Celda celda;
 	protected Rectangle rectangulo;
-	private int recHeight = 55;
-	private int recWidth = 55;
+	private int recHeight = 60;
+	private int recWidth = 60;
 	
 	protected Color color;
 	
@@ -34,7 +34,6 @@ public abstract class VistaCelda extends StackPane{
 	}
 	
 	protected void setup(){
-		Text text;
 		
 		rectangulo = new Rectangle();
 
@@ -55,13 +54,11 @@ public abstract class VistaCelda extends StackPane{
 //			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
 //			   " -fx-background-repeat: no-repeat;"+
 //			    "-fx-background-size: contain;"));
-			text = new Text(celda.getFicha().getNombre());
 			
-			this.getChildren().addAll(rectangulo, pane, text);
+			this.getChildren().addAll(rectangulo, pane);
 		}
 		else{
-			text = new Text("");
-			this.getChildren().addAll(rectangulo, text);
+			this.getChildren().addAll(rectangulo);
 		}
 		
 	    
