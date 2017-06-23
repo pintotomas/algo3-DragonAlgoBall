@@ -10,7 +10,7 @@ public class GohanSuperSayajinFase2 extends Estado {
 		poder = 100;
 		alcance = 4;
 		velocidad = 3;
-		nombre = "Gohan super sayajin fase 2";
+		nombre = "Gohan Super Sayajin Fase 2";
 	}
 
 	@Override
