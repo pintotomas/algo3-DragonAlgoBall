@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application {
-	private int pixelesAnchoHD = 1920;
-    private int pixelesAltoHD = 1080;
+	private int pixelesAnchoHD = 1360;
+    private int pixelesAltoHD = 768;
     
     public static void main(String[] args) {
         launch(args);

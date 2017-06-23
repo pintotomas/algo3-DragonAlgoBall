@@ -6,42 +6,44 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import vista.eventos.BotonJugarEventHandler;
 
-public class ContenedorInicial extends StackPane {
+public class ContenedorInicial extends Pane {
     Stage stage;
     private int pixelesAnchoHD;
     private int pixelesAltoHD;
     public ContenedorInicial(Stage stage, Scene proximaEscena, int pixelesAnchoHD, int pixelesAltoHD) {
 
+    		 
         this.stage = stage;
         this.pixelesAltoHD = pixelesAltoHD;
         this.pixelesAnchoHD = pixelesAnchoHD;
        	this.startOpening();
 		
-		
-      
-//        String imagen = "vista/Imagenes/inicioDragonAlgoBall.png";
-        ImageView imagen = new ImageView(new Image("vista/Imagenes/inicioDragonAlgoBall.png", stage.getWidth(), stage.getHeight(), true, false));
-//        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-//        		 new BackgroundSize(stage.getWidth(), stage.getHeight(), true, true, true, true));
-//        
-        
-//        this.setStyle("-fx-background-image: url('" + imagen + "'); " +
-//           "-fx-background-position: center center; " +
-//           "-fx-background-repeat: stretch;");
-//        
+	
+       	Image imagen = new Image("vista/Imagenes/inicioDragonAlgoBall.png", this.getWidth(), this.getHeight(), true, false);
+        ImageView img = new ImageView(imagen);
+        img.fitWidthProperty().bind(stage.widthProperty());
+        img.fitHeightProperty().bind(stage.heightProperty());
+
         Button botonJugar = new Button();
         botonJugar.setText("Jugar");
-        
+        botonJugar.setTranslateX(700);
+        botonJugar.setTranslateY(550);
+
         BotonJugarEventHandler botonJugarHandler = new BotonJugarEventHandler(stage, proximaEscena);
         botonJugar.setOnAction(botonJugarHandler);
 		
-        this.getChildren().addAll(imagen, botonJugar);
+        this.getChildren().addAll(img,botonJugar);
     }
 	private void startOpening(){
 		// TODO Auto-generated method stub
