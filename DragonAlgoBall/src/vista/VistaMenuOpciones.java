@@ -50,6 +50,7 @@ public class VistaMenuOpciones extends Pane {
 	}
 	
 	private void asignarSiguienteEscenaABoton(Button boton, Pane siguienteVista){
+		
 		Scene siguienteEscena = new Scene(siguienteVista);
 		CambiarEscenaAlPresionarEventHandler event= new CambiarEscenaAlPresionarEventHandler(stage, siguienteEscena);
 		boton.setOnMousePressed(event);
