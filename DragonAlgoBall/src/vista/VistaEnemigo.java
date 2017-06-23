@@ -23,7 +23,8 @@ public class VistaEnemigo extends VBox{
 	private void setVista(){
 		this.setSpacing(5);
         this.setPadding(new Insets(50));
-        this.setStyle("-fx-background-color: blue;");
+        this.setStyle("-fx-background-color: #dc3c26; -fx-background-radius: 5px; "
+        		+ "-fx-border-color: #9a1603; -fx-border-width: 4px; -fx-border-radius: 5px; -fx-padding: 10;");
         this.dibujar(this.personaje);
 	}
 	

@@ -7,7 +7,7 @@ public class VistaCeldaInactiva extends VistaCelda{
 
 	public VistaCeldaInactiva(Celda celda) {
 		super(celda);
-		color = Color.AQUAMARINE;
+		color =  Color.web("#036207");
 		super.setup();
 	}
 	
