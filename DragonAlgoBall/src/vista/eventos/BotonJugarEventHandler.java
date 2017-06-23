@@ -1,11 +1,11 @@
 package vista.eventos;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
+public class BotonJugarEventHandler implements EventHandler<MouseEvent> {
     Stage stage;
     Scene proximaEscena;
 
@@ -15,7 +15,7 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) {
+    public void handle(MouseEvent actionEvent) {
     
     	
         stage.setScene(proximaEscena);

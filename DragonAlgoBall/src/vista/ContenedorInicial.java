@@ -2,6 +2,8 @@ package vista;
 
 import java.net.URL;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -11,13 +13,17 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import vista.eventos.BotonJugarEventHandler;
 
-public class ContenedorInicial extends Pane {
+public class ContenedorInicial extends StackPane {
     Stage stage;
     private int pixelesAnchoHD;
     private int pixelesAltoHD;
@@ -30,20 +36,25 @@ public class ContenedorInicial extends Pane {
        	this.startOpening();
 		
 	
-       	Image imagen = new Image("vista/Imagenes/inicioDragonAlgoBall.png", this.getWidth(), this.getHeight(), true, false);
-        ImageView img = new ImageView(imagen);
-        img.fitWidthProperty().bind(stage.widthProperty());
-        img.fitHeightProperty().bind(stage.heightProperty());
+     	Image fondoPrincipal = new Image("vista/Imagenes/inicioDragonAlgoBall.png", pixelesAnchoHD, pixelesAltoHD, true, false);
 
-        Button botonJugar = new Button();
-        botonJugar.setText("Jugar");
-        botonJugar.setTranslateX(700);
-        botonJugar.setTranslateY(550);
+        ImageView vistaFondoPrincipal = new ImageView(fondoPrincipal);
+        vistaFondoPrincipal.fitWidthProperty().bind(stage.widthProperty());
+        vistaFondoPrincipal.fitHeightProperty().bind(stage.heightProperty());
+      
+        HBox botonJugar = new HBox();
+   
+        Image estiloBoton = new Image("vista/Imagenes/start.png");
+        ImageView vistaBotonJugar = new ImageView(estiloBoton);
+        botonJugar.setAlignment(Pos.BOTTOM_CENTER);
+        botonJugar.getChildren().add(vistaBotonJugar);
 
         BotonJugarEventHandler botonJugarHandler = new BotonJugarEventHandler(stage, proximaEscena);
-        botonJugar.setOnAction(botonJugarHandler);
-		
-        this.getChildren().addAll(img,botonJugar);
+        botonJugar.setOnMouseClicked(botonJugarHandler);
+
+        
+        this.getChildren().addAll(vistaFondoPrincipal,botonJugar);
+        
     }
 	private void startOpening(){
 		// TODO Auto-generated method stub
