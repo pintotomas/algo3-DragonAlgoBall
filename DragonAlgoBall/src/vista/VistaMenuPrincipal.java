@@ -5,10 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vista.eventos.ComenzarJuegoEventHandler;
+import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class VistaMenuPrincipal extends StackPane{
 	
@@ -25,20 +26,22 @@ public class VistaMenuPrincipal extends StackPane{
 	private void setBotones() {
 		
 		int espaciadoEntreBotones = 40;
-		String estiloTransparente = "-fx-background-color: transparent;";
 		
+		
+		VBox menu = new VBox(espaciadoEntreBotones);
+		
+		String estiloTransparente = "-fx-background-color: transparent;";
 		Button botonJugar = creadorDeBoton("vista/Imagenes/NuevoJuego.png", estiloTransparente);
 		Button botonComoJugar = creadorDeBoton("vista/Imagenes/ComoJugar.png", estiloTransparente);
 		Button botonOpciones = creadorDeBoton("vista/Imagenes/Opciones.png", estiloTransparente);
 		Button botonCreditos = creadorDeBoton("vista/Imagenes/Creditos.png", estiloTransparente);
 		
-		
-		VBox menu = new VBox(espaciadoEntreBotones);
 		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos);
-		ContenedorNombresUsuarios vistaPedirNombres = new ContenedorNombresUsuarios(stage);
-		Scene escenaPedirNombres = new Scene(vistaPedirNombres);
-		ComenzarJuegoEventHandler botonJugarHandler = new ComenzarJuegoEventHandler(stage, escenaPedirNombres);
-        botonJugar.setOnMouseClicked(botonJugarHandler);
+		
+		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage));
+		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage, this));  
+        
+        
 		this.getChildren().add(menu);
 		menu.setAlignment(Pos.CENTER);
 	}
@@ -58,7 +61,13 @@ public class VistaMenuPrincipal extends StackPane{
 		Button nuevoBoton = new Button();
 		Image imagen = new Image(direccionImagen);
 		nuevoBoton.setGraphic(new ImageView(imagen));
-		nuevoBoton.setStyle("-fx-background-color: transparent;");
+		nuevoBoton.setStyle(style);
 		return nuevoBoton;
+	}
+	
+	private void asignarSiguienteEscenaABoton(Button boton, Pane siguienteVista){
+		Scene siguienteEscena = new Scene(siguienteVista);
+		CambiarEscenaAlPresionarEventHandler event= new CambiarEscenaAlPresionarEventHandler(stage, siguienteEscena);
+		boton.setOnMousePressed(event);
 	}
 }

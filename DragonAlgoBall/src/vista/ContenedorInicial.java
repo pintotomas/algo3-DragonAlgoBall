@@ -11,7 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import vista.eventos.ComenzarJuegoEventHandler;
+import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class ContenedorInicial extends StackPane {
     Stage stage;
@@ -40,7 +40,7 @@ public class ContenedorInicial extends StackPane {
         botonJugar.setAlignment(Pos.BOTTOM_CENTER);
         botonJugar.getChildren().add(vistaBotonJugar);
 
-        ComenzarJuegoEventHandler botonJugarHandler = new ComenzarJuegoEventHandler(stage, proximaEscena);
+        CambiarEscenaAlPresionarEventHandler botonJugarHandler = new CambiarEscenaAlPresionarEventHandler(stage, proximaEscena);
         botonJugar.setOnMouseClicked(botonJugarHandler);
         
 
