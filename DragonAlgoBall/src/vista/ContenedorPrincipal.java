@@ -17,7 +17,7 @@ public class ContenedorPrincipal extends BorderPane{
 	private Juego juego;
 	private VistaTablero vistaTablero;
 	private int altoTablero = 10;
-	private int anchoTablero = 22;
+	private int anchoTablero = 10;
 	private VistaInferiorPersonajes vistaInferiorPersonajes;
 
 	

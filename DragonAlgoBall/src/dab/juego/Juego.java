@@ -172,7 +172,7 @@ public class Juego {
 
 	public boolean sePuedeSeleccionarUnPersonaje(Celda celda) {
 		// TODO Auto-generated method stub
-		return celda.estaOcupada();
+		return celda.estaOcupada() && !celda.permitePosicionarUnaFicha();
 	}
 	
 	public boolean elOcupantePuedeRealizarJugada(Celda celda){
