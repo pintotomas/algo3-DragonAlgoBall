@@ -2,15 +2,14 @@ package vista;
 
 import dab.personajes.Personaje;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import vista.eventos.BotonTransformarHandler;
 import vista.fabricadorPersonaje.FabricadorDeRepresentacionDeAvatar;
 
 public class VistaCaracteristicasPersonaje extends VBox{
@@ -69,6 +68,18 @@ public class VistaCaracteristicasPersonaje extends VBox{
 			datos.getChildren().addAll(etiquetaVida,etiquetaKi,etiquetaPoderDeAtaque);
 			avatarYDatos.getChildren().addAll(avatarLabel, datos);
 			this.getChildren().addAll(etiquetaNombre, avatarYDatos);
+			
+			Button botonTransformar = new Button("TRANSFORMAR PERSONAJE");
+			botonTransformar.setStyle("-fx-background-color: red");
+			if(personaje.transformarDisponible()){
+				botonTransformar.setStyle("-fx-background-color: green");
+				botonTransformar.setOnMousePressed(new BotonTransformarHandler(personaje, this));
+				
+			}
+			
+			this.getChildren().addAll(botonTransformar);
+			
+			
 		}else{
 			this.getChildren().clear();
 		}
