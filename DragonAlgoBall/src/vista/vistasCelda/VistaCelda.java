@@ -51,6 +51,7 @@ public abstract class VistaCelda extends StackPane{
 			Pane pane = new Pane();
 			BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
 			pane.setBackground(new Background(background));
+
 			this.getChildren().addAll(rectangulo, pane);
 			
 //			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
@@ -66,7 +67,7 @@ public abstract class VistaCelda extends StackPane{
 	
 	public void darPropiedadesARectangulo(){
 		
-		rectangulo.setStroke(Color.BLACK);
+		rectangulo.setStroke(Color.web("#09ea07"));
 	}
 
 

@@ -7,7 +7,7 @@ public class VistaCeldaConPersonajeAtacable extends VistaCelda{
 
 	public VistaCeldaConPersonajeAtacable(Celda celda) {
 		super(celda);
-		color = Color.STEELBLUE;
+		color = Color.WHITE;
 		super.setup();
 	}
 
