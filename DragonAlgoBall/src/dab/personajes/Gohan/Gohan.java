@@ -25,4 +25,12 @@ public class Gohan extends Personaje{
 		this.equipo = equipo;
 	}
 
+	
+	@Override
+	public void setEquipo(Equipo equipo){
+		super.setEquipo(equipo);
+		estado = new GohanBase(equipo, this);	
+	}
+	
+	
 }
