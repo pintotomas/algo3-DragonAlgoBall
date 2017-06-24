@@ -12,8 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-//import javafx.scene.text.TextAlignment;
-import vista.fabricadorPersonaje.FabricadorDeRepresentacionDeFicha;
+import utils.FabricadorDeRepresentacionDeFicha;
 
 public abstract class VistaCelda extends StackPane{
 	

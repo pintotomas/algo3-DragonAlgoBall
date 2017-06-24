@@ -11,7 +11,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import vista.fabricadorPersonaje.FabricadorDeRepresentacionDeAvatar;
+import utils.FabricadorDeRepresentacionDeAvatar;
 
 public class VistaCaracteristicasPersonaje extends VBox{
 	private Personaje personaje;
