@@ -1,42 +1,58 @@
-package vista;
+package vista.menuOpciones;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import vista.VistaMenuPrincipal;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
-public class VistaMenuOpciones extends Pane {
+public class VistaMenuOpciones extends StackPane {
 	
 	private Stage stage;
-	private VistaMenuPrincipal retorno;
 	
-	public VistaMenuOpciones(Stage stage, VistaMenuPrincipal vistaMenuPrincipal) {
+	public VistaMenuOpciones(Stage stage) {
 		
 		this.stage = stage;
-		this.retorno = vistaMenuPrincipal;
 		this.setFondo();
-		this.setBotones();
+		this.setOpciones();
 		
 		
 	}
 
-	private void setBotones() {
+	private void setOpciones() {
+		int espaciadoEntreBotones = 40;
+		VBox opciones = new VBox(espaciadoEntreBotones);
 		String estiloTransparente = "-fx-background-color: transparent;";
 		Button botonVolver = creadorDeBoton("vista/Imagenes/volverAlMenuPrincipal.png", estiloTransparente);
 		botonVolver.setOnAction(new EventHandler<ActionEvent>() {
 	        
             @Override
             public void handle(ActionEvent arg0) {
-                botonVolver.getScene().setRoot(retorno);             
+                botonVolver.getScene().setRoot(new VistaMenuPrincipal(stage));             
             }
         });
-		this.getChildren().add(botonVolver);
+		
+		//En el futuro recibira dos parametros: Si esta activada o no
+		VistaOpcion opcionMusicaDeFondo = new VistaOpcion("vista/Imagenes/Musica.png", true);
+		
+		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("vista/Imagenes/MusicaDeBatalla.png", true);
+		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("vista/Imagenes/SonidosPersonajes.png", true);
+		opciones.getChildren().addAll(opcionMusicaDeFondo, opcionMusicaDeBatalla, opcionSonidosDePersonaje, botonVolver);
+		this.getChildren().addAll(opciones);
+		opciones.setAlignment(Pos.CENTER_RIGHT);
+		
+		
 		}
+
+	
 
 	private void setFondo() {
 		

@@ -45,7 +45,7 @@ public class ContenedorInicial extends StackPane {
         
 
         
-        this.getChildren().addAll(vistaFondoPrincipal,botonJugar);
+        this.getChildren().addAll(vistaFondoPrincipal, botonJugar);
         
     }
 	private void startOpening(){

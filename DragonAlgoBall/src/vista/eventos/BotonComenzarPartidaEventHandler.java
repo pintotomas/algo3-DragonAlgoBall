@@ -40,7 +40,7 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 	@Override
 	public void handle(ActionEvent event) {
 		
-
+		
 		Usuario userGuerrerosZ = new Usuario(new Equipo("Guerreros Z", new Goku(), new Gohan(), new Piccolo()),
 				campoNombreUserGuerreros.getText());
 		

@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
+import vista.menuOpciones.VistaMenuOpciones;
 
 public class VistaMenuPrincipal extends StackPane{
 	
@@ -39,7 +40,7 @@ public class VistaMenuPrincipal extends StackPane{
 		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos);
 		
 		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage));
-		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage, this));  
+		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage));  
         
         
 		this.getChildren().add(menu);
