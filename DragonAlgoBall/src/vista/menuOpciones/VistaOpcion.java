@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import utils.Ajustes;
 import vista.eventos.menuDeOpciones.PresionarOpcionEventHandler;
 
 public class VistaOpcion extends HBox{
@@ -12,7 +13,8 @@ public class VistaOpcion extends HBox{
 	private Label labelDeLaOpcion;
 	private boolean activada;
 	private Button botonDeActivado;
-	public VistaOpcion(String rutaImagenDeLaOpcion, boolean activada) {
+	private Ajustes ajusteAModificar;
+	public VistaOpcion(String rutaImagenDeLaOpcion, boolean activada, Ajustes ajusteAModificar) {
 		
 		String estiloTransparente = "-fx-background-color: transparent;";
 		Label nombreDeLaOpcion = new Label();
@@ -26,6 +28,7 @@ public class VistaOpcion extends HBox{
 		botonDeActivado.setStyle(estiloTransparente);
 		botonDeActivado.setOnMousePressed(new PresionarOpcionEventHandler(this));
 		this.getChildren().addAll(nombreDeLaOpcion, botonDeActivado);
+		this.ajusteAModificar = ajusteAModificar;
 		
 	}
 	
@@ -48,5 +51,6 @@ public class VistaOpcion extends HBox{
 	public void press(){
 		activada = !activada;
 		this.configurarBotonDeActivado(botonDeActivado);
+		ajusteAModificar.cambiar();
 	}
 }
