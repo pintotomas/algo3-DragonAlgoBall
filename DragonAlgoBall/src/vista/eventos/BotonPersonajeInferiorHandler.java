@@ -15,17 +15,12 @@ public class BotonPersonajeInferiorHandler implements EventHandler<MouseEvent> {
 		this.vistaCeldas = vistaCeldas;
 	}
 	
-	
-	
 	@Override
 	public void handle(MouseEvent event) {
 		Personaje personaje = vista.getPersonaje();
 		VistaCelda celda = vistaCeldas[personaje.getPosicion().getFila()][personaje.getPosicion().getColumna()];
 		celda.getOnMousePressed().handle(event);
 	}
-
-
-
 
 
 }
