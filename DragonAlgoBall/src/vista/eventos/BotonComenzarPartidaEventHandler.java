@@ -49,7 +49,7 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 		
 		ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, userGuerrerosZ, userEnemigosDeLaTierra);
         Scene escenaPrincipal = new Scene(contenedorPrincipal);
-
+        escenaPrincipal.getStylesheets().add("vista/style.css");
         
         AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
         escenaPrincipal.setOnKeyPressed(AplicacionOnKeyPressEventHandler);

@@ -67,7 +67,7 @@ public abstract class VistaCelda extends StackPane{
 	
 	public void darPropiedadesARectangulo(){
 		
-		rectangulo.setStroke(Color.web("#09ea07"));
+		rectangulo.setStroke(Color.web("#006c00"));
 	}
 
 

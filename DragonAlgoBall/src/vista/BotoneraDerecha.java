@@ -21,6 +21,7 @@ public class BotoneraDerecha extends VBox{
 		Button botonPasarTurno = new Button("CEDER TURNO");
 		BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego, vistaTablero);
 	    botonPasarTurno.setOnAction(pasarTurnoEventHandler);
+	    botonPasarTurno.getStyleClass().add("boton");
 	    this.getChildren().add(botonPasarTurno);
 	}
 }
