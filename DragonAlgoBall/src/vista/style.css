@@ -38,6 +38,16 @@
     -fx-border-radius: 5px;
     -fx-padding: 10;
 }
+.vistaEnemigo:hover{
+	-fx-background-color: #dc3c26; 
+	-fx-background-color: rgba(24,142,24,0.6);
+	-fx-background-radius: 5px; 
+    -fx-border-color: #9a1603; 
+    -fx-border-color: rgb(222,219,222); 
+    -fx-border-width: 4px; 
+    -fx-border-radius: 5px;
+    -fx-padding: 10;
+}
 
 .nombrePersonaje {
 	-fx-font-weight:bolder;

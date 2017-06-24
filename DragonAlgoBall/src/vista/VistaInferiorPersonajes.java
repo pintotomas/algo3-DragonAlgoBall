@@ -19,7 +19,7 @@ public class VistaInferiorPersonajes extends GridPane{
 		seleccionado = new VistaCaracteristicasPersonaje(null);
 		personajesAliados = new HBox();
 		this.setPadding(new Insets(0,0,5,5));
-		this.setHgap(20);
+		this.setHgap(30);
 		}
 	
 	public void setTablero(VistaTablero vistaTablero){
