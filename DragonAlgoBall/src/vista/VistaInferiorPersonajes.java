@@ -1,12 +1,9 @@
 package vista;
 	
-import java.util.ArrayList;
-
 import dab.juego.Juego;
 import dab.personajes.Personaje;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import vista.eventos.BotonPersonajeInferiorHandler;
@@ -22,7 +19,7 @@ public class VistaInferiorPersonajes extends GridPane{
 		seleccionado = new VistaCaracteristicasPersonaje(null);
 		personajesAliados = new HBox();
 		this.setPadding(new Insets(0,0,5,5));
-		this.setHgap(20);
+		this.setHgap(30);
 		}
 	
 	public void setTablero(VistaTablero vistaTablero){
@@ -33,8 +30,7 @@ public class VistaInferiorPersonajes extends GridPane{
 		this.getChildren().clear();
 		VistaCaracteristicasPersonaje vista;
 		HBox mostrar = new HBox(10);
-		mostrar.setStyle("-fx-background-color: #ffc800; -fx-background-radius: 5px; -fx-border-color: #9a1603; "
-				+ "-fx-border-width: 4px; -fx-border-radius: 5px; -fx-padding: 10;");
+		mostrar.getStyleClass().add("vistaAliados");
 		mostrar.setMinWidth(500);
 		mostrar.setAlignment(Pos.CENTER);
 		for(Personaje x : juego.getPersonajesDeTurno()){
