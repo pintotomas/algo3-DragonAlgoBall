@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
+import utils.reproductorDeSonidos.ReproductorDeSonidos;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 import vista.eventos.ComenzarPartidaEventHandler;
 
@@ -27,12 +28,15 @@ public class ContenedorNombresUsuarios extends VBox {
 
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
-        
+      
         Button botonListoNombres = new Button("Comenzar partida!");
+        
+        ReproductorDeSonidos reproductorMusicaDeBatalla = new ReproductorDeSonidos("/vista/sonidos/musicaPelea.wav");
         ContenedorPrincipal principal= new ContenedorPrincipal(stage, campoNombreUsuarioGuerreros,
-        		campoNombreUsuarioEnemigos, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes);
+        		campoNombreUsuarioEnemigos, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, reproductorMusicaDeBatalla);
         Scene escenaPrincipal = new Scene(principal);
-        CambiarEscenaAlPresionarEventHandler listoNombreEventHandler = new ComenzarPartidaEventHandler(this.stage, escenaPrincipal, ajustesMusicaDeBatalla);
+        CambiarEscenaAlPresionarEventHandler listoNombreEventHandler = new ComenzarPartidaEventHandler(this.stage, escenaPrincipal, ajustesMusicaDeBatalla,
+        		reproductorMusicaDeBatalla);
         botonListoNombres.setOnMousePressed(listoNombreEventHandler);
         this.getChildren().addAll(botonListoNombres);   
     } 

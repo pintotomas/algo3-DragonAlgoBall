@@ -70,5 +70,10 @@ public class AudioFile implements LineListener{
 	public void stop() {
 		clip.stop();	
 	}
+
+	public void mute() {
+		// TODO Auto-generated method stub
+		gainControl.setValue(gainControl.getMinimum());
+	}
 	
 }

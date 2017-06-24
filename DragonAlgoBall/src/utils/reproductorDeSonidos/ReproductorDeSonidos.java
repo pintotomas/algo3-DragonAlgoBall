@@ -8,7 +8,7 @@ public class ReproductorDeSonidos implements Runnable {
 	private volatile int currentSongIndex = 0;
 	private volatile boolean running;
 	private volatile AudioFile currentSong;
-	
+	private volatile boolean mute;
 	public ReproductorDeSonidos(String... files){
 		musicFiles = new ArrayList<AudioFile>();
 		for(String file: files){
@@ -22,15 +22,19 @@ public class ReproductorDeSonidos implements Runnable {
 		running = true;
 		AudioFile song = musicFiles.get(currentSongIndex);
 		currentSong = song;
-		song.play();
-		while(running){
-			if(!song.isPlaying()){
+		
+		while(isPlaying()){
+			if (song.isPlaying() && this.isMuted()){
+				song.stop();
+			}
+			if(!song.isPlaying() && !this.isMuted()){
 				currentSongIndex++;
 				if(currentSongIndex >= musicFiles.size()){
 					currentSongIndex = 0;
 				}
 				song = musicFiles.get(currentSongIndex);
 				currentSong = song;
+				song.play();
 			}
 			try {
 				Thread.sleep(1);
@@ -38,8 +42,14 @@ public class ReproductorDeSonidos implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			song.play();
+			
 		}
+	}
+
+
+	public boolean isMuted() {
+		// TODO Auto-generated method stub
+		return mute;
 	}
 
 
@@ -47,16 +57,15 @@ public class ReproductorDeSonidos implements Runnable {
 		// TODO Auto-generated method stub
 		return running;
 	}
+	
+	public void mute(){
+		mute = true;
+	}
 
 
-	public void changeStatus() {
-		running = !running;
-		if (!running){
-			currentSong.stop();
-		}
-		else{
-			run();
-		}
+	public void unMute() {
+		mute = false;
 		
 	}
+
 }
