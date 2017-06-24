@@ -2,58 +2,50 @@ package vista;
 
 import java.net.URL;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import vista.eventos.BotonJugarEventHandler;
+import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class ContenedorInicial extends StackPane {
     Stage stage;
-    private int pixelesAnchoHD;
-    private int pixelesAltoHD;
-    public ContenedorInicial(Stage stage, Scene proximaEscena, int pixelesAnchoHD, int pixelesAltoHD) {
-
-    		 
+//    private int pixelesAnchoHD;
+//    private int pixelesAltoHD;
+    private MediaPlayer mediaPlayer;
+    
+//    public ContenedorInicial(Stage stage, Scene proximaEscena, int pixelesAnchoHD, int pixelesAltoHD) {
+    public ContenedorInicial(Stage stage, Scene proximaEscena) {
         this.stage = stage;
-        this.pixelesAltoHD = pixelesAltoHD;
-        this.pixelesAnchoHD = pixelesAnchoHD;
+//        this.pixelesAltoHD = pixelesAltoHD;
+//        this.pixelesAnchoHD = pixelesAnchoHD;
        	this.startOpening();
 		
 	
-     	Image fondoPrincipal = new Image("vista/Imagenes/inicioDragonAlgoBall.png", pixelesAnchoHD, pixelesAltoHD, true, false);
+     	Image fondoPrincipal = new Image("vista/Imagenes/inicioDragonAlgoBall.png");
 
         ImageView vistaFondoPrincipal = new ImageView(fondoPrincipal);
         vistaFondoPrincipal.fitWidthProperty().bind(stage.widthProperty());
         vistaFondoPrincipal.fitHeightProperty().bind(stage.heightProperty());
       
         HBox botonJugar = new HBox();
-   
+        botonJugar.setPrefSize(50, 23);
         Image estiloBoton = new Image("vista/Imagenes/start.png");
         ImageView vistaBotonJugar = new ImageView(estiloBoton);
         botonJugar.setAlignment(Pos.BOTTOM_CENTER);
         botonJugar.getChildren().add(vistaBotonJugar);
 
-        BotonJugarEventHandler botonJugarHandler = new BotonJugarEventHandler(stage, proximaEscena);
+        CambiarEscenaAlPresionarEventHandler botonJugarHandler = new CambiarEscenaAlPresionarEventHandler(stage, proximaEscena);
         botonJugar.setOnMouseClicked(botonJugarHandler);
+        
 
         
-        this.getChildren().addAll(vistaFondoPrincipal,botonJugar);
+        this.getChildren().addAll(vistaFondoPrincipal, botonJugar);
         
     }
 	private void startOpening(){
@@ -62,7 +54,7 @@ public class ContenedorInicial extends StackPane {
 //		  String path_opening = url.getPath();
 //	      Media media = new Media(new File(path_opening).toURI().toString());
 		  Media media = new Media(resource.toString());
-	      MediaPlayer mediaPlayer = new MediaPlayer(media);
-	      mediaPlayer.play();
+	      this.mediaPlayer = new MediaPlayer(media);
+	      this.mediaPlayer.play();
 	}
 }
