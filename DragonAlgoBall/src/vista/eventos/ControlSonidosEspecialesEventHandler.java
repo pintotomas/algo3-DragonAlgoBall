@@ -15,7 +15,6 @@ public class ControlSonidosEspecialesEventHandler implements EventHandler<MouseE
 	@Override
 	public void handle(MouseEvent arg0) {
 		ajusteSonidosEspeciales.cambiar();
-		System.out.println(ajusteSonidosEspeciales.estaActivo());
 	}
 
 }

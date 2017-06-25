@@ -2,57 +2,26 @@ package dab.potenciadores;
 
 public class NubeVoladora extends Potenciador {
 	
+	private static String nombre = "Nube Voladora";
+	private static double duracionTurnos = 3;
+	private static double duracionAtaques = Double.POSITIVE_INFINITY;
+	private static int multiplicadorVelocidad = 2;
+	private static double multiplicadorPoderDePelea = 1;
+	private static double vidaExtra = 0;
+	private static int multiplicadorDistanciaAtaque = 1;
+	private static int multiplicadorAlcance = 1;
+	private static int kiExtra = 0;
+	
 	public NubeVoladora(){
-		nombre = "Nube Voladora";
-		duracionTurnos = 3;
-		duracionAtaques = Double.POSITIVE_INFINITY;
-		multiplicadorVelocidad = 2;
-		multiplicadorPoderDePelea = 1;
-		vidaExtra = 0;
-		multiplicadorDistanciaAtaque = 1;
-		multiplicadorAlcance = 1;
-		kiExtra = 0;
+		super(nombre, duracionTurnos, duracionAtaques, multiplicadorVelocidad, 
+				multiplicadorPoderDePelea, vidaExtra, multiplicadorDistanciaAtaque, multiplicadorAlcance, kiExtra);
+		
 	}
 
 	@Override
-	public double getMultiplicadorVelocidad() {
-		return multiplicadorVelocidad;
-	}
-
-	@Override
-	public double getMultiplicadorPoderDePelea() {
-		return multiplicadorPoderDePelea;
-	}
-
-	@Override
-	public double getVidaExtra() {
-		return vidaExtra;
-	}
-
-	@Override
-	public int getMultiplicadorAlcance() {
-		return multiplicadorAlcance;
-	}
-
-	@Override
-	public int getMultiplicadorDistanciaAtaque() {
-		return multiplicadorDistanciaAtaque;
-	}
-
-	@Override
-	public int getKiExtra() {
-		return kiExtra;
-	}
-
-	@Override
-	public boolean estaActivo() {
-		return duracionTurnos > 0;
-	}
-
-	@Override
-	public String getNombre() {
+	public boolean daEfectos() {
 		// TODO Auto-generated method stub
-		return nombre;
+		return true;
 	}
 
 	@Override
@@ -60,5 +29,6 @@ public class NubeVoladora extends Potenciador {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }

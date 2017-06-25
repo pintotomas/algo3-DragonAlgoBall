@@ -30,7 +30,7 @@ public class FuriaTests {
 		
 		Goku goku = new Goku();
 		double poderInicial = goku.getPoder();
-		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesariaParaActivar() + limite )));
+		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesaria + limite )));
 		assertEquals(poderInicial*1.2, goku.getPoder(), 0.5);
 		
 	}
@@ -38,7 +38,7 @@ public class FuriaTests {
 	public void testAlRestaurarLaVidaDeGokuSeDesactivaFuriaYSuPoderSeDecrementa(){
 		Goku goku = new Goku();
 		double poderInicial = goku.getPoder();
-		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesariaParaActivar() + limite )));
+		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesaria + limite )));
 		goku.modificarVida(vidaMaximaGokuBase);
 		System.out.println(vidaMaximaGokuBase);
 		goku.getPoder();
@@ -56,7 +56,7 @@ public class FuriaTests {
 		double vidaCellPosteriorRecibirAtaqueSinFuria = cell.getVida();
 		double danoDeGokuSinFuria = vidaCellAntesDeRecibirAtaqueSinFuria - vidaCellPosteriorRecibirAtaqueSinFuria;
 		
-		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesariaParaActivar() + limite )));
+		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesaria + limite )));
 		
 		double vidaCellAntesDeRecibirAtaqueConFuria = cell.getVida();
 		goku.atacarA(cell);

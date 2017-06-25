@@ -26,9 +26,7 @@ public class VistaCaracteristicasPersonaje extends VBox{
 		this.personaje = personaje;
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
 		this.setVista();
-		
 	}
-	
 	private void setVista(){
 		this.setSpacing(5);
         this.setPadding(new Insets(10));
