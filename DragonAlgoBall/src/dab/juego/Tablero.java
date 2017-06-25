@@ -197,7 +197,7 @@ public class Tablero{
 			throw new CeldaNoContieneFicha();
 		}
 		ArrayList<Celda> celdasAlcanzables = celdasPermitidas(celdaInicio, ficha.getVelocidad());
-		if (ficha.movimientoPosible(celdaFin) && celdaFin.permitePosicionarUnaFicha() && celdasAlcanzables.contains(celdaFin)){
+		if (celdaFin.permitePosicionarUnaFicha() && celdasAlcanzables.contains(celdaFin)){
 			return true;
 		}
 		return false;

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.14" icons="true">  
+  <object id="1" language="java" name="dab.juego.Juego" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/juego/Juego.java" binary="false" label="juego" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="283" y="0"/>    
+    <execution id="2">      
+      <position height="674" width="67" x="5" y="95"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="156" width="67" x="5" y="143"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="424" width="7" x="35" y="321"/>    
+    </execution>  
+  </object>  
+  <object id="13" language="java" name="dab.juego.Turno" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/juego/Turno.java" binary="false" label="turno" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="12">      
+      <position height="24" width="0" x="0" y="697"/>    
+    </execution>  
+  </object>  
+  <object id="14" language="java" name="dab.personajes.Personaje" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/personajes/Personaje.java" binary="false" label="lanzador" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>  
+  </object>  
+  <object id="15" language="java" name="dab.personajes.Personaje" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/personajes/Personaje.java" binary="false" label="personajeSeleccionado" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="96" width="0" x="0" y="179"/>    
+    </execution>    
+    <execution id="17">      
+      <position height="24" width="0" x="0" y="227"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="329" width="0" x="0" y="357"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="24" width="0" x="0" y="638"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="110" width="7" x="310" y="492"/>    
+    </execution>  
+  </object>  
+  <object id="27" language="java" name="dab.ataquesEspeciales.AtaqueEspecial" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/ataquesEspeciales/AtaqueEspecial.java" binary="false" label="ataqueEspecial" 
+    type="class" autoSize="true">    
+    <position height="-1" width="-1" x="537" y="0"/>    
+    <execution id="19">      
+      <position height="245" width="0" x="0" y="381"/>    
+    </execution>  
+  </object>  
+  <object id="31" language="java" name="dab.personajes.Personaje" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/personajes/Personaje.java" binary="false" label="enemigo" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="29">      
+      <position height="96" width="0" x="0" y="405"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="24" width="0" x="0" y="453"/>    
+    </execution>  
+  </object>  
+  <object id="34" language="java" name="dab.equipo.Equipo" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/equipo/Equipo.java" binary="false" label="equipo" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>  
+  </object>  
+  <object id="35" language="java" name="dab.potenciadores.Potenciador" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/potenciadores/Potenciador.java" binary="false" label="potenciador" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="24">      
+      <position height="24" width="0" x="0" y="522"/>    
+    </execution>  
+  </object>  
+  <object id="36" language="java" name="dab.estados.Estado" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/src/dab/estados/Estado.java" binary="false" label="estado" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="26">      
+      <position height="24" width="0" x="0" y="554"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="personajeSeleccionadoTieneAtaqueEspecialDisponible():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="personajeSeleccionadoAtaqueEspecialA(dab.personajes.Personaje):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="ataqueEspecialDisponible():boolean" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="ataqueEspecial(dab.personajes.Personaje):void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="seHaEfectuadoUnAtaque():void" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="16" operation="getKi():int" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="lanzar(dab.personajes.Personaje):void" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="modificarKi(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="23" operation="getMultiplicadorPoderDePelea():double" asynchronous="false">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="25" operation="getPoder():int" asynchronous="false">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="28" operation="modificarVida(double):void" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="getPoder():double" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="32" operation="getVidaMaxima():double" asynchronous="false">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>
+</sequence-diagram>
