@@ -104,9 +104,8 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	
 	public Button generarBotonTransformar(){
 		Button boton = new Button ("TRANSFORMAR");
-		if(personaje.transformarDisponible())
-			//la idea es que cambie de color o algo si esta disponible
-			boton.setOnMousePressed(new BotonTransformarHandler(personaje, this));
+		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this));
+		if(!personaje.transformarDisponible()) boton.setDisable(false);
 		return boton;
 	}
 	

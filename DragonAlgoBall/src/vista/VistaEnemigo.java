@@ -63,6 +63,7 @@ public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 		Image especial = new Image(rutaEspecial);
 		ataqueEspecial.setGraphic(new ImageView(especial));
 		ataqueEspecial.setOnMousePressed(new BotonAtaqueEspecialHandler(personaje, juego, vistaTablero));
+		if(!personaje.ataqueEspecialDisponible()) ataqueEspecial.setDisable(true);
 		acciones.getChildren().addAll(ataqueNormal, ataqueEspecial);
 		return acciones;
 	}
