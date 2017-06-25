@@ -2,8 +2,6 @@ package dab.juego;
 import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.dragonBallExceptions.CeldaOcupada;
 
-import dab.interfaces.IFichaMovible;
-import dab.interfaces.IFichaUbicable;
 import dab.interfaces.IContenedorDeFicha;
 import dab.interfaces.IFicha;
 
@@ -11,8 +9,6 @@ import dab.interfaces.IFicha;
 public class Celda implements IContenedorDeFicha{
 	
 	int fila, columna;
-//	IFichaMovible ficha;
-//	protected List <Potenciador> potenciadores = new LinkedList<Potenciador>(); 
 	boolean ocupada;
 	IFicha ficha;
 	
@@ -41,11 +37,6 @@ public class Celda implements IContenedorDeFicha{
 		}
 		this.ficha = ficha;
 		ocupada = true;
-//		if (!potenciadores.isEmpty()){
-//			for(Potenciador p: potenciadores){
-//				ficha.agarrarPotenciador(p);
-//				potenciadores.remove(p);
-//			}
 		}
 		
 	

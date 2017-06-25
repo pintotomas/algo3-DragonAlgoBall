@@ -54,7 +54,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	}
 	
 	private void notificarAtaqueAPotenciadores(){
-		for (Potenciador potenciador: potenciadoresActivos){
+		Iterator<Potenciador> iteradorPotenciadoresActivos = potenciadoresActivos.iterator();
+		while(iteradorPotenciadoresActivos.hasNext()){
+			Potenciador potenciador = iteradorPotenciadoresActivos.next();
 			potenciador.pasoUnAtaque();
 			
 			if (!potenciador.estaActivo()){

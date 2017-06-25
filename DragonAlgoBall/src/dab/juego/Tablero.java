@@ -8,6 +8,7 @@ import dab.interfaces.IFicha;
 import dab.interfaces.IFichaMovible;
 import dab.interfaces.IFichaUbicable;
 import dab.personajes.Personaje;
+
 public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
@@ -30,16 +31,14 @@ public class Tablero{
 		}
 	}
 		
-	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo equipo1_, Equipo equipo2_){
+	public Tablero(int altoDeTablero, int anchoDeTablero, Equipo...equipos){
 		this(altoDeTablero, anchoDeTablero);
-		equipo1 = equipo1_;
-		equipo2 = equipo2_;
-	
 		int filaInicial = altoDeTablero/2;
 		int columnaActual = 0;
-		this.ubicarPersonajesEnPosicionInicial(equipo1, filaInicial, columnaActual);
+		for (Equipo equipo: equipos){
+			this.ubicarPersonajesEnPosicionInicial(equipo, filaInicial, columnaActual);
 		columnaActual += anchoDeTablero - 1;
-		this.ubicarPersonajesEnPosicionInicial(equipo2, filaInicial, columnaActual);
+		}
 	}
 	
 	private void ubicarPersonajesEnPosicionInicial(Equipo equipo1, int fila, int columnaInicial){
@@ -80,18 +79,9 @@ public class Tablero{
 			throw new MovimientoInvalido();
 		}
 	}
-	
-	public Equipo getEquipoEnemigo(Personaje personaje){
-		Equipo equipoEnemigo = equipo1;
-		if(personaje.getEquipo() == equipo1){
-			equipoEnemigo = equipo2;
-		}
-		return equipoEnemigo;
+
+	public ArrayList<Personaje> personajesAtacables(Personaje personaje, Equipo equipoEnemigo){
 		
-	}
-	
-	public ArrayList<Personaje> personajesAtacables(Personaje personaje){
-		Equipo equipoEnemigo = getEquipoEnemigo(personaje);
 		ArrayList<Personaje> atacables = new ArrayList<Personaje>();   // collection no se puede castear a ArrayList asi que lo tengo que hacer asi.
 		for(Personaje enemigo : equipoEnemigo.obtenerPersonajes()){
 			if(personaje.puedeAtacar(enemigo)){
