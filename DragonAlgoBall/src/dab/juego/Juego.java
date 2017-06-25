@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import dab.dragonBallExceptions.AunNoHayGanador;
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 
 import dab.personajes.Personaje;
@@ -113,7 +114,10 @@ public class Juego {
 	}
 	
 	public Usuario ganador(){
-		return turno.usuarioActual();
+		if (ganoElDelTurnoActual()){
+			return turno.usuarioActual();
+		}
+		throw new AunNoHayGanador();
 	}
 	
 	public boolean ganoElDelTurnoActual(){
