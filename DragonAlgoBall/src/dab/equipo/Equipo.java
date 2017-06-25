@@ -49,12 +49,12 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 		celdaPersonajeMuerto.quitarFichaMovible();
 	}
 	
-	public int cantidadEsferasDelDragon(){
-		return this.cantidadEsferasDelDragon;
-	}
-
-	public void agregarEsferaDelDragon(){
-		this.cantidadEsferasDelDragon += 1;
+	public int cantidadItemsParaGanar(){
+		int cantidadItemsParaGanar = 0;
+		for (Personaje pj: integrantes.values()){
+			cantidadItemsParaGanar += pj.cantidadItemsParaGanar(); 
+		}
+		return cantidadItemsParaGanar;
 	}
 	
 	public void agregarPersonajes(Collection<Personaje> personajes){

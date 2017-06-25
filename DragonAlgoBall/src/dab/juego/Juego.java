@@ -114,6 +114,10 @@ public class Juego {
 
 	}
 	
+	private boolean verificarSiGanoElDelTurnoActual(){
+		return contrincantes.get(turno.usuarioActual()).haPerdido() || turno.usuarioActual().haConseguidoItemsParaGanar();
+	}
+	
 	private void seHaEfectuadoUnAtaque(){
 		turno.seHaEfectuadoUnAtaque();
 		this.verificarFinDeTurno();

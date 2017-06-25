@@ -224,4 +224,13 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		// TODO Auto-generated method stub
 		return ataqueEspecial.nombre;
 	}
+
+	public int cantidadItemsParaGanar() {
+		// TODO Auto-generated method stub
+		int cantidadItems = 0;
+		for (Potenciador p: potenciadoresActivos){
+			if (p.meAyudaAGanar()){ cantidadItems += 1;}
+		}
+		return cantidadItems;
+	}
 }

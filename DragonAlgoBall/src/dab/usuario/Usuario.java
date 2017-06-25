@@ -29,6 +29,16 @@ public class Usuario {
 		equipo.notificarAtaqueHacia(aPersonaje);
 	}
 
+	public boolean haPerdido() {
+		// TODO Auto-generated method stub
+		return equipo.cantidadParticipantes() == 0;
+	}
+
+	public boolean haConseguidoItemsParaGanar() {
+		// TODO Auto-generated method stub
+		return equipo.cantidadItemsParaGanar() == 7;
+	}
+
 
 		
 }

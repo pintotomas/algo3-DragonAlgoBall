@@ -53,6 +53,6 @@ public abstract class Potenciador implements IFicha{
 		//usar solo en testing
 		return duracionTurnos;
 	}
-	
+	public abstract boolean meAyudaAGanar();
 	
 }

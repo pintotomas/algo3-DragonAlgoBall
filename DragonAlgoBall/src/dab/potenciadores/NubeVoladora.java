@@ -55,4 +55,10 @@ public class NubeVoladora extends Potenciador {
 		return nombre;
 	}
 
+	@Override
+	public boolean meAyudaAGanar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
