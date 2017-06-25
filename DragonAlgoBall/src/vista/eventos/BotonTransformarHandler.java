@@ -25,9 +25,9 @@ public class BotonTransformarHandler implements EventHandler<MouseEvent>{
 		personaje.transformar();
 		vista.dibujar(null);
 		vista.dibujar(personaje);
-//		if (ajustesSonidosEspeciales.estaActivo()){
+		if (ajustesSonidosEspeciales.estaActivo()){
 			ReproductorSonidosEspeciales.reproducir("transformar");
-//		}
+		}
 		
 	}
 
