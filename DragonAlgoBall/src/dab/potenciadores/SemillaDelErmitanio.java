@@ -2,51 +2,25 @@ package dab.potenciadores;
 
 public class SemillaDelErmitanio extends Potenciador {
 	
+	private static String nombre = "Semilla del Ermitanio";
+	private static int vidaExtra = 100;
+	private static int multiplicadorVelocidad = 1;
+	private static double multiplicadorPoderDePelea = 1;
+	private static double duracionTurnos = 0;
+	private static double duracionAtaques = 0;
+	private static int multiplicadorDistanciaAtaque = 1;
+	private static int multiplicadorAlcance = 1;
+	private static int kiExtra = 0;
+	
 	public SemillaDelErmitanio(){
-		nombre = "Semilla del Ermitanio";
-		vidaExtra = 100;
-		multiplicadorVelocidad = 1;
-		multiplicadorPoderDePelea = 1;
-		duracionTurnos = 0;
-		duracionAtaques = 0;
-		multiplicadorDistanciaAtaque = 1;
-		multiplicadorAlcance = 1;
-		kiExtra = 0;
+		super(nombre, duracionTurnos, duracionAtaques, multiplicadorVelocidad, 
+				multiplicadorPoderDePelea, vidaExtra, multiplicadorDistanciaAtaque, multiplicadorAlcance, kiExtra);
+
 	}
 
 	@Override
-	public double getMultiplicadorVelocidad() {
-		return multiplicadorVelocidad;
-	}
-
-	@Override
-	public double getMultiplicadorPoderDePelea() {
-		return multiplicadorPoderDePelea;
-	}
-
-	@Override
-	public double getVidaExtra() {
-		return vidaExtra;
-	}
-
-	@Override
-	public int getMultiplicadorAlcance() {
-		return multiplicadorAlcance;
-	}
-
-	@Override
-	public int getMultiplicadorDistanciaAtaque() {
-		return multiplicadorDistanciaAtaque;
-	}
-
-	@Override
-	public int getKiExtra() {
-		return kiExtra;
-	}
-
-	@Override
-	public String getNombre() {
+	public boolean daEfectos() {
 		// TODO Auto-generated method stub
-		return nombre;
+		return true;
 	}
 }

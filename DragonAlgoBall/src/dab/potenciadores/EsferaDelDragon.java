@@ -2,53 +2,31 @@ package dab.potenciadores;
 
 public class EsferaDelDragon extends Potenciador {
 
+	private static String nombre = "Esfera del Dragon";
+	private static double multiplicadorPoderDePelea = 1.25;
+	private static int multiplicadorVelocidad = 1;
+	private static int vidaExtra = 0;
+	private static double duracionTurnos = Double.POSITIVE_INFINITY;
+	private static int duracionAtaques = 2;
+	private static int multiplicadorAlcance = 1;
+	private static int multiplicadorDistanciaAtaque = 1;
+	private static int kiExtra = 0;
+	
 	public EsferaDelDragon(){
-		
-		nombre = "Esfera del Dragon";
-		multiplicadorPoderDePelea = 1.25;
-		multiplicadorVelocidad = 1;
-		vidaExtra = 0;
-		duracionTurnos = Double.POSITIVE_INFINITY;
-		duracionAtaques = 2;
-		multiplicadorAlcance = 1;
-		multiplicadorDistanciaAtaque = 1;
-		kiExtra = 0;
+		super(nombre, duracionTurnos, duracionAtaques, multiplicadorVelocidad, 
+				multiplicadorPoderDePelea, vidaExtra, multiplicadorDistanciaAtaque, multiplicadorAlcance, kiExtra);
 	}
 	
+	
 	@Override
-	public double getMultiplicadorVelocidad() {
-		return multiplicadorVelocidad;
+	public boolean estaActivo(){
+		return true;
 	}
 
 	@Override
-	public double getMultiplicadorPoderDePelea() {
-		return multiplicadorPoderDePelea;
-	}
-
-	@Override
-	public double getVidaExtra() {
-		return vidaExtra;
-	}
-
-	@Override
-	public int getMultiplicadorAlcance() {
-		return multiplicadorAlcance;
-	}
-
-	@Override
-	public int getMultiplicadorDistanciaAtaque() {
-		return multiplicadorDistanciaAtaque;
-	}
-
-	@Override
-	public int getKiExtra() {
-		return kiExtra;
-	}
-
-	@Override
-	public String getNombre() {
+	public boolean daEfectos() {
 		// TODO Auto-generated method stub
-		return nombre;
+		return super.estaActivo();
 	}
 	
 }
