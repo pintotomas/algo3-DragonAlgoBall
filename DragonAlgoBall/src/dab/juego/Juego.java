@@ -110,17 +110,16 @@ public class Juego {
 
 	public void pasarTurno() {
 
-		//ordenTurnos.offer(ordenTurnos.poll());
 		turno = new Turno(contrincantes.get(turno.usuarioActual()));
 
 	}
 	
-	public void seHaEfectuadoUnAtaque(){
+	private void seHaEfectuadoUnAtaque(){
 		turno.seHaEfectuadoUnAtaque();
 		this.verificarFinDeTurno();
 	}
 	
-	public void seHaEfectuadoUnMovimiento(){
+	private void seHaEfectuadoUnMovimiento(){
 		turno.seHaEfectuadoUnMovimiento();
 		this.verificarFinDeTurno();
 	}
@@ -131,9 +130,11 @@ public class Juego {
 		
 	}
 	
-	public void personajeSeleccionadoAtacaA(Personaje otroPersonaje){
+	public void personajeSeleccionadoAtacaA(Personaje aPersonaje){
 	
-		personajeSeleccionado.atacarA(otroPersonaje);
+		personajeSeleccionado.atacarA(aPersonaje);
+		contrincantes.get(turno.usuarioActual()).notificarQueSeAtacoA(aPersonaje);
+		this.seHaEfectuadoUnAtaque();
 		
 	}
 	
@@ -143,13 +144,13 @@ public class Juego {
 	
 	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
 		tablero.moverFicha(personajeSeleccionado, fila, columna);
-		turno.seHaEfectuadoUnMovimiento();
-		
+		this.seHaEfectuadoUnMovimiento();
 	}
 	
-	public void personajeSeleccionadoAtaqueEspecialA(Personaje otroPersonaje){
-		personajeSeleccionado.ataqueEspecial(otroPersonaje);
-		turno.seHaEfectuadoUnAtaque();
+	public void personajeSeleccionadoAtaqueEspecialA(Personaje aPersonaje){
+		personajeSeleccionado.ataqueEspecial(aPersonaje);
+		contrincantes.get(turno.usuarioActual()).notificarQueSeAtacoA(aPersonaje);
+	    this.seHaEfectuadoUnAtaque(); 
 		
 	}
 	

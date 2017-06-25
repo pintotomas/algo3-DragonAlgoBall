@@ -32,6 +32,7 @@ public class Turno {
 	
 	
 	public void seHaEfectuadoUnAtaque(){
+		
 		ataquesRestantes -= 1;
 	}
 	

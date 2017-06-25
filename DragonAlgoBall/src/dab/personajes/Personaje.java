@@ -111,16 +111,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		}else{
 			vida += cantidad;
 		}
-		//Parche para que corran las pruebas: o cambiar las pruebas, o 
-		//hacer funcionn
-		if (estoyMuerto() && equipo != null){
-			equipo.quitarPersonaje(this);
-		}
-	}
 	
-	private boolean estoyMuerto(){
-		return vida <= 0;
 	}
+
 	
 	/**********************************************************
 	    			TRANSFORMAR, TURNO 

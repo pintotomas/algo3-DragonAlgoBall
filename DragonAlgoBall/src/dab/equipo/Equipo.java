@@ -106,4 +106,11 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 		}
 	}
 
+	public void notificarAtaqueHacia(Personaje aPersonaje) {
+		double vidaDelAfectado = this.obtenerVidaDelPersonaje(aPersonaje.getNombre());
+		if (vidaDelAfectado <= 0){
+			this.quitarPersonaje(aPersonaje);
+		}
+	}
+
 }
