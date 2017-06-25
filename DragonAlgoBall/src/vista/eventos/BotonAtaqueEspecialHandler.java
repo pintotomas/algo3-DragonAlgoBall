@@ -20,6 +20,7 @@ public class BotonAtaqueEspecialHandler extends BotonAtaqueEventHandler {
   @Override
   protected void efectuarAtaque() {
 	juego.personajeSeleccionadoAtaqueEspecialA(enemigo); 
+	vistaTablero.actualizarVistaDePersonajes();
 	
   }
 
