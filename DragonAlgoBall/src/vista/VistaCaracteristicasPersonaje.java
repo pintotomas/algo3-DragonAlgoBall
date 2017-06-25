@@ -105,7 +105,9 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	public Button generarBotonTransformar(){
 		Button boton = new Button ("TRANSFORMAR");
 		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this));
-		if(!personaje.transformarDisponible()) boton.setDisable(false);
+		if(!personaje.transformarDisponible()){
+			boton.setDisable(true);
+		}
 		return boton;
 	}
 	
