@@ -4,8 +4,11 @@ import dab.equipo.Equipo;
 import dab.personajes.Personaje;
 
 public class Usuario {
+	
 	private String nombre;
 	private Equipo equipo;
+	private int cantidadPersonajesRestantesParaPerder = 0;
+	private int cantidadDeEsferasDelDragonParaGanar = 7;
 	
 	public Usuario(Equipo equipo, String nombre){
 		this.equipo = equipo;
@@ -31,12 +34,12 @@ public class Usuario {
 
 	public boolean haPerdido() {
 		// TODO Auto-generated method stub
-		return equipo.cantidadParticipantes() == 0;
+		return equipo.cantidadParticipantes() == cantidadPersonajesRestantesParaPerder;
 	}
 
 	public boolean haConseguidoItemsParaGanar() {
 		// TODO Auto-generated method stub
-		return equipo.cantidadItemsParaGanar() == 7;
+		return equipo.cantidadItemsParaGanar() == cantidadDeEsferasDelDragonParaGanar;
 	}
 
 
