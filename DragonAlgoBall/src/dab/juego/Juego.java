@@ -31,7 +31,6 @@ public class Juego {
 	private Tablero tablero;
 	Turno turno;
 	Map<Usuario, Usuario> contrincantes;
-	Queue<Usuario> ordenTurnos; 
 	
 	private Personaje personajeSeleccionado;
 	
@@ -55,12 +54,9 @@ public class Juego {
 		contrincantes = new HashMap<Usuario,Usuario>();
 		contrincantes.put(userGuerrerosZ,  userEnemigos);
 		contrincantes.put(userEnemigos, userGuerrerosZ);
-		
-		ordenTurnos = new LinkedList<Usuario>();
-		ordenTurnos.offer(userGuerrerosZ);
-		ordenTurnos.offer(userEnemigos);
-		
-		turno = new Turno(ordenTurnos.peek());
+	
+		//Invariante: Siempre empiezan jugando los guerreros Z
+		turno = new Turno(userGuerrerosZ);
 
 	}
 	
@@ -114,8 +110,8 @@ public class Juego {
 
 	public void pasarTurno() {
 
-		ordenTurnos.offer(ordenTurnos.poll());
-		turno = new Turno(ordenTurnos.peek());
+		//ordenTurnos.offer(ordenTurnos.poll());
+		turno = new Turno(contrincantes.get(turno.usuarioActual()));
 
 	}
 	
@@ -215,7 +211,7 @@ public class Juego {
 	}
 
 	public ArrayList<Personaje> obtenerPersonajesAtacablesDelSeleccionado() {
-		return tablero.personajesAtacables(personajeSeleccionado, contrincantes.get(turno.UsuarioActual()).getEquipo());
+		return tablero.personajesAtacables(personajeSeleccionado, contrincantes.get(turno.usuarioActual()).getEquipo());
 	}
 	
 	public void seleccionarPersonajeEnPosicion(int fila, int columna){
@@ -227,7 +223,7 @@ public class Juego {
 	}
 	
 	public Usuario obtenerJugadorActual(){
-		return ordenTurnos.peek();
+		return turno.usuarioActual();
 	}
 
 }

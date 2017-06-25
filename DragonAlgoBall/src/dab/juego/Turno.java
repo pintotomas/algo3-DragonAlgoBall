@@ -49,7 +49,7 @@ public class Turno {
 	}
 
 
-	public Object UsuarioActual() {
+	public Usuario usuarioActual() {
 		// TODO Auto-generated method stub
 		return user;
 	}
