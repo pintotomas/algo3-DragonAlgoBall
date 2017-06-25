@@ -2,15 +2,17 @@ package vista;
 
 import dab.personajes.Personaje;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
+
 import utils.FabricadorDeRepresentacionDeAvatar;
+
+import javafx.scene.layout.VBox;
+import vista.eventos.BotonTransformarHandler;
 
 
 public class VistaCaracteristicasPersonaje extends VBox{
@@ -37,7 +39,8 @@ public class VistaCaracteristicasPersonaje extends VBox{
 		if(personaje != null){
 			Label nombre = generarVistaNombre(personaje);
 			HBox avatarYDatos = generarVistaAvatarYDatos(personaje);
-			this.getChildren().addAll(nombre, avatarYDatos);
+			Button botonTransformar = generarBotonTransformar();
+			this.getChildren().addAll(nombre, avatarYDatos, botonTransformar);
 		}else{
 			this.getChildren().clear();
 		}
@@ -97,6 +100,17 @@ public class VistaCaracteristicasPersonaje extends VBox{
 		this.getChildren().clear();
 		this.dibujar(personaje);
 	}
+	
+	
+	public Button generarBotonTransformar(){
+		Button boton = new Button ("TRANSFORMAR");
+		if(personaje.transformarDisponible())
+			//la idea es que cambie de color o algo si esta disponible
+			boton.setOnMousePressed(new BotonTransformarHandler(personaje, this));
+		return boton;
+	}
+	
+	
 	
 	public Personaje getPersonaje(){
 		return this.personaje;
