@@ -26,7 +26,7 @@ public class SeleccionarCeldaParaMoverseEventHandler implements EventHandler<Mou
 	@Override
 	public void handle(MouseEvent event) {
 		juego.moverPersonajeSeleccionadoHacia(filaDestino, columnaDestino);
-		juego.seHaEfectuadoUnMovimiento();
+		
 		vistaTablero.dibujarTableroSinNingunaSeleccion();
 		vistaTablero.actualizarVistaEnemigo(null);
 		

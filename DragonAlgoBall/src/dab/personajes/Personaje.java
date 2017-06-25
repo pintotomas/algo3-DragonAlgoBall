@@ -111,16 +111,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		}else{
 			vida += cantidad;
 		}
-		//Parche para que corran las pruebas: o cambiar las pruebas, o 
-		//hacer funcionn
-		if (estoyMuerto() && equipo != null){
-			equipo.quitarPersonaje(this);
-		}
-	}
 	
-	private boolean estoyMuerto(){
-		return vida <= 0;
 	}
+
 	
 	/**********************************************************
 	    			TRANSFORMAR, TURNO 
@@ -230,5 +223,14 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	public String getNombreAtaqueEspecial() {
 		// TODO Auto-generated method stub
 		return ataqueEspecial.nombre;
+	}
+
+	public int cantidadItemsParaGanar() {
+		// TODO Auto-generated method stub
+		int cantidadItems = 0;
+		for (Potenciador p: potenciadoresActivos){
+			if (p.meAyudaAGanar()){ cantidadItems += 1;}
+		}
+		return cantidadItems;
 	}
 }

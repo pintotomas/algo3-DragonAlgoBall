@@ -1,5 +1,6 @@
 package dab.estados;
 
+import dab.equipo.Equipo;
 import dab.interfaces.IProveedorDeKi;
 
 public abstract class Estado {

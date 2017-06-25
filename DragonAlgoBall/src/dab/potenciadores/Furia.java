@@ -82,4 +82,10 @@ public class Furia extends Potenciador {
 		// TODO Auto-generated method stub
 		return nombre;
 	}
+
+	@Override
+	public boolean meAyudaAGanar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

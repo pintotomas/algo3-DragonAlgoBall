@@ -1,6 +1,7 @@
 package dab.personajes.Piccolo;
 import dab.ataquesEspeciales.Makankosappo;
 import dab.equipo.Equipo;
+import dab.estados.gohan.GohanBase;
 import dab.estados.piccolo.PiccoloBase;
 import dab.personajes.Personaje;
 
@@ -27,6 +28,7 @@ public class Piccolo extends Personaje{
 	@Override
 	public void setEquipo(Equipo equipo){
 		super.setEquipo(equipo);
-		estado = new PiccoloBase(this, equipo);	
+		((PiccoloBase) estado).setProveedorVidaCompaneros(equipo);
 	}
+
 }
