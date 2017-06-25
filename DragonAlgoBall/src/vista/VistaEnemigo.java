@@ -66,10 +66,10 @@ public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 		ataqueEspecial.setOnMousePressed(new BotonAtaqueEspecialHandler(personaje, juego, vistaTablero, ajustesSonidosEspeciales));
 		if(!juego.personajeSeleccionadoTieneAtaqueEspecialDisponible()){
 			ataqueEspecial.setDisable(true);
-			System.out.println("El personaje "+personaje.getNombre()+" no tiene especial disponible!");
+			System.out.println("El personaje "+juego.personajeSeleccionado().getNombre()+" no tiene especial disponible!");
 		}
 		else{
-			System.out.println("El personaje "+personaje.getNombre()+" tiene especial disponible!");
+			System.out.println("El personaje "+juego.personajeSeleccionado().getNombre()+" tiene especial disponible!");
 		}
 		acciones.getChildren().addAll(ataqueNormal, ataqueEspecial);
 		return acciones;
