@@ -3,6 +3,8 @@ package vista;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.Ajustes;
+import utils.reproductorDeSonidos.ReproductorDeSonidos;
 
 public class Aplicacion extends Application {
 	private int pixelesAnchoHD = 1360;
@@ -19,7 +21,14 @@ public class Aplicacion extends Application {
 //        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage);
 //        Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
 //        
-        VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage);
+//        ReproductorDeSonidos repr = new ReproductorDeSonidos("/vista/sonidos/opening/DBZOpening.wav");
+//        Thread thread = new Thread(repr);
+//        thread.setDaemon(true);
+//        thread.start();
+//        
+        Ajustes ajustesMusicaDeBatalla = new Ajustes("Musica de batalla", true);
+        Ajustes ajustesEfectosDePersonajes = new Ajustes("Efectos de personajes", true);
+        VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes);
         Scene escenaMenuPrincipal = new Scene(menuPrincipal);
         
 //       ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios, pixelesAnchoHD, pixelesAltoHD);

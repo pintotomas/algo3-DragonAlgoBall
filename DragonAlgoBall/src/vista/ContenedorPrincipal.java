@@ -1,9 +1,19 @@
 package vista;
 
+import dab.equipo.Equipo;
 import dab.juego.Juego;
+import dab.personajes.Freezer.Freezer;
+import dab.personajes.Gohan.Gohan;
+import dab.personajes.Goku.Goku;
+import dab.personajes.Piccolo.Piccolo;
+import dab.personajes.cell.Cell;
+import dab.personajes.majinBoo.MajinBoo;
 import dab.usuario.Usuario;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import utils.Ajustes;
+import utils.reproductorDeSonidos.ReproductorDeSonidos;
 
 public class ContenedorPrincipal extends BorderPane{
 	Stage stage;
@@ -19,20 +29,34 @@ public class ContenedorPrincipal extends BorderPane{
 	private int altoTablero = 7;
 	private int anchoTablero = 18;
 	private VistaInferiorPersonajes vistaInferiorPersonajes;
-
+	private Ajustes ajustesMusicaDeBatalla;
+	private Ajustes ajustesEfectosDePersonajes;
+	private ReproductorDeSonidos reproductorMusicaDeBatalla;
 	
-	public ContenedorPrincipal(Stage stage, Usuario usuariogz, Usuario usuarioEnemigos){
-		
-		juego = new Juego(altoTablero, anchoTablero, usuariogz, usuarioEnemigos);
+	public ContenedorPrincipal(Stage stage2, TextField campoNombreUsuarioGuerreros,
+			TextField campoNombreUsuarioEnemigos, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, 
+			ReproductorDeSonidos reproductorMusicaDeBatalla){
+		this.prepararJuego(campoNombreUsuarioGuerreros, campoNombreUsuarioEnemigos);
+		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
+		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
+		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		this.stage = stage;
 		this.setMenu();
 		this.setCaracteristicasPersonajeSeleccionado();
 		this.setTablero();
 		this.setBotoneraDerecha();
 	}
-	
+
+	private void prepararJuego(TextField campoNombreUsuarioGuerreros, TextField campoNombreUsuarioEnemigos) {
+		String nombreUsuarioGuerreros = campoNombreUsuarioGuerreros.getText();
+		String nombreUsuarioEnemigos = campoNombreUsuarioEnemigos.getText();
+		juego = new Juego(altoTablero, anchoTablero, 
+				new Usuario(new Equipo("Guerreros Z", new Goku(), new Gohan(), new Piccolo()), nombreUsuarioGuerreros),
+				new Usuario(new Equipo("Enemigos de la Tierra", new Cell(), new Freezer(), new MajinBoo()), nombreUsuarioEnemigos));
+	}
+
 	private void setBotoneraDerecha() {
-		this.botoneraDerecha = new BotoneraDerecha(this.juego, vistaTablero);
+		this.botoneraDerecha = new BotoneraDerecha(this.juego, vistaTablero, reproductorMusicaDeBatalla, ajustesMusicaDeBatalla);
 		this.setRight(this.botoneraDerecha);
 	}
 	

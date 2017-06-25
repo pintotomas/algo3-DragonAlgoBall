@@ -7,7 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import vista.fabricadorPersonaje.FabricadorDeRepresentacionDeAvatar;
+
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import utils.FabricadorDeRepresentacionDeAvatar;
+
 
 public class VistaCaracteristicasPersonaje extends VBox{
 	private Personaje personaje;

@@ -10,6 +10,7 @@ public class CambiarEscenaAlPresionarEventHandler implements EventHandler<MouseE
     Scene proximaEscena;
 
     public CambiarEscenaAlPresionarEventHandler(Stage stage, Scene proximaEscena) {
+    	
         this.stage = stage;
         this.proximaEscena = proximaEscena;
     }
@@ -17,7 +18,6 @@ public class CambiarEscenaAlPresionarEventHandler implements EventHandler<MouseE
     @Override
     public void handle(MouseEvent actionEvent) {
     
-    	
         stage.setScene(proximaEscena);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
