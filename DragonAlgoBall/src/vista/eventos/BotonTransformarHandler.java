@@ -16,6 +16,7 @@ public class BotonTransformarHandler implements EventHandler<MouseEvent>{
 		this.personaje = personaje;
 		this.vista = vista;
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
+		
 	}
 	
 	
