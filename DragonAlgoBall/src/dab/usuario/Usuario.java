@@ -5,10 +5,12 @@ import dab.personajes.Personaje;
 
 public class Usuario {
 	
+	public static int cantidadEsferasDelDragonParaGanar = 7;
+	
 	private String nombre;
 	private Equipo equipo;
 	private int cantidadPersonajesRestantesParaPerder = 0;
-	private int cantidadDeEsferasDelDragonParaGanar = 7;
+	private int cantidadDeEsferasDelDragonParaGanar = cantidadEsferasDelDragonParaGanar;
 	
 	public Usuario(Equipo equipo, String nombre){
 		this.equipo = equipo;
