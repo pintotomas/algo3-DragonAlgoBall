@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import vista.eventos.BotonAtaqueEspecialHandler;
 import vista.eventos.BotonAtaqueNormalHandler;
 
 public class VistaEnemigo extends VistaCaracteristicasPersonaje{
@@ -61,6 +62,7 @@ public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 		Button ataqueEspecial = new Button();
 		Image especial = new Image(rutaEspecial);
 		ataqueEspecial.setGraphic(new ImageView(especial));
+		ataqueEspecial.setOnMousePressed(new BotonAtaqueEspecialHandler(personaje, juego, vistaTablero));
 		acciones.getChildren().addAll(ataqueNormal, ataqueEspecial);
 		return acciones;
 	}
