@@ -32,5 +32,8 @@ public class GohanBase extends Estado {
 		return proveedorDeKi.getKi() >= kiParaTransformar;
 	}
 	
+	public void setProveedorVidaCompaneros(IProveedorDeVidaDePersonajes proveedorVidaCompaneros){
+		this.proveedorVidaCompaneros = proveedorVidaCompaneros;
+	}
 	
 }
