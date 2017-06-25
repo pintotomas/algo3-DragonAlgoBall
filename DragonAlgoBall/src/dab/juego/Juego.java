@@ -3,9 +3,7 @@ package dab.juego;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 
@@ -114,18 +112,26 @@ public class Juego {
 
 	}
 	
-	private boolean verificarSiGanoElDelTurnoActual(){
+	public Usuario ganador(){
+		return turno.usuarioActual();
+	}
+	
+	public boolean ganoElDelTurnoActual(){
 		return contrincantes.get(turno.usuarioActual()).haPerdido() || turno.usuarioActual().haConseguidoItemsParaGanar();
 	}
 	
 	private void seHaEfectuadoUnAtaque(){
 		turno.seHaEfectuadoUnAtaque();
-		this.verificarFinDeTurno();
+		if (!ganoElDelTurnoActual()){
+			this.verificarFinDeTurno();
+		}
 	}
 	
 	private void seHaEfectuadoUnMovimiento(){
 		turno.seHaEfectuadoUnMovimiento();
-		this.verificarFinDeTurno();
+		if (!ganoElDelTurnoActual()){
+			this.verificarFinDeTurno();
+		}
 	}
 	
 	public boolean personajeSeleccionadoPuedeAtacarA(Personaje otroPersonaje){
