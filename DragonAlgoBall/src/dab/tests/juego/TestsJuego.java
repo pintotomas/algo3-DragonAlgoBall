@@ -1,7 +1,6 @@
 package dab.tests.juego;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Assert;

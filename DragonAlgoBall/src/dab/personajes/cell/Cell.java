@@ -4,7 +4,6 @@ import dab.ataquesEspeciales.Absorber;
 import dab.equipo.Equipo;
 import dab.estados.cell.CellBase;
 import dab.interfaces.IProveedorDeCantidadAbsorbidos;
-import dab.juego.Celda;
 import dab.personajes.Personaje;
 
 public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{	

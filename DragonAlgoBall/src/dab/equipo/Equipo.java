@@ -13,7 +13,6 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	 * forma rapida
 	 */
 	Map<String, Personaje> integrantes;
-	private int cantidadEsferasDelDragon;
 	private String nombreEquipo;
 	private int kiNuevoTurno = 5; //Ver si lo puede hacer turno 
 	

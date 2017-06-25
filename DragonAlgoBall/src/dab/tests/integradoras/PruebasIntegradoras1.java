@@ -5,16 +5,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.equipo.Equipo;
 import dab.juego.Tablero;
+import dab.personajes.Freezer.Freezer;
+import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
-import dab.personajes.Gohan.Gohan;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
-import dab.personajes.Freezer.Freezer;
 public class PruebasIntegradoras1 {
 
 	Goku goku;

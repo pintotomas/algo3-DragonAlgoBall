@@ -2,7 +2,6 @@ package dab.potenciadores;
 
 import dab.interfaces.IContenedorDeFicha;
 import dab.interfaces.IFicha;
-import dab.juego.Celda;
 
 public abstract class Potenciador implements IFicha{
 	

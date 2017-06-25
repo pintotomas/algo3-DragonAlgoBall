@@ -220,11 +220,6 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		this.modificarVida(potenciador.getVidaExtra());
 	}
 
-	public String getNombreAtaqueEspecial() {
-		// TODO Auto-generated method stub
-		return ataqueEspecial.nombre;
-	}
-
 	public int cantidadItemsParaGanar() {
 		// TODO Auto-generated method stub
 		int cantidadItems = 0;
