@@ -39,6 +39,7 @@ public class ContenedorPrincipal extends BorderPane{
 		this.prepararJuego(campoNombreUsuarioGuerreros, campoNombreUsuarioEnemigos);
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
+	
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		this.stage = stage;
 		this.setMenu();
@@ -61,7 +62,7 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setCaracteristicasPersonajeSeleccionado(){
-		this.vistaInferiorPersonajes = new VistaInferiorPersonajes(juego);
+		this.vistaInferiorPersonajes = new VistaInferiorPersonajes(juego, ajustesEfectosDePersonajes);
         this.setBottom(this.vistaInferiorPersonajes);
 	}
 

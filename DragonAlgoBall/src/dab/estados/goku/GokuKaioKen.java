@@ -6,6 +6,7 @@ import dab.interfaces.IProveedorDeKi;
 public class GokuKaioKen extends Estado{
 	/*Representa a la primer transformacion de Goku*/
 	
+	public static String nombreId = "Goku Kaio-Ken";
 	
 	public GokuKaioKen(IProveedorDeKi proveedorDeKi){
 		super(proveedorDeKi);
@@ -13,7 +14,7 @@ public class GokuKaioKen extends Estado{
 		poder = 40;
 		alcance = 4;
 		velocidad = 3;
-		nombre = "Goku Kaio-Ken";
+		nombre = nombreId;
 		kiParaTransformar = 50;
 	}
 

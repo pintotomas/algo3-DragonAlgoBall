@@ -5,6 +5,7 @@ import dab.personajes.Personaje;
 public class Makankosappo extends AtaqueEspecial {
 	
 	/*Representa un Makankosappo*/
+	public static String nombre = "Makankosappo";
 	
 	public Makankosappo(Personaje lanzador){
 		super(lanzador);

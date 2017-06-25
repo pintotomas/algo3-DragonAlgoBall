@@ -114,7 +114,6 @@ public class Juego {
 
 	public void pasarTurno() {
 
-		personajeSeleccionado = null;
 		ordenTurnos.offer(ordenTurnos.poll());
 		turno = new Turno(ordenTurnos.peek());
 
@@ -230,5 +229,6 @@ public class Juego {
 	public Usuario obtenerJugadorActual(){
 		return ordenTurnos.peek();
 	}
+
 }
 

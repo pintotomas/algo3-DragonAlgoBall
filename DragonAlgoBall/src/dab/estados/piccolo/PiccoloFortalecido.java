@@ -8,14 +8,14 @@ public class PiccoloFortalecido extends Estado {
 	
 	private IProveedorDeVidaDePersonajes proveedorDeVidaAliados;
 	private double maximoPorcentajeDeVidaDeGohanNecesarioParaTransformar = 30;
-	
+	public static String nombreId = "Piccolo Fortalecido";
 	public PiccoloFortalecido(IProveedorDeKi proveedorDeKi, IProveedorDeVidaDePersonajes proveedorDeVida){
 		super(proveedorDeKi);
 		vidaMaxima = 500;
 		poder = 40;
 		alcance = 4;
 		velocidad = 3;
-		nombre = "Piccolo Fortalecido";
+		nombre = nombreId;
 		kiParaTransformar = 0;
 		this.proveedorDeVidaAliados = proveedorDeVida;
 	}

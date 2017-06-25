@@ -5,6 +5,7 @@ import dab.interfaces.IProveedorDeKi;
 public class GokuBase extends Estado{	
 	/*Representa al personaje Goku*/
 	
+	public static String nombreId = "Goku";
 	
 	public GokuBase(IProveedorDeKi proveedorDeKi){
 		super(proveedorDeKi);
@@ -12,7 +13,7 @@ public class GokuBase extends Estado{
 		poder = 20;
 		alcance = 2;
 		velocidad = 2;
-		nombre = "Goku";
+		nombre = nombreId;
 		kiParaTransformar = 20;
 	}
 	

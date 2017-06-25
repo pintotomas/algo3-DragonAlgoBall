@@ -6,10 +6,10 @@ import dab.interfaces.IProveedorDeKi;
 public class FreezerBase extends Estado{
 	
 /*Representa al personaje Freezer*/
-	
+	public static String nombreId = "Freezer";
 	public FreezerBase(IProveedorDeKi proveedorDeKi){
 		super(proveedorDeKi);
-		nombre = "Freezer";
+		nombre = nombreId ;
 		vidaMaxima = 400;
 		poder = 20;
 		alcance = 2;

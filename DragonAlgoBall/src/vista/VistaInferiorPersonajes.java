@@ -6,17 +6,20 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import utils.Ajustes;
 import vista.eventos.BotonPersonajeInferiorHandler;
 	
 public class VistaInferiorPersonajes extends GridPane{
-	VistaCaracteristicasPersonaje seleccionado;
-	HBox personajesAliados;
-	Juego juego;
-	VistaTablero vistaTablero;
-	VistaEnemigo enemigo;
-	public VistaInferiorPersonajes(Juego juego){
+	private VistaCaracteristicasPersonaje seleccionado;
+	private HBox personajesAliados;
+	private Juego juego;
+	private VistaTablero vistaTablero;
+	private VistaEnemigo enemigo;
+	private Ajustes ajustesSonidosEspeciales;
+	public VistaInferiorPersonajes(Juego juego, Ajustes ajustesSonidosEspeciales){
 		this.juego = juego;
-		seleccionado = new VistaCaracteristicasPersonaje(null);
+		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
+		seleccionado = new VistaCaracteristicasPersonaje(null, ajustesSonidosEspeciales);
 		personajesAliados = new HBox();
 		this.setPadding(new Insets(0,0,5,5));
 		this.setHgap(30);
@@ -34,13 +37,13 @@ public class VistaInferiorPersonajes extends GridPane{
 		mostrar.setMinWidth(500);
 		mostrar.setAlignment(Pos.CENTER);
 		for(Personaje x : juego.getPersonajesDeTurno()){
-			vista = new VistaCaracteristicasPersonaje(x);
+			vista = new VistaCaracteristicasPersonaje(x, ajustesSonidosEspeciales);
 			personajesAliados.getChildren().add(vista);
 			BotonPersonajeInferiorHandler boton  = new BotonPersonajeInferiorHandler(vista, vistaTablero.getCeldas());
 			vista.setOnMousePressed(boton);
 			mostrar.getChildren().add(vista);
 		}
-		this.enemigo = new VistaEnemigo(null, juego, vistaTablero);
+		this.enemigo = new VistaEnemigo(null, juego, vistaTablero, ajustesSonidosEspeciales);
 		VistaInferiorPersonajes.setColumnIndex(mostrar, 0);
 		VistaInferiorPersonajes.setColumnIndex(enemigo, 1);
 		this.getChildren().addAll(mostrar,enemigo);
