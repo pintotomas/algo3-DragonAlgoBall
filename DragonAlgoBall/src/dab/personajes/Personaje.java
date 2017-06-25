@@ -1,15 +1,16 @@
 package dab.personajes;
 
-import java.util.List;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+
 import dab.ataquesEspeciales.AtaqueEspecial;
 import dab.equipo.Equipo;
 import dab.estados.Estado;
-import dab.interfaces.IProveedorDeKi;
 import dab.interfaces.IContenedorDeFicha;
 import dab.interfaces.IFicha;
 import dab.interfaces.IFichaMovible;
-import dab.interfaces.IFichaUbicable;
+import dab.interfaces.IProveedorDeKi;
 import dab.potenciadores.Potenciador;
 
 public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
@@ -53,7 +54,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	}
 	
 	private void notificarAtaqueAPotenciadores(){
-		for (Potenciador potenciador: potenciadoresActivos){
+		Iterator<Potenciador> iteradorPotenciadoresActivos = potenciadoresActivos.iterator();
+		while(iteradorPotenciadoresActivos.hasNext()){
+			Potenciador potenciador = iteradorPotenciadoresActivos.next();
 			potenciador.pasoUnAtaque();
 			
 			if (!potenciador.estaActivo()){
@@ -130,12 +133,14 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		return estado.transformarDisponible();
 	}
 	
-	public void nuevoTurno() {
-		for (Potenciador potenciador: potenciadoresActivos){
+	public void nuevoTurno(){
+		Iterator<Potenciador> iteradorPotenciadoresActivos = potenciadoresActivos.iterator();
+		while(iteradorPotenciadoresActivos.hasNext()){
+			Potenciador potenciador = iteradorPotenciadoresActivos.next();
 			potenciador.pasoUnTurno();
 			this.modificarKi(potenciador.getKiExtra());
 			if (!potenciador.estaActivo()){
-				potenciadoresActivos.remove(potenciador);
+				iteradorPotenciadoresActivos.remove();
 			}
 		}
 	}	
@@ -220,5 +225,10 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		Potenciador potenciador = (Potenciador) ficha;
 		potenciadoresActivos.add(potenciador);
 		this.modificarVida(potenciador.getVidaExtra());
+	}
+
+	public String getNombreAtaqueEspecial() {
+		// TODO Auto-generated method stub
+		return ataqueEspecial.nombre;
 	}
 }

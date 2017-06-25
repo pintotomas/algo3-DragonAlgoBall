@@ -5,6 +5,8 @@ import dab.potenciadores.Inutilizador;
 
 public class ConvierteteEnChocolate extends AtaqueEspecial {
 
+	public static String nombre = "ConveriteteEnEchocolate";
+	
 	public ConvierteteEnChocolate(Personaje lanzador) {
 		super(lanzador);
 		// TODO Auto-generated constructor stub

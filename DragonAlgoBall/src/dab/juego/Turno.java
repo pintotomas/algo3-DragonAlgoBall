@@ -2,18 +2,19 @@ package dab.juego;
 
 import dab.equipo.Equipo;
 import dab.personajes.Personaje;
+import dab.usuario.Usuario;
 
 public class Turno {
-	Equipo equipo;
-	Celda celdaSeleccionada = null;
-	Tablero tablero;
+	
+	private Equipo equipo;	
 	private int movimientosRestantes = 1;
 	private int ataquesRestantes = 1;
+	private Usuario user;
 	
-	public Turno(Equipo equipo,Tablero tablero){
-		this.equipo = equipo;
-		this.tablero = tablero;
+	public Turno(Usuario user){
+		this.equipo = user.getEquipo();
 		equipo.nuevoTurno();
+		this.user = user;
 	}
 	
 
@@ -45,6 +46,12 @@ public class Turno {
 
 	public boolean puedeJugar(Personaje aPersonaje) {
 		return equipo.existePersonajeEnEquipo(aPersonaje);
+	}
+
+
+	public Object UsuarioActual() {
+		// TODO Auto-generated method stub
+		return user;
 	}
 	
 	

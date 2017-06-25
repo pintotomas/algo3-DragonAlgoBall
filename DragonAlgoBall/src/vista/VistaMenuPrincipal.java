@@ -9,15 +9,20 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import utils.Ajustes;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 import vista.menuOpciones.VistaMenuOpciones;
 
 public class VistaMenuPrincipal extends StackPane{
 	
 	private Stage stage;
+	private Ajustes ajustesMusicaDeBatalla;
+	private Ajustes ajustesEfectosDePersonajes;
 	
-	public VistaMenuPrincipal(Stage stage){
+	public VistaMenuPrincipal(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes){
 		
+		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
+		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.stage = stage;
 		this.setFondo();
 		this.setBotones();
@@ -39,8 +44,8 @@ public class VistaMenuPrincipal extends StackPane{
 		
 		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos);
 		
-		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage));
-		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage));  
+		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes));
+		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes));  
         
         
 		this.getChildren().add(menu);

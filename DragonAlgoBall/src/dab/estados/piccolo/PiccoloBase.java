@@ -5,6 +5,7 @@ import dab.interfaces.IProveedorDeVidaDePersonajes;
 
 public class PiccoloBase extends Estado {
 		
+	public static String nombreId = "Piccolo";
 	/*Representa al personaje Piccolo*/
  	private IProveedorDeVidaDePersonajes proveedorDeVidaAliados;
 	public PiccoloBase(IProveedorDeKi proveedorDeKi, IProveedorDeVidaDePersonajes proveedorDeVidaAliados){
@@ -13,7 +14,7 @@ public class PiccoloBase extends Estado {
 		poder = 20;
 		alcance = 2;
 		velocidad = 2;
-		nombre = "Piccolo";
+		nombre = nombreId;
 		kiParaTransformar = 20;
 		this.proveedorDeVidaAliados = proveedorDeVidaAliados;
 	}

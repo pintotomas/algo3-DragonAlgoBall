@@ -2,7 +2,9 @@ package dab.juego;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
@@ -28,7 +30,7 @@ public class Juego {
 	private int anchoTablero;
 	private Tablero tablero;
 	Turno turno;
-
+	Map<Usuario, Usuario> contrincantes;
 	Queue<Usuario> ordenTurnos; 
 	
 	private Personaje personajeSeleccionado;
@@ -49,11 +51,16 @@ public class Juego {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		contrincantes = new HashMap<Usuario,Usuario>();
+		contrincantes.put(userGuerrerosZ,  userEnemigos);
+		contrincantes.put(userEnemigos, userGuerrerosZ);
+		
 		ordenTurnos = new LinkedList<Usuario>();
 		ordenTurnos.offer(userGuerrerosZ);
 		ordenTurnos.offer(userEnemigos);
 		
-		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
+		turno = new Turno(ordenTurnos.peek());
 
 	}
 	
@@ -107,9 +114,8 @@ public class Juego {
 
 	public void pasarTurno() {
 
-		personajeSeleccionado = null;
 		ordenTurnos.offer(ordenTurnos.poll());
-		turno = new Turno(ordenTurnos.peek().getEquipo(), tablero);
+		turno = new Turno(ordenTurnos.peek());
 
 	}
 	
@@ -209,7 +215,7 @@ public class Juego {
 	}
 
 	public ArrayList<Personaje> obtenerPersonajesAtacablesDelSeleccionado() {
-		return tablero.personajesAtacables(personajeSeleccionado);
+		return tablero.personajesAtacables(personajeSeleccionado, contrincantes.get(turno.UsuarioActual()).getEquipo());
 	}
 	
 	public void seleccionarPersonajeEnPosicion(int fila, int columna){
@@ -223,5 +229,6 @@ public class Juego {
 	public Usuario obtenerJugadorActual(){
 		return ordenTurnos.peek();
 	}
+
 }
 

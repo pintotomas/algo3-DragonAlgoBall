@@ -7,12 +7,13 @@ public class CellSemiPerfecto extends Estado {
 	
 	IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos;
 	int cantidadAbsorbidosNecesariosParaTransformar = 8;
+	public static String nombreId = "Cell Semi Perfecto";
 	public CellSemiPerfecto(IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos) {
 		vidaMaxima = 500;
 		poder = 40;
 		alcance = 4;
 		velocidad = 3;
-		nombre = "Cell Semi Perfecto";;
+		nombre = nombreId;
 		
 	}
 	@Override

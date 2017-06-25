@@ -11,16 +11,21 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import utils.Ajustes;
 import vista.VistaMenuPrincipal;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class VistaMenuOpciones extends StackPane {
 	
 	private Stage stage;
+	private Ajustes ajustesMusicaDeBatalla;
+	private Ajustes ajustesEfectosDePersonajes;
 	
-	public VistaMenuOpciones(Stage stage) {
+	public VistaMenuOpciones(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes) {
 		
 		this.stage = stage;
+		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
+		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.setFondo();
 		this.setOpciones();
 		
@@ -36,16 +41,17 @@ public class VistaMenuOpciones extends StackPane {
 	        
             @Override
             public void handle(ActionEvent arg0) {
-                botonVolver.getScene().setRoot(new VistaMenuPrincipal(stage));             
+                botonVolver.getScene().setRoot(new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes));             
             }
         });
 		
 		//En el futuro recibira dos parametros: Si esta activada o no
-		VistaOpcion opcionMusicaDeFondo = new VistaOpcion("vista/Imagenes/Musica.png", true);
+//		VistaOpcion opcionMusicaDeFondo = new VistaOpcion("vista/Imagenes/Musica.png", true);
 		
-		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("vista/Imagenes/MusicaDeBatalla.png", true);
-		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("vista/Imagenes/SonidosPersonajes.png", true);
-		opciones.getChildren().addAll(opcionMusicaDeFondo, opcionMusicaDeBatalla, opcionSonidosDePersonaje, botonVolver);
+		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("vista/Imagenes/MusicaDeBatalla.png", ajustesMusicaDeBatalla.estaActivo(), ajustesMusicaDeBatalla);
+		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("vista/Imagenes/SonidosPersonajes.png", ajustesEfectosDePersonajes.estaActivo(), ajustesEfectosDePersonajes);
+//		opciones.getChildren().addAll(opcionMusicaDeFondo, opcionMusicaDeBatalla, opcionSonidosDePersonaje, botonVolver);
+		opciones.getChildren().addAll(opcionMusicaDeBatalla, opcionSonidosDePersonaje, botonVolver);
 		this.getChildren().addAll(opciones);
 		opciones.setAlignment(Pos.CENTER_RIGHT);
 		

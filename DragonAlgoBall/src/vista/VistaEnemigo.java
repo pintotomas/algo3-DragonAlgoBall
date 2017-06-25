@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import utils.Ajustes;
+import vista.eventos.BotonAtaqueEspecialHandler;
 import vista.eventos.BotonAtaqueNormalHandler;
 
 public class VistaEnemigo extends VistaCaracteristicasPersonaje{
@@ -18,8 +20,8 @@ public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 	Juego juego;
 	private String rutaAtaque = "/vista/imagenes/hud/ataque.png";
 	private String rutaEspecial = "/vista/imagenes/hud/especial.png";
-	public VistaEnemigo(Personaje personaje, Juego juego, VistaTablero vistaTablero){
-		super(personaje);
+	public VistaEnemigo(Personaje personaje, Juego juego, VistaTablero vistaTablero, Ajustes ajustesSonidosEspeciales){
+		super(personaje, ajustesSonidosEspeciales);
 		this.juego = juego;
 		this.vistaTablero = vistaTablero;
 		this.setVista();
@@ -57,10 +59,18 @@ public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 		Button ataqueNormal = new Button();
 		Image ataque = new Image(rutaAtaque);
 		ataqueNormal.setGraphic(new ImageView(ataque));
-		ataqueNormal.setOnMousePressed(new BotonAtaqueNormalHandler(personaje, juego, vistaTablero));
+		ataqueNormal.setOnMousePressed(new BotonAtaqueNormalHandler(personaje, juego, vistaTablero, ajustesSonidosEspeciales));
 		Button ataqueEspecial = new Button();
 		Image especial = new Image(rutaEspecial);
 		ataqueEspecial.setGraphic(new ImageView(especial));
+		ataqueEspecial.setOnMousePressed(new BotonAtaqueEspecialHandler(personaje, juego, vistaTablero, ajustesSonidosEspeciales));
+		if(!juego.personajeSeleccionadoTieneAtaqueEspecialDisponible()){
+			ataqueEspecial.setDisable(true);
+			System.out.println("El personaje "+juego.personajeSeleccionado().getNombre()+" no tiene especial disponible!");
+		}
+		else{
+			System.out.println("El personaje "+juego.personajeSeleccionado().getNombre()+" tiene especial disponible!");
+		}
 		acciones.getChildren().addAll(ataqueNormal, ataqueEspecial);
 		return acciones;
 	}
