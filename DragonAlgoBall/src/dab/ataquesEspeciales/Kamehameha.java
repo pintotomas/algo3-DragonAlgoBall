@@ -5,6 +5,7 @@ import dab.personajes.Personaje;
 public class Kamehameha extends AtaqueEspecial {
 	
 	/*Representa un Kamehameha*/
+	public static String nombre = "Kamehameha";
 	
 	public Kamehameha(Personaje lanzador){
 		super(lanzador);

@@ -3,30 +3,32 @@ package vista.eventos;
 import dab.juego.Juego; 
 import dab.personajes.Personaje; 
 import javafx.event.EventHandler; 
-import javafx.scene.input.MouseEvent; 
+import javafx.scene.input.MouseEvent;
+import utils.Ajustes;
+import utils.reproductorDeSonidos.ReproductorSonidosEspeciales;
 import vista.VistaTablero; 
  
-public class BotonAtaqueEspecialHandler implements EventHandler<MouseEvent> { 
+public class BotonAtaqueEspecialHandler extends BotonAtaqueEventHandler { 
+    
    
-  Personaje enemigo; 
-  Juego juego; 
-  VistaTablero vistaTablero;   
-   
-  public BotonAtaqueEspecialHandler(Personaje enemigo, Juego juego, VistaTablero vistaTablero){ 
-    this.enemigo = enemigo; 
-    this.juego = juego; 
-    this.vistaTablero = vistaTablero; 
+  public BotonAtaqueEspecialHandler(Personaje enemigo, Juego juego, VistaTablero vistaTablero, Ajustes ajustesEfectosDePersonajes){ 
+    super(enemigo, juego, vistaTablero, ajustesEfectosDePersonajes);
   } 
    
-  @Override 
-  public void handle(MouseEvent event) { 
-    if(juego.personajeSeleccionadoTieneAtaqueEspecialDisponible()){ 
-      juego.personajeSeleccionadoAtaqueEspecialA(enemigo); 
-      juego.seHaEfectuadoUnAtaque(); 
-      vistaTablero.dibujarTableroSinNingunaSeleccion(); 
-      vistaTablero.actualizarVistaDePersonajes(); 
-    } 
-     
+
+
+  @Override
+  protected void efectuarAtaque() {
+	juego.personajeSeleccionadoAtaqueEspecialA(enemigo); 
+	
+  }
+
+  @Override
+  protected void correrSonido() {
+	  if (ajustesEfectosDePersonajes.estaActivo()){
+		  ReproductorSonidosEspeciales.reproducir(juego.personajeSeleccionado().getNombre());
+	  }
+	
   } 
  
 } 

@@ -226,4 +226,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		potenciadoresActivos.add(potenciador);
 		this.modificarVida(potenciador.getVidaExtra());
 	}
+
+	public String getNombreAtaqueEspecial() {
+		// TODO Auto-generated method stub
+		return ataqueEspecial.nombre;
+	}
 }

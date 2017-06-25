@@ -7,6 +7,8 @@ import dab.interfaces.IProveedorDeVidaDePersonajes;
 public class GohanSuperSayajinFase1 extends Estado{
 	/*segunda transformacion de gohan*/
 	
+		public static String nombreId = "Gohan Super Sayajin Fase 1";
+	
 		private IProveedorDeVidaDePersonajes proveedorVidaAliados;
 		private double porcentajeVidaAliadosMinimoParaTransformar = 30;
 		
@@ -16,7 +18,7 @@ public class GohanSuperSayajinFase1 extends Estado{
 			poder = 30;
 			alcance = 2;
 			velocidad = 2;
-			nombre = "Gohan Super Sayajin Fase 1";
+			nombre = nombreId;
 			kiParaTransformar = 30;
 			this.proveedorVidaAliados = proveedorVidaAliados;
 		}

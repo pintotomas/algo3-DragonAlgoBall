@@ -7,14 +7,15 @@ public class CellBase extends Estado{
 	/*Representa al personaje Cell*/
 	IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos;
 	int cantidadAbsorbidosNecesariosParaTransformar = 4;
+	public static String nombreId = "Cell";
 	
 	public CellBase(IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos){ 
 		vidaMaxima = 10;
 		poder = 20;
 		alcance = 3;
 		velocidad = 2;
-		nombre = "Cell";
 		this.proveedorCantidadAbsorbidos = proveedorCantidadAbsorbidos;
+		nombre = nombreId;
 	}
 	@Override
 	public Estado transformar() {

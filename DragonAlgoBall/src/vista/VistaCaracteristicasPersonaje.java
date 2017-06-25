@@ -7,8 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
-
+import utils.Ajustes;
 import utils.FabricadorDeRepresentacionDeAvatar;
 
 import javafx.scene.layout.VBox;
@@ -21,10 +20,12 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	private String rutaHP = "/vista/imagenes/hud/hp.png";
 	private String rutaPP = "/vista/imagenes/hud/pp.png";
 	private String rutaKI = "/vista/imagenes/hud/ki.png";
+	protected Ajustes ajustesSonidosEspeciales;
 	
-	public VistaCaracteristicasPersonaje(Personaje personaje){
+	public VistaCaracteristicasPersonaje(Personaje personaje, Ajustes ajustesSonidosEspeciales){
 		this.personaje = personaje;
 		this.setVista();
+		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
 	}
 	
 	private void setVista(){
@@ -104,8 +105,8 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	
 	public Button generarBotonTransformar(){
 		Button boton = new Button ("TRANSFORMAR");
-		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this));
-		if(!personaje.transformarDisponible()) boton.setDisable(false);
+		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this, ajustesSonidosEspeciales));
+		if(!personaje.transformarDisponible()) boton.setDisable(true);
 		return boton;
 	}
 	
