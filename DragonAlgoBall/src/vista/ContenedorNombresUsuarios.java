@@ -64,6 +64,8 @@ public class ContenedorNombresUsuarios extends VBox {
     	Image imagen = new Image(textoLabel);
     	labelNombreUsuario.setGraphic(new ImageView(imagen));
         TextField campoNombreUsuario = new TextField();
+        campoNombreUsuario.setMaxWidth(300);
+        campoNombreUsuario.setMinHeight(20);
         this.getChildren().addAll(labelNombreUsuario,campoNombreUsuario);
         return campoNombreUsuario;
     }
