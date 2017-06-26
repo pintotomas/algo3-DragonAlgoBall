@@ -75,10 +75,10 @@ public class ReproductorDeSonidos implements Runnable {
 		}
 	}
 	
-	public static void playASound(String soundSource){
+	public static void playASound(String soundSource, boolean systemWait){
 		AudioFile sonidoEspecial = new AudioFile(soundSource);
 		sonidoEspecial.play();
-		while(sonidoEspecial.isPlaying()){
+		while(sonidoEspecial.isPlaying() && systemWait){
 			//espero a que finalize el sonido..
 		}
 	}

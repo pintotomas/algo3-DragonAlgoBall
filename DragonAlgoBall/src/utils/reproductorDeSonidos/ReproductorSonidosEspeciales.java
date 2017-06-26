@@ -60,7 +60,7 @@ public class ReproductorSonidosEspeciales {
 	
 	public static void reproducir(String identificadorSonido){
 		
-		ReproductorDeSonidos.playASound(sonidera.get(identificadorSonido));
+		ReproductorDeSonidos.playASound(sonidera.get(identificadorSonido), true);
 		
 	}
 }
