@@ -23,7 +23,7 @@ public class ReproductorDeSonidos implements Runnable {
 		currentSong = musicFiles.get(currentSongIndex);
 		
 		
-		while(isPlaying()){
+		while(this.isPlaying()){
 			if (currentSong.isPlaying() && this.isMuted()){
 				currentSong.stop();
 			}
@@ -68,11 +68,18 @@ public class ReproductorDeSonidos implements Runnable {
 		
 	}
 
-
 	public void stop() {
 		running = false;
 		if (currentSong.isPlaying()){
 			currentSong.stop();
+		}
+	}
+	
+	public static void playASound(String soundSource, boolean systemWait){
+		AudioFile sonidoEspecial = new AudioFile(soundSource);
+		sonidoEspecial.play();
+		while(sonidoEspecial.isPlaying() && systemWait){
+			//espero a que finalize el sonido..
 		}
 	}
 
