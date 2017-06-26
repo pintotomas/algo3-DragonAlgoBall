@@ -23,24 +23,25 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	private String rutaKI = "/vista/Imagenes/hud/ki.png";
 	protected Ajustes ajustesSonidosEspeciales;
 	
-	public VistaCaracteristicasPersonaje(Personaje personaje, Ajustes ajustesSonidosEspeciales){
+	public VistaCaracteristicasPersonaje(Personaje personaje, Ajustes ajustesSonidosEspeciales,
+			VistaTablero vistaTablero){
 		this.personaje = personaje;
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
-		this.setVista();
+		this.setVista(vistaTablero);
 	}
-	private void setVista(){
+	private void setVista(VistaTablero vistaTablero){
 		this.setSpacing(5);
         this.setPadding(new Insets(10));
         this.getStyleClass().add("marcoPersonaje");
-        this.dibujar(this.personaje);
+        this.dibujar(this.personaje, vistaTablero);
 	}
 
 	
-	public void dibujar(Personaje personaje){
+	public void dibujar(Personaje personaje, VistaTablero vistaTablero){
 		if(personaje != null){
 			Label nombre = generarVistaNombre(personaje);
 			HBox avatarYDatos = generarVistaAvatarYDatos(personaje);
-			Button botonTransformar = generarBotonTransformar();
+			Button botonTransformar = generarBotonTransformar(vistaTablero);
 			this.getChildren().addAll(nombre, avatarYDatos, botonTransformar);
 		}else{
 			this.getChildren().clear();
@@ -98,16 +99,16 @@ public class VistaCaracteristicasPersonaje extends VBox{
 		etiquetaPoderDeAtaque.setGraphic(new ImageView(poderDeAtaqueIcon));
 		return etiquetaPoderDeAtaque;
 	}
-	public void update(Personaje personaje){
+	public void update(Personaje personaje, VistaTablero vistaTablero){
 		this.getChildren().clear();
-		this.dibujar(personaje);
+		this.dibujar(personaje, vistaTablero);
 	}
 	
 	
-	public Button generarBotonTransformar(){
+	public Button generarBotonTransformar(VistaTablero vistaTablero){
 		Button boton = new Button();
 		boton.getStyleClass().addAll("botonTransformar");
-		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this, ajustesSonidosEspeciales));
+		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this, ajustesSonidosEspeciales, vistaTablero));
 		if(!personaje.transformarDisponible()){
 			boton.setDisable(true);
 		}

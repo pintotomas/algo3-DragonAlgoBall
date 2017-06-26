@@ -20,12 +20,7 @@ public class Goku extends Personaje{
 	}
 	
 	public Goku(Equipo equipo){
-		ataqueEspecial = new Kamehameha(this);
-		kiParaEspecial = 20;
-		kiParaTransformar = 20;
-		estado = new GokuBase(this);
-		vida = estado.getVidaMaxima();
-		this.interactuarAlContacto(new Furia(this));
+		this();
 		this.equipo = equipo;
 	}
 	

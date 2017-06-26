@@ -25,11 +25,7 @@ public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{
 	}
 	
 	public Cell(Equipo equipo){
-		ataqueEspecial = new Absorber(this);
-		kiParaEspecial = 5;
-		absorbidos = 0;
-		estado = new CellBase(this);
-		vida = estado.getVidaMaxima();
+		this();
 		this.equipo = equipo;
 		
 	}

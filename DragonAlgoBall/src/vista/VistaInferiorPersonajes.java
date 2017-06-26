@@ -19,7 +19,7 @@ public class VistaInferiorPersonajes extends GridPane{
 	public VistaInferiorPersonajes(Juego juego, Ajustes ajustesSonidosEspeciales){
 		this.juego = juego;
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
-		seleccionado = new VistaCaracteristicasPersonaje(null, ajustesSonidosEspeciales);
+		seleccionado = new VistaCaracteristicasPersonaje(null, ajustesSonidosEspeciales, vistaTablero);
 		personajesAliados = new HBox();
 		this.setPadding(new Insets(0,0,5,5));
 		this.setHgap(30);
@@ -37,7 +37,7 @@ public class VistaInferiorPersonajes extends GridPane{
 		mostrar.setMinWidth(500);
 		mostrar.setAlignment(Pos.CENTER);
 		for(Personaje x : juego.getPersonajesDeTurno()){
-			vista = new VistaCaracteristicasPersonaje(x, ajustesSonidosEspeciales);
+			vista = new VistaCaracteristicasPersonaje(x, ajustesSonidosEspeciales, vistaTablero);
 			personajesAliados.getChildren().add(vista);
 			BotonPersonajeInferiorHandler boton  = new BotonPersonajeInferiorHandler(vista, vistaTablero.getCeldas());
 			vista.setOnMousePressed(boton);
@@ -51,7 +51,7 @@ public class VistaInferiorPersonajes extends GridPane{
 
 	
 	public void updateSeleccionado(Personaje personajeSeleccionado) {
-		seleccionado.update(personajeSeleccionado);
+		seleccionado.update(personajeSeleccionado, vistaTablero);
 	}
 	
 	

@@ -2,7 +2,6 @@ package vista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -15,9 +14,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
-import utils.reproductorDeSonidos.ReproductorDeSonidos;
-import vista.eventos.CambiarEscenaAlPresionarEventHandler;
-import vista.eventos.ComenzarPartidaEventHandler;
+import vista.eventos.botonNombresIngresadosEventHandler;
 
 public class ContenedorNombresUsuarios extends VBox {
     Stage stage;
@@ -36,12 +33,7 @@ public class ContenedorNombresUsuarios extends VBox {
     	
         BackgroundImage vistaImagenDeFondo = new BackgroundImage(imagenDeFondo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, size);
         this.setBackground(new Background(vistaImagenDeFondo));
-        
-        
-        
-        
-        
-        
+
         String textoLabelGuerrerosZ = "vista/Imagenes/nombreGuerrerosZ.png";
         String textoLabelEnemigosDeLaTierra = "vista/Imagenes/nombreEnemigosDeLaTierra.png";
 
@@ -49,14 +41,9 @@ public class ContenedorNombresUsuarios extends VBox {
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
       
         Button botonListoNombres = new Button("Comenzar partida!");
-        
-        ReproductorDeSonidos reproductorMusicaDeBatalla = new ReproductorDeSonidos("/vista/sonidos/musicaPelea.wav");
-        ContenedorPrincipal principal= new ContenedorPrincipal(stage, campoNombreUsuarioGuerreros,
-        		campoNombreUsuarioEnemigos, reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
-        Scene escenaPrincipal = new Scene(principal);
-        CambiarEscenaAlPresionarEventHandler listoNombreEventHandler = new ComenzarPartidaEventHandler(this.stage, escenaPrincipal, ajustesMusicaDeBatalla,
-        		reproductorMusicaDeBatalla);
-        botonListoNombres.setOnMousePressed(listoNombreEventHandler);
+        botonListoNombres.setOnMousePressed(new botonNombresIngresadosEventHandler(stage, campoNombreUsuarioGuerreros, campoNombreUsuarioEnemigos,
+        		 ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));
+
         this.getChildren().addAll(botonListoNombres);   
     } 
     
