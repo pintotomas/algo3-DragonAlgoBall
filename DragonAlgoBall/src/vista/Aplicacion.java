@@ -33,7 +33,7 @@ public class Aplicacion extends Application {
 //       ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios, pixelesAnchoHD, pixelesAltoHD);
         ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaMenuPrincipal);
         Scene escenaInicial = new Scene(contenedorInicial, pixelesAnchoHD, pixelesAltoHD);
-		escenaInicial.getStylesheets().add("vista/style.css");
+		escenaInicial.getStylesheets().add("/vista/style.css");
         stage.setScene(escenaInicial);
         stage.setFullScreen(true);
         stage.show();

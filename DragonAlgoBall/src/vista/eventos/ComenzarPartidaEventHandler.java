@@ -11,6 +11,8 @@ public class ComenzarPartidaEventHandler extends CambiarEscenaAlPresionarEventHa
 	private ReproductorDeSonidos reproductorMusicaDeBatalla;
 	public ComenzarPartidaEventHandler(Stage stage, Scene proximaEscena, Ajustes ajustesMusicaDeBatalla, ReproductorDeSonidos reproductorMusicaDeBatalla) {
 		super(stage, proximaEscena);
+		String css = this.getClass().getResource("/vista/style.css").toExternalForm(); 
+		proximaEscena.getStylesheets().add(css);
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		// TODO Auto-generated constructor stub
