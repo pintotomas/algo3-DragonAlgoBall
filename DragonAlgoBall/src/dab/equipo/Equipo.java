@@ -46,7 +46,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 	
 	public void quitarPersonaje(Personaje personaje){
-		this.integrantes.remove(personaje.getNombre());
+		this.integrantes.remove(personaje.getIdentificador());
 		Celda celdaPersonajeMuerto = (Celda) personaje.getPosicion();
 		//Esto lo deberia hacer el juego. 
 		celdaPersonajeMuerto.quitarFichaMovible();
