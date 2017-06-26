@@ -1,4 +1,5 @@
 package dab.equipo;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +7,7 @@ import java.util.Map;
 import dab.interfaces.IProveedorDeVidaDePersonajes;
 import dab.juego.Celda;
 import dab.personajes.Personaje;
+import dab.potenciadores.Potenciador;
 
 public class Equipo implements IProveedorDeVidaDePersonajes{
 	/*contiene a los personajes, y a su vez,  podria ser que los personajes contengan al equipo.
@@ -15,8 +17,10 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	Map<String, Personaje> integrantes;
 	private String nombreEquipo;
 	private int kiNuevoTurno = 5; //Ver si lo puede hacer turno 
+	private ArrayList<Potenciador> itemsDeLosCaidos;
 	
 	public Equipo(String nombre){
+		itemsDeLosCaidos = new ArrayList<Potenciador>();
 		this.nombreEquipo = nombre;
 		this.integrantes = new HashMap<String, Personaje>();
 	}
@@ -77,6 +81,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 	
 	public double obtenerVidaDelPersonaje(String nombre){
+		System.out.println("Se quiere saber de la vida de "+nombre+" en el equipo "+this.nombreEquipo);
 		Personaje personaje = this.integrantes.get(nombre);
 		return personaje.getVida();
 	}
@@ -108,8 +113,20 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	public void notificarAtaqueHacia(Personaje aPersonaje) {
 		double vidaDelAfectado = this.obtenerVidaDelPersonaje(aPersonaje.getNombre());
 		if (vidaDelAfectado <= 0){
+			this.quitarObjetosAlPersonaje(aPersonaje);
 			this.quitarPersonaje(aPersonaje);
 		}
+	}
+	
+	private void quitarObjetosAlPersonaje(Personaje aPersonaje){
+		Collection<Potenciador> potenciadores = aPersonaje.getPotenciadores();
+		itemsDeLosCaidos.clear();
+		itemsDeLosCaidos.addAll(potenciadores);
+ 	}
+
+	public ArrayList<Potenciador> ultimosObjetosPerdidos() {
+		// TODO Auto-generated method stub
+		return itemsDeLosCaidos;
 	}
 
 }
