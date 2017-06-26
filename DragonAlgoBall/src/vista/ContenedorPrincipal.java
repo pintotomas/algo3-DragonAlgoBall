@@ -58,9 +58,7 @@ public class ContenedorPrincipal extends BorderPane{
 	private void setBotoneraDerecha() {
 
 		this.botoneraDerecha = new BotoneraDerecha(stage, this.juego, vistaTablero,
-				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
-		this.setRight(this.botoneraDerecha);
-
+				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);	
 		VBox hud = new VBox(10);
 		hud.setAlignment(Pos.BOTTOM_CENTER);
 		this.botoneraDerecha = new BotoneraDerecha(stage, this.juego, vistaTablero, reproductorMusicaDeBatalla,

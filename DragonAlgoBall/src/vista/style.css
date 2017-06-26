@@ -58,20 +58,16 @@
 }
 
 .vistaEnemigo {
-	-fx-background-color: #dc3c26; 
 	-fx-background-color: rgba(24,142,24,0.6);
 	-fx-background-radius: 5px; 
-    -fx-border-color: #9a1603; 
     -fx-border-color: rgb(222,219,222); 
     -fx-border-width: 4px; 
     -fx-border-radius: 5px;
     -fx-padding: 10;
 }
 .vistaEnemigo:hover{
-	-fx-background-color: #dc3c26; 
 	-fx-background-color: rgba(24,142,24,0.6);
 	-fx-background-radius: 5px; 
-    -fx-border-color: #9a1603; 
     -fx-border-color: rgb(222,219,222); 
     -fx-border-width: 4px; 
     -fx-border-radius: 5px;
@@ -81,10 +77,22 @@
 .nombrePersonaje {
 	-fx-font-weight:bolder;
 	-fx-font-family:"Gill Sans";
-	-fx-font-size: 26px;
+	-fx-font-size: 16px;
 }
 .outline.nombrePersonaje .text{
 	-fx-fill: #fff;
 	-fx-stroke: #000;
 	-fx-stroke-width: 1px;
+}
+
+.stats {
+	-fx-fill: #fff;
+	-fx-font-weight: bold;
+	-fx-background-color:rgb(255, 170, 0, 0.6);
+    -fx-border-color: rgba(222, 219, 222, 0.6); 
+    -fx-border-width: 3px;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
 }

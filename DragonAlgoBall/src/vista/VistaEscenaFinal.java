@@ -1,16 +1,19 @@
-package vista;
+			package vista;
 
 import java.util.HashMap;
 
 import dab.usuario.Usuario;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
@@ -46,40 +49,70 @@ public class VistaEscenaFinal extends StackPane {
 		this.stage = stage;
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
-		this.ajustesMusicaEnding = ajustesMusicaEnding;
+		this.ajustesMusicaEnding = ajustesMusicaEnding;	
 		this.setFondo();   
 		this.reproducirMusicaDeFondo();
 		this.mostrarEstadisticasDelGanador(usuario);
 	 	this.setBotones();
+		String css = this.getClass().getResource("/vista/style.css").toExternalForm(); 
+		this.getStylesheets().add(css);
 	 	
 
 }
 
 
 	private void mostrarEstadisticasDelGanador(Usuario usuarioGanador) {
-		VBox caracteristicas = new VBox();
-		Label nombre = new Label("Nombre "+usuarioGanador.getNombre());
-		nombre.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/user-name.png")));
-		Label cantidadMovimientos = new Label("Cantidad de movimientos: "+String.valueOf(usuarioGanador.getCantidadMovimientos()));
-		cantidadMovimientos.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/steps.png")));
-		Label cantidadAtaques = new Label("Cantidad de ataques: "+String.valueOf(usuarioGanador.getCantidadDeAtaques()));
-		cantidadAtaques.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/attack.png")));
-		Label cantidadAsesinatos = new Label("Cantidad de asesinatos: "+String.valueOf(usuarioGanador.getCantidadDeAsesinatos()));
-		cantidadAsesinatos.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/sword.png")));
-		Label cantidadPerdidas = new Label("Cantidad de perdidas: "+String.valueOf(usuarioGanador.getCantidadDePersonajesPerdidos()));
-		cantidadPerdidas.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/skull.png")));
-		Label cantidadEsferasDelDragonConseguidas = new Label("Cantidad de esferas del dragon obtenidas: "+String.valueOf(usuarioGanador.cantidadDeItemsParaGanar()));
-		cantidadEsferasDelDragonConseguidas.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/EsferaDelDragon.png")));
-		caracteristicas.getChildren().addAll(nombre, cantidadMovimientos, cantidadAtaques, cantidadAsesinatos, cantidadPerdidas,
-				cantidadEsferasDelDragonConseguidas);
-		this.getChildren().add(caracteristicas);
-		caracteristicas.setAlignment(Pos.CENTER);
+		GridPane estadisticas = new GridPane();
+		estadisticas.getStyleClass().add("stats");
+		estadisticas.setMaxWidth(500);
+		estadisticas.setMaxHeight(300);
+		ColumnConstraints column1 = new ColumnConstraints();
+		ColumnConstraints column2 = new ColumnConstraints();
+		column2.setHalignment(HPos.LEFT);
+		estadisticas.getColumnConstraints().addAll(column1, column2);
+		
+		Label labelNombre = new Label("Nombre:");
+		labelNombre.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/user-name.png")));
+		estadisticas.add(labelNombre, 0, 0);
+		estadisticas.add(new Label(usuarioGanador.getNombre()), 1, 0);
+		
+		int cantidadMovimientos = usuarioGanador.getCantidadMovimientos();
+		Label labelMovimientos = new Label("Cantidad de movimientos:");
+		labelMovimientos.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/steps.png")));
+		estadisticas.add(labelMovimientos, 0, 1);
+		estadisticas.add(new Label(String.valueOf(cantidadMovimientos)), 1, 1);
+		
+		int cantidadAtaques = usuarioGanador.getCantidadDeAtaques();
+		Label labelAtaques = new Label("Cantidad de ataques:");
+		labelAtaques.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/attack.png")));
+		estadisticas.add(labelAtaques, 0, 2);
+		estadisticas.add(new Label(String.valueOf(cantidadAtaques)), 1, 2);
+		
+		int cantidadAsesinatos = usuarioGanador.getCantidadDeAsesinatos();
+		Label labelAsesinatos = new Label("Cantidad de asesinatos:");
+		labelAsesinatos.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/sword.png")));
+		estadisticas.add(labelAsesinatos, 0, 3);
+		estadisticas.add(new Label(String.valueOf(cantidadAsesinatos)), 1, 3);
+		
+		int cantidadMuertes = usuarioGanador.getCantidadDePersonajesPerdidos();
+		Label labelMuertes = new Label("Cantidad de perdidas:");
+		labelMuertes.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/skull.png")));
+		estadisticas.add(labelMuertes, 0, 4);
+		estadisticas.add(new Label(String.valueOf(cantidadMuertes)), 1, 4);
+		
+		int cantidadEsferasDelDragonConseguidas = usuarioGanador.cantidadDeItemsParaGanar();
+		Label labelEsferas = new Label("Cantidad de esferas del dragon obtenidas:");
+		labelEsferas.setGraphic(new ImageView(new Image("/resources/imagenes/iconos/EsferaDelDragon.png")));
+		estadisticas.add(labelEsferas, 0, 5);
+		estadisticas.add(new Label(String.valueOf(cantidadEsferasDelDragonConseguidas)), 1, 5);
+		this.getChildren().add(estadisticas);
+		estadisticas.setAlignment(Pos.CENTER);
 	}
 
 
 	private void setBotones() {
 		Scene proximaEscena = new Scene(new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));
-	 	
+
 		String estiloTransparente = "-fx-background-color: transparent;";
 		Button botonVolver = creadorDeBoton("vista/Imagenes/volverAlMenuPrincipal.png", estiloTransparente);
 	 	
