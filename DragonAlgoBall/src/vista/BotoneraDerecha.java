@@ -66,15 +66,10 @@ public class BotoneraDerecha extends HBox{
 
 	private void setBotonVolverAlMenuPrincipal(ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla,
 			Ajustes ajustesMusicaEnding) {
-		// TODO Auto-generated method stub
 		Button botonAbandonarPartida = new Button("Salir de la partida");
 		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(stage, reproductorMusicaDeBatalla, ajusteSonidosEspeciales,
-				ajusteMusicaDeBatalla, ajustesMusicaEnding));
-//=======
-//	private void setBotonVolverAlMenuPrincipal(Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla, ReproductorDeSonidos reproductorMusicaDeBatalla) {
-//		Button botonAbandonarPartida = new Button();
-//		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, stage,
-//				reproductorMusicaDeBatalla));
+				ajusteMusicaDeBatalla, ajustesMusicaEnding, "Esta seguro de volver al menu principal? Se perdera el progreso de la partida!"));
+
 		botonAbandonarPartida.getStyleClass().addAll("boton","home");
 
 		this.getChildren().add(botonAbandonarPartida);
