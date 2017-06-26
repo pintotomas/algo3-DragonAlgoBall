@@ -32,10 +32,11 @@ public class VistaTablero extends GridPane{
 	private VistaInferiorPersonajes vistaInferiorPersonaje;
 	private ReproductorDeSonidos reproductorDeMusicaDeBatalla;
 	private Ajustes ajustesMusicaEnding;
+	private VistaInformacionDelJugadorActual vistaInfoDelJugadorActual;
     
 	public VistaTablero(Juego juego,
 			VistaInferiorPersonajes vistaInferiorPersonaje, Stage stage, ReproductorDeSonidos reproductorDeMusicaDeBatalla, Ajustes ajustesMusicaDeBatalla, 
-			Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding) {
+			Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding, VistaInformacionDelJugadorActual vistaInfoDelJugadorActual) {
 		this.reproductorDeMusicaDeBatalla = reproductorDeMusicaDeBatalla;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 	    this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
@@ -49,7 +50,8 @@ public class VistaTablero extends GridPane{
 		anchoTablero = tablero.getAncho();
 		celdasGUI = new VistaCelda[altoTablero][anchoTablero];
 		vistaInferiorPersonaje.setTablero(this);    //permite que la vista inferior tenga acceso a las celdas para poder seleccionarlas.
-	
+		this.vistaInfoDelJugadorActual = vistaInfoDelJugadorActual;
+		
 	    tablero = juego.getTablero();
 	    this.setAlignment(Pos.CENTER);
 	    
@@ -91,19 +93,12 @@ public class VistaTablero extends GridPane{
 		
 	}
 	
-	public VistaCaracteristicasPersonaje getVistaCaracteristicasPersonaje(){
-		return vistaCaracteristicasPersonaje;
-		
-	}
 
 	public void actualizarVistaDePersonajes() {
+		
 		this.vistaInferiorPersonaje.setPersonajeDeTurno();
+		this.vistaInfoDelJugadorActual.refrescarInformacion();
 		
-	}
-
-	public VistaInferiorPersonajes getVistaInferiorPersonajes() {
-		
-		return this.vistaInferiorPersonaje;
 	}
 
 	public void actualizarVistaEnemigo(Personaje personajeEnemigo) {

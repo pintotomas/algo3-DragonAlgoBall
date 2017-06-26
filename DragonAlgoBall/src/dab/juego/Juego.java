@@ -263,5 +263,10 @@ public class Juego {
 		return turno.usuarioActual();
 	}
 
+	public boolean sigueEnJuego(Usuario jugadorActual) {
+		// TODO Auto-generated method stub
+		return turno.esDe(jugadorActual);
+	}
+
 }
 

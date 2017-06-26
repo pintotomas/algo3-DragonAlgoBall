@@ -20,6 +20,6 @@ public class BotonPasarTurnoEventHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent event) {
 		juego.pasarTurno();
 		vistaTablero.dibujarTableroSinNingunaSeleccion();
-		vistaTablero.getVistaInferiorPersonajes().setPersonajeDeTurno();
+		vistaTablero.actualizarVistaDePersonajes();
 	}
 }
