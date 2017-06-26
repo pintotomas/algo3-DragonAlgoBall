@@ -17,11 +17,12 @@ public class AbandonarPartidaEventHandler implements EventHandler<MouseEvent> {
 	private Ajustes ajusteSonidosEspeciales;
 	private ReproductorDeSonidos reproductorMusicaDeBatalla;
 	private Ajustes ajustesMusicaEnding;
+	private String mensajeAlerta;
 	
 	public AbandonarPartidaEventHandler(Stage stage, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla,
-			Ajustes ajustesMusicaEnding) {
+			Ajustes ajustesMusicaEnding, String mensajeAlerta) {
 		// TODO Auto-generated constructor stub
-
+		this.mensajeAlerta = mensajeAlerta;
 		this.ajustesMusicaEnding = ajustesMusicaEnding;
 		this.ajusteSonidosEspeciales = ajusteSonidosEspeciales;
 		this.ajusteMusicaDeBatalla = ajusteMusicaDeBatalla;
@@ -32,8 +33,7 @@ public class AbandonarPartidaEventHandler implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent arg0) {
 		
-		Alert alertaAbandonarPartida = new Alert(AlertType.CONFIRMATION, "Desea volver al menu principal? Se perdera el progreso de la partida!",
-				ButtonType.YES, ButtonType.NO);
+		Alert alertaAbandonarPartida = new Alert(AlertType.CONFIRMATION, mensajeAlerta,	ButtonType.YES, ButtonType.NO);
 		alertaAbandonarPartida.showAndWait();
 		
 		if (alertaAbandonarPartida.getResult().equals(ButtonType.YES)){
