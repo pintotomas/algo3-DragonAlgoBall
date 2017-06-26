@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
+import vista.eventos.AbandonarJuegoEventHandler;
 import vista.eventos.AbandonarPartidaEventHandler;
 import vista.eventos.BotonPasarTurnoEventHandler;
 import vista.eventos.ControlMusicaDeBatallaEventHandler;
@@ -28,7 +29,10 @@ public class BotoneraDerecha extends VBox{
 		this.setBotonControlMusicaDeBatalla( reproductorMusicaDeBatalla,  ajusteMusicaDeBatalla);
 		this.setBotonControlSonidosEspeciales(ajusteSonidosEspeciales);
 		this.setBotonVolverAlMenuPrincipal(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, reproductorMusicaDeBatalla);
+		this.setBotonSalirDelJuego();
 	}
+
+	
 
 	private void setBotonCederTurno(VistaTablero vistaTablero){
 		Button botonPasarTurno = new Button("CEDER TURNO");
@@ -60,5 +64,12 @@ public class BotoneraDerecha extends VBox{
 		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, stage,
 				reproductorMusicaDeBatalla));
 		this.getChildren().add(botonAbandonarPartida);
+	}
+	
+	private void setBotonSalirDelJuego() {
+		// TODO Auto-generated method stub
+		Button botonSalirDelJuego = new Button("Salir del juego");
+		botonSalirDelJuego.setOnMousePressed(new AbandonarJuegoEventHandler());
+		this.getChildren().add(botonSalirDelJuego);
 	}
 }
