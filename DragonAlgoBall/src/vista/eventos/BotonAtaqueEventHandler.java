@@ -26,7 +26,7 @@ public abstract class BotonAtaqueEventHandler implements EventHandler<MouseEvent
  
 		 efectuarAtaque();
 	     vistaTablero.dibujarTableroSinNingunaSeleccion(); 
-	     vistaTablero.actualizarVistaDePersonajes(); 
+	     vistaTablero.actualizarInformacionDelTurnoActual(); 
 	     correrSonido();
 		 if(juego.ganoElDelTurnoActual())
 			vistaTablero.hayUnGanador();

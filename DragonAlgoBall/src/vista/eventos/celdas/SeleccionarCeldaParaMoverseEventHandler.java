@@ -30,7 +30,7 @@ public class SeleccionarCeldaParaMoverseEventHandler implements EventHandler<Mou
 			vistaTablero.hayUnGanador();
 		vistaTablero.dibujarTableroSinNingunaSeleccion();
 		vistaTablero.actualizarVistaEnemigo(null);
-		vistaTablero.actualizarVistaDePersonajes();
+		vistaTablero.actualizarInformacionDelTurnoActual();
 		
 	}
 

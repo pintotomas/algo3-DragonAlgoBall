@@ -10,6 +10,7 @@ import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
 import dab.usuario.Usuario;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -31,21 +32,32 @@ public class ContenedorPrincipal extends BorderPane{
 	private Ajustes ajustesEfectosDePersonajes;
 	private ReproductorDeSonidos reproductorMusicaDeBatalla;
 	private Ajustes ajustesMusicaEnding;
+	private VistaInformacionDelJugadorActual vistaInfo;
 	
 	public ContenedorPrincipal(Stage stage, TextField campoNombreUsuarioGuerreros,
 			TextField campoNombreUsuarioEnemigos, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajustesMusicaDeBatalla, 
 			Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding){
+		
 		this.prepararJuego(campoNombreUsuarioGuerreros, campoNombreUsuarioEnemigos);
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 		this.ajustesMusicaEnding = ajustesMusicaEnding;
-	
+		vistaInfo = new VistaInformacionDelJugadorActual(juego);
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		this.stage = stage;
 		this.setCaracteristicasPersonajeSeleccionado();
 		this.setTablero();
 		this.setBotoneraDerecha();
+		this.setInformacionDelUsuarioActual();
 	}
+
+	private void setInformacionDelUsuarioActual() {
+
+		vistaInfo.setAlignment(Pos.BOTTOM_CENTER);
+		this.setTop(vistaInfo);
+
+	}
+
 
 	private void prepararJuego(TextField campoNombreUsuarioGuerreros, TextField campoNombreUsuarioEnemigos) {
 		String nombreUsuarioGuerreros = campoNombreUsuarioGuerreros.getText();
@@ -74,7 +86,7 @@ public class ContenedorPrincipal extends BorderPane{
 	
 	private void setTablero(){
 		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes, this.stage,
-				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
+				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding, this.vistaInfo);
 		this.setCenter(this.vistaTablero);
 	}
 	
