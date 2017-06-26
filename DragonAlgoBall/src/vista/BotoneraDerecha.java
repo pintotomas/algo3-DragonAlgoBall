@@ -4,24 +4,34 @@ import dab.juego.Juego;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
+import vista.eventos.AbandonarJuegoEventHandler;
+import vista.eventos.AbandonarPartidaEventHandler;
 import vista.eventos.BotonPasarTurnoEventHandler;
 import vista.eventos.ControlMusicaDeBatallaEventHandler;
 import vista.eventos.ControlSonidosEspecialesEventHandler;
 
 public class BotoneraDerecha extends VBox{
+	
 	private Juego juego;
+	private Stage stage;
 	
 	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
-			Ajustes ajusteSonidosEspeciales){
+			Ajustes ajusteSonidosEspeciales, Stage stage){
+		
+		this.stage = stage;
 		this.juego = juego;
 		this.setSpacing(10);
 		this.setPadding(new Insets(30));
 		this.setBotonCederTurno(vistaTablero);
 		this.setBotonControlMusicaDeBatalla( reproductorMusicaDeBatalla,  ajusteMusicaDeBatalla);
 		this.setBotonControlSonidosEspeciales(ajusteSonidosEspeciales);
+		this.setBotonVolverAlMenuPrincipal(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, reproductorMusicaDeBatalla);
+		this.setBotonSalirDelJuego();
 	}
+
 	
 
 	private void setBotonCederTurno(VistaTablero vistaTablero){
@@ -45,5 +55,21 @@ public class BotoneraDerecha extends VBox{
 		Button botonSilenciarSonidosDeBatalla = new Button("Silenciar/ activar sonidos especiales");
 		botonSilenciarSonidosDeBatalla.setOnMousePressed(new ControlSonidosEspecialesEventHandler(ajusteSonidosEspeciales));
 		this.getChildren().add(botonSilenciarSonidosDeBatalla);
+	}
+	
+
+	private void setBotonVolverAlMenuPrincipal(Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla, ReproductorDeSonidos reproductorMusicaDeBatalla) {
+		// TODO Auto-generated method stub
+		Button botonAbandonarPartida = new Button("Salir de la partida");
+		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, stage,
+				reproductorMusicaDeBatalla));
+		this.getChildren().add(botonAbandonarPartida);
+	}
+	
+	private void setBotonSalirDelJuego() {
+		// TODO Auto-generated method stub
+		Button botonSalirDelJuego = new Button("Salir del juego");
+		botonSalirDelJuego.setOnMousePressed(new AbandonarJuegoEventHandler());
+		this.getChildren().add(botonSalirDelJuego);
 	}
 }
