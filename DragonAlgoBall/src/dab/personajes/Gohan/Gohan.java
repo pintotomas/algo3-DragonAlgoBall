@@ -19,10 +19,7 @@ public class Gohan extends Personaje{
 	}
 	
 	public Gohan(Equipo equipo){
-		ataqueEspecial = new Masenko(this);
-		kiParaEspecial = 10;
-		estado = new GohanBase(equipo, this);
-		vida = estado.getVidaMaxima();
+		this();
 		this.equipo = equipo;
 	}
 

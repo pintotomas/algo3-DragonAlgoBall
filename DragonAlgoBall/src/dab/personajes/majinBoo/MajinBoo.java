@@ -16,10 +16,7 @@ public class MajinBoo extends Personaje{
 	}
 	
 	public MajinBoo(Equipo equipo){
-		ataqueEspecial = new ConvierteteEnChocolate(this);
-		kiParaEspecial = 30;
-		estado = new MajinBooBase(this);
-		vida = estado.getVidaMaxima();
+		this();
 		this.equipo = equipo;
 	}
 	

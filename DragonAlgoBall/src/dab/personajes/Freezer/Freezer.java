@@ -17,10 +17,7 @@ public class Freezer extends Personaje{
 	}
 	
 	public Freezer(Equipo equipo){
-		ataqueEspecial = new RayoMortal(this);
-		kiParaEspecial = 20;
-		estado = new FreezerBase(this);
-		vida = estado.getVidaMaxima();
+		this();
 		this.equipo = equipo;
 	}
 	

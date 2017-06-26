@@ -18,10 +18,7 @@ public class Piccolo extends Personaje{
 	}	
 	
 	public Piccolo(Equipo equipo){
-		ataqueEspecial = new Makankosappo (this);
-		kiParaEspecial = 10;
-		estado = new PiccoloBase(this,equipo);
-		vida = estado.getVidaMaxima();
+		this();
 		this.equipo = equipo;
 	}
 
