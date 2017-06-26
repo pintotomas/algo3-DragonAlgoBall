@@ -32,13 +32,15 @@ public class ContenedorPrincipal extends BorderPane{
 	private Ajustes ajustesMusicaDeBatalla;
 	private Ajustes ajustesEfectosDePersonajes;
 	private ReproductorDeSonidos reproductorMusicaDeBatalla;
+	private Ajustes ajustesMusicaEnding;
 	
 	public ContenedorPrincipal(Stage stage, TextField campoNombreUsuarioGuerreros,
-			TextField campoNombreUsuarioEnemigos, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, 
-			ReproductorDeSonidos reproductorMusicaDeBatalla){
+			TextField campoNombreUsuarioEnemigos, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajustesMusicaDeBatalla, 
+			Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding){
 		this.prepararJuego(campoNombreUsuarioGuerreros, campoNombreUsuarioEnemigos);
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
+		this.ajustesMusicaEnding = ajustesMusicaEnding;
 	
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		this.stage = stage;
@@ -57,8 +59,8 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 
 	private void setBotoneraDerecha() {
-		this.botoneraDerecha = new BotoneraDerecha(this.juego, vistaTablero, reproductorMusicaDeBatalla,
-				ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, stage);
+		this.botoneraDerecha = new BotoneraDerecha(stage, this.juego, vistaTablero,
+				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
 		this.setRight(this.botoneraDerecha);
 	}
 	
@@ -74,7 +76,7 @@ public class ContenedorPrincipal extends BorderPane{
 	
 	private void setTablero(){
 		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes, this.stage,
-				ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, reproductorMusicaDeBatalla);
+				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
 		this.setCenter(this.vistaTablero);
 	}
 	

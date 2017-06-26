@@ -30,13 +30,15 @@ public class VistaTablero extends GridPane{
     private VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
 	private VistaInferiorPersonajes vistaInferiorPersonaje;
 	private ReproductorDeSonidos reproductorDeMusicaDeBatalla;
+	private Ajustes ajustesMusicaEnding;
     
 	public VistaTablero(Juego juego,
-			VistaInferiorPersonajes vistaInferiorPersonaje, Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, 
-			ReproductorDeSonidos reproductorDeMusicaDeBatalla) {
+			VistaInferiorPersonajes vistaInferiorPersonaje, Stage stage, ReproductorDeSonidos reproductorDeMusicaDeBatalla, Ajustes ajustesMusicaDeBatalla, 
+			Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding) {
 		this.reproductorDeMusicaDeBatalla = reproductorDeMusicaDeBatalla;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 	    this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
+	    this.ajustesMusicaEnding = ajustesMusicaEnding;
 		this.stage = stage;
 		this.juego = juego;
 		this.vistaInferiorPersonaje = vistaInferiorPersonaje;
@@ -113,7 +115,7 @@ public class VistaTablero extends GridPane{
 		if (ajustesMusicaDeBatalla.estaActivo()){
 			reproductorDeMusicaDeBatalla.stop();
 		}
-		VistaEscenaFinal escenaFinal = new VistaEscenaFinal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, juego.ganador());
+		VistaEscenaFinal escenaFinal = new VistaEscenaFinal(stage, juego.ganador(), ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
 		stage.setScene(new Scene(escenaFinal));
 		stage.setFullScreenExitHint("");
 	    stage.setFullScreen(true);
