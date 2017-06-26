@@ -94,7 +94,7 @@ public class VistaTablero extends GridPane{
 	}
 	
 
-	public void actualizarVistaDePersonajes() {
+	public void actualizarInformacionDelTurnoActual() {
 		
 		this.vistaInferiorPersonaje.setPersonajeDeTurno();
 		this.vistaInfoDelJugadorActual.refrescarInformacion();
