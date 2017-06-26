@@ -18,11 +18,14 @@ public class VistaMenuPrincipal extends StackPane{
 	private Stage stage;
 	private Ajustes ajustesMusicaDeBatalla;
 	private Ajustes ajustesEfectosDePersonajes;
+	private Ajustes ajustesMusicaEnding;
 	
-	public VistaMenuPrincipal(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes){
+	public VistaMenuPrincipal(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes,
+			Ajustes ajustesMusicaEnding){
 		
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
+		this.ajustesMusicaEnding = ajustesMusicaEnding;
 		this.stage = stage;
 		this.setFondo();
 		this.setBotones();
@@ -44,8 +47,9 @@ public class VistaMenuPrincipal extends StackPane{
 		
 		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos);
 		
-		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes));
-		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes));  
+		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes,
+				ajustesMusicaEnding));
+		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));  
         
         
 		this.getChildren().add(menu);

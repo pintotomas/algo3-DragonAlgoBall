@@ -27,7 +27,8 @@ public class Aplicacion extends Application {
 //        
         Ajustes ajustesMusicaDeBatalla = new Ajustes("Musica de batalla", true);
         Ajustes ajustesEfectosDePersonajes = new Ajustes("Efectos de personajes", true);
-        VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes);
+        Ajustes ajustesMusicaEnding = new Ajustes("Musica ending", true);
+        VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
         Scene escenaMenuPrincipal = new Scene(menuPrincipal);
         
 //       ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios, pixelesAnchoHD, pixelesAltoHD);

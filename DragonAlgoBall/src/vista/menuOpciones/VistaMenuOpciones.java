@@ -17,12 +17,14 @@ public class VistaMenuOpciones extends StackPane {
 	private Stage stage;
 	private Ajustes ajustesMusicaDeBatalla;
 	private Ajustes ajustesEfectosDePersonajes;
+	private Ajustes ajustesMusicaEnding;
 	
-	public VistaMenuOpciones(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes) {
+	public VistaMenuOpciones(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding) {
 		
 		this.stage = stage;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
+		this.ajustesMusicaEnding = ajustesMusicaEnding;
 		this.setFondo();
 		this.setOpciones();
 		
@@ -38,7 +40,7 @@ public class VistaMenuOpciones extends StackPane {
 	        
             @Override
             public void handle(ActionEvent arg0) {
-                botonVolver.getScene().setRoot(new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes));             
+                botonVolver.getScene().setRoot(new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));             
             }
         });
 		
@@ -47,8 +49,8 @@ public class VistaMenuOpciones extends StackPane {
 		
 		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("vista/Imagenes/MusicaDeBatalla.png", ajustesMusicaDeBatalla.estaActivo(), ajustesMusicaDeBatalla);
 		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("vista/Imagenes/SonidosPersonajes.png", ajustesEfectosDePersonajes.estaActivo(), ajustesEfectosDePersonajes);
-//		opciones.getChildren().addAll(opcionMusicaDeFondo, opcionMusicaDeBatalla, opcionSonidosDePersonaje, botonVolver);
-		opciones.getChildren().addAll(opcionMusicaDeBatalla, opcionSonidosDePersonaje, botonVolver);
+		VistaOpcion opcionMusicaEnding = new VistaOpcion("vista/Imagenes/MusicaEnding.png", ajustesMusicaEnding.estaActivo(), ajustesMusicaEnding);
+		opciones.getChildren().addAll(opcionMusicaDeBatalla, opcionSonidosDePersonaje, opcionMusicaEnding, botonVolver);
 		this.getChildren().addAll(opciones);
 		opciones.setAlignment(Pos.CENTER_RIGHT);
 		

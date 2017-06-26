@@ -8,7 +8,9 @@ public class CellSemiPerfecto extends Estado {
 	IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos;
 	int cantidadAbsorbidosNecesariosParaTransformar = 8;
 	public static String nombreId = "Cell Semi Perfecto";
+	
 	public CellSemiPerfecto(IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos) {
+		this.proveedorCantidadAbsorbidos = proveedorCantidadAbsorbidos;
 		vidaMaxima = 500;
 		poder = 40;
 		alcance = 4;
@@ -24,6 +26,7 @@ public class CellSemiPerfecto extends Estado {
 	@Override
 	public boolean transformarDisponible() {
 		int cantidadAbsorbidos = proveedorCantidadAbsorbidos.getCantidadAbsorbidos();
+		
 		return cantidadAbsorbidos == cantidadAbsorbidosNecesariosParaTransformar;
 	}
 

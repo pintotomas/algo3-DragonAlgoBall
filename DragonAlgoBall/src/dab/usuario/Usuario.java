@@ -14,17 +14,29 @@ public class Usuario {
 	private Equipo equipo;
 	private int cantidadPersonajesRestantesParaPerder = 0;
 	private int cantidadDeEsferasDelDragonParaGanar = cantidadEsferasDelDragonParaGanar;
+
+	private int cantidadMovimientos;
+
+	private int cantidadDeAsesinatos;
+
+	private int cantidadDeAtaques;
+
+	private int cantidadDePersonajesPerdidos;
 	
 	public Usuario(Equipo equipo, String nombre){
 		this.equipo = equipo;
 		this.nombre = nombre;
+		cantidadMovimientos = 0;
+		cantidadDeAsesinatos = 0;
+		cantidadDePersonajesPerdidos = 0;
+		cantidadDeAtaques = 0;
 	}
 	
 	public void setNombre(String nombre){
 		this.nombre = nombre;
 	}
 	
-	public String getNombreUsuario(){
+	public String getNombre(){
 		return this.nombre;
 	}
 	
@@ -55,6 +67,31 @@ public class Usuario {
 	public ArrayList<Potenciador> getPotenciadoresPerdidos() {
 		// TODO Auto-generated method stub
 		return equipo.ultimosObjetosPerdidos();
+	}
+
+	public int getCantidadMovimientos() {
+		// TODO Auto-generated method stub
+		return cantidadMovimientos;
+	}
+
+	public int getCantidadDeAtaques() {
+		// TODO Auto-generated method stub
+		return cantidadDeAtaques;
+	}
+
+	public int getCantidadDeAsesinatos() {
+		// TODO Auto-generated method stub
+		return cantidadDeAsesinatos;
+	}
+
+	public int getCantidadDePersonajesPerdidos() {
+		// TODO Auto-generated method stub
+		return cantidadDePersonajesPerdidos;
+	}
+
+	public int cantidadDeItemsParaGanar() {
+		// TODO Auto-generated method stub
+		return equipo.cantidadItemsParaGanar();
 	}
 
 

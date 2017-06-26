@@ -16,10 +16,13 @@ public class AbandonarPartidaEventHandler implements EventHandler<MouseEvent> {
 	private Ajustes ajusteMusicaDeBatalla;
 	private Ajustes ajusteSonidosEspeciales;
 	private ReproductorDeSonidos reproductorMusicaDeBatalla;
+	private Ajustes ajustesMusicaEnding;
 	
-	public AbandonarPartidaEventHandler(Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla, Stage stage, ReproductorDeSonidos reproductorMusicaDeBatalla) {
+	public AbandonarPartidaEventHandler(Stage stage, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla,
+			Ajustes ajustesMusicaEnding) {
 		// TODO Auto-generated constructor stub
 
+		this.ajustesMusicaEnding = ajustesMusicaEnding;
 		this.ajusteSonidosEspeciales = ajusteSonidosEspeciales;
 		this.ajusteMusicaDeBatalla = ajusteMusicaDeBatalla;
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
@@ -34,7 +37,7 @@ public class AbandonarPartidaEventHandler implements EventHandler<MouseEvent> {
 		alertaAbandonarPartida.showAndWait();
 		
 		if (alertaAbandonarPartida.getResult().equals(ButtonType.YES)){
-			VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajusteMusicaDeBatalla, ajusteSonidosEspeciales);
+			VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajusteMusicaDeBatalla, ajusteSonidosEspeciales, ajustesMusicaEnding);
 			Scene escenaMenuPrincipal = new Scene(menuPrincipal);
 			stage.setScene(escenaMenuPrincipal);
 			if (ajusteMusicaDeBatalla.estaActivo()){reproductorMusicaDeBatalla.stop();}

@@ -22,7 +22,8 @@ import vista.eventos.ComenzarPartidaEventHandler;
 public class ContenedorNombresUsuarios extends VBox {
     Stage stage;
 
-    public ContenedorNombresUsuarios(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes) {
+    public ContenedorNombresUsuarios(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes,
+    		Ajustes ajustesMusicaEnding) {
         this.stage = stage;
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
@@ -51,7 +52,7 @@ public class ContenedorNombresUsuarios extends VBox {
         
         ReproductorDeSonidos reproductorMusicaDeBatalla = new ReproductorDeSonidos("/vista/sonidos/musicaPelea.wav");
         ContenedorPrincipal principal= new ContenedorPrincipal(stage, campoNombreUsuarioGuerreros,
-        		campoNombreUsuarioEnemigos, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, reproductorMusicaDeBatalla);
+        		campoNombreUsuarioEnemigos, reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
         Scene escenaPrincipal = new Scene(principal);
         CambiarEscenaAlPresionarEventHandler listoNombreEventHandler = new ComenzarPartidaEventHandler(this.stage, escenaPrincipal, ajustesMusicaDeBatalla,
         		reproductorMusicaDeBatalla);

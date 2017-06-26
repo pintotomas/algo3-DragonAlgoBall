@@ -16,8 +16,7 @@ public class BotonAtaqueNormalHandler extends BotonAtaqueEventHandler{
 	@Override
 	protected void efectuarAtaque() {
 		juego.personajeSeleccionadoAtacaA(enemigo);
-		if(juego.ganoElDelTurnoActual())
-			vistaTablero.hayUnGanador();
+
 		
 	}
 

@@ -18,8 +18,8 @@ public class BotoneraDerecha extends VBox{
 	private Juego juego;
 	private Stage stage;
 	
-	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
-			Ajustes ajusteSonidosEspeciales, Stage stage){
+	public BotoneraDerecha(Stage stage, Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla,
+			Ajustes ajusteMusicaDeBatalla, Ajustes ajusteSonidosEspeciales, Ajustes ajustesMusicaEnding){
 		
 		this.stage = stage;
 		this.juego = juego;
@@ -28,7 +28,7 @@ public class BotoneraDerecha extends VBox{
 		this.setBotonCederTurno(vistaTablero);
 		this.setBotonControlMusicaDeBatalla( reproductorMusicaDeBatalla,  ajusteMusicaDeBatalla);
 		this.setBotonControlSonidosEspeciales(ajusteSonidosEspeciales);
-		this.setBotonVolverAlMenuPrincipal(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, reproductorMusicaDeBatalla);
+		this.setBotonVolverAlMenuPrincipal(reproductorMusicaDeBatalla, ajusteSonidosEspeciales, ajusteMusicaDeBatalla, ajustesMusicaEnding);
 		this.setBotonSalirDelJuego();
 	}
 
@@ -58,11 +58,12 @@ public class BotoneraDerecha extends VBox{
 	}
 	
 
-	private void setBotonVolverAlMenuPrincipal(Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla, ReproductorDeSonidos reproductorMusicaDeBatalla) {
+	private void setBotonVolverAlMenuPrincipal(ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla,
+			Ajustes ajustesMusicaEnding) {
 		// TODO Auto-generated method stub
 		Button botonAbandonarPartida = new Button("Salir de la partida");
-		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, stage,
-				reproductorMusicaDeBatalla));
+		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(stage, reproductorMusicaDeBatalla, ajusteSonidosEspeciales,
+				ajusteMusicaDeBatalla, ajustesMusicaEnding));
 		this.getChildren().add(botonAbandonarPartida);
 	}
 	
