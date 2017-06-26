@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import dab.usuario.Usuario;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,7 +14,6 @@ import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
 import vista.eventos.AbandonarPartidaEventHandler;
-import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class VistaEscenaFinal extends StackPane {
 	
