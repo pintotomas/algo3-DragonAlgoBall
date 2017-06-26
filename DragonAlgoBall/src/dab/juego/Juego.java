@@ -166,11 +166,13 @@ public class Juego {
 	}
 	
 	private void avisarAlContrincante(Personaje aPersonaje) {
-		Usuario contrincante = contrincantes.get(turno.usuarioActual());
+		Usuario actual = turno.usuarioActual();
+		Usuario contrincante = contrincantes.get(actual);
 		contrincante.notificarQueSeAtacoA(aPersonaje);
 		
 		if (!contrincante.sigueTeniendoAlPersonaje(aPersonaje)){
-		
+			contrincante.notificarUnaBaja();
+			actual.notificarUnAsesinato();
 			ArrayList<Potenciador> potenciadoresDelCaido = contrincante.getPotenciadoresPerdidos();
 			colocarConsumibles(potenciadoresDelCaido);
 		}

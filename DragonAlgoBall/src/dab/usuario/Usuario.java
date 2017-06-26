@@ -94,6 +94,26 @@ public class Usuario {
 		return equipo.cantidadItemsParaGanar();
 	}
 
+	public void haEfectuadoUnAtaque() {
+		// TODO Auto-generated method stub
+		cantidadDeAtaques += 1;
+	}
+
+	public void haEfectuadoUnMovimiento() {
+		// TODO Auto-generated method stub
+		cantidadMovimientos += 1;
+	}
+
+	public void notificarUnaBaja() {
+		// TODO Auto-generated method stub
+		cantidadDePersonajesPerdidos += 1;
+	}
+
+	public void notificarUnAsesinato() {
+		// TODO Auto-generated method stub
+		cantidadDeAsesinatos += 1;
+	}
+
 
 		
 }
