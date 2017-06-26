@@ -17,21 +17,13 @@ public class Aplicacion extends Application {
     public void start(final Stage stage) throws Exception {
         stage.setTitle("Dragon AlgoBall Z");
         
-//        ContenedorNombresUsuarios contenedorNombresUsuarios = new ContenedorNombresUsuarios(stage);
-//        Scene escenaNombresUsuarios = new Scene(contenedorNombresUsuarios);
-//        
-//        ReproductorDeSonidos repr = new ReproductorDeSonidos("/vista/sonidos/opening/DBZOpening.wav");
-//        Thread thread = new Thread(repr);
-//        thread.setDaemon(true);
-//        thread.start();
-//        
+
         Ajustes ajustesMusicaDeBatalla = new Ajustes("Musica de batalla", true);
         Ajustes ajustesEfectosDePersonajes = new Ajustes("Efectos de personajes", true);
         Ajustes ajustesMusicaEnding = new Ajustes("Musica ending", true);
         VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
         Scene escenaMenuPrincipal = new Scene(menuPrincipal);
         
-//       ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaNombresUsuarios, pixelesAnchoHD, pixelesAltoHD);
         ContenedorInicial contenedorInicial = new ContenedorInicial(stage, escenaMenuPrincipal);
         Scene escenaInicial = new Scene(contenedorInicial, pixelesAnchoHD, pixelesAltoHD);
 		escenaInicial.getStylesheets().add("/vista/style.css");

@@ -23,6 +23,7 @@ public class Turno {
 	}
 	
 	public void seHaEfectuadoUnMovimiento(){
+		user.haEfectuadoUnMovimiento();
 		movimientosRestantes -= 1;
 	}
 	
@@ -32,7 +33,7 @@ public class Turno {
 	
 	
 	public void seHaEfectuadoUnAtaque(){
-		
+		user.haEfectuadoUnAtaque();
 		ataquesRestantes -= 1;
 	}
 	
