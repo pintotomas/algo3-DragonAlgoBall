@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
+import vista.eventos.AbandonarPartidaEventHandler;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class VistaEscenaFinal extends StackPane {
@@ -38,11 +39,12 @@ public class VistaEscenaFinal extends StackPane {
 		private Ajustes ajustesEfectosDePersonajes;
 		private Ajustes ajustesMusicaDeBatalla;
 		private Ajustes ajustesMusicaEnding;
-		
+		private ReproductorDeSonidos reproductorMusicaGanador;
 		
 	public VistaEscenaFinal(Stage stage, Usuario usuario, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding){
 		
 		nombreEquipoGanador = usuario.getEquipo().getNombre();
+		reproductorMusicaGanador = new ReproductorDeSonidos(musicaGanador.get(nombreEquipoGanador));
 		this.stage = stage;
 		this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
@@ -78,16 +80,15 @@ public class VistaEscenaFinal extends StackPane {
 
 
 	private void setBotones() {
-		Scene proximaEscena = new Scene(new VistaMenuPrincipal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));
-	 	
+
 		String estiloTransparente = "-fx-background-color: transparent;";
-		Button botonVolver = creadorDeBoton("vista/Imagenes/volverAlMenuPrincipal.png", estiloTransparente);
+		Button botonVolverAlMenuPrincipal = creadorDeBoton("vista/Imagenes/volverAlMenuPrincipal.png", estiloTransparente);
 	 	
-		CambiarEscenaAlPresionarEventHandler botonJugarHandler = new CambiarEscenaAlPresionarEventHandler(stage, proximaEscena);
-	    botonVolver.setOnMouseClicked(botonJugarHandler);
-	    botonVolver.setAlignment(Pos.BOTTOM_CENTER);
-	    this.getChildren().addAll(botonVolver);
-	    StackPane.setAlignment(botonVolver, Pos.BOTTOM_CENTER);
+		AbandonarPartidaEventHandler botonJugarHandler = new AbandonarPartidaEventHandler(stage, reproductorMusicaGanador, ajustesEfectosDePersonajes, ajustesMusicaDeBatalla, ajustesMusicaEnding, "Esta seguro?");
+		botonVolverAlMenuPrincipal.setOnMouseClicked(botonJugarHandler);
+		botonVolverAlMenuPrincipal.setAlignment(Pos.BOTTOM_CENTER);
+	    this.getChildren().addAll(botonVolverAlMenuPrincipal);
+	    StackPane.setAlignment(botonVolverAlMenuPrincipal, Pos.BOTTOM_CENTER);
 		
 	}
 
@@ -103,7 +104,7 @@ public class VistaEscenaFinal extends StackPane {
 
 	private void reproducirMusicaDeFondo() {
 		if (this.ajustesMusicaEnding.estaActivo()){
-			ReproductorDeSonidos reproductorMusicaGanador = new ReproductorDeSonidos(musicaGanador.get(nombreEquipoGanador));
+			
 			Thread thread = new Thread(reproductorMusicaGanador);
 			thread.setDaemon(true);
 			thread.start();
