@@ -3,6 +3,7 @@ package dab.estados.piccolo;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
 import dab.interfaces.IProveedorDeVidaDePersonajes;
+import dab.personajes.Gohan.Gohan;
 
 public class PiccoloFortalecido extends Estado {
 	
@@ -28,6 +29,6 @@ public class PiccoloFortalecido extends Estado {
 	@Override
 	public boolean transformarDisponible(){
 		//gohan con menos de 20% de vida?	
-		return (proveedorDeVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Gohan")  
+		return (proveedorDeVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Gohan.identificador)  
 				<= maximoPorcentajeDeVidaDeGohanNecesarioParaTransformar);}
 }

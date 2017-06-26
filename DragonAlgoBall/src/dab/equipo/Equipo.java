@@ -14,7 +14,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	 * asi por ejemplo para la habilidad de picollo y gohan podemos acceder a los personajes del equipo de
 	 * forma rapida
 	 */
-	Map<String, Personaje> integrantes;
+	Map<Integer, Personaje> integrantes;
 	private String nombreEquipo;
 	private int kiNuevoTurno = 5; //Ver si lo puede hacer turno 
 	private ArrayList<Potenciador> itemsDeLosCaidos;
@@ -22,7 +22,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	public Equipo(String nombre){
 		itemsDeLosCaidos = new ArrayList<Potenciador>();
 		this.nombreEquipo = nombre;
-		this.integrantes = new HashMap<String, Personaje>();
+		this.integrantes = new HashMap<Integer, Personaje>();
 	}
 	
 	public Equipo(String nombre, Personaje...personaje){
@@ -41,7 +41,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 	
 	public void agregarPersonaje(Personaje personaje){
-		this.integrantes.put(personaje.getNombre(), personaje);
+		this.integrantes.put(personaje.getIdentificador(), personaje);
 		personaje.setEquipo(this);
 	}
 	
@@ -74,20 +74,21 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 		return this.integrantes.containsValue(personaje);
 	}
 	
-	public Personaje obtenerPersonaje(String nombre){ //metodo para pruebas mas que nada
-		Personaje personaje = this.integrantes.get(nombre);
-		if(personaje == null) throw new RuntimeException("nombre incorrecto en obtener personaje" + nombre);
+	public Personaje obtenerPersonaje(int identificador){ //metodo para pruebas mas que nada
+		Personaje personaje = this.integrantes.get(identificador);
+
+		if(personaje == null) throw new RuntimeException("Identificador de personaje incorrecto" + identificador);
 		return personaje;
 	}
 	
-	public double obtenerVidaDelPersonaje(String nombre){
-		System.out.println("Se quiere saber de la vida de "+nombre+" en el equipo "+this.nombreEquipo);
-		Personaje personaje = this.integrantes.get(nombre);
+	public double obtenerVidaDelPersonaje(int identificador){
+		
+		Personaje personaje = this.integrantes.get(identificador);
 		return personaje.getVida();
 	}
 
-	public double obtenerPorcentajeDeVidaDelPersonaje(String nombre){
-		Personaje personaje = this.integrantes.get(nombre);
+	public double obtenerPorcentajeDeVidaDelPersonaje(int identificador){
+		Personaje personaje = this.integrantes.get(identificador);
 		return personaje.getPorcentajeDeVida();
 	}
 	public void otorgarKi(int cantidad){
@@ -111,7 +112,7 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 
 	public void notificarAtaqueHacia(Personaje aPersonaje) {
-		double vidaDelAfectado = this.obtenerVidaDelPersonaje(aPersonaje.getNombre());
+		double vidaDelAfectado = this.obtenerVidaDelPersonaje(aPersonaje.getIdentificador());
 		if (vidaDelAfectado <= 0){
 			this.quitarObjetosAlPersonaje(aPersonaje);
 			this.quitarPersonaje(aPersonaje);

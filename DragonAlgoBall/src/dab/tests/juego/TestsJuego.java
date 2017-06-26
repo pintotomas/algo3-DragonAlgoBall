@@ -55,7 +55,7 @@ public class TestsJuego {
 	@Test(expected=EstePersonajeNoPuedeRealizarMovimientosEsteTurno.class)
 	public void testNoSePuedeSeleccionarUnPersonajeFueraDelTurnoDeSuRespectivoEquipo(){
 		Juego juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);	
-		juego.seleccionarPersonajeDeLaCelda((Celda) (userEnemigosDeLaTierra.getEquipo().obtenerPersonaje("Freezer").getPosicion()));
+		juego.seleccionarPersonajeDeLaCelda((Celda) (userEnemigosDeLaTierra.getEquipo().obtenerPersonaje(Freezer.identificador).getPosicion()));
 	}
 	
 	@Test

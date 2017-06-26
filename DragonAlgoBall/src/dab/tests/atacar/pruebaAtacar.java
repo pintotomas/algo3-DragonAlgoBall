@@ -50,8 +50,8 @@ public class pruebaAtacar{
 	@Test
 	public void testAtacarMismoPP(){
 		Tablero tablero = new Tablero(20, 20);
-		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
-		Personaje cell = enemigosDeLaTierra.obtenerPersonaje("Cell");
+		Personaje piccolo = guerrerosZ.obtenerPersonaje(Piccolo.identificador);
+		Personaje cell = enemigosDeLaTierra.obtenerPersonaje(Cell.identificador);
 		tablero.colocarFicha(piccolo, 5, 6);
 		tablero.colocarFicha(cell, 5,7);
 		
@@ -63,8 +63,8 @@ public class pruebaAtacar{
 	@Test
 	public void pruebaAtacarMayorPP(){
 		Tablero tablero = new Tablero(20, 20);
-		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
-		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
+		Personaje piccolo = guerrerosZ.obtenerPersonaje(Piccolo.identificador);
+		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje(MajinBoo.identificador);
 		
 		tablero.colocarFicha(piccolo, 5, 6);
 		tablero.colocarFicha(majinboo, 5,7);
@@ -77,8 +77,8 @@ public class pruebaAtacar{
 	@Test
 	public void atacarADistancia(){
 		Tablero tablero = new Tablero(20, 20);
-		Personaje piccolo = guerrerosZ.obtenerPersonaje("Piccolo");
-		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje("MajinBoo");
+		Personaje piccolo = guerrerosZ.obtenerPersonaje(Piccolo.identificador);
+		Personaje majinboo = enemigosDeLaTierra.obtenerPersonaje(MajinBoo.identificador);
 		tablero.colocarFicha(piccolo, 5, 6);
 		tablero.colocarFicha(majinboo, 10, 8);
 		assert(!piccolo.puedeAtacar(majinboo));

@@ -6,7 +6,12 @@ import dab.estados.cell.CellBase;
 import dab.interfaces.IProveedorDeCantidadAbsorbidos;
 import dab.personajes.Personaje;
 
+
 public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{	
+	
+
+	public static int identificador = 1;
+	
 	protected int absorbidosParaTransformarCellSemiPerfecto = 4;
 	protected int absorbidosParaTransformarCellPerfecto = 8;
 	protected int absorbidos;
@@ -38,5 +43,11 @@ public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{
 	public int getCantidadAbsorbidos(){
 		return absorbidos;
 	}
+	
+	@Override
+	public Integer getIdentificador(){
+		return identificador;
+	}
+
 
 }

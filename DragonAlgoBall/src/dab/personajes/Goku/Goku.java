@@ -8,6 +8,8 @@ import dab.potenciadores.Furia;
 
 public class Goku extends Personaje{
 	
+	public static int identificador = 4;
+	
 	public Goku(){ 
 		ataqueEspecial = new Kamehameha(this);
 		kiParaEspecial = 20;
@@ -25,5 +27,10 @@ public class Goku extends Personaje{
 		vida = estado.getVidaMaxima();
 		this.interactuarAlContacto(new Furia(this));
 		this.equipo = equipo;
+	}
+	
+	@Override
+	public Integer getIdentificador(){
+		return identificador;
 	}
 }
