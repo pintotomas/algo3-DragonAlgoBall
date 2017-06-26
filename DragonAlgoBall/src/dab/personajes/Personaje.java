@@ -1,5 +1,6 @@
 package dab.personajes;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -227,5 +228,10 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 			if (p.meAyudaAGanar()){ cantidadItems += 1;}
 		}
 		return cantidadItems;
+	}
+
+	public Collection<Potenciador> getPotenciadores() {
+		// TODO Auto-generated method stub
+		return potenciadoresActivos;
 	}
 }

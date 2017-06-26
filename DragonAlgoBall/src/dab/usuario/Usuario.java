@@ -1,7 +1,10 @@
 package dab.usuario;
 
+import java.util.ArrayList;
+
 import dab.equipo.Equipo;
 import dab.personajes.Personaje;
+import dab.potenciadores.Potenciador;
 
 public class Usuario {
 	
@@ -42,6 +45,16 @@ public class Usuario {
 	public boolean haConseguidoItemsParaGanar() {
 		// TODO Auto-generated method stub
 		return equipo.cantidadItemsParaGanar() == cantidadDeEsferasDelDragonParaGanar;
+	}
+
+	public boolean sigueTeniendoAlPersonaje(Personaje aPersonaje) {
+		// TODO Auto-generated method stub
+		return equipo.existePersonajeEnEquipo(aPersonaje);
+	}
+
+	public ArrayList<Potenciador> getPotenciadoresPerdidos() {
+		// TODO Auto-generated method stub
+		return equipo.ultimosObjetosPerdidos();
 	}
 
 
