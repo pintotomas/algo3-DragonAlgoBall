@@ -1,3 +1,4 @@
+/* Botones */
 .boton {
 	-fx-font-weight: bold;
 	-fx-text-fill: #fff;
@@ -11,6 +12,35 @@
 .boton:armed {
 	-fx-background-color:#dc3c26; 
 }
+
+.home{
+	-fx-graphic:url("/vista/Imagenes/hud/home.png");
+}
+.exit{
+	-fx-graphic:url("/vista/Imagenes/hud/quit.png");
+}
+.muteMusic{
+	-fx-graphic:url("/vista/Imagenes/hud/mutemusic.png");
+}
+.muteMusic:selected{
+	-fx-graphic:url("/vista/Imagenes/hud/music.png");
+}
+.muteSound{
+	-fx-graphic:url("/vista/Imagenes/hud/mutevol.png");	
+}
+.muteSound:selected{
+	-fx-graphic:url("/vista/Imagenes/hud/vol.png");	
+}
+.botonPasar{
+	-fx-graphic:url("/vista/Imagenes/hud/pasar.png");	
+}
+.botonTransformar{
+	-fx-graphic:url("/vista/Imagenes/hud/transformar.png");	
+}
+
+/* --------------------- */
+
+
 .vistaAliados {
 	-fx-background-color: #ffc800; 
 	-fx-background-color: rgba(41,211,49,0.5);

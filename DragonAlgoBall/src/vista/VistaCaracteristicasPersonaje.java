@@ -1,5 +1,6 @@
 package vista;
 
+
 import dab.personajes.Personaje;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -13,13 +14,13 @@ import utils.FabricadorDeRepresentacionDeAvatar;
 import javafx.scene.layout.VBox;
 import vista.eventos.BotonTransformarHandler;
 
-
+	
 public class VistaCaracteristicasPersonaje extends VBox{
 	private Personaje personaje;
 	private FabricadorDeRepresentacionDeAvatar fabricador = new FabricadorDeRepresentacionDeAvatar();
-	private String rutaHP = "/vista/imagenes/hud/hp.png";
-	private String rutaPP = "/vista/imagenes/hud/pp.png";
-	private String rutaKI = "/vista/imagenes/hud/ki.png";
+	private String rutaHP = "/vista/Imagenes/hud/hp.png";
+	private String rutaPP = "/vista/Imagenes/hud/pp.png";
+	private String rutaKI = "/vista/Imagenes/hud/ki.png";
 	protected Ajustes ajustesSonidosEspeciales;
 	
 	public VistaCaracteristicasPersonaje(Personaje personaje, Ajustes ajustesSonidosEspeciales){
@@ -76,7 +77,8 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	private Label generarVistaVida(Personaje personaje){
 		double vida = personaje.getVida();
 		Label etiquetaVida = new Label(String.valueOf(vida));
-		Image vidaIcon = new Image(rutaHP);
+		Image vidaIcon = new Image(this.getClass().getResource(rutaHP).toExternalForm());
+		
 		etiquetaVida.setGraphic(new ImageView(vidaIcon));
 		return etiquetaVida;
 	}
@@ -91,8 +93,8 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	
 	private Label generarVistaPoder(Personaje personaje){
 		double poderDeAtaque = personaje.getPoder();
-		Label etiquetaPoderDeAtaque = new Label(String.valueOf(poderDeAtaque));
-		Image poderDeAtaqueIcon = new Image(rutaPP);
+		Label etiquetaPoderDeAtaque = new Label(String.valueOf(poderDeAtaque));	
+		Image poderDeAtaqueIcon = new Image(this.getClass().getResourceAsStream(rutaPP));
 		etiquetaPoderDeAtaque.setGraphic(new ImageView(poderDeAtaqueIcon));
 		return etiquetaPoderDeAtaque;
 	}
@@ -103,13 +105,12 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	
 	
 	public Button generarBotonTransformar(){
-		Button boton = new Button ("TRANSFORMAR");
-
+		Button boton = new Button();
+		boton.getStyleClass().addAll("botonTransformar");
 		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this, ajustesSonidosEspeciales));
 		if(!personaje.transformarDisponible()){
 			boton.setDisable(true);
 		}
-
 		return boton;
 	}
 	

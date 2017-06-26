@@ -2,8 +2,10 @@ package vista;
 
 import dab.juego.Juego;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
@@ -13,16 +15,17 @@ import vista.eventos.BotonPasarTurnoEventHandler;
 import vista.eventos.ControlMusicaDeBatallaEventHandler;
 import vista.eventos.ControlSonidosEspecialesEventHandler;
 
-public class BotoneraDerecha extends VBox{
+public class Botonera extends HBox{
 	
 	private Juego juego;
 	private Stage stage;
 	
-	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
+	public Botonera(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
 			Ajustes ajusteSonidosEspeciales, Stage stage){
 		
 		this.stage = stage;
 		this.juego = juego;
+		this.setAlignment(Pos.CENTER);
 		this.setSpacing(10);
 		this.setPadding(new Insets(30));
 		this.setBotonCederTurno(vistaTablero);
@@ -35,15 +38,16 @@ public class BotoneraDerecha extends VBox{
 	
 
 	private void setBotonCederTurno(VistaTablero vistaTablero){
-		Button botonPasarTurno = new Button("CEDER TURNO");
+		Button botonPasarTurno = new Button();
 		BotonPasarTurnoEventHandler pasarTurnoEventHandler = new BotonPasarTurnoEventHandler(juego, vistaTablero);
 	    botonPasarTurno.setOnAction(pasarTurnoEventHandler);
-	    botonPasarTurno.getStyleClass().add("boton");
+	    botonPasarTurno.getStyleClass().addAll("boton","botonPasar");
 	    this.getChildren().add(botonPasarTurno);
 	}
 	private void setBotonControlMusicaDeBatalla(ReproductorDeSonidos reproductorMusicaDeBatalla,
 			Ajustes ajusteMusicaDeBatalla) {
-		Button botonPararMusicaDeBatalla = new Button("PARAR/COMENZAR MUSICA DE BATALLA");
+		ToggleButton botonPararMusicaDeBatalla = new ToggleButton();
+		botonPararMusicaDeBatalla.getStyleClass().addAll("boton","muteMusic");
 		botonPararMusicaDeBatalla.setOnMousePressed(new ControlMusicaDeBatallaEventHandler(reproductorMusicaDeBatalla));
 		if (!ajusteMusicaDeBatalla.estaActivo()){
 			botonPararMusicaDeBatalla.setDisable(true);
@@ -52,7 +56,8 @@ public class BotoneraDerecha extends VBox{
 	}
 	
 	private void setBotonControlSonidosEspeciales(Ajustes ajusteSonidosEspeciales){
-		Button botonSilenciarSonidosDeBatalla = new Button("Silenciar/ activar sonidos especiales");
+		ToggleButton botonSilenciarSonidosDeBatalla = new ToggleButton();
+		botonSilenciarSonidosDeBatalla.getStyleClass().addAll("boton","muteSound");
 		botonSilenciarSonidosDeBatalla.setOnMousePressed(new ControlSonidosEspecialesEventHandler(ajusteSonidosEspeciales));
 		this.getChildren().add(botonSilenciarSonidosDeBatalla);
 	}
@@ -60,16 +65,18 @@ public class BotoneraDerecha extends VBox{
 
 	private void setBotonVolverAlMenuPrincipal(Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla, ReproductorDeSonidos reproductorMusicaDeBatalla) {
 		// TODO Auto-generated method stub
-		Button botonAbandonarPartida = new Button("Salir de la partida");
+		Button botonAbandonarPartida = new Button();
 		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, stage,
 				reproductorMusicaDeBatalla));
+		botonAbandonarPartida.getStyleClass().addAll("boton","home");
 		this.getChildren().add(botonAbandonarPartida);
 	}
 	
 	private void setBotonSalirDelJuego() {
-		// TODO Auto-generated method stub
-		Button botonSalirDelJuego = new Button("Salir del juego");
+		Button botonSalirDelJuego = new Button();
 		botonSalirDelJuego.setOnMousePressed(new AbandonarJuegoEventHandler());
+		botonSalirDelJuego.getStyleClass().addAll("boton","exit");
 		this.getChildren().add(botonSalirDelJuego);
+		
 	}
 }

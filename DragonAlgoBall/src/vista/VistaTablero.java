@@ -6,6 +6,7 @@ import dab.juego.Tablero;
 import dab.juego.Turno;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import vista.eventos.celdas.SeleccionarCeldaInactivaHandler;
@@ -36,11 +37,10 @@ public class VistaTablero extends GridPane{
 		vistaInferiorPersonaje.setTablero(this);    //permite que la vista inferior tenga acceso a las celdas para poder seleccionarlas.
 	
 	    tablero = juego.getTablero();
-	   
+	    this.setAlignment(Pos.CENTER);
 	    
 	    dibujarTableroSinNingunaSeleccion();
 	    this.vistaInferiorPersonaje.setPersonajeDeTurno();
-	      
 	    celdasLogicas = tablero.getCeldas();
 	}
 	
