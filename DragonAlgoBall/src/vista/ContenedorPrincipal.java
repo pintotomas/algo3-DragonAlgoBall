@@ -19,11 +19,7 @@ import utils.reproductorDeSonidos.ReproductorDeSonidos;
 
 public class ContenedorPrincipal extends BorderPane{
 	Stage stage;
-	BarraDeMenu barraDeMenu;
-
-	Botonera botoneraDerecha;
-	
-
+	BotoneraDerecha botoneraDerecha;
 	VistaCaracteristicasPersonaje caracteristicasPersonaje;
 
 	private Juego juego;
@@ -44,7 +40,6 @@ public class ContenedorPrincipal extends BorderPane{
 	
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		this.stage = stage;
-		this.setMenu();
 		this.setCaracteristicasPersonajeSeleccionado();
 		this.setTablero();
 		this.setBotoneraDerecha();
@@ -59,33 +54,22 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 
 	private void setBotoneraDerecha() {
-
+		VBox hud = new VBox(10);
+		hud.setAlignment(Pos.BOTTOM_CENTER);
+		this.botoneraDerecha = new BotoneraDerecha(this.juego, vistaTablero, reproductorMusicaDeBatalla,
+				ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, stage);
+		hud.getChildren().addAll(botoneraDerecha, vistaInferiorPersonajes);
+		this.setBottom(hud);
 	}
 	
 	private void setCaracteristicasPersonajeSeleccionado(){
-		this.botoneraDerecha = new Botonera(this.juego, vistaTablero, reproductorMusicaDeBatalla,
-				ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, stage);
-		VBox hud = new VBox(10);
-		hud.setAlignment(Pos.BOTTOM_CENTER);
 		this.vistaInferiorPersonajes = new VistaInferiorPersonajes(juego, ajustesEfectosDePersonajes);
-		vistaInferiorPersonajes.setAlignment(Pos.BOTTOM_CENTER);
-		hud.getChildren().addAll(botoneraDerecha, vistaInferiorPersonajes);
-		this.setBottom(hud);
-        
 	}
 
-	private void setMenu(){
-		//this.barraDeMenu = new BarraDeMenu(this.stage);
-        //this.setTop(barraDeMenu);
-	}
 	
 	private void setTablero(){
 		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes);
-		BorderPane.setAlignment(vistaTablero, Pos.CENTER);
 		this.setCenter(this.vistaTablero);
 	}
 	
-	public BarraDeMenu getBarraDeMenu(){
-		return this.barraDeMenu;
-	}
 }

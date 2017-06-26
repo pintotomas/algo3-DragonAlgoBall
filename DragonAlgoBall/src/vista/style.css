@@ -1,12 +1,11 @@
 /* Botones */
+
 .boton {
 	-fx-font-weight: bold;
 	-fx-text-fill: #fff;
 	-fx-background-color: #ffc800; 
-	-fx-background-radius: 10px; 
 	-fx-border-color: #9a1603; 
 	-fx-border-width: 1px; 
-	-fx-border-radius: 5px; 
 	-fx-padding: 10;
 }
 .boton:armed {

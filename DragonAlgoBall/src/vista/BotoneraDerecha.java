@@ -15,12 +15,12 @@ import vista.eventos.BotonPasarTurnoEventHandler;
 import vista.eventos.ControlMusicaDeBatallaEventHandler;
 import vista.eventos.ControlSonidosEspecialesEventHandler;
 
-public class Botonera extends HBox{
+public class BotoneraDerecha extends HBox{
 	
 	private Juego juego;
 	private Stage stage;
 	
-	public Botonera(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
+	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
 			Ajustes ajusteSonidosEspeciales, Stage stage){
 		
 		this.stage = stage;
@@ -64,7 +64,6 @@ public class Botonera extends HBox{
 	
 
 	private void setBotonVolverAlMenuPrincipal(Ajustes ajusteSonidosEspeciales, Ajustes ajusteMusicaDeBatalla, ReproductorDeSonidos reproductorMusicaDeBatalla) {
-		// TODO Auto-generated method stub
 		Button botonAbandonarPartida = new Button();
 		botonAbandonarPartida.setOnMousePressed(new AbandonarPartidaEventHandler(ajusteSonidosEspeciales, ajusteMusicaDeBatalla, stage,
 				reproductorMusicaDeBatalla));
