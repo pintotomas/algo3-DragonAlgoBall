@@ -24,4 +24,8 @@ public class PiccoloBase extends Estado {
 		proveedorDeKi.modificarKi(-kiParaTransformar);
 		return new PiccoloFortalecido(proveedorDeKi, proveedorDeVidaAliados);
 	}
+	
+	public void setProveedorVidaCompaneros(IProveedorDeVidaDePersonajes proveedorDeVidaAliados){
+		this.proveedorDeVidaAliados = proveedorDeVidaAliados;
+	}
 }

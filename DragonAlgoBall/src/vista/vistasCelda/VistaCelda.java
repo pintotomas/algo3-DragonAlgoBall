@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import utils.FabricadorDeRepresentacionDeFicha;
 
 public abstract class VistaCelda extends StackPane{
@@ -43,19 +42,24 @@ public abstract class VistaCelda extends StackPane{
 		darPropiedadesARectangulo();
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
 		if (celda.estaOcupada()){
-			FabricadorDeRepresentacionDeFicha fabricador = new FabricadorDeRepresentacionDeFicha();
-			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
+			try{
+				FabricadorDeRepresentacionDeFicha fabricador = new FabricadorDeRepresentacionDeFicha();
+				String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
 			
-			Image imagenRepresentador = new Image(urlImagenRepresentadora);
-			Pane pane = new Pane();
-			BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
-			pane.setBackground(new Background(background));
+				Image imagenRepresentador = new Image(urlImagenRepresentadora);
+				Pane pane = new Pane();
+				BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
+				pane.setBackground(new Background(background));
 
-			this.getChildren().addAll(rectangulo, pane);
+				this.getChildren().addAll(rectangulo, pane);
 			
 //			pane.setStyle(("-fx-background-image: url('" +imagenRepresentador + "'); " +
 //			   " -fx-background-repeat: no-repeat;"+
 //			    "-fx-background-size: contain;"));
+			}
+			catch(Exception e){
+				System.out.println("la celda "+celda.getFila()+","+celda.getColumna()+" esta ocupada");
+			}
 		}
 		else{
 			this.getChildren().addAll(rectangulo);

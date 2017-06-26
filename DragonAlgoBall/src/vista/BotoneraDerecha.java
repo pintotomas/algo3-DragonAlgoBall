@@ -8,16 +8,19 @@ import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
 import vista.eventos.BotonPasarTurnoEventHandler;
 import vista.eventos.ControlMusicaDeBatallaEventHandler;
+import vista.eventos.ControlSonidosEspecialesEventHandler;
 
 public class BotoneraDerecha extends VBox{
 	private Juego juego;
 	
-	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla){
+	public BotoneraDerecha(Juego juego, VistaTablero vistaTablero, ReproductorDeSonidos reproductorMusicaDeBatalla, Ajustes ajusteMusicaDeBatalla,
+			Ajustes ajusteSonidosEspeciales){
 		this.juego = juego;
 		this.setSpacing(10);
 		this.setPadding(new Insets(30));
 		this.setBotonCederTurno(vistaTablero);
 		this.setBotonControlMusicaDeBatalla( reproductorMusicaDeBatalla,  ajusteMusicaDeBatalla);
+		this.setBotonControlSonidosEspeciales(ajusteSonidosEspeciales);
 	}
 	
 
@@ -30,11 +33,17 @@ public class BotoneraDerecha extends VBox{
 	}
 	private void setBotonControlMusicaDeBatalla(ReproductorDeSonidos reproductorMusicaDeBatalla,
 			Ajustes ajusteMusicaDeBatalla) {
-		Button botonMutearMusicaDeBatalla = new Button("PARAR/COMENZAR MUSICA DE BATALLA");
-		botonMutearMusicaDeBatalla.setOnMousePressed(new ControlMusicaDeBatallaEventHandler(reproductorMusicaDeBatalla));
+		Button botonPararMusicaDeBatalla = new Button("PARAR/COMENZAR MUSICA DE BATALLA");
+		botonPararMusicaDeBatalla.setOnMousePressed(new ControlMusicaDeBatallaEventHandler(reproductorMusicaDeBatalla));
 		if (!ajusteMusicaDeBatalla.estaActivo()){
-			botonMutearMusicaDeBatalla.setDisable(true);
+			botonPararMusicaDeBatalla.setDisable(true);
 		}
-		this.getChildren().add(botonMutearMusicaDeBatalla);
+		this.getChildren().add(botonPararMusicaDeBatalla);
+	}
+	
+	private void setBotonControlSonidosEspeciales(Ajustes ajusteSonidosEspeciales){
+		Button botonSilenciarSonidosDeBatalla = new Button("Silenciar/ activar sonidos especiales");
+		botonSilenciarSonidosDeBatalla.setOnMousePressed(new ControlSonidosEspecialesEventHandler(ajusteSonidosEspeciales));
+		this.getChildren().add(botonSilenciarSonidosDeBatalla);
 	}
 }

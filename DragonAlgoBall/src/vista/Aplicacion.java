@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.Ajustes;
-import utils.reproductorDeSonidos.ReproductorDeSonidos;
 
 public class Aplicacion extends Application {
 	private int pixelesAnchoHD = 1360;

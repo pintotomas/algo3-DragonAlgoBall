@@ -27,6 +27,7 @@ import javafx.scene.media.MediaPlayer;
 public class ReproductorSonidosEspeciales {
 	
 	private static MediaPlayer mediaPlayer;
+	@SuppressWarnings("serial")
 	private final static HashMap<String, String> sonidera = new HashMap<String, String>() {{
 		
 	    put("ataqueNormal","/resources/sonidos/efectos/ataqueNormal.wav");

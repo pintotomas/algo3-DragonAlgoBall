@@ -29,7 +29,7 @@ public class Gohan extends Personaje{
 	@Override
 	public void setEquipo(Equipo equipo){
 		super.setEquipo(equipo);
-		estado = new GohanBase(equipo, this);	
+		((GohanBase) estado).setProveedorVidaCompaneros(equipo);
 	}
 	
 	

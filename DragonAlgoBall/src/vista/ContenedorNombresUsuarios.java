@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
@@ -22,9 +28,21 @@ public class ContenedorNombresUsuarios extends VBox {
         this.setSpacing(20);
         this.setPadding(new Insets(25));
         
-        String textoLabelGuerrerosZ = "Ingrese su nombre. Jugara con Guerreros Z";
-        String textoLabelEnemigosDeLaTierra = "Ingrese su nombre. Jugara con Enenemigos De La Tierra";
         
+    	Image imagenDeFondo = new Image("vista/Imagenes/ImagenIngresoNombres.png");
+    	
+    	BackgroundSize size = new BackgroundSize(1, 1, false, false, false, true);
+    	
+        BackgroundImage vistaImagenDeFondo = new BackgroundImage(imagenDeFondo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, size);
+        this.setBackground(new Background(vistaImagenDeFondo));
+        
+        
+        
+        
+        
+        
+        String textoLabelGuerrerosZ = "vista/Imagenes/nombreGuerrerosZ.png";
+        String textoLabelEnemigosDeLaTierra = "vista/Imagenes/nombreEnemigosDeLaTierra.png";
 
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
@@ -42,8 +60,12 @@ public class ContenedorNombresUsuarios extends VBox {
     } 
     
     private TextField contenedorNombreUsuario(String textoLabel){
-    	Label labelNombreUsuario = new Label(textoLabel);
+    	Label labelNombreUsuario = new Label();
+    	Image imagen = new Image(textoLabel);
+    	labelNombreUsuario.setGraphic(new ImageView(imagen));
         TextField campoNombreUsuario = new TextField();
+        campoNombreUsuario.setMaxWidth(300);
+        campoNombreUsuario.setMinHeight(20);
         this.getChildren().addAll(labelNombreUsuario,campoNombreUsuario);
         return campoNombreUsuario;
     }

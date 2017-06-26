@@ -12,10 +12,12 @@ public class BotonTransformarHandler implements EventHandler<MouseEvent>{
 	private Personaje personaje;
 	private VistaCaracteristicasPersonaje vista;
 	private Ajustes ajustesSonidosEspeciales;
+	
 	public BotonTransformarHandler(Personaje personaje, VistaCaracteristicasPersonaje vista, Ajustes ajustesSonidosEspeciales){
 		this.personaje = personaje;
 		this.vista = vista;
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
+		
 	}
 	
 	
@@ -25,9 +27,9 @@ public class BotonTransformarHandler implements EventHandler<MouseEvent>{
 		personaje.transformar();
 		vista.dibujar(null);
 		vista.dibujar(personaje);
-//		if (ajustesSonidosEspeciales.estaActivo()){
+		if (ajustesSonidosEspeciales.estaActivo()){
 			ReproductorSonidosEspeciales.reproducir("transformar");
-//		}
+		}
 		
 	}
 

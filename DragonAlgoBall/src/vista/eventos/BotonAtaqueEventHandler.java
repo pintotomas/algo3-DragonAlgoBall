@@ -5,7 +5,6 @@ import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import utils.Ajustes;
-import utils.reproductorDeSonidos.ReproductorSonidosEspeciales;
 import vista.VistaTablero;
 
 public abstract class BotonAtaqueEventHandler implements EventHandler<MouseEvent>{
@@ -19,7 +18,6 @@ public abstract class BotonAtaqueEventHandler implements EventHandler<MouseEvent
 	    this.enemigo = enemigo; 
 	    this.juego = juego; 
 	    this.vistaTablero = vistaTablero; 
-	    System.out.println(ajustesEfectosDePersonajes);
 	    this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 	  } 
 	   
@@ -27,7 +25,6 @@ public abstract class BotonAtaqueEventHandler implements EventHandler<MouseEvent
 	  public void handle(MouseEvent event) { 
  
 		 efectuarAtaque();
-	     juego.seHaEfectuadoUnAtaque(); 
 	     vistaTablero.dibujarTableroSinNingunaSeleccion(); 
 	     vistaTablero.actualizarVistaDePersonajes(); 
 	     correrSonido();

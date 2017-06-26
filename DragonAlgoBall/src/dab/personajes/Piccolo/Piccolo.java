@@ -27,6 +27,7 @@ public class Piccolo extends Personaje{
 	@Override
 	public void setEquipo(Equipo equipo){
 		super.setEquipo(equipo);
-		estado = new PiccoloBase(this, equipo);	
+		((PiccoloBase) estado).setProveedorVidaCompaneros(equipo);
 	}
+
 }

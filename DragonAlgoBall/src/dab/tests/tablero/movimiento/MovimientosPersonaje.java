@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.juego.Celda;
 import dab.juego.Tablero;

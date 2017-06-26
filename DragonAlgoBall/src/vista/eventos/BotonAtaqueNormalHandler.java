@@ -22,7 +22,7 @@ public class BotonAtaqueNormalHandler extends BotonAtaqueEventHandler{
 	@Override
 	protected void correrSonido() {
 		if (ajustesEfectosDePersonajes.estaActivo()){
-		ReproductorSonidosEspeciales.reproducir("ataqueNormal");
+			ReproductorSonidosEspeciales.reproducir("ataqueNormal");
 		}
 	}
 

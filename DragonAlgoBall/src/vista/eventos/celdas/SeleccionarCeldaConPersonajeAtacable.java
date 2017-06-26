@@ -1,6 +1,5 @@
 package vista.eventos.celdas;
 
-import dab.juego.Juego;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
