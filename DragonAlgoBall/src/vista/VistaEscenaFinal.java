@@ -24,10 +24,11 @@ public class VistaEscenaFinal extends VBox {
 	    this.setSpacing(20);
 	    this.setPadding(new Insets(25));
 	    
-	    Image imagenDeFondo = new Image("vista/Imagenes/ganadorEnemigos.png");
+	    Image imagenDeFondo = new Image("vista/Imagenes/ganadorEnemigos.jpg");
 	    if(equipoGanador == "Guerreros Z"){
 	    	imagenDeFondo = new Image("vista/Imagenes/ganadorGuerrerosZ.png");
 	    }
+	    
 	 	BackgroundSize size = new BackgroundSize(10, 10, false, false, false, true);
 	 	
 	 	BackgroundImage vistaImagenDeFondo = new BackgroundImage(imagenDeFondo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, size);
