@@ -28,7 +28,7 @@ public abstract class BotonAtaqueEventHandler implements EventHandler<MouseEvent
 	     vistaTablero.dibujarTableroSinNingunaSeleccion(); 
 	     vistaTablero.actualizarVistaDePersonajes(); 
 	     correrSonido();
-
+	  
 	    }
 	  
 	  protected abstract void efectuarAtaque();
