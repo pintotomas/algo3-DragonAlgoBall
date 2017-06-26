@@ -7,7 +7,7 @@ public class ReproductorDeSonidos implements Runnable {
 	private volatile ArrayList<AudioFile> musicFiles;
 	private volatile int currentSongIndex = 0;
 	private volatile boolean running;
-	private volatile AudioFile currentSong;
+
 	private volatile boolean mute;
 	public ReproductorDeSonidos(String... files){
 		musicFiles = new ArrayList<AudioFile>();
@@ -21,7 +21,7 @@ public class ReproductorDeSonidos implements Runnable {
 	public void run() {
 		running = true;
 		AudioFile song = musicFiles.get(currentSongIndex);
-		currentSong = song;
+		
 		
 		while(isPlaying()){
 			if (song.isPlaying() && this.isMuted()){
@@ -33,7 +33,7 @@ public class ReproductorDeSonidos implements Runnable {
 					currentSongIndex = 0;
 				}
 				song = musicFiles.get(currentSongIndex);
-				currentSong = song;
+				
 				song.play();
 			}
 			try {

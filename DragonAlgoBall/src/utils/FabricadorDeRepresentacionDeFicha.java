@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class FabricadorDeRepresentacionDeFicha {
 
+	@SuppressWarnings("serial")
 	private final HashMap<String, String> representacionPersonajes = new HashMap<String, String>() {{
 	    put("Goku","vista/Imagenes/personajes/goku1.png");
 	    put("Goku Kaio-Ken", "vista/Imagenes/personajes/goku2.png");

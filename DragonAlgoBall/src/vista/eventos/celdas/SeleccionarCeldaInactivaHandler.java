@@ -21,14 +21,14 @@ public class SeleccionarCeldaInactivaHandler implements EventHandler<MouseEvent>
 	private final VistaCelda[][] celdasGUI;
 	private final VistaTablero vistaTablero;
 	private Juego juego;
-	private VistaInferiorPersonajes vistaInferiorPersonajes;
+//	private VistaInferiorPersonajes vistaInferiorPersonajes;
 	
 	public SeleccionarCeldaInactivaHandler(VistaCelda celda, Juego juego, VistaCelda[][] celdasGUI, VistaTablero vistaTablero, VistaInferiorPersonajes vistaInferiorPersonaje) {
 		this.celdaGUIOrigen = celda;
 		this.celdasGUI = celdasGUI;
 		this.vistaTablero = vistaTablero;
 		this.juego = juego;
-		this.vistaInferiorPersonajes = vistaInferiorPersonaje;
+//		this.vistaInferiorPersonajes = vistaInferiorPersonaje;
 	}
 
 	@Override

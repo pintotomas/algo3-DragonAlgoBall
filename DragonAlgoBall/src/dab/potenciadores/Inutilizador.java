@@ -2,51 +2,32 @@ package dab.potenciadores;
 
 public class Inutilizador extends Potenciador {
 	
-	public Inutilizador(){
-		duracionTurnos = 3;
-		duracionAtaques = Double.POSITIVE_INFINITY;
-		multiplicadorVelocidad = 0;
-		multiplicadorPoderDePelea = 1;
-		vidaExtra = 0;
-		multiplicadorDistanciaAtaque = 0;
-		multiplicadorAlcance = 0;
-		kiExtra = -5;
-	}
+	private static String nombre = "Inutilizador";
+	private static double duracionTurnos = 3;
+	private static double duracionAtaques = Double.POSITIVE_INFINITY;
+	private static int multiplicadorVelocidad = 0;
+	private static double multiplicadorPoderDePelea = 1;
+	private static double vidaExtra = 0;
+	private static int multiplicadorDistanciaAtaque = 0;
+	private static int multiplicadorAlcance = 0;
+	private static int kiExtra = -5;
 	
-	@Override
-	public double getMultiplicadorPoderDePelea() {
-		return multiplicadorPoderDePelea;
+	public Inutilizador(){
+		super(nombre, duracionTurnos, duracionAtaques, multiplicadorVelocidad, 
+				multiplicadorPoderDePelea, vidaExtra, multiplicadorDistanciaAtaque, multiplicadorAlcance, kiExtra);
+	
 	}
 
 	@Override
-	public double getMultiplicadorVelocidad() {
-		return multiplicadorVelocidad;
-	}
-
-	@Override
-	public double getVidaExtra() {
-		return vidaExtra;
-	}
-
-	@Override
-	public int getMultiplicadorAlcance() {
-		return multiplicadorAlcance;
-	}
-
-	@Override
-	public int getMultiplicadorDistanciaAtaque() {
-		return multiplicadorDistanciaAtaque;
-	}
-
-	@Override
-	public int getKiExtra() {
-		return kiExtra;
-	}
-
-	@Override
-	public String getNombre() {
+	public boolean daEfectos() {
 		// TODO Auto-generated method stub
-		return nombre;
+		return true;
+	}
+
+	@Override
+	public boolean meAyudaAGanar() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

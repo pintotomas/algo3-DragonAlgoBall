@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class FabricadorDeRepresentacionDeAvatar {
 
+	@SuppressWarnings("serial")
 	private final HashMap<String, String> representacionAvatares = new HashMap<String, String>() {{
 	    put("Goku","vista/Imagenes/personajes/goku1avatar.png");
 	    put("Goku Kaio-Ken", "vista/Imagenes/personajes/goku2avatar.png");

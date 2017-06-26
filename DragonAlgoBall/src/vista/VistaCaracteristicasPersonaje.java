@@ -24,10 +24,9 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	
 	public VistaCaracteristicasPersonaje(Personaje personaje, Ajustes ajustesSonidosEspeciales){
 		this.personaje = personaje;
-		this.setVista();
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
+		this.setVista();
 	}
-	
 	private void setVista(){
 		this.setSpacing(5);
         this.setPadding(new Insets(10));
@@ -106,7 +105,7 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	public Button generarBotonTransformar(){
 		Button boton = new Button ("TRANSFORMAR");
 
-			boton.setOnMousePressed(new BotonTransformarHandler(personaje, this, ajustesSonidosEspeciales));
+		boton.setOnMousePressed(new BotonTransformarHandler(personaje, this, ajustesSonidosEspeciales));
 		if(!personaje.transformarDisponible()){
 			boton.setDisable(true);
 		}

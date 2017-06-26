@@ -1,5 +1,6 @@
 package dab.personajes;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -111,16 +112,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		}else{
 			vida += cantidad;
 		}
-		//Parche para que corran las pruebas: o cambiar las pruebas, o 
-		//hacer funcionn
-		if (estoyMuerto() && equipo != null){
-			equipo.quitarPersonaje(this);
-		}
-	}
 	
-	private boolean estoyMuerto(){
-		return vida <= 0;
 	}
+
 	
 	/**********************************************************
 	    			TRANSFORMAR, TURNO 
@@ -227,8 +221,17 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		this.modificarVida(potenciador.getVidaExtra());
 	}
 
-	public String getNombreAtaqueEspecial() {
+	public int cantidadItemsParaGanar() {
 		// TODO Auto-generated method stub
-		return ataqueEspecial.nombre;
+		int cantidadItems = 0;
+		for (Potenciador p: potenciadoresActivos){
+			if (p.meAyudaAGanar()){ cantidadItems += 1;}
+		}
+		return cantidadItems;
+	}
+
+	public Collection<Potenciador> getPotenciadores() {
+		// TODO Auto-generated method stub
+		return potenciadoresActivos;
 	}
 }

@@ -3,17 +3,14 @@ package vista.menuOpciones;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import vista.VistaMenuPrincipal;
-import vista.eventos.CambiarEscenaAlPresionarEventHandler;
 
 public class VistaMenuOpciones extends StackPane {
 	
@@ -71,13 +68,13 @@ public class VistaMenuOpciones extends StackPane {
 	    this.getChildren().add(vistaFondoOpciones);
 	}
 	
-	private void asignarSiguienteEscenaABoton(Button boton, Pane siguienteVista){
-		
-		Scene siguienteEscena = new Scene(siguienteVista);
-		CambiarEscenaAlPresionarEventHandler event= new CambiarEscenaAlPresionarEventHandler(stage, siguienteEscena);
-		boton.setOnMousePressed(event);
-	}
-	
+//	private void asignarSiguienteEscenaABoton(Button boton, Pane siguienteVista){
+//		
+//		Scene siguienteEscena = new Scene(siguienteVista);
+//		CambiarEscenaAlPresionarEventHandler event= new CambiarEscenaAlPresionarEventHandler(stage, siguienteEscena);
+//		boton.setOnMousePressed(event);
+//	}
+//	
 
 	private Button creadorDeBoton(String direccionImagen, String style){
 		Button nuevoBoton = new Button();

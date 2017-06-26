@@ -33,7 +33,7 @@ public class ContenedorPrincipal extends BorderPane{
 	private Ajustes ajustesEfectosDePersonajes;
 	private ReproductorDeSonidos reproductorMusicaDeBatalla;
 	
-	public ContenedorPrincipal(Stage stage2, TextField campoNombreUsuarioGuerreros,
+	public ContenedorPrincipal(Stage stage, TextField campoNombreUsuarioGuerreros,
 			TextField campoNombreUsuarioEnemigos, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, 
 			ReproductorDeSonidos reproductorMusicaDeBatalla){
 		this.prepararJuego(campoNombreUsuarioGuerreros, campoNombreUsuarioEnemigos);

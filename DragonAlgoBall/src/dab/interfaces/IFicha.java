@@ -1,7 +1,5 @@
 package dab.interfaces;
 
-import dab.juego.Celda;
-
 public interface IFicha {
 	
 	String getNombre();

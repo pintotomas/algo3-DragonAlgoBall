@@ -3,10 +3,9 @@ package dab.juego;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 
+import dab.dragonBallExceptions.AunNoHayGanador;
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 
 import dab.personajes.Personaje;
@@ -31,7 +30,6 @@ public class Juego {
 	private Tablero tablero;
 	Turno turno;
 	Map<Usuario, Usuario> contrincantes;
-	Queue<Usuario> ordenTurnos; 
 	
 	private Personaje personajeSeleccionado;
 	
@@ -46,7 +44,7 @@ public class Juego {
 		this.anchoTablero = anchoTablero;
 		this.tablero = new Tablero(altoTablero, anchoTablero, userGuerrerosZ.getEquipo(), userEnemigos.getEquipo());
 		try {
-			this.colocarConsumibles();
+			this.generarConsumibles();
 		} catch (InstantiationException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,38 +53,42 @@ public class Juego {
 		contrincantes = new HashMap<Usuario,Usuario>();
 		contrincantes.put(userGuerrerosZ,  userEnemigos);
 		contrincantes.put(userEnemigos, userGuerrerosZ);
-		
-		ordenTurnos = new LinkedList<Usuario>();
-		ordenTurnos.offer(userGuerrerosZ);
-		ordenTurnos.offer(userEnemigos);
-		
-		turno = new Turno(ordenTurnos.peek());
+	
+		//Invariante: Siempre empiezan jugando los guerreros Z
+		turno = new Turno(userGuerrerosZ);
 
 	}
 	
-	private void colocarConsumibles() throws InstantiationException, IllegalAccessException {
+	private void generarConsumibles() throws InstantiationException, IllegalAccessException {
 		// TODO Auto-generated method stub
 		ArrayList<Potenciador> potenciadores = new ArrayList<Potenciador>();
 		
 		this.generarPotenciadores(potenciadores, cantidadEsferasDelDragon, EsferaDelDragon.class);
 		this.generarPotenciadores(potenciadores, cantidadNubesVoladoras, NubeVoladora.class);
 		this.generarPotenciadores(potenciadores, cantidadSemillasDelErmitanio, SemillaDelErmitanio.class);
+		colocarConsumibles(potenciadores);
+	} 
+	
+	private void colocarConsumibles(ArrayList<Potenciador> potenciadores){
 		
-		for (int i = 0; i < potenciadores.size(); i++){
+		for (int i = 0; i < potenciadores.size(); i++){		
 			
 			boolean seEncontroUnaPosicionParaUbicarPotenciador = false;
 			
 			while (!seEncontroUnaPosicionParaUbicarPotenciador ){
+				
 				int randomFila = generarNumeroRandom(0, altoTablero);
+				
 				int randomColumna = generarNumeroRandom(0, anchoTablero);
+				
 				if (!tablero.celdaOcupada(randomFila, randomColumna)){
+					System.out.println("Recolocare en: ("+randomFila+","+randomColumna+")");
 					tablero.colocarFicha(potenciadores.get(i), randomFila, randomColumna);
 					seEncontroUnaPosicionParaUbicarPotenciador = true;
-				}
 			}
 		}
-		
-	} 
+	}
+}
 	
 	private int generarNumeroRandom(int min, int max){
 		int random = ThreadLocalRandom.current().nextInt(min, max);
@@ -114,19 +116,33 @@ public class Juego {
 
 	public void pasarTurno() {
 
-		ordenTurnos.offer(ordenTurnos.poll());
-		turno = new Turno(ordenTurnos.peek());
+		turno = new Turno(contrincantes.get(turno.usuarioActual()));
 
 	}
 	
-	public void seHaEfectuadoUnAtaque(){
-		turno.seHaEfectuadoUnAtaque();
-		this.verificarFinDeTurno();
+	public Usuario ganador(){
+		if (ganoElDelTurnoActual()){
+			return turno.usuarioActual();
+		}
+		throw new AunNoHayGanador();
 	}
 	
-	public void seHaEfectuadoUnMovimiento(){
+	public boolean ganoElDelTurnoActual(){
+		return contrincantes.get(turno.usuarioActual()).haPerdido() || turno.usuarioActual().haConseguidoItemsParaGanar();
+	}
+	
+	private void seHaEfectuadoUnAtaque(){
+		turno.seHaEfectuadoUnAtaque();
+		if (!ganoElDelTurnoActual()){
+			this.verificarFinDeTurno();
+		}
+	}
+	
+	private void seHaEfectuadoUnMovimiento(){
 		turno.seHaEfectuadoUnMovimiento();
-		this.verificarFinDeTurno();
+		if (!ganoElDelTurnoActual()){
+			this.verificarFinDeTurno();
+		}
 	}
 	
 	public boolean personajeSeleccionadoPuedeAtacarA(Personaje otroPersonaje){
@@ -135,27 +151,43 @@ public class Juego {
 		
 	}
 	
-	public void personajeSeleccionadoAtacaA(Personaje otroPersonaje){
+	public void personajeSeleccionadoAtacaA(Personaje aPersonaje){
 	
-		personajeSeleccionado.atacarA(otroPersonaje);
+		personajeSeleccionado.atacarA(aPersonaje);
+		this.avisarAlContrincante(aPersonaje);
+		
+		this.seHaEfectuadoUnAtaque();
 		
 	}
 	
+	public void personajeSeleccionadoAtaqueEspecialA(Personaje aPersonaje){
+		personajeSeleccionado.ataqueEspecial(aPersonaje);
+		this.avisarAlContrincante(aPersonaje);
+	    this.seHaEfectuadoUnAtaque(); 
+	}
+	
+	private void avisarAlContrincante(Personaje aPersonaje) {
+		Usuario contrincante = contrincantes.get(turno.usuarioActual());
+		contrincante.notificarQueSeAtacoA(aPersonaje);
+		
+		if (!contrincante.sigueTeniendoAlPersonaje(aPersonaje)){
+		
+			ArrayList<Potenciador> potenciadoresDelCaido = contrincante.getPotenciadoresPerdidos();
+			colocarConsumibles(potenciadoresDelCaido);
+		}
+		
+	}
+
 	public boolean personajeSeleccionadoPuedeMoverseHacia(int fila, int columna){
 		return tablero.puedeTrasladarse(personajeSeleccionado, fila, columna);
 	}
 	
 	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
 		tablero.moverFicha(personajeSeleccionado, fila, columna);
-		turno.seHaEfectuadoUnMovimiento();
-		
+		this.seHaEfectuadoUnMovimiento();
 	}
 	
-	public void personajeSeleccionadoAtaqueEspecialA(Personaje otroPersonaje){
-		personajeSeleccionado.ataqueEspecial(otroPersonaje);
-		turno.seHaEfectuadoUnAtaque();
-		
-	}
+
 	
 	public boolean personajeSeleccionadoTieneAtaqueEspecialDisponible(){
 		return personajeSeleccionado.ataqueEspecialDisponible();
@@ -215,7 +247,7 @@ public class Juego {
 	}
 
 	public ArrayList<Personaje> obtenerPersonajesAtacablesDelSeleccionado() {
-		return tablero.personajesAtacables(personajeSeleccionado, contrincantes.get(turno.UsuarioActual()).getEquipo());
+		return tablero.personajesAtacables(personajeSeleccionado, contrincantes.get(turno.usuarioActual()).getEquipo());
 	}
 	
 	public void seleccionarPersonajeEnPosicion(int fila, int columna){
@@ -227,7 +259,7 @@ public class Juego {
 	}
 	
 	public Usuario obtenerJugadorActual(){
-		return ordenTurnos.peek();
+		return turno.usuarioActual();
 	}
 
 }

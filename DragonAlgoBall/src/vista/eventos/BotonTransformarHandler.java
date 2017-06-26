@@ -12,10 +12,12 @@ public class BotonTransformarHandler implements EventHandler<MouseEvent>{
 	private Personaje personaje;
 	private VistaCaracteristicasPersonaje vista;
 	private Ajustes ajustesSonidosEspeciales;
+	
 	public BotonTransformarHandler(Personaje personaje, VistaCaracteristicasPersonaje vista, Ajustes ajustesSonidosEspeciales){
 		this.personaje = personaje;
 		this.vista = vista;
 		this.ajustesSonidosEspeciales = ajustesSonidosEspeciales;
+		
 	}
 	
 	
