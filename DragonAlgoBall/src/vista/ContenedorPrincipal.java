@@ -9,24 +9,22 @@ import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
 import dab.usuario.Usuario;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import utils.reproductorDeSonidos.ReproductorDeSonidos;
 
 public class ContenedorPrincipal extends BorderPane{
 	Stage stage;
-	BarraDeMenu barraDeMenu;
-
 	BotoneraDerecha botoneraDerecha;
-	
-
 	VistaCaracteristicasPersonaje caracteristicasPersonaje;
 
 	private Juego juego;
 	private VistaTablero vistaTablero;
-	private int altoTablero = 7;
+	private int altoTablero = 10;
 	private int anchoTablero = 18;
 	private VistaInferiorPersonajes vistaInferiorPersonajes;
 	private Ajustes ajustesMusicaDeBatalla;
@@ -44,7 +42,6 @@ public class ContenedorPrincipal extends BorderPane{
 	
 		this.reproductorMusicaDeBatalla = reproductorMusicaDeBatalla;
 		this.stage = stage;
-		this.setMenu();
 		this.setCaracteristicasPersonajeSeleccionado();
 		this.setTablero();
 		this.setBotoneraDerecha();
@@ -59,20 +56,23 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 
 	private void setBotoneraDerecha() {
+
 		this.botoneraDerecha = new BotoneraDerecha(stage, this.juego, vistaTablero,
 				reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
 		this.setRight(this.botoneraDerecha);
+
+		VBox hud = new VBox(10);
+		hud.setAlignment(Pos.BOTTOM_CENTER);
+		this.botoneraDerecha = new BotoneraDerecha(stage, this.juego, vistaTablero, reproductorMusicaDeBatalla,
+				ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
+		hud.getChildren().addAll(botoneraDerecha, vistaInferiorPersonajes);
+		this.setBottom(hud);
 	}
 	
 	private void setCaracteristicasPersonajeSeleccionado(){
 		this.vistaInferiorPersonajes = new VistaInferiorPersonajes(juego, ajustesEfectosDePersonajes);
-        this.setBottom(this.vistaInferiorPersonajes);
 	}
 
-	private void setMenu(){
-		this.barraDeMenu = new BarraDeMenu(this.stage);
-        this.setTop(barraDeMenu);
-	}
 	
 	private void setTablero(){
 		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes, this.stage,
@@ -80,7 +80,4 @@ public class ContenedorPrincipal extends BorderPane{
 		this.setCenter(this.vistaTablero);
 	}
 	
-	public BarraDeMenu getBarraDeMenu(){
-		return this.barraDeMenu;
-	}
 }
