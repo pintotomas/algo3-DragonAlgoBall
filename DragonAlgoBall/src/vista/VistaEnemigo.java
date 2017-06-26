@@ -16,12 +16,13 @@ import vista.eventos.BotonAtaqueNormalHandler;
 
 public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 	private Personaje personaje;
-	VistaTablero vistaTablero;
-	Juego juego;
+	private VistaTablero vistaTablero;
+	private Juego juego;
 	private String rutaAtaque = "/vista/imagenes/hud/ataque.png";
 	private String rutaEspecial = "/vista/imagenes/hud/especial.png";
+	
 	public VistaEnemigo(Personaje personaje, Juego juego, VistaTablero vistaTablero, Ajustes ajustesSonidosEspeciales){
-		super(personaje, ajustesSonidosEspeciales);
+		super(personaje, ajustesSonidosEspeciales, vistaTablero);
 		this.juego = juego;
 		this.vistaTablero = vistaTablero;
 		this.setVista();
