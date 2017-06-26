@@ -23,63 +23,58 @@ import dab.usuario.Usuario;
 
 public class PruebasIntegradoras2 {
 
-	private Gohan gohan;
-	private Freezer freezer;
 	private Tablero tablero;
 	private Juego juego;
 	private Usuario userGuerrerosZ;
 	private Usuario userEnemigosDeLaTierra;
 	private int altoTablero;
 	private int anchoTablero;
+	private Goku goku = new Goku();
+	private Gohan gohan = new Gohan();
+	private Piccolo piccolo = new Piccolo();
+	private Freezer freezer = new Freezer();
+	private Cell cell = new Cell();
+	private MajinBoo majinboo = new MajinBoo();
 	@Before
 	public void setUp() throws Exception {
-		userGuerrerosZ = new Usuario(new Equipo("Guerreros Z", new Goku(), new Gohan(), new Piccolo()),
+		
+		userGuerrerosZ = new Usuario(new Equipo("Guerreros Z", goku, gohan, piccolo),
 				"Tomas");
 		
-		userEnemigosDeLaTierra = new Usuario(new Equipo("Enemigos de la Tierra", new Cell(), new Freezer(), new MajinBoo()),
+		userEnemigosDeLaTierra = new Usuario(new Equipo("Enemigos de la Tierra", freezer, cell, majinboo),
 				"PC");
 		
-		altoTablero = 10;
-		anchoTablero = 10;
+		altoTablero = 8;
+		anchoTablero = 8;
 		juego = new Juego(altoTablero, anchoTablero, userGuerrerosZ, userEnemigosDeLaTierra);
 		tablero = juego.getTablero();
 	}
 
 	@Test
 	public void testTurnoOtorgueKiParaHabilidadYRealizarAtaques() {
-		int filaGohan = 0;
-		int columnaGohan = 5;
-		juego.seleccionarPersonajeEnPosicion(filaGohan, columnaGohan);
-		filaGohan = 2;
-		columnaGohan = 5;
+		juego.seleccionarPersonajeDeLaCelda((Celda)gohan.getPosicion());
+		int filaGohan = 3;
+		int columnaGohan = 2;
 		juego.moverPersonajeSeleccionadoHacia(filaGohan, columnaGohan);
 		juego.pasarTurno();
 		
-		int filaFreezer = 9;
-		int columnaFreezer = 5;
-		juego.seleccionarPersonajeEnPosicion(filaFreezer, columnaFreezer);
-		filaFreezer = 6;
-		columnaFreezer = 5;
+		juego.seleccionarPersonajeDeLaCelda((Celda)freezer.getPosicion());
+		int filaFreezer = 3;
+		int columnaFreezer = 4;
 		juego.moverPersonajeSeleccionadoHacia(filaFreezer, columnaFreezer);
 		juego.pasarTurno();
 
 		Celda celdaGohan = tablero.obtenerCelda(filaGohan, columnaGohan);
 		juego.seleccionarPersonajeDeLaCelda(celdaGohan);
-		gohan = (Gohan) juego.personajeSeleccionado();
-		filaGohan = 4;
-		columnaGohan = 5;
+		filaGohan = 3;
+		columnaGohan = 3;
 		juego.moverPersonajeSeleccionadoHacia(filaGohan, columnaGohan);
-		ArrayList<Personaje> atacables = juego.obtenerPersonajesAtacablesDelSeleccionado();
-		freezer = (Freezer) atacables.get(0);
 		assertTrue(juego.personajeSeleccionadoTieneAtaqueEspecialDisponible());
 		juego.personajeSeleccionadoAtaqueEspecialA(freezer);
 		double vidaEsperada = freezer.getVidaMaxima() - gohan.getPoder()*1.25;
 		assertEquals(vidaEsperada,freezer.getVida(),0.1);
-		juego.pasarTurno();
 		
-		juego.seleccionarPersonajeEnPosicion(filaFreezer, columnaFreezer);
-		atacables = juego.obtenerPersonajesAtacablesDelSeleccionado();
-		gohan = (Gohan) atacables.get(0);
+		juego.seleccionarPersonajeDeLaCelda((Celda)freezer.getPosicion());
 		juego.personajeSeleccionadoAtacaA(gohan);
 		vidaEsperada = gohan.getVidaMaxima() - freezer.getPoder();
 		assertEquals(vidaEsperada,gohan.getVida(),0.1);
@@ -87,10 +82,10 @@ public class PruebasIntegradoras2 {
 	@Test
 	public void testAgarrarConsumibleLoRemueveDePosicion() {
 		tablero = juego.getTablero();
-		Celda celdaGohan = tablero.obtenerCelda(0,5);
+		Celda celdaGohan = (Celda) gohan.getPosicion();
 		gohan = (Gohan)celdaGohan.getFicha();
-		int filaNube = 2;
-		int columnaNube = 5;
+		int filaNube = 3;
+		int columnaNube = 2;
 		int velocidadDuplicada = gohan.getVelocidad()*2;
 		tablero.colocarFicha(new NubeVoladora(),filaNube,columnaNube);
 		juego.seleccionarPersonajeDeLaCelda(celdaGohan);
@@ -98,10 +93,9 @@ public class PruebasIntegradoras2 {
 		juego.moverPersonajeSeleccionadoACelda(celdaGohan);
 		assertEquals(velocidadDuplicada, gohan.getVelocidad());
 		juego.pasarTurno();
-		
-		Celda celdaFreezer = tablero.obtenerCelda(9, 5);
+		Celda celdaFreezer = (Celda) freezer.getPosicion();
 		juego.seleccionarPersonajeDeLaCelda(celdaFreezer);
-		celdaFreezer = tablero.obtenerCelda(5, 5);
+		celdaFreezer = tablero.obtenerCelda(3, 4);
 		juego.moverPersonajeSeleccionadoACelda(celdaFreezer);
 		juego.pasarTurno();
 		
