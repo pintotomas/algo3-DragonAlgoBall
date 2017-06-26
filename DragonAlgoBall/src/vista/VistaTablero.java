@@ -6,8 +6,11 @@ import dab.juego.Tablero;
 import dab.juego.Turno;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import utils.Ajustes;
 import vista.eventos.celdas.SeleccionarCeldaInactivaHandler;
 import vista.vistasCelda.VistaCelda;
 import vista.vistasCelda.VistaCeldaInactiva;
@@ -17,15 +20,19 @@ public class VistaTablero extends GridPane{
 	int altoTablero; 
     int anchoTablero;
     Juego juego;
-    
+    Stage stage;
+    Ajustes ajustesMusicaDeBatalla;
+    Ajustes ajustesEfectosDePersonajes;
     Tablero tablero;
     Celda[][] celdasLogicas;
     VistaCelda[][] celdasGUI;
     VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
 	VistaInferiorPersonajes vistaInferiorPersonaje;
     
-	public VistaTablero(Juego juego,VistaInferiorPersonajes vistaInferiorPersonaje) {
-		
+	public VistaTablero(Juego juego,VistaInferiorPersonajes vistaInferiorPersonaje, Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes) {
+		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
+	    this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
+		this.stage = stage;
 		this.juego = juego;
 		this.vistaInferiorPersonaje = vistaInferiorPersonaje;
 	 	this.setGridLinesVisible(true);
@@ -95,6 +102,14 @@ public class VistaTablero extends GridPane{
 	public void actualizarVistaEnemigo(Personaje personajeEnemigo) {
 		this.vistaInferiorPersonaje.updateEnemigo(personajeEnemigo);
 		
+	}
+
+	public void hayUnGanador() {
+		String ganador = juego.ganador().getEquipo().getNombre();
+		VistaEscenaFinal escenaFinal = new VistaEscenaFinal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ganador);
+		stage.setScene(new Scene(escenaFinal));
+		stage.setFullScreenExitHint("");
+	    stage.setFullScreen(true);
 	}
 	
 	
