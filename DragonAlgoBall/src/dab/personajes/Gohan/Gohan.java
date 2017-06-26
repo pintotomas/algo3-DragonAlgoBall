@@ -9,6 +9,7 @@ public class Gohan extends Personaje{
 	
 	public double porcentajeVidaAmigosParaTransformar = 0.3;
 	/*PUBLICO PARA TESTING*/
+	public static int identificador = 3;
 	
 	public Gohan(){ 
 		ataqueEspecial = new Masenko(this);
@@ -30,6 +31,11 @@ public class Gohan extends Personaje{
 	public void setEquipo(Equipo equipo){
 		super.setEquipo(equipo);
 		((GohanBase) estado).setProveedorVidaCompaneros(equipo);
+	}
+	
+	@Override
+	public Integer getIdentificador(){
+		return identificador;
 	}
 	
 	

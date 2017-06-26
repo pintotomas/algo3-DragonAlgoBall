@@ -3,6 +3,8 @@ package dab.estados.gohan;
 import dab.estados.Estado;
 import dab.interfaces.IProveedorDeKi;
 import dab.interfaces.IProveedorDeVidaDePersonajes;
+import dab.personajes.Goku.Goku;
+import dab.personajes.Piccolo.Piccolo;
 
 public class GohanSuperSayajinFase1 extends Estado{
 	/*segunda transformacion de gohan*/
@@ -32,8 +34,8 @@ public class GohanSuperSayajinFase1 extends Estado{
 		@Override
 		public boolean transformarDisponible() {
 	
-			double porcentajeVidaGoku = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Goku");
-			double porcentajeVidaPiccolo = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje("Piccolo");
+			double porcentajeVidaGoku = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Goku.identificador);
+			double porcentajeVidaPiccolo = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Piccolo.identificador);
 			
 			return ((porcentajeVidaGoku < porcentajeVidaAliadosMinimoParaTransformar) &&
 					(porcentajeVidaPiccolo < porcentajeVidaAliadosMinimoParaTransformar) &&

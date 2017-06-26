@@ -6,6 +6,8 @@ import dab.personajes.Personaje;
 
 public class MajinBoo extends Personaje{
 	
+	public static int identificador = 5;
+	
 	public MajinBoo(){ 
 		ataqueEspecial = new ConvierteteEnChocolate(this);
 		kiParaEspecial = 30;
@@ -19,5 +21,10 @@ public class MajinBoo extends Personaje{
 		estado = new MajinBooBase(this);
 		vida = estado.getVidaMaxima();
 		this.equipo = equipo;
+	}
+	
+	@Override
+	public Integer getIdentificador(){
+		return identificador;
 	}
 }

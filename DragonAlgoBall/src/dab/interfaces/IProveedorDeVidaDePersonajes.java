@@ -3,6 +3,6 @@ package dab.interfaces;
 
 public interface IProveedorDeVidaDePersonajes {
 	
-	public double obtenerPorcentajeDeVidaDelPersonaje(String nombre);
+	public double obtenerPorcentajeDeVidaDelPersonaje(int identificador);
 
 }
