@@ -234,4 +234,6 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 		// TODO Auto-generated method stub
 		return potenciadoresActivos;
 	}
+
+	public abstract Integer getIdentificador();
 }

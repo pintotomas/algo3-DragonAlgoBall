@@ -5,7 +5,9 @@ import dab.estados.piccolo.PiccoloBase;
 import dab.personajes.Personaje;
 
 public class Piccolo extends Personaje{
-	
+
+	public static int identificador = 6;
+
 	public double porcentajeVidaGohanParaTransformar = 0.20;
 	
 	public Piccolo(){ 
@@ -28,6 +30,11 @@ public class Piccolo extends Personaje{
 	public void setEquipo(Equipo equipo){
 		super.setEquipo(equipo);
 		((PiccoloBase) estado).setProveedorVidaCompaneros(equipo);
+	}
+	
+	@Override
+	public Integer getIdentificador(){
+		return identificador;
 	}
 
 }

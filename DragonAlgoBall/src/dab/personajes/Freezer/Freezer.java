@@ -7,6 +7,8 @@ import dab.personajes.Personaje;
 
 public class Freezer extends Personaje{
 	
+	public static int identificador = 2;
+	
 	public Freezer(){
 		ataqueEspecial = new RayoMortal(this);
 		kiParaEspecial = 20;
@@ -21,5 +23,10 @@ public class Freezer extends Personaje{
 		vida = estado.getVidaMaxima();
 		this.equipo = equipo;
 	}
-
+	
+	@Override
+	public Integer getIdentificador(){
+		return identificador;
+	}
+	
 }

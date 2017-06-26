@@ -82,7 +82,6 @@ public class Juego {
 				int randomColumna = generarNumeroRandom(0, anchoTablero);
 				
 				if (!tablero.celdaOcupada(randomFila, randomColumna)){
-					System.out.println("Recolocare en: ("+randomFila+","+randomColumna+")");
 					tablero.colocarFicha(potenciadores.get(i), randomFila, randomColumna);
 					seEncontroUnaPosicionParaUbicarPotenciador = true;
 			}
@@ -222,7 +221,7 @@ public class Juego {
 
 	public boolean sePuedeSeguirAtacando() {
 		// TODO Auto-generated method stub
-			return turno.quedanAtaquesDisponibles();
+		return turno.quedanAtaquesDisponibles();
 	}
 
 	
