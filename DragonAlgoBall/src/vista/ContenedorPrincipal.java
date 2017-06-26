@@ -73,7 +73,8 @@ public class ContenedorPrincipal extends BorderPane{
 	}
 	
 	private void setTablero(){
-		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes, this.stage, ajustesEfectosDePersonajes, ajustesEfectosDePersonajes);
+		this.vistaTablero = new VistaTablero(this.juego,this.vistaInferiorPersonajes, this.stage,
+				ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, reproductorMusicaDeBatalla);
 		this.setCenter(this.vistaTablero);
 	}
 	

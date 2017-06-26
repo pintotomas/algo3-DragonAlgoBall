@@ -11,25 +11,30 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import utils.Ajustes;
+import utils.reproductorDeSonidos.ReproductorDeSonidos;
 import vista.eventos.celdas.SeleccionarCeldaInactivaHandler;
 import vista.vistasCelda.VistaCelda;
 import vista.vistasCelda.VistaCeldaInactiva;
 
 public class VistaTablero extends GridPane{
 	
-	int altoTablero; 
-    int anchoTablero;
-    Juego juego;
-    Stage stage;
-    Ajustes ajustesMusicaDeBatalla;
-    Ajustes ajustesEfectosDePersonajes;
-    Tablero tablero;
-    Celda[][] celdasLogicas;
-    VistaCelda[][] celdasGUI;
-    VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
-	VistaInferiorPersonajes vistaInferiorPersonaje;
+	private int altoTablero; 
+    private int anchoTablero;
+    private Juego juego;
+    private Stage stage;
+    private Ajustes ajustesMusicaDeBatalla;
+    private Ajustes ajustesEfectosDePersonajes;
+    private Tablero tablero;
+    private Celda[][] celdasLogicas;
+    private VistaCelda[][] celdasGUI;
+    private VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
+	private VistaInferiorPersonajes vistaInferiorPersonaje;
+	private ReproductorDeSonidos reproductorDeMusicaDeBatalla;
     
-	public VistaTablero(Juego juego,VistaInferiorPersonajes vistaInferiorPersonaje, Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes) {
+	public VistaTablero(Juego juego,
+			VistaInferiorPersonajes vistaInferiorPersonaje, Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, 
+			ReproductorDeSonidos reproductorDeMusicaDeBatalla) {
+		this.reproductorDeMusicaDeBatalla = reproductorDeMusicaDeBatalla;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
 	    this.ajustesEfectosDePersonajes = ajustesEfectosDePersonajes;
 		this.stage = stage;
@@ -105,8 +110,10 @@ public class VistaTablero extends GridPane{
 	}
 
 	public void hayUnGanador() {
-		String ganador = juego.ganador().getEquipo().getNombre();
-		VistaEscenaFinal escenaFinal = new VistaEscenaFinal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ganador);
+		if (ajustesMusicaDeBatalla.estaActivo()){
+			reproductorDeMusicaDeBatalla.stop();
+		}
+		VistaEscenaFinal escenaFinal = new VistaEscenaFinal(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, juego.ganador());
 		stage.setScene(new Scene(escenaFinal));
 		stage.setFullScreenExitHint("");
 	    stage.setFullScreen(true);
