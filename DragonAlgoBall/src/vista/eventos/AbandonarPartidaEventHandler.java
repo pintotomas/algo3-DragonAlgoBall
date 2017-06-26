@@ -37,7 +37,7 @@ public class AbandonarPartidaEventHandler implements EventHandler<MouseEvent> {
 			VistaMenuPrincipal menuPrincipal = new VistaMenuPrincipal(stage, ajusteMusicaDeBatalla, ajusteSonidosEspeciales);
 			Scene escenaMenuPrincipal = new Scene(menuPrincipal);
 			stage.setScene(escenaMenuPrincipal);
-			reproductorMusicaDeBatalla.stop();
+			if (ajusteMusicaDeBatalla.estaActivo()){reproductorMusicaDeBatalla.stop();}
 		}
 	}
 
