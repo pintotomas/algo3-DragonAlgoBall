@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import dab.dragonBallExceptions.AunNoHayGanador;
-import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
 import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.personajes.Personaje;
-import dab.potenciadores.SemillaDelErmitanio;
 import dab.potenciadores.EsferaDelDragon;
 import dab.potenciadores.NubeVoladora;
 import dab.potenciadores.Potenciador;
+import dab.potenciadores.SemillaDelErmitanio;
 import dab.usuario.Usuario;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Juego {
 	
