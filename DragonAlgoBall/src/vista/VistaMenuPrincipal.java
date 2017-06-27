@@ -44,10 +44,9 @@ public class VistaMenuPrincipal extends StackPane{
 		Button botonJugar = creadorDeBoton("/resources/imagenes/NuevoJuego.png", estiloTransparente);
 		Button botonComoJugar = creadorDeBoton("/resources/imagenes/ComoJugar.png", estiloTransparente);
 		Button botonOpciones = creadorDeBoton("/resources/imagenes/Opciones.png", estiloTransparente);
-		Button botonCreditos = creadorDeBoton("/resources/imagenes/Creditos.png", estiloTransparente);
 		Button botonSalirDelJuego = creadorDeBoton("/resources/imagenes/salirDelJuego.png", estiloTransparente);
 		botonSalirDelJuego.setOnMousePressed(new OpcionSalirEventHandler());
-		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos, botonSalirDelJuego);
+		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonSalirDelJuego);
 		
 		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes,
 				ajustesMusicaEnding));
