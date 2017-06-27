@@ -124,17 +124,20 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 		if (vidaDelAfectado <= 0){
 			this.quitarObjetosAlPersonaje(aPersonaje);
 			this.quitarPersonaje(aPersonaje);
+			
 		}
 	}
 	
 	private void quitarObjetosAlPersonaje(Personaje aPersonaje){
-		Collection<Potenciador> potenciadores = aPersonaje.getPotenciadores();
 		itemsDeLosCaidos.clear();
+		Collection<Potenciador> potenciadores = aPersonaje.getPotenciadores();
 		for (Potenciador p: potenciadores){
+			
 			if (p.estaActivo()){
-				itemsDeLosCaidos.addAll(potenciadores);
+				itemsDeLosCaidos.add(p);
 			}
 		}
+		
  	}
 
 	public ArrayList<Potenciador> ultimosObjetosPerdidos() {

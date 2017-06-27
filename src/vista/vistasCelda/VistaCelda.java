@@ -42,7 +42,7 @@ public abstract class VistaCelda extends StackPane{
 		darPropiedadesARectangulo();
 		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
 		if (celda.estaOcupada()){
-//		
+			
 			FabricadorDeRepresentacionDeFicha fabricador = new FabricadorDeRepresentacionDeFicha();
 			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
 			

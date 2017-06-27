@@ -64,6 +64,7 @@ public class VistaTablero extends GridPane{
 	        for (int col = 0; col < anchoTablero; col++) {
 	        	//Al inicializar estan todas inactivas.
 	        	VistaCelda celda = new VistaCeldaInactiva(celdasLogicas[row][col]);
+	        
 	        	celdasGUI[row][col] = celda;
  	        	SeleccionarCeldaInactivaHandler seleccionCeldaInactivaHandler = new SeleccionarCeldaInactivaHandler(celda, juego, celdasGUI, this, vistaInferiorPersonaje);
 	        	refrescar(row, col, seleccionCeldaInactivaHandler);

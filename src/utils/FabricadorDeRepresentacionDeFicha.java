@@ -52,7 +52,6 @@ public class FabricadorDeRepresentacionDeFicha {
 	};
 
 	public String fabricarPersonaje(String nombrePersonajeAFabricar){
-		System.out.println("Fabrica: "+nombrePersonajeAFabricar);
 		return representacionPersonajes.get(nombrePersonajeAFabricar);
 	}
 }
