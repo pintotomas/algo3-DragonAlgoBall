@@ -52,7 +52,8 @@ public class VistaMenuPrincipal extends StackPane{
 		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes,
 				ajustesMusicaEnding));
 		asignarSiguienteEscenaABoton(botonOpciones, new VistaMenuOpciones(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));  
-        
+		asignarSiguienteEscenaABoton(botonComoJugar, new VistaComoJugar(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding));  
+	       
         
 		this.getChildren().add(menu);
 		menu.setAlignment(Pos.CENTER);

@@ -3,7 +3,6 @@ package vista;
 import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Tablero;
-import dab.juego.Turno;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -71,10 +70,6 @@ public class VistaTablero extends GridPane{
 	        }
 		}
 	}
-
-	public void setTurno(Turno turno){
-	
-	}
 	
 	public VistaCelda[][] getCeldas(){
 		return this.celdasGUI;
@@ -84,7 +79,6 @@ public class VistaTablero extends GridPane{
 		
 		
 		VistaCelda celdaARefrescar = celdasGUI[fila][columna];
-//		StackPane dibujoCelda = celdaARefrescar.dibujar();
 		celdaARefrescar.setOnMousePressed(onMousePressedEvent);
         VistaTablero.setRowIndex(celdaARefrescar, fila);
         VistaTablero.setColumnIndex(celdaARefrescar, columna);

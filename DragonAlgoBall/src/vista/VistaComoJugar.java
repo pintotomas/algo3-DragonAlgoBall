@@ -1,4 +1,4 @@
-package vista.menuOpciones;
+package vista;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,19 +7,17 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
-import vista.VistaMenuPrincipal;
 
-public class VistaMenuOpciones extends StackPane {
+public class VistaComoJugar extends StackPane {
 	
 	private Stage stage;
 	private Ajustes ajustesMusicaDeBatalla;
 	private Ajustes ajustesEfectosDePersonajes;
 	private Ajustes ajustesMusicaEnding;
 	
-	public VistaMenuOpciones(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding) {
+	public VistaComoJugar(Stage stage, Ajustes ajustesMusicaDeBatalla, Ajustes ajustesEfectosDePersonajes, Ajustes ajustesMusicaEnding) {
 		
 		this.stage = stage;
 		this.ajustesMusicaDeBatalla = ajustesMusicaDeBatalla;
@@ -31,8 +29,7 @@ public class VistaMenuOpciones extends StackPane {
 	}
 
 	private void setOpciones() {
-		int espaciadoEntreBotones = 40;
-		VBox opciones = new VBox(espaciadoEntreBotones);
+		
 		String estiloTransparente = "-fx-background-color: transparent;";
 		Button botonVolver = creadorDeBoton("/resources/imagenes/volverAlMenuPrincipal.png", estiloTransparente);
 		botonVolver.setOnAction(new EventHandler<ActionEvent>() {
@@ -43,19 +40,14 @@ public class VistaMenuOpciones extends StackPane {
             }
         });
 		
-		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("/resources/imagenes/MusicaDeBatalla.png", ajustesMusicaDeBatalla.estaActivo(), ajustesMusicaDeBatalla);
-		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("/resources/imagenes/SonidosPersonajes.png", ajustesEfectosDePersonajes.estaActivo(), ajustesEfectosDePersonajes);
-		VistaOpcion opcionMusicaEnding = new VistaOpcion("/resources/imagenes/musicaEnding.png", ajustesMusicaEnding.estaActivo(), ajustesMusicaEnding);
-		opciones.getChildren().addAll(opcionMusicaDeBatalla, opcionSonidosDePersonaje, opcionMusicaEnding, botonVolver);
-		this.getChildren().addAll(opciones);
-		opciones.setAlignment(Pos.CENTER_RIGHT); 
-		
+		this.getChildren().add(botonVolver);
+		StackPane.setAlignment(botonVolver, Pos.BOTTOM_LEFT);
 		
 		}
 
 	private void setFondo() {
 		
-		Image fondoOpciones = new Image(this.getClass().getResource("/resources/imagenes/fondoOpciones.png").toExternalForm());
+		Image fondoOpciones = new Image(this.getClass().getResource("/resources/imagenes/instruccionesComoJugar.jpg").toExternalForm());
 	    ImageView vistaFondoOpciones = new ImageView(fondoOpciones);
 	 
 	    vistaFondoOpciones.fitWidthProperty().bind(stage.widthProperty());
