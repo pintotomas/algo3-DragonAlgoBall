@@ -32,7 +32,7 @@ public class VistaInformacionDelJugadorActual extends VBox {
 
 		informacionEsferasDelDragon.getChildren().add(textoInformativoEsferasDelDragon);
 		for (int i = 0; i < cantidadEsferasDelDragonCapturadas; i++){
-			informacionEsferasDelDragon.getChildren().add(new ImageView(new Image("/resources/imagenes/iconos/EsferaDelDragon.png")));
+			informacionEsferasDelDragon.getChildren().add(new ImageView(new Image(this.getClass().getResource("/resources/imagenes/iconos/EsferaDelDragon.png").toExternalForm())));
 		}
 		this.getChildren().add(informacionEsferasDelDragon);
 		

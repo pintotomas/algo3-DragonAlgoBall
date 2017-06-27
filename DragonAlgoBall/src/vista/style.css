@@ -3,13 +3,13 @@
 .boton {
 	-fx-font-weight: bold;
 	-fx-text-fill: #fff;
-	-fx-background-color: #ffc800; 
+	-fx-background-color: rgba(41,211,49,0.5); 
 	-fx-border-color: #9a1603; 
 	-fx-border-width: 1px; 
 	-fx-padding: 10;
 }
 .boton:armed {
-	-fx-background-color:#dc3c26; 
+	-fx-background-color:rgba(41,211,49,0.1); 
 }
 
 .home{

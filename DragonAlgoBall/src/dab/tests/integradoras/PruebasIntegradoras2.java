@@ -1,8 +1,7 @@
 package dab.tests.integradoras;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,6 @@ import dab.equipo.Equipo;
 import dab.juego.Celda;
 import dab.juego.Juego;
 import dab.juego.Tablero;
-import dab.personajes.Personaje;
 import dab.personajes.Freezer.Freezer;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;

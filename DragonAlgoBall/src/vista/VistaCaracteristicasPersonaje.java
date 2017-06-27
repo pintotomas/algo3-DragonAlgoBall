@@ -69,7 +69,7 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	
 	private Label generarAvatar(Personaje personaje){
 		String rutaAvatar = fabricador.fabricarAvatar(personaje.getNombre());
-		Image avatar = new Image(rutaAvatar);
+		Image avatar = new Image(this.getClass().getResource(rutaAvatar).toExternalForm());
 		Label avatarLabel = new Label();
 		avatarLabel.setGraphic(new ImageView(avatar));
 		return avatarLabel;
@@ -87,7 +87,7 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	private Label generarVistaKi(Personaje personaje){
 		int ki = personaje.getKi();
 		Label etiquetaKi = new Label(String.valueOf(ki));
-		Image kiIcon = new Image(rutaKI);
+		Image kiIcon = new Image(this.getClass().getResource(rutaKI).toExternalForm());
 		etiquetaKi.setGraphic(new ImageView(kiIcon));
 		return etiquetaKi;
 	}
@@ -95,7 +95,7 @@ public class VistaCaracteristicasPersonaje extends VBox{
 	private Label generarVistaPoder(Personaje personaje){
 		double poderDeAtaque = personaje.getPoder();
 		Label etiquetaPoderDeAtaque = new Label(String.valueOf(poderDeAtaque));	
-		Image poderDeAtaqueIcon = new Image(this.getClass().getResourceAsStream(rutaPP));
+		Image poderDeAtaqueIcon = new Image(this.getClass().getResource(rutaPP).toExternalForm());
 		etiquetaPoderDeAtaque.setGraphic(new ImageView(poderDeAtaqueIcon));
 		return etiquetaPoderDeAtaque;
 	}
