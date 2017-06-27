@@ -22,9 +22,9 @@ public class Juego {
 	///QUE JUEGO RECIBA UN USUARIO CON SU EQUIPO DENTRO YA CREADO
 	///QUE LOS TURNOS SE MANEJEN POR USUARIO Y NO POR EQUIPO
 	
-	private static final int cantidadEsferasDelDragon = 7;
-	private static final int cantidadNubesVoladoras = 5;
-	private static final int cantidadSemillasDelErmitanio = 5;
+	private static final int cantidadEsferasDelDragonAColocar = 7;
+	private static final int cantidadNubesVoladorasAColocar = 5;
+	private static final int cantidadSemillasDelErmitanioAColocar = 5;
 	private int altoTablero;
 	private int anchoTablero;
 	private Tablero tablero;
@@ -63,9 +63,9 @@ public class Juego {
 		// TODO Auto-generated method stub
 		ArrayList<Potenciador> potenciadores = new ArrayList<Potenciador>();
 		
-		this.generarPotenciadores(potenciadores, cantidadEsferasDelDragon, EsferaDelDragon.class);
-		this.generarPotenciadores(potenciadores, cantidadNubesVoladoras, NubeVoladora.class);
-		this.generarPotenciadores(potenciadores, cantidadSemillasDelErmitanio, SemillaDelErmitanio.class);
+		this.generarPotenciadores(potenciadores, cantidadEsferasDelDragonAColocar, EsferaDelDragon.class);
+		this.generarPotenciadores(potenciadores, cantidadNubesVoladorasAColocar, NubeVoladora.class);
+		this.generarPotenciadores(potenciadores, cantidadSemillasDelErmitanioAColocar, SemillaDelErmitanio.class);
 		colocarConsumibles(potenciadores);
 	} 
 	
