@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="dab.equipo" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/equipo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="582" width="891" x="-65" y="-87"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="dab.personajes" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="452" width="810" x="8" y="-26"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="dab.personajes.cell" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes/cell" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="127" width="166" x="26" y="272"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="dab.personajes.Gohan" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes/Gohan" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="130" width="193" x="408" y="274"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="dab.personajes.majinBoo" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes/majinBoo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="193" x="204" y="272"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="dab.estados.cell" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/estados/cell" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="109" y="354"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="dab.estados.majinBoo" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/estados/majinBoo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="305" y="355"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="8" language="java" name="dab.estados.gohan" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/estados/gohan" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="492" y="352"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="9" language="java" name="dab.personajes.Freezer" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes/Freezer" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="179" x="618" y="271"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="10" language="java" name="dab.estados.freezer" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/estados/freezer" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="705" y="356"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="11" language="java" name="dab.personajes.Goku" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes/Goku" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="138" width="193" x="618" y="73"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="12" language="java" name="dab.estados.goku" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/estados/goku" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="711" y="158"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="13" language="java" name="dab.personajes.Piccolo" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/personajes/Piccolo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="247" x="350" y="72"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="14" language="java" name="dab.estados.piccolo" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/estados/piccolo" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="57" width="170" x="396" y="133"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="15" language="java" name="dab.ataquesEspeciales" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/ataquesEspeciales" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="113" y="78"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="16" language="java" name="dab.potenciadores" project="DragonAlgoBall" 
+    file="/DragonAlgoBall/DragonAlgoBall/src/dab/potenciadores" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="159" x="32" y="116"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
