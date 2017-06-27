@@ -25,7 +25,7 @@ public class CellBase extends Estado{
 	@Override
 	public boolean transformarDisponible() {
 		int cantidadAbsorbidos = proveedorCantidadAbsorbidos.getCantidadAbsorbidos();
-		return cantidadAbsorbidos == cantidadAbsorbidosNecesariosParaTransformar;
+		return cantidadAbsorbidos >= cantidadAbsorbidosNecesariosParaTransformar;
 	}
 
 }

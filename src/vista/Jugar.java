@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.Ajustes;
 
-public class Aplicacion extends Application {
+public class Jugar extends Application {
 	private int pixelesAnchoHD = 1360;
     private int pixelesAltoHD = 768;
     

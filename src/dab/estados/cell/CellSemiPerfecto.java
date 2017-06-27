@@ -27,7 +27,7 @@ public class CellSemiPerfecto extends Estado {
 	public boolean transformarDisponible() {
 		int cantidadAbsorbidos = proveedorCantidadAbsorbidos.getCantidadAbsorbidos();
 		
-		return cantidadAbsorbidos == cantidadAbsorbidosNecesariosParaTransformar;
+		return cantidadAbsorbidos >= cantidadAbsorbidosNecesariosParaTransformar;
 	}
 
 
