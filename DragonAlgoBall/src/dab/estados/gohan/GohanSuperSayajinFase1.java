@@ -33,12 +33,18 @@ public class GohanSuperSayajinFase1 extends Estado{
 
 		@Override
 		public boolean transformarDisponible() {
-	
-			double porcentajeVidaGoku = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Goku.identificador);
-			double porcentajeVidaPiccolo = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Piccolo.identificador);
 			
-			return ((porcentajeVidaGoku < porcentajeVidaAliadosMinimoParaTransformar) &&
-					(porcentajeVidaPiccolo < porcentajeVidaAliadosMinimoParaTransformar) &&
-					(proveedorDeKi.getKi() >= kiParaTransformar));
+			try{
+				double porcentajeVidaGoku = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Goku.identificador);
+				double porcentajeVidaPiccolo = proveedorVidaAliados.obtenerPorcentajeDeVidaDelPersonaje(Piccolo.identificador);
+				return ((porcentajeVidaGoku < porcentajeVidaAliadosMinimoParaTransformar) &&
+						(porcentajeVidaPiccolo < porcentajeVidaAliadosMinimoParaTransformar) &&
+						(proveedorDeKi.getKi() >= kiParaTransformar));
+			}
+			catch (NullPointerException e) {
+				return true; //sus aliados murieron
+			}
+			
+			
 		}
 }
