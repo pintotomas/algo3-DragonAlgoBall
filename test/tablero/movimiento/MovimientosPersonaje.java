@@ -1,4 +1,4 @@
-package test.tablero.movimiento;
+package tablero.movimiento;
 
 import static org.junit.Assert.assertEquals;
 

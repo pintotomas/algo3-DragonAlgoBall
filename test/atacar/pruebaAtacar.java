@@ -1,4 +1,4 @@
-package test.atacar;
+package atacar;
 
 import static org.junit.Assert.assertEquals;
 

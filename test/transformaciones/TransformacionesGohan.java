@@ -1,4 +1,4 @@
-package test.transformaciones;
+package transformaciones;
 
 import static org.junit.Assert.*;
 import org.junit.Before;

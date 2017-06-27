@@ -1,4 +1,4 @@
-package test.potenciadores;
+package potenciadores;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package test.ataquesespeciales;
+package ataquesespeciales;
 
 import static org.junit.Assert.*;
 

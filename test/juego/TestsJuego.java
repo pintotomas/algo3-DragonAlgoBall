@@ -1,4 +1,4 @@
-package test.juego;
+package juego;
 
 
 import java.util.Collection;
