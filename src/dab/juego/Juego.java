@@ -66,24 +66,24 @@ public class Juego {
 	} 
 	
 	private void colocarConsumibles(ArrayList<Potenciador> potenciadores){
-		
-		for (int i = 0; i < potenciadores.size(); i++){		
-			
-			boolean seEncontroUnaPosicionParaUbicarPotenciador = false;
-			
-			while (!seEncontroUnaPosicionParaUbicarPotenciador ){
-				
-				int randomFila = generarNumeroRandom(0, altoTablero);
-				
-				int randomColumna = generarNumeroRandom(0, anchoTablero);
-				
-				try {
-					tablero.colocarFicha(potenciadores.get(i), randomFila, randomColumna);
-					seEncontroUnaPosicionParaUbicarPotenciador = true;
-					} catch (CeldaOcupada e){}
-				}
-			}
-		}
+
+        for (int i = 0; i < potenciadores.size(); i++){
+
+            boolean seEncontroUnaPosicionParaUbicarPotenciador = false;
+
+            while (!seEncontroUnaPosicionParaUbicarPotenciador ){
+
+                int randomFila = generarNumeroRandom(0, altoTablero);
+
+                int randomColumna = generarNumeroRandom(0, anchoTablero);
+
+                if (!tablero.celdaOcupada(randomFila, randomColumna)){
+                    tablero.colocarFicha(potenciadores.get(i), randomFila, randomColumna);
+                    seEncontroUnaPosicionParaUbicarPotenciador = true;
+            }
+        }
+    }
+}
 	
 	private int generarNumeroRandom(int min, int max){
 		int random = ThreadLocalRandom.current().nextInt(min, max);
