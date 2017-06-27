@@ -209,6 +209,11 @@
             <classpath refid="DragonAlgoBall.classpath"/>
         </java>
     </target>
+    <target name="Jugar (1)">
+        <java classname="vista.Jugar" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
     <target name="moverACeldaOcupadaPorUnPersonaje">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -272,6 +277,37 @@
             <classpath refid="DragonAlgoBall.classpath"/>
         </java>
     </target>
+    <target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <test name="ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
+            <test name="ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <test name="ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
+            <test name="ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
+            <test name="ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
+            <test name="ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
+            <test name="integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <test name="integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="juego.TestsJuego" todir="${junit.output.dir}"/>
+            <test name="potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
+            <test name="potenciadores.FuriaTests" todir="${junit.output.dir}"/>
+            <test name="potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
+            <test name="potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
+            <test name="tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <test name="tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
+            <test name="tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="transformaciones.FreezerTests" todir="${junit.output.dir}"/>
+            <test name="transformaciones.GokuTests" todir="${junit.output.dir}"/>
+            <test name="transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
+            <test name="transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
     <target name="testPasanLosTurnos">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -319,42 +355,6 @@
     </target>
     <target name="VistaTablero">
         <java classname="vista.VistaTablero" failonerror="true" fork="yes">
-            <classpath refid="DragonAlgoBall.classpath"/>
-        </java>
-    </target>
-    <target name="test">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="atacar.pruebaAtacar" todir="${junit.output.dir}"/>
-            <test name="ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
-            <test name="ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
-            <test name="ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
-            <test name="ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
-            <test name="ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
-            <test name="ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
-            <test name="integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
-            <test name="integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
-            <test name="juego.TestsJuego" todir="${junit.output.dir}"/>
-            <test name="potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
-            <test name="potenciadores.FuriaTests" todir="${junit.output.dir}"/>
-            <test name="potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
-            <test name="potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
-            <test name="tablero.PruebasTablero" todir="${junit.output.dir}"/>
-            <test name="tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
-            <test name="tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
-            <test name="transformaciones.CellTests" todir="${junit.output.dir}"/>
-            <test name="transformaciones.FreezerTests" todir="${junit.output.dir}"/>
-            <test name="transformaciones.GokuTests" todir="${junit.output.dir}"/>
-            <test name="transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
-            <test name="transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
-            <test name="transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="DragonAlgoBall.classpath"/>
-        </junit>
-    </target>
-    <target name="Jugar">
-        <java classname="vista.Jugar" failonerror="true" fork="yes">
             <classpath refid="DragonAlgoBall.classpath"/>
         </java>
     </target>
