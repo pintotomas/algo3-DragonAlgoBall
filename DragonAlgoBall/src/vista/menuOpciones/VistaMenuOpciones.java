@@ -35,7 +35,7 @@ public class VistaMenuOpciones extends StackPane {
 		int espaciadoEntreBotones = 40;
 		VBox opciones = new VBox(espaciadoEntreBotones);
 		String estiloTransparente = "-fx-background-color: transparent;";
-		Button botonVolver = creadorDeBoton("/vista/Imagenes/volverAlMenuPrincipal.png", estiloTransparente);
+		Button botonVolver = creadorDeBoton("/resources/imagenes/volverAlMenuPrincipal.png", estiloTransparente);
 		botonVolver.setOnAction(new EventHandler<ActionEvent>() {
 	        
             @Override
@@ -47,12 +47,12 @@ public class VistaMenuOpciones extends StackPane {
 		//En el futuro recibira dos parametros: Si esta activada o no
 //		VistaOpcion opcionMusicaDeFondo = new VistaOpcion("vista/Imagenes/Musica.png", true);
 		
-		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("/vista/Imagenes/MusicaDeBatalla.png", ajustesMusicaDeBatalla.estaActivo(), ajustesMusicaDeBatalla);
-		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("/vista/Imagenes/SonidosPersonajes.png", ajustesEfectosDePersonajes.estaActivo(), ajustesEfectosDePersonajes);
-		VistaOpcion opcionMusicaEnding = new VistaOpcion("/vista/Imagenes/musicaEnding.png", ajustesMusicaEnding.estaActivo(), ajustesMusicaEnding);
+		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("/resources/imagenes/MusicaDeBatalla.png", ajustesMusicaDeBatalla.estaActivo(), ajustesMusicaDeBatalla);
+		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("/resources/imagenes/SonidosPersonajes.png", ajustesEfectosDePersonajes.estaActivo(), ajustesEfectosDePersonajes);
+		VistaOpcion opcionMusicaEnding = new VistaOpcion("/resources/imagenes/musicaEnding.png", ajustesMusicaEnding.estaActivo(), ajustesMusicaEnding);
 		opciones.getChildren().addAll(opcionMusicaDeBatalla, opcionSonidosDePersonaje, opcionMusicaEnding, botonVolver);
 		this.getChildren().addAll(opciones);
-		opciones.setAlignment(Pos.CENTER_RIGHT);
+		opciones.setAlignment(Pos.CENTER_RIGHT); 
 		
 		
 		}
@@ -61,7 +61,7 @@ public class VistaMenuOpciones extends StackPane {
 
 	private void setFondo() {
 		
-		Image fondoOpciones = new Image(this.getClass().getResource("/vista/Imagenes/fondoOpciones.png").toExternalForm());
+		Image fondoOpciones = new Image(this.getClass().getResource("/resources/imagenes/fondoOpciones.png").toExternalForm());
 	    ImageView vistaFondoOpciones = new ImageView(fondoOpciones);
 	 
 	    vistaFondoOpciones.fitWidthProperty().bind(stage.widthProperty());

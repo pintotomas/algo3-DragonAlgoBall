@@ -19,7 +19,7 @@ public class ContenedorInicial extends StackPane {
         this.stage = stage;
 
 	
-     	Image fondoPrincipal = new Image(this.getClass().getResource("/vista/Imagenes/inicioDragonAlgoBall.png").toExternalForm());
+     	Image fondoPrincipal = new Image(this.getClass().getResource("/resources/imagenes/inicioDragonAlgoBall.png").toExternalForm());
 
         ImageView vistaFondoPrincipal = new ImageView(fondoPrincipal);
         vistaFondoPrincipal.fitWidthProperty().bind(stage.widthProperty());
@@ -27,7 +27,7 @@ public class ContenedorInicial extends StackPane {
       
         HBox botonJugar = new HBox();
         botonJugar.setPrefSize(50, 23);
-        Image estiloBoton = new Image(this.getClass().getResource("/vista/Imagenes/start.png").toExternalForm());
+        Image estiloBoton = new Image(this.getClass().getResource("/resources/imagenes/start.png").toExternalForm());
         ImageView vistaBotonJugar = new ImageView(estiloBoton);
         botonJugar.setAlignment(Pos.BOTTOM_CENTER);
         botonJugar.getChildren().add(vistaBotonJugar);

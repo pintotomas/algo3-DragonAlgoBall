@@ -40,7 +40,6 @@ public class FuriaTests {
 		double poderInicial = goku.getPoder();
 		goku.modificarVida(-(goku.getVida() * (1 - Furia.porcentajeVidaNecesaria + limite )));
 		goku.modificarVida(vidaMaximaGokuBase);
-		System.out.println(vidaMaximaGokuBase);
 		goku.getPoder();
 		assertEquals(poderInicial, goku.getPoder(), 0.5);
 	}

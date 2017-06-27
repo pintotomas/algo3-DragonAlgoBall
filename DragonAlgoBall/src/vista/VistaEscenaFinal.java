@@ -23,14 +23,14 @@ public class VistaEscenaFinal extends StackPane {
 		
 		@SuppressWarnings("serial")
 		private final HashMap<String, String> fondoGanador = new HashMap<String, String>() {{
-		    put("Guerreros Z", "/vista/Imagenes/ganadorGuerrerosZ.jpg");
-		    put("Enemigos de la Tierra", "/vista/Imagenes/ganadorEnemigos.jpg");
+		    put("Guerreros Z", "/resources/imagenes/ganadorGuerrerosZ.jpg");
+		    put("Enemigos de la Tierra", "/resources/imagenes/ganadorEnemigos.jpg");
 		    }
 		};
 		@SuppressWarnings("serial")
 		private final HashMap<String, String> musicaGanador = new HashMap<String, String>() {{
-		    put("Guerreros Z", "/vista/sonidos/endingGuerreros.wav");
-		    put("Enemigos de la Tierra", "/vista/sonidos/endingEnemigos.wav");
+		    put("Guerreros Z", "/resources/musica/ending/endingGuerreros.wav");
+		    put("Enemigos de la Tierra", "/resources/musica/ending/endingEnemigos.wav");
 		    }
 		};
 
@@ -112,7 +112,7 @@ public class VistaEscenaFinal extends StackPane {
 	private void setBotones() {
 
 		String estiloTransparente = "-fx-background-color: transparent;";
-		Button botonVolverAlMenuPrincipal = creadorDeBoton("/vista/Imagenes/volverAlMenuPrincipal.png", estiloTransparente);
+		Button botonVolverAlMenuPrincipal = creadorDeBoton("/resources/imagenes/volverAlMenuPrincipal.png", estiloTransparente);
 	 	
 		AbandonarPartidaEventHandler botonJugarHandler = new AbandonarPartidaEventHandler(stage, reproductorMusicaGanador, ajustesEfectosDePersonajes, ajustesMusicaDeBatalla, ajustesMusicaEnding, "Esta seguro?");
 		botonVolverAlMenuPrincipal.setOnMouseClicked(botonJugarHandler);

@@ -18,9 +18,9 @@ import vista.eventos.BotonTransformarHandler;
 public class VistaCaracteristicasPersonaje extends VBox{
 	private Personaje personaje;
 	private FabricadorDeRepresentacionDeAvatar fabricador = new FabricadorDeRepresentacionDeAvatar();
-	private String rutaHP = "/vista/Imagenes/hud/hp.png";
-	private String rutaPP = "/vista/Imagenes/hud/pp.png";
-	private String rutaKI = "/vista/Imagenes/hud/ki.png";
+	private String rutaHP = "/resources/imagenes/hud/hp.png";
+	private String rutaPP = "/resources/imagenes/hud/pp.png";
+	private String rutaKI = "/resources/imagenes/hud/ki.png";
 	protected Ajustes ajustesSonidosEspeciales;
 	
 	public VistaCaracteristicasPersonaje(Personaje personaje, Ajustes ajustesSonidosEspeciales,

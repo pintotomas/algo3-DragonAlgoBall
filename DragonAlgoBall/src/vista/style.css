@@ -13,28 +13,28 @@
 }
 
 .home{
-	-fx-graphic:url("/vista/Imagenes/hud/home.png");
+	-fx-graphic:url("/resources/imagenes/hud/home.png");
 }
 .exit{
-	-fx-graphic:url("/vista/Imagenes/hud/quit.png");
+	-fx-graphic:url("/resources/imagenes/hud/quit.png");
 }
 .muteMusic{
-	-fx-graphic:url("/vista/Imagenes/hud/mutemusic.png");
+	-fx-graphic:url("/resources/imagenes/hud/mutemusic.png");
 }
 .muteMusic:selected{
-	-fx-graphic:url("/vista/Imagenes/hud/music.png");
+	-fx-graphic:url("/resources/imagenes/hud/music.png");
 }
 .muteSound{
-	-fx-graphic:url("/vista/Imagenes/hud/mutevol.png");	
+	-fx-graphic:url("/resources/imagenes/hud/mutevol.png");	
 }
 .muteSound:selected{
-	-fx-graphic:url("/vista/Imagenes/hud/vol.png");	
+	-fx-graphic:url("/resources/imagenes/hud/vol.png");	
 }
 .botonPasar{
-	-fx-graphic:url("/vista/Imagenes/hud/pasar.png");	
+	-fx-graphic:url("/resources/imagenes/hud/pasar.png");	
 }
 .botonTransformar{
-	-fx-graphic:url("/vista/Imagenes/hud/transformar.png");	
+	-fx-graphic:url("/resources/imagenes/hud/transformar.png");	
 }
 
 /* --------------------- */
