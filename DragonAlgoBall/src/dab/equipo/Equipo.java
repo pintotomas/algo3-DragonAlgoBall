@@ -88,8 +88,16 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	}
 
 	public double obtenerPorcentajeDeVidaDelPersonaje(int identificador){
-		Personaje personaje = this.integrantes.get(identificador);
-		return personaje.getPorcentajeDeVida();
+		
+		try{
+			Personaje personaje = this.integrantes.get(identificador);
+			return personaje.getPorcentajeDeVida();
+		}
+		catch (NullPointerException e){
+			//El personaje no estaba o ya murio
+			return 0;
+		}
+		
 	}
 	public void otorgarKi(int cantidad){
 		Collection<Personaje> personajesEquipo = this.integrantes.values();
