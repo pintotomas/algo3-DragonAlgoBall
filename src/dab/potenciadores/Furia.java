@@ -28,8 +28,6 @@ public class Furia extends Potenciador {
 
 	@Override
 	public boolean estaActivo(){
-		System.out.println(portador.getVida());
-		System.out.println(portador.getVida());
 		return portador.getVida() > 0;
 	}
 	
