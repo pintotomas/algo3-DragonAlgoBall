@@ -13,7 +13,7 @@ public class Tablero{
 	private int altoDeTablero;
 	private int anchoDeTablero;
 	private Celda[][] coleccionCeldas;
-	Equipo equipo1, equipo2;
+	
 	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
 
 	
