@@ -6,8 +6,8 @@ import dab.juego.Tablero;
 import dab.juego.Turno;
 import dab.personajes.Personaje;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -28,7 +28,6 @@ public class VistaTablero extends GridPane{
     private Tablero tablero;
     private Celda[][] celdasLogicas;
     private VistaCelda[][] celdasGUI;
-    private VistaCaracteristicasPersonaje vistaCaracteristicasPersonaje;
 	private VistaInferiorPersonajes vistaInferiorPersonaje;
 	private ReproductorDeSonidos reproductorDeMusicaDeBatalla;
 	private Ajustes ajustesMusicaEnding;
