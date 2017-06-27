@@ -130,7 +130,11 @@ public class Equipo implements IProveedorDeVidaDePersonajes{
 	private void quitarObjetosAlPersonaje(Personaje aPersonaje){
 		Collection<Potenciador> potenciadores = aPersonaje.getPotenciadores();
 		itemsDeLosCaidos.clear();
-		itemsDeLosCaidos.addAll(potenciadores);
+		for (Potenciador p: potenciadores){
+			if (p.estaActivo()){
+				itemsDeLosCaidos.addAll(potenciadores);
+			}
+		}
  	}
 
 	public ArrayList<Potenciador> ultimosObjetosPerdidos() {
