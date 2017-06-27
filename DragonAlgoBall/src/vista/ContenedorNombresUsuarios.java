@@ -27,15 +27,15 @@ public class ContenedorNombresUsuarios extends VBox {
         this.setPadding(new Insets(25));
         
         
-    	Image imagenDeFondo = new Image("vista/Imagenes/ImagenIngresoNombres.png");
+    	Image imagenDeFondo = new Image(this.getClass().getResource("/vista/Imagenes/ImagenIngresoNombres.png").toExternalForm());
     	
     	BackgroundSize size = new BackgroundSize(1, 1, false, false, false, true);
     	
         BackgroundImage vistaImagenDeFondo = new BackgroundImage(imagenDeFondo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, size);
         this.setBackground(new Background(vistaImagenDeFondo));
 
-        String textoLabelGuerrerosZ = "vista/Imagenes/nombreGuerrerosZ.png";
-        String textoLabelEnemigosDeLaTierra = "vista/Imagenes/nombreEnemigosDeLaTierra.png";
+        String textoLabelGuerrerosZ = "/vista/Imagenes/nombreGuerrerosZ.png";
+        String textoLabelEnemigosDeLaTierra = "/vista/Imagenes/nombreEnemigosDeLaTierra.png";
 
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);
@@ -49,7 +49,7 @@ public class ContenedorNombresUsuarios extends VBox {
     
     private TextField contenedorNombreUsuario(String textoLabel){
     	Label labelNombreUsuario = new Label();
-    	Image imagen = new Image(textoLabel);
+    	Image imagen = new Image(this.getClass().getResource(textoLabel).toExternalForm());
     	labelNombreUsuario.setGraphic(new ImageView(imagen));
         TextField campoNombreUsuario = new TextField();
         campoNombreUsuario.setMaxWidth(300);
