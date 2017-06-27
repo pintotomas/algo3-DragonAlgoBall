@@ -19,7 +19,7 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	protected Equipo equipo; 
 	protected IContenedorDeFicha coordenadas;
 	protected List <Potenciador> potenciadoresActivos = new LinkedList<Potenciador>(); 
-	protected int kiParaEspecial;  //puede estar aca porque no cambia con los estados.
+	protected int kiParaEspecial; 
 	protected AtaqueEspecial ataqueEspecial;
 	protected Estado estado;
 	protected double vida;
@@ -31,7 +31,6 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	 **********************************************************/
 	
 	public boolean puedeAtacar(Personaje personaje) {
-		//Ver si esto se puede chequear en otro lado como juego. falta chequear trayectoriaValida
 		int maxFila = coordenadas.getFila() + this.getAlcance();
 		int maxColumna = coordenadas.getColumna() + this.getAlcance();
 		int minFila = coordenadas.getFila() - this.getAlcance();
@@ -222,7 +221,6 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	}
 
 	public int cantidadItemsParaGanar() {
-		// TODO Auto-generated method stub
 		int cantidadItems = 0;
 		for (Potenciador p: potenciadoresActivos){
 			if (p.meAyudaAGanar()){ cantidadItems += 1;}
@@ -231,9 +229,9 @@ public abstract class Personaje implements IFichaMovible,IProveedorDeKi{
 	}
 
 	public Collection<Potenciador> getPotenciadores() {
-		// TODO Auto-generated method stub
 		return potenciadoresActivos;
 	}
 
 	public abstract Integer getIdentificador();
+	
 }

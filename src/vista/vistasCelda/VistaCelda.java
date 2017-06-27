@@ -1,5 +1,6 @@
 package vista.vistasCelda;
 
+import dab.dragonBallExceptions.CeldaNoContieneFicha;
 import dab.juego.Celda;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -22,48 +23,35 @@ public abstract class VistaCelda extends StackPane{
 	
 	protected Color color;
 	
-//	private Color colorUnpressed = Color.AQUAMARINE;
-//	private Color colorPressed = Color.PALEVIOLETRED;
-
-	
 	public VistaCelda(Celda celda){
 		this.celda = celda;
-		
 	}
 	
 	protected void setup(){
 		
 		rectangulo = new Rectangle();
-
 		rectangulo.setWidth(recHeight);
 		rectangulo.setHeight(recWidth);
 		rectangulo.setFill(color);
 		
 		darPropiedadesARectangulo();
-		//Creo que se deberia crear una ficha 'vacia' para no tener que preguntar esto
-		if (celda.estaOcupada()){
-//		
+		try{
+			String nombreFicha = celda.getFicha().getNombre();
 			FabricadorDeRepresentacionDeFicha fabricador = new FabricadorDeRepresentacionDeFicha();
-			String urlImagenRepresentadora = fabricador.fabricarPersonaje(celda.getFicha().getNombre());
+			String urlImagenRepresentadora = fabricador.fabricarPersonaje(nombreFicha);
 			
 			Image imagenRepresentador = new Image(urlImagenRepresentadora);
 			Pane pane = new Pane();
 			BackgroundImage background = new BackgroundImage(imagenRepresentador, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,  BackgroundSize.DEFAULT);
 			pane.setBackground(new Background(background));
-
 			this.getChildren().addAll(rectangulo, pane);
-			
-
 		}
-		else{
+		catch (CeldaNoContieneFicha e){
 			this.getChildren().addAll(rectangulo);
 		}
-		
-	    
 	}
 	
 	public void darPropiedadesARectangulo(){
-		
 		rectangulo.setStroke(Color.web("#006c00"));
 	}
 
@@ -83,7 +71,5 @@ public abstract class VistaCelda extends StackPane{
 	public Celda getCelda() {
 		return celda;
 	}
-	
 
-	
 }
