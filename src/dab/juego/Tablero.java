@@ -14,12 +14,8 @@ public class Tablero{
 	private int anchoDeTablero;
 	private Celda[][] coleccionCeldas;
 	
-	//Tambien se podria hacer que la lista de personajes en juego se reciba por parametro, hay que ver mas adelante
-
-	
 	public Tablero(int altoDeTablero, int anchoDeTablero){
 		//constructor que no ubica personajes en el tablero
-		
 		this.altoDeTablero = altoDeTablero;
 		this.anchoDeTablero = anchoDeTablero;
 		coleccionCeldas = new Celda[altoDeTablero][anchoDeTablero];
@@ -54,15 +50,12 @@ public class Tablero{
 		Celda celdaConLaFicha = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		celdaConLaFicha.quitarFichaMovible();
 	}
-	
 
-	public void colocarFicha(IFicha ficha, int fila,int columna){
+	public void colocarFicha(IFicha ficha, int fila, int columna){
 		Celda celda = this.obtenerCelda(fila, columna);
 		celda.colocarFicha(ficha);
 		ficha.setPosicion(celda);
 	}
-	
-	
 	
 	public void moverFicha(IFichaMovible ficha, int fila, int columna){
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
@@ -74,23 +67,19 @@ public class Tablero{
 			celdaInicio.quitarFichaMovible();
 			this.colocarFicha(ficha, fila, columna);
 		}
-	
 		else{
 			throw new MovimientoInvalido();
 		}
 	}
 
 	public ArrayList<Personaje> personajesAtacables(Personaje personaje, Equipo equipoEnemigo){
-		
-		ArrayList<Personaje> atacables = new ArrayList<Personaje>();   // collection no se puede castear a ArrayList asi que lo tengo que hacer asi.
+		ArrayList<Personaje> atacables = new ArrayList<Personaje>(); 
 		for(Personaje enemigo : equipoEnemigo.obtenerPersonajes()){
 			if(personaje.puedeAtacar(enemigo)){
 				atacables.add(enemigo);
 			}
 		}
 		return atacables;
-				
-		
 	}
 	
 	
@@ -103,7 +92,6 @@ public class Tablero{
 	
 
 	private ArrayList<Celda> adyacentesCeldaValidos(Celda celda, int colMax, int filMax, int colMin, int filMin){
-		//para encontrar las 8 celdas adyacentes
 		ArrayList<Celda> celdas = new ArrayList<Celda>();
 		int newCol, newFil;
 		Celda nuevaCelda;
@@ -180,12 +168,8 @@ public class Tablero{
 	}
 
 	public boolean puedeTrasladarse(IFichaMovible ficha, int fila, int columna) {
-		// TODO Auto-generated method stub
 		Celda celdaInicio = coleccionCeldas[ficha.getPosicion().getFila()][ficha.getPosicion().getColumna()];
 		Celda celdaFin = coleccionCeldas[fila][columna];
-		if (!celdaInicio.estaOcupada()){
-			throw new CeldaNoContieneFicha();
-		}
 		ArrayList<Celda> celdasAlcanzables = celdasPermitidas(celdaInicio, ficha.getVelocidad());
 		if (celdaFin.permitePosicionarUnaFicha() && celdasAlcanzables.contains(celdaFin)){
 			return true;

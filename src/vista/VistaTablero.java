@@ -108,8 +108,5 @@ public class VistaTablero extends GridPane{
 		stage.setScene(new Scene(escenaFinal));
 		stage.setFullScreenExitHint("");
 	    stage.setFullScreen(true);
+	    }
 	}
-	
-	
-	
-}

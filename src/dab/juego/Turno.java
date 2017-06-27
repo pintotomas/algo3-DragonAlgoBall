@@ -52,13 +52,10 @@ public class Turno {
 
 
 	public Usuario usuarioActual() {
-		// TODO Auto-generated method stub
 		return user;
 	}
 
-
 	public boolean esDe(Usuario jugadorActual) {
-		// TODO Auto-generated method stub
 		return jugadorActual.equals(user);
 	}
 	

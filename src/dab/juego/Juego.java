@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dab.dragonBallExceptions.AunNoHayGanador;
+import dab.dragonBallExceptions.CeldaOcupada;
 import dab.dragonBallExceptions.EstePersonajeNoPuedeRealizarMovimientosEsteTurno;
-
+import dab.dragonBallExceptions.MovimientoInvalido;
 import dab.personajes.Personaje;
 import dab.potenciadores.SemillaDelErmitanio;
 import dab.potenciadores.EsferaDelDragon;
@@ -37,16 +38,12 @@ public class Juego {
 	public Juego(int altoTablero, int anchoTablero, Usuario userGuerrerosZ, Usuario userEnemigos){
 		//PRE: SOLO DOS USUARIOS Y EL PRIMERO SERA EL PRIMERO EN JUGAR
 
-	
-		//Cambiaro esto de que el tablero conozca al equipo enemigo de un determinado equipo. Eso lo podria hacer
-		//El juego o el usuario
 		this.altoTablero = altoTablero;
 		this.anchoTablero = anchoTablero;
 		this.tablero = new Tablero(altoTablero, anchoTablero, userGuerrerosZ.getEquipo(), userEnemigos.getEquipo());
 		try {
 			this.generarConsumibles();
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -60,7 +57,6 @@ public class Juego {
 	}
 	
 	private void generarConsumibles() throws InstantiationException, IllegalAccessException {
-		// TODO Auto-generated method stub
 		ArrayList<Potenciador> potenciadores = new ArrayList<Potenciador>();
 		
 		this.generarPotenciadores(potenciadores, cantidadEsferasDelDragonAColocar, EsferaDelDragon.class);
@@ -81,13 +77,13 @@ public class Juego {
 				
 				int randomColumna = generarNumeroRandom(0, anchoTablero);
 				
-				if (!tablero.celdaOcupada(randomFila, randomColumna)){
+				try {
 					tablero.colocarFicha(potenciadores.get(i), randomFila, randomColumna);
 					seEncontroUnaPosicionParaUbicarPotenciador = true;
+					} catch (CeldaOcupada e){}
+				}
 			}
 		}
-	}
-}
 	
 	private int generarNumeroRandom(int min, int max){
 		int random = ThreadLocalRandom.current().nextInt(min, max);
@@ -114,9 +110,7 @@ public class Juego {
 	}
 
 	public void pasarTurno() {
-
 		turno = new Turno(contrincantes.get(turno.usuarioActual()));
-
 	}
 	
 	public Usuario ganador(){
@@ -184,9 +178,14 @@ public class Juego {
 	}
 	
 	public void moverPersonajeSeleccionadoHacia(int fila, int columna){
-		tablero.moverFicha(personajeSeleccionado, fila, columna);
-		this.seHaEfectuadoUnMovimiento();
-	}
+		try{
+			tablero.moverFicha(personajeSeleccionado, fila, columna);
+			this.seHaEfectuadoUnMovimiento();
+		}
+		catch (MovimientoInvalido e){
+			// no se realiza el movimiento.
+			}
+		}
 	
 
 	
@@ -222,7 +221,6 @@ public class Juego {
 
 
 	public boolean sePuedeSeguirAtacando() {
-		// TODO Auto-generated method stub
 		return turno.quedanAtaquesDisponibles();
 	}
 

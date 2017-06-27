@@ -27,7 +27,7 @@ public class Celda implements IContenedorDeFicha{
 		return ficha;
 	}
 	
-	public void colocarFicha(IFicha ficha){
+	public void colocarFicha(IFicha ficha) throws CeldaOcupada{
 		
 		if (ocupada){
 			//Si estaba ocupada, puede haber un consumidor
