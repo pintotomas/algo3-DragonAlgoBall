@@ -70,7 +70,7 @@ public class VistaEscenaFinal extends StackPane {
 		column2.setHalignment(HPos.LEFT);
 		estadisticas.getColumnConstraints().addAll(column1, column2);
 		
-		Label labelNombre = new Label("Nombre:");
+		Label labelNombre = new Label("Nombre del ganador:");
 		labelNombre.setGraphic(new ImageView(new Image(this.getClass().getResource("/resources/imagenes/iconos/user-name.png").toExternalForm())));
 		estadisticas.add(labelNombre, 0, 0);
 		estadisticas.add(new Label(usuarioGanador.getNombre()), 1, 0);

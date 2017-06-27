@@ -12,8 +12,6 @@ public class Cell extends Personaje implements IProveedorDeCantidadAbsorbidos{
 
 	public static int identificador = 1;
 	
-	protected int absorbidosParaTransformarCellSemiPerfecto = 4;
-	protected int absorbidosParaTransformarCellPerfecto = 8;
 	protected int absorbidos;
 
 	public Cell(){

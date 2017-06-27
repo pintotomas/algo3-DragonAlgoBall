@@ -26,11 +26,16 @@ public class Furia extends Potenciador {
 		this.portador = portador;
 	}
 
-
+	@Override
+	public boolean estaActivo(){
+		return portador.getVida() > 0;
+	}
+	
 	@Override
 	public boolean daEfectos() {
 		// TODO Auto-generated method stub
-		return ((portador.getVida() / portador.getVidaMaxima()) <= porcentajeVidaNecesaria);
+		double porcentajeVidaActual = portador.getVida() / portador.getVidaMaxima();
+		return ((porcentajeVidaActual <= porcentajeVidaNecesaria) && porcentajeVidaActual > 0);
 	}
 
 	@Override
