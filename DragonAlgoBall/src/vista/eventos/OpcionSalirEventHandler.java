@@ -1,12 +1,13 @@
 package vista.eventos;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
-public class OpcionSalirEventHandler implements EventHandler<ActionEvent> {
+public class OpcionSalirEventHandler implements EventHandler<MouseEvent> {
 
-    @Override
-    public void handle(ActionEvent actionEvent) {
-        System.exit(0);
-    }
+	@Override
+	public void handle(MouseEvent event) {
+		// TODO Auto-generated method stub
+		System.exit(1);
+	}
 }

@@ -53,9 +53,8 @@ public class ReproductorSonidosEspeciales {
 	    put(GohanSuperSayajinFase1.nombreId, "/resources/sonidos/efectos/masenko.wav");
 	    put(GohanSuperSayajinFase2.nombreId, "/resources/sonidos/efectos/masenko.wav");
 	    
-	    
-	    
 	    }
+	
 	};
 	
 	public static void reproducir(String identificadorSonido){
