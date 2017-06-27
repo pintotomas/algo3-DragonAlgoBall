@@ -30,7 +30,8 @@ public class Furia extends Potenciador {
 	@Override
 	public boolean daEfectos() {
 		// TODO Auto-generated method stub
-		return ((portador.getVida() / portador.getVidaMaxima()) <= porcentajeVidaNecesaria);
+		double porcentajeVidaActual = portador.getVida() / portador.getVidaMaxima();
+		return ((porcentajeVidaActual <= porcentajeVidaNecesaria) && porcentajeVidaActual > 0);
 	}
 
 	@Override
