@@ -62,16 +62,4 @@ public class Turno {
 		return jugadorActual.equals(user);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

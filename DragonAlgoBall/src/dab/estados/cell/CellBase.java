@@ -10,7 +10,7 @@ public class CellBase extends Estado{
 	public static String nombreId = "Cell";
 	
 	public CellBase(IProveedorDeCantidadAbsorbidos proveedorCantidadAbsorbidos){ 
-		vidaMaxima = 10;
+		vidaMaxima = 500;
 		poder = 20;
 		alcance = 3;
 		velocidad = 2;

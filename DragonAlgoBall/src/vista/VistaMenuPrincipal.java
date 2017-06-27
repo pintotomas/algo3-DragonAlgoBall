@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Ajustes;
 import vista.eventos.CambiarEscenaAlPresionarEventHandler;
+import vista.eventos.OpcionSalirEventHandler;
 import vista.menuOpciones.VistaMenuOpciones;
 
 public class VistaMenuPrincipal extends StackPane{
@@ -44,8 +45,9 @@ public class VistaMenuPrincipal extends StackPane{
 		Button botonComoJugar = creadorDeBoton("vista/Imagenes/ComoJugar.png", estiloTransparente);
 		Button botonOpciones = creadorDeBoton("vista/Imagenes/Opciones.png", estiloTransparente);
 		Button botonCreditos = creadorDeBoton("vista/Imagenes/Creditos.png", estiloTransparente);
-		
-		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos);
+		Button botonSalirDelJuego = creadorDeBoton("vista/Imagenes/salirDelJuego.png", estiloTransparente);
+		botonSalirDelJuego.setOnMousePressed(new OpcionSalirEventHandler());
+		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos, botonSalirDelJuego);
 		
 		asignarSiguienteEscenaABoton(botonJugar, new ContenedorNombresUsuarios(stage, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes,
 				ajustesMusicaEnding));
