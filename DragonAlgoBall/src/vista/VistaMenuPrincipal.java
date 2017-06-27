@@ -45,7 +45,7 @@ public class VistaMenuPrincipal extends StackPane{
 		Button botonComoJugar = creadorDeBoton("/vista/Imagenes/ComoJugar.png", estiloTransparente);
 		Button botonOpciones = creadorDeBoton("/vista/Imagenes/Opciones.png", estiloTransparente);
 		Button botonCreditos = creadorDeBoton("/vista/Imagenes/Creditos.png", estiloTransparente);
-		Button botonSalirDelJuego = creadorDeBoton("vista/Imagenes/salirDelJuego.png", estiloTransparente);
+		Button botonSalirDelJuego = creadorDeBoton("/vista/Imagenes/salirDelJuego.png", estiloTransparente);
 		botonSalirDelJuego.setOnMousePressed(new OpcionSalirEventHandler());
 		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos, botonSalirDelJuego);
 		

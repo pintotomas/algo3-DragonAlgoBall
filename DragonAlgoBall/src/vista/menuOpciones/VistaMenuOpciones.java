@@ -49,7 +49,7 @@ public class VistaMenuOpciones extends StackPane {
 		
 		VistaOpcion opcionMusicaDeBatalla = new VistaOpcion("/vista/Imagenes/MusicaDeBatalla.png", ajustesMusicaDeBatalla.estaActivo(), ajustesMusicaDeBatalla);
 		VistaOpcion opcionSonidosDePersonaje = new VistaOpcion("/vista/Imagenes/SonidosPersonajes.png", ajustesEfectosDePersonajes.estaActivo(), ajustesEfectosDePersonajes);
-		VistaOpcion opcionMusicaEnding = new VistaOpcion("/vista/Imagenes/MusicaEnding.png", ajustesMusicaEnding.estaActivo(), ajustesMusicaEnding);
+		VistaOpcion opcionMusicaEnding = new VistaOpcion("/vista/Imagenes/musicaEnding.png", ajustesMusicaEnding.estaActivo(), ajustesMusicaEnding);
 		opciones.getChildren().addAll(opcionMusicaDeBatalla, opcionSonidosDePersonaje, opcionMusicaEnding, botonVolver);
 		this.getChildren().addAll(opciones);
 		opciones.setAlignment(Pos.CENTER_RIGHT);
