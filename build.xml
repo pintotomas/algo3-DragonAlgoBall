@@ -4,7 +4,6 @@
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="DragonAlgoBall">
-  
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../eclipse/java-neon2/eclipse/"/>
     <property name="junit.output.dir" value="junit"/>
@@ -63,11 +62,6 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
-    </target>
-    <target name="Aplicacion (1)">
-        <java classname="vista.Aplicacion" failonerror="true" fork="yes">
-            <classpath refid="DragonAlgoBall.classpath"/>
-        </java>
     </target>
     <target name="app">
         <java classname="utils.app" failonerror="true" fork="yes">
@@ -358,6 +352,11 @@
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
+    </target>
+    <target name="Jugar">
+        <java classname="vista.Jugar" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
