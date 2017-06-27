@@ -1,0 +1,98 @@
+/* Botones */
+
+.boton {
+	-fx-font-weight: bold;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(41,211,49,0.5); 
+	-fx-border-color: #9a1603; 
+	-fx-border-width: 1px; 
+	-fx-padding: 10;
+}
+.boton:armed {
+	-fx-background-color:rgba(41,211,49,0.1); 
+}
+
+.home{
+	-fx-graphic:url("/resources/imagenes/hud/home.png");
+}
+.exit{
+	-fx-graphic:url("/resources/imagenes/hud/quit.png");
+}
+.muteMusic{
+	-fx-graphic:url("/resources/imagenes/hud/mutemusic.png");
+}
+.muteMusic:selected{
+	-fx-graphic:url("/resources/imagenes/hud/music.png");
+}
+.muteSound{
+	-fx-graphic:url("/resources/imagenes/hud/mutevol.png");	
+}
+.muteSound:selected{
+	-fx-graphic:url("/resources/imagenes/hud/vol.png");	
+}
+.botonPasar{
+	-fx-graphic:url("/resources/imagenes/hud/pasar.png");	
+}
+.botonTransformar{
+	-fx-graphic:url("/resources/imagenes/hud/transformar.png");	
+}
+
+/* --------------------- */
+
+
+.vistaAliados {
+	-fx-background-color: #ffc800; 
+	-fx-background-color: rgba(41,211,49,0.5);
+	-fx-background-radius: 5px; 
+	-fx-border-color: #9a1603; 
+	-fx-border-color: rgb(222,219,222); 
+	-fx-border-width: 4px; 
+	-fx-border-radius: 5px; 
+	-fx-padding: 10;
+}
+.marcoPersonaje{
+	-fx-background-color: rgba(0,0,0,0);
+}
+.marcoPersonaje:hover{
+	-fx-background-color: rgba(255,255,255,0.4); 
+}
+
+.vistaEnemigo {
+	-fx-background-color: rgba(24,142,24,0.6);
+	-fx-background-radius: 5px; 
+    -fx-border-color: rgb(222,219,222); 
+    -fx-border-width: 4px; 
+    -fx-border-radius: 5px;
+    -fx-padding: 10;
+}
+.vistaEnemigo:hover{
+	-fx-background-color: rgba(24,142,24,0.6);
+	-fx-background-radius: 5px; 
+    -fx-border-color: rgb(222,219,222); 
+    -fx-border-width: 4px; 
+    -fx-border-radius: 5px;
+    -fx-padding: 10;
+}
+
+.nombrePersonaje {
+	-fx-font-weight:bolder;
+	-fx-font-family:"Gill Sans";
+	-fx-font-size: 16px;
+}
+.outline.nombrePersonaje .text{
+	-fx-fill: #fff;
+	-fx-stroke: #000;
+	-fx-stroke-width: 1px;
+}
+
+.stats {
+	-fx-fill: #fff;
+	-fx-font-weight: bold;
+	-fx-background-color:rgb(255, 170, 0, 0.6);
+    -fx-border-color: rgba(222, 219, 222, 0.6); 
+    -fx-border-width: 3px;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
