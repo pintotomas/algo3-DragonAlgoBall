@@ -73,7 +73,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.CellTests" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -87,7 +87,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <test name="test.ataquesEspeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -144,12 +144,6 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.GokuTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -166,29 +160,29 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
-            <test name="dab.tests.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
-            <test name="dab.tests.juego.TestsJuego" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.tablero.PruebasTablero" todir="${junit.output.dir}"/>
-            <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
-            <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.GokuTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
+            <test name="test.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
+            <test name="test.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <test name="test.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="test.juego.TestsJuego" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
+            <test name="test.tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <test name="test.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
+            <test name="test.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.GokuTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -197,7 +191,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -206,7 +200,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.transformaciones.gohan" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.gohan" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -220,7 +214,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="test.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -229,7 +223,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
+            <test name="test.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -238,7 +232,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <test name="test.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -247,7 +241,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <test name="test.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -256,7 +250,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <test name="test.tablero.PruebasTablero" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -270,29 +264,29 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
-            <test name="dab.tests.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
-            <test name="dab.tests.juego.TestsJuego" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.tablero.PruebasTablero" todir="${junit.output.dir}"/>
-            <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
-            <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.GokuTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
-            <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
+            <test name="test.atacar.pruebaAtacar" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.AbsorberTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.KamehamehaTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.MakankosappoTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.MasenkoTests" todir="${junit.output.dir}"/>
+            <test name="test.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
+            <test name="test.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <test name="test.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="test.juego.TestsJuego" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
+            <test name="test.potenciadores.SemillaDelErmitanioTests" todir="${junit.output.dir}"/>
+            <test name="test.tablero.PruebasTablero" todir="${junit.output.dir}"/>
+            <test name="test.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
+            <test name="test.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.GokuTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -306,7 +300,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.juego.testPasanLosTurnos" todir="${junit.output.dir}"/>
+            <test name="test.juego.testPasanLosTurnos" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -320,7 +314,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.juego.TestsJuego" todir="${junit.output.dir}"/>
+            <test name="test.juego.TestsJuego" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -329,7 +323,7 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="test.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
