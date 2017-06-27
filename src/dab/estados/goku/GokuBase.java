@@ -9,7 +9,7 @@ public class GokuBase extends Estado{
 	
 	public GokuBase(IProveedorDeKi proveedorDeKi){
 		super(proveedorDeKi);
-		vidaMaxima = 10;
+		vidaMaxima = 500;
 		poder = 20;
 		alcance = 2;
 		velocidad = 2;
