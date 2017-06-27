@@ -57,7 +57,7 @@ public class botonNombresIngresadosEventHandler implements EventHandler<MouseEve
 	private void comenzarElJuego(TextField campoNombreUsuarioGuerreros, TextField campoNombreUsuarioEnemigos, MouseEvent event) {
 		
 		Button botonListoNombres = new Button("Boton de mentira");
-		ReproductorDeSonidos reproductorMusicaDeBatalla = new ReproductorDeSonidos("/vista/sonidos/musicaPelea.wav");
+		ReproductorDeSonidos reproductorMusicaDeBatalla = new ReproductorDeSonidos("/resources/musica/ending/musicaPelea.wav");
 	    ContenedorPrincipal principal = new ContenedorPrincipal(stage, campoNombreUsuarioGuerreros,
 	        		campoNombreUsuarioEnemigos, reproductorMusicaDeBatalla, ajustesMusicaDeBatalla, ajustesEfectosDePersonajes, ajustesMusicaEnding);
 	    Scene escenaPrincipal = new Scene(principal);

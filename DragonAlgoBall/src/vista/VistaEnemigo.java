@@ -18,8 +18,8 @@ public class VistaEnemigo extends VistaCaracteristicasPersonaje{
 	private Personaje personaje;
 	private VistaTablero vistaTablero;
 	private Juego juego;
-	private String rutaAtaque = "/vista/imagenes/hud/ataque.png";
-	private String rutaEspecial = "/vista/imagenes/hud/especial.png";
+	private String rutaAtaque = "/resources/imagenes/hud/ataque.png";
+	private String rutaEspecial = "/resources/imagenes/hud/especial.png";
 	
 	public VistaEnemigo(Personaje personaje, Juego juego, VistaTablero vistaTablero, Ajustes ajustesSonidosEspeciales){
 		super(personaje, ajustesSonidosEspeciales, vistaTablero);

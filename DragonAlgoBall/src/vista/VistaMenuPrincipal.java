@@ -41,11 +41,11 @@ public class VistaMenuPrincipal extends StackPane{
 		VBox menu = new VBox(espaciadoEntreBotones);
 		
 		String estiloTransparente = "-fx-background-color: transparent;";
-		Button botonJugar = creadorDeBoton("/vista/Imagenes/NuevoJuego.png", estiloTransparente);
-		Button botonComoJugar = creadorDeBoton("/vista/Imagenes/ComoJugar.png", estiloTransparente);
-		Button botonOpciones = creadorDeBoton("/vista/Imagenes/Opciones.png", estiloTransparente);
-		Button botonCreditos = creadorDeBoton("/vista/Imagenes/Creditos.png", estiloTransparente);
-		Button botonSalirDelJuego = creadorDeBoton("/vista/Imagenes/salirDelJuego.png", estiloTransparente);
+		Button botonJugar = creadorDeBoton("/resources/imagenes/NuevoJuego.png", estiloTransparente);
+		Button botonComoJugar = creadorDeBoton("/resources/imagenes/ComoJugar.png", estiloTransparente);
+		Button botonOpciones = creadorDeBoton("/resources/imagenes/Opciones.png", estiloTransparente);
+		Button botonCreditos = creadorDeBoton("/resources/imagenes/Creditos.png", estiloTransparente);
+		Button botonSalirDelJuego = creadorDeBoton("/resources/imagenes/salirDelJuego.png", estiloTransparente);
 		botonSalirDelJuego.setOnMousePressed(new OpcionSalirEventHandler());
 		menu.getChildren().addAll(botonJugar, botonComoJugar, botonOpciones, botonCreditos, botonSalirDelJuego);
 		
@@ -60,7 +60,7 @@ public class VistaMenuPrincipal extends StackPane{
 
 	private void setFondo() {
 		
-		Image fondoMenu = new Image(this.getClass().getResource("/vista/Imagenes/fondoMenuPrincipal.png").toExternalForm());
+		Image fondoMenu = new Image(this.getClass().getResource("/resources/imagenes/fondoMenuPrincipal.png").toExternalForm());
 	    ImageView vistaFondoMenu = new ImageView(fondoMenu);
 	 
 	    vistaFondoMenu.fitWidthProperty().bind(stage.widthProperty());

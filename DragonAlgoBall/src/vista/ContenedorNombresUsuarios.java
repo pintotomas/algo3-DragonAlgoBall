@@ -27,15 +27,15 @@ public class ContenedorNombresUsuarios extends VBox {
         this.setPadding(new Insets(25));
         
         
-    	Image imagenDeFondo = new Image(this.getClass().getResource("/vista/Imagenes/ImagenIngresoNombres.png").toExternalForm());
+    	Image imagenDeFondo = new Image(this.getClass().getResource("/resources/imagenes/ImagenIngresoNombres.png").toExternalForm());
     	
     	BackgroundSize size = new BackgroundSize(1, 1, false, false, false, true);
     	
         BackgroundImage vistaImagenDeFondo = new BackgroundImage(imagenDeFondo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, null, size);
         this.setBackground(new Background(vistaImagenDeFondo));
 
-        String textoLabelGuerrerosZ = "/vista/Imagenes/nombreGuerrerosZ.png";
-        String textoLabelEnemigosDeLaTierra = "/vista/Imagenes/nombreEnemigosDeLaTierra.png";
+        String textoLabelGuerrerosZ = "/resources/imagenes/nombreGuerrerosZ.png";
+        String textoLabelEnemigosDeLaTierra = "/resources/imagenes/nombreEnemigosDeLaTierra.png";
 
         TextField campoNombreUsuarioGuerreros = this.contenedorNombreUsuario(textoLabelGuerrerosZ);
         TextField campoNombreUsuarioEnemigos = this.contenedorNombreUsuario(textoLabelEnemigosDeLaTierra);

@@ -18,7 +18,7 @@ public class VistaOpcion extends HBox{
 		
 		String estiloTransparente = "-fx-background-color: transparent;";
 		Label nombreDeLaOpcion = new Label();
-		Image imagen = new Image(this.getClass().getResource(rutaImagenDeLaOpcion).toExternalForm());
+		Image imagen = new Image(this.getClass().getResourceAsStream(rutaImagenDeLaOpcion));
 		nombreDeLaOpcion.setGraphic(new ImageView(imagen));
 		nombreDeLaOpcion.setStyle(estiloTransparente);
 		this.labelDeLaOpcion = nombreDeLaOpcion;
@@ -39,10 +39,10 @@ public class VistaOpcion extends HBox{
 	private void configurarBotonDeActivado(Button eleccion){
 		String ruta;
 		if (activada){
-			ruta = "/vista/Imagenes/OpcionActivada.png";
+			ruta = "/resources/imagenes/OpcionActivada.png";
 		}
 		else{
-			ruta = "/vista/Imagenes/OpcionDesactivada.png";
+			ruta = "/resources/imagenes/OpcionDesactivada.png";
 		}
 		Image opcionEscogida = new Image(this.getClass().getResource(ruta).toExternalForm());
 		eleccion.setGraphic(new ImageView(opcionEscogida));
