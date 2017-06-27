@@ -5,7 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="DragonAlgoBall">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../workspace/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse/java-neon2/eclipse/"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
@@ -15,7 +15,7 @@
         <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
     </path>
     <path id="JavaFX SDK.libraryclasspath">
-        <pathelement location="../../.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_2.4.0.201605112122.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_1.1.0.201411050807.jar"/>
     </path>
     <path id="DragonAlgoBall.classpath">
         <pathelement location="bin"/>
@@ -59,8 +59,27 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Aplicacion">
+    <target name="Aplicacion (1)">
         <java classname="vista.Aplicacion" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="app">
+        <java classname="utils.app" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="CellTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="CircularList">
+        <java classname="dab.utils.CircularList" failonerror="true" fork="yes">
             <classpath refid="DragonAlgoBall.classpath"/>
         </java>
     </target>
@@ -69,6 +88,76 @@
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="dab.tests.ataquesespeciales.ConvierteteEnChocolateTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.atacar">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.ataquesespeciales">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.integradoras">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.movimiento">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.potenciadores">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.tablero">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.transformaciones (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.GokuTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="dab.tests.transformaciones">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -86,6 +175,7 @@
             <test name="dab.tests.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
             <test name="dab.tests.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="dab.tests.juego.TestsJuego" todir="${junit.output.dir}"/>
             <test name="dab.tests.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
@@ -94,26 +184,52 @@
             <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
             <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
             <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.GokuTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
             <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
     </target>
-    <target name="moverACeldaOcupadaPorUnPersonaje">
+    <target name="FuriaTests">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
     </target>
-    <target name="MoverPersonaje">
+    <target name="gohan">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="dab.tests.movimiento.MoverPersonaje" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.gohan" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="Juego">
+        <java classname="dab.juego.Juego" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="moverACeldaOcupadaPorUnPersonaje">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="MovimientosPersonaje">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
@@ -127,6 +243,15 @@
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
     </target>
+    <target name="PruebasIntegradoras1">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
     <target name="PruebasTablero">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -135,6 +260,11 @@
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
+    </target>
+    <target name="ReproductorDeSonidos">
+        <java classname="utils.reproductorDeSonidos.ReproductorDeSonidos" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
     </target>
     <target name="src">
         <mkdir dir="${junit.output.dir}"/>
@@ -149,6 +279,7 @@
             <test name="dab.tests.ataquesespeciales.RayoMortalTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.integradoras.PruebasIntegradoras1" todir="${junit.output.dir}"/>
             <test name="dab.tests.integradoras.PruebasIntegradoras2" todir="${junit.output.dir}"/>
+            <test name="dab.tests.juego.TestsJuego" todir="${junit.output.dir}"/>
             <test name="dab.tests.potenciadores.EsferaDelDragonTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.potenciadores.FuriaTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.potenciadores.NubeVoladoraTests" todir="${junit.output.dir}"/>
@@ -157,11 +288,64 @@
             <test name="dab.tests.tablero.movimiento.MovimientosPersonaje" todir="${junit.output.dir}"/>
             <test name="dab.tests.tablero.movimiento.moverACeldaOcupadaPorUnPersonaje" todir="${junit.output.dir}"/>
             <test name="dab.tests.transformaciones.CellTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.FreezerTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.GokuTests" todir="${junit.output.dir}"/>
+            <test name="dab.tests.transformaciones.MajinBooTests" todir="${junit.output.dir}"/>
             <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
             <test name="dab.tests.transformaciones.TransformacionesPiccolo" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="DragonAlgoBall.classpath"/>
         </junit>
+    </target>
+    <target name="Tablero">
+        <java classname="dab.juego.Tablero" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="testPasanLosTurnos">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.juego.testPasanLosTurnos" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="TestRunner">
+        <java classname="junit.textui.TestRunner" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
+    </target>
+    <target name="TestsJuego">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.juego.TestsJuego" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="TransformacionesGohan">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="dab.tests.transformaciones.TransformacionesGohan" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="TransformacionesPiccolo">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </junit>
+    </target>
+    <target name="TwoScreensWithInterchange">
+        <java classname="TwoScreensWithInterchange" failonerror="true" fork="yes">
+            <classpath refid="DragonAlgoBall.classpath"/>
+        </java>
     </target>
     <target name="VistaTablero">
         <java classname="vista.VistaTablero" failonerror="true" fork="yes">
