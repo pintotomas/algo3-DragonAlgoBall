@@ -10,7 +10,7 @@ import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
 import dab.personajes.majinBoo.MajinBoo;
 
-public class KamehamehaTests {
+public class KamehamehaTest {
 	
 		private MajinBoo majinboo;
 		private Goku goku;

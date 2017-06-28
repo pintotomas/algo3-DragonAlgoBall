@@ -10,7 +10,7 @@ import dab.juego.Tablero;
 import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 
-public class MakankosappoTests {
+public class MakankosappoTest {
 
 
 	private Cell cell;

@@ -11,7 +11,7 @@ import dab.personajes.Goku.Goku;
 import dab.personajes.Freezer.Freezer;
 
 
-public class RayoMortalTests {
+public class RayoMortalTest {
 
 	private Freezer freezer;
 	private Goku goku;

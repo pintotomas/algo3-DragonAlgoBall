@@ -10,7 +10,7 @@ import dab.juego.Tablero;
 import dab.personajes.Gohan.Gohan;
 import dab.personajes.majinBoo.MajinBoo;
 
-public class MasenkoTests {
+public class MasenkoTest {
 
 	private MajinBoo majinboo;
 	private Gohan gohan;

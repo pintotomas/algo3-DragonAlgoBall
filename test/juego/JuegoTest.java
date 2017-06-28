@@ -21,7 +21,7 @@ import dab.personajes.majinBoo.MajinBoo;
 import dab.potenciadores.EsferaDelDragon;
 import dab.usuario.Usuario;
 
-public class TestsJuego {
+public class JuegoTest {
 
 	private int altoTablero;
 	private int anchoTablero;

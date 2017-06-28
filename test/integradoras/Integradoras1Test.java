@@ -14,7 +14,7 @@ import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
-public class PruebasIntegradoras1 {
+public class Integradoras1Test {
 
 	Goku goku;
 	Piccolo piccolo;
