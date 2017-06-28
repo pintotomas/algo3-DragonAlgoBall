@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import dab.personajes.majinBoo.MajinBoo;
 
-public class MajinBooTests {
+public class MajinBooTest {
 
 
 	private MajinBoo majinboo;

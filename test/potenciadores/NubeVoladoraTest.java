@@ -9,7 +9,7 @@ import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
 import dab.potenciadores.NubeVoladora;
 
-public class NubeVoladoraTests {
+public class NubeVoladoraTest {
 	private Goku goku;
 	private Tablero tablero;
 	private NubeVoladora nube = new NubeVoladora();

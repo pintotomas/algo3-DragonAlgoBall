@@ -8,7 +8,7 @@ import dab.personajes.Gohan.Gohan;
 import dab.personajes.Goku.Goku;
 import dab.personajes.Piccolo.Piccolo;
 
-public class TransformacionesGohan {
+public class TransformacionesGohanTest {
 	private Gohan gohan;
 	private Goku goku;
 	private Piccolo piccolo;

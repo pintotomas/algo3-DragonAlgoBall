@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import dab.personajes.Goku.Goku;
 
-public class GokuTests {
+public class GokuTest {
 
 	private Goku goku;
 	private int kiParaPrimerTransformacion = 20;

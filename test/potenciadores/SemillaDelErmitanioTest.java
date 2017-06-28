@@ -9,7 +9,7 @@ import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
 import dab.potenciadores.SemillaDelErmitanio;
 
-public class SemillaDelErmitanioTests {
+public class SemillaDelErmitanioTest {
 	private Goku goku;
 	private Tablero tablero;
 	private SemillaDelErmitanio semilla = new SemillaDelErmitanio();
