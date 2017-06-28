@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import dab.personajes.Freezer.Freezer;
 
-public class FreezerTest {
+public class FreezerTests {
 
 	private Freezer freezer;
 	private int kiParaPrimerTransformacion = 20;

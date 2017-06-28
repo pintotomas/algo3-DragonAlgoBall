@@ -10,7 +10,7 @@ import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
 
-public class AbsorberTests {
+public class AbsorberTest {
 
 	private Cell cell;
 	private Goku goku;

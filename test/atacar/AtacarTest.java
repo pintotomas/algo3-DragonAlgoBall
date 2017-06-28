@@ -15,7 +15,7 @@ import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
 
-public class pruebaAtacar{
+public class AtacarTest{
 	
 	private Gohan gohan;
 	private Goku goku;

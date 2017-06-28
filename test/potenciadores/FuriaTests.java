@@ -10,7 +10,7 @@ import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
 import dab.potenciadores.Furia;
 
-public class FuriaTest {
+public class FuriaTests {
 
 	
 	private double vidaMaximaGokuBase;

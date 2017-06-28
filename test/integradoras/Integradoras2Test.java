@@ -19,7 +19,7 @@ import dab.personajes.majinBoo.MajinBoo;
 import dab.potenciadores.NubeVoladora;
 import dab.usuario.Usuario;
 
-public class PruebasIntegradoras2 {
+public class Integradoras2Test {
 
 	private Tablero tablero;
 	private Juego juego;

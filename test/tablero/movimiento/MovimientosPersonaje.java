@@ -19,7 +19,7 @@ import dab.personajes.Piccolo.Piccolo;
 import dab.personajes.cell.Cell;
 import dab.personajes.majinBoo.MajinBoo;
 
-public class MovimientosPersonajeTest {
+public class MovimientosPersonaje {
 
 	@Test 
 	public void moverPersonaje() {
