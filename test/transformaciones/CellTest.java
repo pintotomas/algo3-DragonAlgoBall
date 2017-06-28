@@ -12,7 +12,7 @@ import dab.personajes.Personaje;
 import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
 
-public class CellTests {
+public class CellTest {
 	
 	private Cell cell;
 	private Goku goku;

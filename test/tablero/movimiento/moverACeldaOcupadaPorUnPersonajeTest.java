@@ -7,7 +7,7 @@ import dab.juego.Tablero;
 import dab.personajes.Personaje;
 import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
-public class moverACeldaOcupadaPorUnPersonaje {
+public class moverACeldaOcupadaPorUnPersonajeTest {
 
 	@Test(expected=MovimientoInvalido.class)
 	public void testMoverACeldaOcupada() {

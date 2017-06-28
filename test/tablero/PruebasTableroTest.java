@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import dab.juego.Tablero;
 import dab.personajes.Goku.Goku;
-public class PruebasTablero{
+public class PruebasTableroTest{
 
 	@Test
 	public void testCoordenadasDelPersonajeCorrectasAlPosicionarEnTablero() {

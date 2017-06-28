@@ -10,7 +10,7 @@ import dab.personajes.Goku.Goku;
 import dab.personajes.cell.Cell;
 import dab.potenciadores.EsferaDelDragon;
 
-public class EsferaDelDragonTests {
+public class EsferaDelDragonTest {
 
 	private Goku goku;
 	private Cell cell;
