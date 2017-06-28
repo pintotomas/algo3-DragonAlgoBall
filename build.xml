@@ -209,7 +209,7 @@
             <classpath refid="DragonAlgoBall.classpath"/>
         </java>
     </target>
-    <target name="Jugar (1)">
+    <target name="Jugar">
         <java classname="vista.Jugar" failonerror="true" fork="yes">
             <classpath refid="DragonAlgoBall.classpath"/>
         </java>
